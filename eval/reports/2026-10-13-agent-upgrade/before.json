@@ -1,0 +1,72 @@
+{
+  "answer": "万象大赛有6名棋手，每人初始60点生命。获胜方式：购买卡牌组建阵容，每回合随机匹配一名棋手对战；战斗胜利会扣除对方生命，失败则扣除自身生命。生命降为0的棋手被淘汰，存活到最后的棋手获胜。\n\n资料范围：已收录资料快照，具体来源、核验层级和日期见引用；不保证覆盖后续改动。",
+  "intent": "knowledge",
+  "status": "answered",
+  "sources": [
+    {
+      "id": "R01",
+      "title": "万象大赛人数与初始生命",
+      "source_title": "王者万象棋官方新手指引",
+      "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+      "collected_at": "2026-10-12",
+      "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+      "claim_type": "rule",
+      "verification": "official_page_checked",
+      "official_url": null
+    },
+    {
+      "id": "R02",
+      "title": "对局胜负与淘汰",
+      "source_title": "王者万象棋官方新手指引",
+      "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+      "collected_at": "2026-10-12",
+      "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+      "claim_type": "rule",
+      "verification": "official_page_checked",
+      "official_url": null
+    }
+  ],
+  "retrieved_ids": [
+    "R01",
+    "WIKI-846ee5915a0af6b2f29c",
+    "R02"
+  ],
+  "latency_ms": 28527.38,
+  "timings_ms": {
+    "context_route": 7.6,
+    "query_planning": 14162.23,
+    "retrieval": 7197.8,
+    "generation": 7149.23
+  },
+  "mode": "live",
+  "model_used": true,
+  "request_id": "91d0c0811b97",
+  "retrieval_plan": {
+    "queries": [
+      "万象大赛人数与初始生命",
+      "怎样赢下一场比赛？",
+      "万象大赛有几个人",
+      "万象大赛怎么赢"
+    ],
+    "keywords": [
+      "万象大赛",
+      "人数",
+      "初始生命",
+      "几个人",
+      "怎么赢",
+      "胜利条件",
+      "怎样赢下一场比赛",
+      "获胜方式",
+      "玩家数",
+      "淘汰规则"
+    ],
+    "entities": [
+      "万象大赛",
+      "初始生命"
+    ],
+    "mode": "万象大赛",
+    "include_history": false,
+    "status": "model",
+    "error_code": null
+  }
+}

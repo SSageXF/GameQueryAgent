@@ -9,3 +9,6 @@ artifacts/
 .~*
 data/vector/
 data/models/
+
+# Local assignment brief; keep it out of future commits.
+/AI原生开发岗位作业题.md

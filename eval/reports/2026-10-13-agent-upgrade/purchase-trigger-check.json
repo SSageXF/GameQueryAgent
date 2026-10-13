@@ -1,0 +1,65 @@
+{
+  "success": true,
+  "generation": {
+    "answer": "你只有3能量，按基础规则刚好能买1张英雄牌，所以这几个里只能选一个。如果只看买牌本身，李白、孙尚香、蔡文姬、武则天都在范围内，但她们的效果各不相同：孙尚香是登场拿1次免费刷新，买了并登场才有；武则天登场拿精致古币；李白偏向古币牌体系，蔡文姬是和三分英雄联动。你场上已经有曹操，他带的是整备效果，但这和你要不要买哪张没有直接绑定关系。如果你想要即时回报，孙尚香或武则天是更直接的选择；如果你想走三分体系，可以看蔡文姬。关键还要看你当回合更缺刷新还是缺古币，以及商店里有没有其他值得留能量配合的牌。",
+    "source_ids": [
+      "E03",
+      "WX-hero-1111-original",
+      "WX-hero-1361-original",
+      "WX-hero-1841-original",
+      "WX-hero-1311-original",
+      "WX-hero-1281-original"
+    ],
+    "quotes": [
+      {
+        "source_id": "E03",
+        "quote": "基础规则中，购买英雄牌消耗3点能量；效果牌的消耗看卡牌右上角。特殊效果可能改变实际消耗。"
+      },
+      {
+        "source_id": "WX-hero-1111-original",
+        "quote": "登场：获得1次免费刷新。"
+      },
+      {
+        "source_id": "WX-hero-1361-original",
+        "quote": "古币牌提升的等级+1。 登场：获得1张精致古币。"
+      },
+      {
+        "source_id": "WX-hero-1841-original",
+        "quote": "每当你使用【三分】英雄牌时，等级最低的其他3名【三分】英雄等级+1。"
+      },
+      {
+        "source_id": "WX-hero-1311-original",
+        "quote": "闪现 古币牌会额外提供4临时等级。若目标为李白，该临时等级会额外+3。"
+      },
+      {
+        "source_id": "WX-hero-1281-original",
+        "quote": "整备：随机触发1名【三分】英雄的登场效果。"
+      }
+    ],
+    "insufficient_evidence": false
+  },
+  "calls": [
+    {
+      "stage": "generation",
+      "elapsed_ms": 4952.59,
+      "success": true,
+      "input_chars": 4008,
+      "max_tokens": 700,
+      "finish_reason": "length",
+      "prompt_tokens": 1867,
+      "completion_tokens": 700,
+      "reasoning_tokens": 0
+    },
+    {
+      "stage": "generation",
+      "elapsed_ms": 3606.9,
+      "success": true,
+      "input_chars": 4008,
+      "max_tokens": 4000,
+      "finish_reason": "stop",
+      "prompt_tokens": 1867,
+      "completion_tokens": 474,
+      "reasoning_tokens": 0
+    }
+  ]
+}

@@ -63,7 +63,7 @@ def prepare(message: str, history: list[Message], enhanced: bool = True, entity_
                 return Context(query, recent)
         return Context(query, recent, True)
     # Carry user-provided situational details when the player answers a clarification.
-    if recent and recent[-1]["role"] == "assistant" and any(s in recent[-1]["content"] for s in ("请补充", "请告诉", "还缺")) and re.search(r"\d+|阵容[:：]|场上[:：]", query):
+    if recent and recent[-1]["role"] == "assistant" and any(s in recent[-1]["content"] for s in ("请补充", "请告诉", "再告诉", "还缺")) and re.search(r"\d+|阵容[:：]|场上[:：]", query):
         users = [normalize(x["content"]) for x in recent if x["role"] == "user"]
         if users:
             query = "；".join(users[-2:] + [query])

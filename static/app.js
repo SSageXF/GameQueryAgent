@@ -26,7 +26,7 @@ async function send(message, retryRow = null) {
   message = message.trim();
   if (message.length > 1000) return;
   if (retryRow) retryRow.remove(); else addMessage('user', message);
-  const pending = addMessage('assistant', '正在查阅资料、整理回答…', 'loading');
+  const pending = addMessage('assistant', '让我看看，马上来…', 'loading');
   const controller = new AbortController(); active = controller;
   $('send').disabled = true; input.value = ''; updateCounter();
   const timer = setTimeout(() => controller.abort('timeout'), timeoutSeconds * 1000);
@@ -42,15 +42,19 @@ async function send(message, retryRow = null) {
     row.append(meta);
     if (result.sources.length) {
       const details = document.createElement('details'); details.className = 'sources';
-      const summary = document.createElement('summary'); summary.textContent = `查看 ${result.sources.length} 条资料来源`; details.append(summary);
+      const summary = document.createElement('summary'); summary.textContent = `查看引用原文与来源（${result.sources.length}）`; details.append(summary);
       for (const source of result.sources) {
         const url = new URL(source.url);
         if (url.protocol !== 'https:') continue;
         const link = document.createElement('a'); link.href = url.href; link.target = '_blank'; link.rel = 'noopener noreferrer';
         link.textContent = `${source.id} · ${source.title} ↗`;
         const kinds = {official_original:'官方原文 · 已逐字段核对', wiki_original:'Wiki收录原文', wiki_reference:'Wiki结构化资料', site_model:'站点工具模型 · 非实战保证', site_interpretation:'站方解释 · 非官方结论', pending:'待确认 · 不作确定依据', rule:'官网规则整理', official_recommendation:'官方入门推荐'};
-        const scope = document.createElement('small'); scope.textContent = `${kinds[source.claim_type] || source.claim_type} · ${source.source_title} · ${source.version_scope}`;
+        const scope = document.createElement('small'); scope.textContent = `${kinds[source.claim_type] || source.claim_type} · ${source.source_title} · 采集于 ${source.collected_at} · ${source.version_scope}`;
         details.append(link, scope);
+        if (source.excerpt) {
+          const quote = document.createElement('blockquote'); quote.textContent = source.excerpt;
+          details.append(quote);
+        }
         if (source.official_url) {
           const official = new URL(source.official_url);
           if (official.protocol === 'https:' && official.hostname === 'game.gtimg.cn') {
@@ -59,6 +63,12 @@ async function send(message, retryRow = null) {
         }
       }
       row.append(details);
+      const note = document.createElement('small'); note.className = 'source-scope';
+      note.textContent = '引用来自已收录的资料快照，日期和原文见来源。'; row.append(note);
+    }
+    if (result.routing?.status === 'fallback') {
+      const note = document.createElement('div'); note.className = 'meta';
+      note.textContent = '这次模型分类未完成，已使用基础识别。'; row.append(note);
     }
     if (result.retrieval_plan) {
       const plan = result.retrieval_plan;

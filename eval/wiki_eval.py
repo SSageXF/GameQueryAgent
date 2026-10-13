@@ -31,7 +31,8 @@ async def run(live,output):
         if live:
             try:
                 async with asyncio.timeout(s.planner_timeout):
-                    plan=await llm.plan_query(q,[],retriever.catalog_hint(q))
+                    decision=await llm.decide(q,[],retriever.routing_hint(q))
+                    plan=decision.search or fallback_plan(decision.query)
                 status='model'
             except (AgentError,TimeoutError) as exc:
                 status='fallback';error=exc.code if isinstance(exc,AgentError) else 'planner_timeout'

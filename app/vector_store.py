@@ -135,25 +135,54 @@ class VectorRetriever(Retriever):
         return Retriever(self.pending_records).pending(query)
 
     def search_plan(self, original, plan, k=6):
-        selected=super().search_plan(original,plan,k)
+        mode='钻石狂潮' if '钻石狂潮' in original else '万象大赛' if '万象大赛' in original else plan.mode
         hero_names={r.get('entity') for r in self.records if r.get('section')=='hero' and r.get('entity')}
         named=sorted((n for n in hero_names if n in original),key=original.index)
-        if len(named)<2 or not re.search('怎么买|买谁|买哪个|购买|商店',original):
-            return selected
-        mode='钻石狂潮' if '钻石狂潮' in original else '万象大赛' if '万象大赛' in original else plan.mode
-        candidates=[r for _,r in self.rank(original,mode,plan.include_history)]
-        # Reserve one source per explicitly named hero, instead of six on one hero.
+        purchase=len(named)>=2 and bool(re.search('怎么买|买谁|买哪个|购买|商店',original))
         coverage=[]
-        for name in named:
-            matches=[r for r in candidates if r.get('entity')==name and r.get('field')=='original']
-            if matches:coverage.append(matches[0])
-        costs=self.search('英雄购买费用',k=1,mode=mode,include_history=plan.include_history)
+        if purchase:
+            # All exact IDs and original fields are in the manifest: avoid repeated
+            # full-collection scrolls for each named hero and for the base cost.
+            metadata=[r for r in self.records if self.eligible(r,mode,plan.include_history)
+                      and (r['id']=='E03' or r.get('entity') in named and r.get('field')=='original')]
+            with self.lock:
+                points=self.client.retrieve(self.collection,ids=[point_id(r['id']) for r in metadata],with_payload=True)
+            exact=[p.payload for p in points]
+            coverage=[r for r in exact if r['id']=='E03']
+            for name in named:
+                matches=sorted((r for r in exact if r.get('entity')==name),key=lambda r:r['id'])
+                if matches:coverage.append(matches[0])
+            if len(coverage)>=k:
+                return coverage[:k]
+        # Semantic search needs sentences, not an extra keyword-bag embedding.
+        # Bound repeated full scans of the local Qdrant collection to three queries.
+        queries=list(dict.fromkeys([original, *plan.queries]))[:3]
+        batches=[self.rank(q,mode,plan.include_history) for q in queries if q.strip()]
+        selected=[];seen=set()
+        for depth in range(k):
+            for batch in batches:
+                if depth<len(batch):
+                    row=batch[depth][1]
+                    if row['id'] not in seen:
+                        selected.append(row);seen.add(row['id'])
+                if len(selected)==k:break
+            if len(selected)==k:break
+        if not purchase:
+            return selected
         result=[];seen=set()
-        for row in costs+coverage+selected:
+        for row in coverage+selected:
             if row['id'] not in seen:
                 result.append(row);seen.add(row['id'])
             if len(result)==k:break
         return result
+
+    @staticmethod
+    def eligible(row, mode, include_history):
+        publication=row.get('publication_status','')
+        return (row.get('mode') in {mode,'通用'}
+                and row.get('verification') in {'official_page_checked','official_data_matched','wiki_snapshot'}
+                and row.get('eligible') is not False and row.get('claim_type')!='pending'
+                and (include_history or not (publication.startswith('historical') or publication in {'off_shelf','associated_preview'})))
 
     @lru_cache(maxsize=256)
     def rank(self, query, mode='万象大赛', include_history=False):
@@ -162,7 +191,8 @@ class VectorRetriever(Retriever):
             must=[models.FieldCondition(key='mode',match=models.MatchAny(any=[mode,'通用'])),
                   models.FieldCondition(key='verification',match=models.MatchAny(any=['official_page_checked','official_data_matched','wiki_snapshot']))]
             exclude=[models.FieldCondition(key='eligible',match=models.MatchValue(value=False)),
-                     models.FieldCondition(key='claim_type',match=models.MatchValue(value='pending'))]
+                     models.FieldCondition(key='claim_type',match=models.MatchValue(value='pending')),
+                     models.FieldCondition(key='field',match=models.MatchAny(any=['profileState','skillEvidence','portraitBoundary','rawBaseStats','imageStatus','sourceNames','combatCategory','temporarilyOffShelf','evidenceLayer']))]
             if not include_history:
                 statuses=sorted({r.get('publication_status','') for r in self.records if r.get('publication_status','').startswith('historical')} | {'off_shelf','associated_preview'})
                 exclude.append(models.FieldCondition(key='publication_status',match=models.MatchAny(any=statuses)))
@@ -173,12 +203,9 @@ class VectorRetriever(Retriever):
             names=[n for n in self.names if n in query]
             names=[n for n in names if not any(n!=other and n in other for other in names)]
             if names:
-                exact_filter=models.Filter(must=must+[models.FieldCondition(key='entity',match=models.MatchAny(any=names))],must_not=exclude)
-                offset=None
-                while True:
-                    exact,offset=self.client.scroll(self.collection,scroll_filter=exact_filter,limit=128,offset=offset,with_payload=True)
-                    rows.update({p.payload['id']:p.payload for p in exact})
-                    if offset is None:break
+                ids=[point_id(r['id']) for r in self.records if r.get('entity') in names and self.eligible(r,mode,include_history)]
+                exact=self.client.retrieve(self.collection,ids=ids,with_payload=True)
+                rows.update({p.payload['id']:p.payload for p in exact})
             return Retriever(list(rows.values())).rank(query,mode,include_history,semantic_scores=scores)
 
 

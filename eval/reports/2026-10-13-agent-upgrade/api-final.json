@@ -1,0 +1,226 @@
+[
+  {
+    "id": "purchase",
+    "question": "现在我场上有曹操，商店里有李白，孙尚香，蔡文姬，武则天，我只有3能量，我可以怎么买？",
+    "http_status": 200,
+    "elapsed_ms": 6658.05,
+    "result": {
+      "answer": "咱们先看一条硬规则：万象大赛里买一张英雄牌的基础消耗是3点能量。所以你手里这3能量，正常情况下只够从商店里选一张买。\n\n四位卡面原文里，各自的效果关键点不同：孙尚香是“登场：获得1次免费刷新”，也就是说买了还得让她登场才拿得到刷新；武则天是“古币牌提升的等级+1”，另外“登场：获得1张精致古币”，同样要把她放到场上才触发；李白和蔡文姬的效果也都要等对应牌使用或古币牌生效才有作用。\n\n所以如果只够买一张，优先选哪张得看你更需要“一张能立刻上场的即时收益”还是“后续资源放大”。在当前资料里唯一能确定的是：孙尚香登场给1次免费刷新，武则天登场给1张精致古币——如果你缺刷新去凑牌，孙尚香更直接；如果你想拿古币资源，武则天更对路。曹操本身在场是“整备：随机触发1名【三分】英雄的登场效果”，和这几位谁能被三国标签触发、整备具体结算顺序，这点我还没查到确凿依据，没法替你锁死唯一答案。你还得看这几位是不是都算【三分】、以及你更缺刷新还是缺古币。",
+      "intent": "advice",
+      "status": "answered",
+      "sources": [
+        {
+          "id": "E03",
+          "title": "购买卡牌消耗",
+          "source_title": "王者万象棋官方新手指引",
+          "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+          "collected_at": "2026-10-12",
+          "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+          "claim_type": "rule",
+          "verification": "official_page_checked",
+          "official_url": null,
+          "excerpt": "基础规则中，购买英雄牌消耗3点能量；效果牌的消耗看卡牌右上角。特殊效果可能改变实际消耗。"
+        },
+        {
+          "id": "WX-hero-1281-original",
+          "title": "曹操·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/hero-1281",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "整备：随机触发1名【三分】英雄的登场效果。"
+        },
+        {
+          "id": "WX-hero-1311-original",
+          "title": "李白·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/hero-1311",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "official_original",
+          "verification": "official_data_matched",
+          "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+          "excerpt": "闪现 古币牌会额外提供4临时等级。若目标为李白，该临时等级会额外+3。"
+        },
+        {
+          "id": "WX-hero-1111-original",
+          "title": "孙尚香·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/hero-1111",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "official_original",
+          "verification": "official_data_matched",
+          "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+          "excerpt": "登场：获得1次免费刷新。"
+        },
+        {
+          "id": "WX-hero-1841-original",
+          "title": "蔡文姬·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/hero-1841",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "每当你使用【三分】英雄牌时，等级最低的其他3名【三分】英雄等级+1。"
+        },
+        {
+          "id": "WX-hero-1361-original",
+          "title": "武则天·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/hero-1361",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "古币牌提升的等级+1。 登场：获得1张精致古币。"
+        }
+      ],
+      "retrieved_ids": [
+        "E03",
+        "WX-hero-1281-original",
+        "WX-hero-1311-original",
+        "WX-hero-1111-original",
+        "WX-hero-1841-original",
+        "WX-hero-1361-original",
+        "WIKI-6247abc492f8b9c62c7e",
+        "WIKI-5d7be16eec3f1f43372e"
+      ],
+      "latency_ms": 6621.05,
+      "timings_ms": {
+        "context_route": 0.02,
+        "intent_planning": 2153.09,
+        "retrieval": 17.05,
+        "generation": 4450.06,
+        "client_setup": 0.39
+      },
+      "mode": "live",
+      "model_used": true,
+      "request_id": "0f9e678cb344",
+      "retrieval_plan": {
+        "queries": [
+          "3能量时商店有李白孙尚香蔡文姬武则天 场上有曹操 怎么购买",
+          "王者万象棋 3能量购买英雄选择 曹操阵容搭配"
+        ],
+        "keywords": [
+          "3能量",
+          "曹操",
+          "李白",
+          "孙尚香",
+          "蔡文姬",
+          "武则天"
+        ],
+        "entities": [
+          "曹操",
+          "李白",
+          "孙尚香",
+          "蔡文姬",
+          "武则天"
+        ],
+        "mode": "万象大赛",
+        "include_history": false,
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "advice",
+        "resolved_query": "我场上有曹操，商店里有李白、孙尚香、蔡文姬、武则天，我只有3能量，可以怎么买？",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 2152.55,
+          "success": true,
+          "input_chars": 1446,
+          "max_tokens": 2000,
+          "finish_reason": "stop",
+          "prompt_tokens": 720,
+          "completion_tokens": 143,
+          "reasoning_tokens": 0
+        },
+        {
+          "stage": "generation",
+          "elapsed_ms": 4449.59,
+          "success": true,
+          "input_chars": 4069,
+          "max_tokens": 700,
+          "finish_reason": "stop",
+          "prompt_tokens": 1893,
+          "completion_tokens": 594,
+          "reasoning_tokens": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "unknown",
+    "question": "英雄火星人的量子跃迁技能具体伤害是多少？",
+    "http_status": 200,
+    "elapsed_ms": 5097.44,
+    "result": {
+      "answer": "这点我还没找到足够资料，先不猜。你能补充具体卡牌名字或那段说明吗？",
+      "intent": "knowledge",
+      "status": "insufficient_evidence",
+      "sources": [],
+      "retrieved_ids": [],
+      "latency_ms": 5076.87,
+      "timings_ms": {
+        "context_route": 0.06,
+        "intent_planning": 2025.31,
+        "retrieval": 3049.92,
+        "generation": 0.0,
+        "client_setup": 1.28
+      },
+      "mode": "live",
+      "model_used": true,
+      "request_id": "f84be8c96c96",
+      "retrieval_plan": {
+        "queries": [
+          "火星人 量子跃迁 技能伤害"
+        ],
+        "keywords": [
+          "火星人",
+          "量子跃迁",
+          "技能伤害"
+        ],
+        "entities": [
+          "火星人",
+          "量子跃迁"
+        ],
+        "mode": "万象大赛",
+        "include_history": false,
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "knowledge",
+        "resolved_query": "英雄火星人的量子跃迁技能具体伤害是多少？",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 2024.63,
+          "success": true,
+          "input_chars": 1393,
+          "max_tokens": 2000,
+          "finish_reason": "stop",
+          "prompt_tokens": 685,
+          "completion_tokens": 86,
+          "reasoning_tokens": 0
+        }
+      ]
+    }
+  }
+]

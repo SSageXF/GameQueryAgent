@@ -3,3 +3,4 @@
 @media(min-width:721px){.sidebar{height:100dvh;overflow:auto}}
 
 @media(max-height:800px){.sidebar-intro{margin-top:32px}.sidebar h1{font-size:24px;margin:12px 0}.board{height:160px;flex-shrink:0;margin:18px 0}.source-note{padding:12px 0}.welcome{margin-top:3px}.welcome .npc-avatar{width:48px;height:48px;font-size:28px;margin-bottom:12px}.welcome h3{font-size:24px;margin:10px 0}.welcome p{font-size:12px;margin:10px 0}.suggestions{margin-top:18px}.suggestions button{padding-top:12px;padding-bottom:12px}.suggestions span{margin-bottom:5px}}
+.sources blockquote{margin:10px 0;padding:10px 14px;border-left:3px solid #a5b695;background:#eef2e6;white-space:pre-wrap;line-height:1.8;overflow-wrap:anywhere}.source-scope{display:block;margin-top:9px;font-size:10px;color:var(--muted)}

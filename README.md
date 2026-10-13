@@ -2,14 +2,14 @@
 
 一个有来源、能追问的新手训练向导。FastAPI + 原生 HTML/JS + Qdrant 本地向量数据库，使用 BGE 中文嵌入模型，无需 Docker 或额外嵌入 API。
 
-**当前状态：Wiki公开栏目全量快照已接入，真实模型先生成检索词再回答；10类真实检索抽查通过。模型回答质量尚未完成独立验收，详见[知识库与检索说明](docs/full-wiki.md)。**
+**当前状态：大模型在一次调用中完成意图分类和检索规划，使用本地向量库按需检索；回答附经逐字校验的资料片段及来源。已做真实对话与耗时回归；小样本通过不代表完整语义质量验收，详见[本次改造与实测](docs/agent-upgrade.md)。**
 
 ## 快速运行（PowerShell / Python 3.11+）
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
-Copy-Item .env.example .env
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
 编辑 `.env`，配置支持 Chat Completions 的服务。Base URL 应包含服务要求的 API 前缀，程序会在末尾追加 `/chat/completions`。
@@ -24,9 +24,12 @@ REQUEST_TIMEOUT_SECONDS=45
 LLM_MAX_TOKENS=700
 LLM_PLANNER_MAX_TOKENS=2000
 LLM_PLANNER_TIMEOUT_SECONDS=20
+LLM_THINKING=auto
 ```
 
 密钥只放后端 `.env`，该文件已忽略。无需将密钥交给网页。环境变量优先于 `.env`；如果此前在终端设置过 Mock，先运行 `Remove-Item Env:AGENT_MODE -ErrorAction SilentlyContinue`。修改配置后重启服务。
+
+`LLM_THINKING=auto` 对名称包含 DeepSeek 的模型发送 `thinking.type=disabled`，减少短问答的推理等待；其他模型不额外发送该参数。`enabled/disabled` 可显式配置服务支持的行为。DeepSeek 还启用 JSON 输出格式；当前已配置的代理服务通过真实调用验证，不代表任意服务兼容。既有 `.env` 无需更换密钥即可使用默认优化。
 
 生成模型返回 `finish_reason=length` 时，后端会将输出预算提高到 4000 token 重试一次（首次已经是 4000 时不重试），两次调用共用原有生成阶段超时。推理模型的推理过程也可能占用输出预算；重试会增加调用费用和耗时。再次截断会返回 `model_output_truncated`，不会展示不完整答案。
 
@@ -58,17 +61,23 @@ $env:AGENT_MODE="mock"
 .\.venv\Scripts\python.exe -m eval.wiki_eval --live --output eval/reports/query-live.json
 # 默认真实评测；没有模型配置会明确退出，不生成虚假的真实结果
 .\.venv\Scripts\python.exe -m eval.run --mode live
-# 可重复的本地链路检查
+# 本轮9个真实场景回归（含模型分类、引用原文、阶段耗时，会调用API）
+.\.venv\Scripts\python.exe -m eval.upgrade_eval
+# 可重复的词法基线对照（向量后端下不是纯词法基线实验）
+$env:RETRIEVAL_BACKEND="lexical"
 .\.venv\Scripts\python.exe -m eval.run --mode mock --variant baseline --split development
 .\.venv\Scripts\python.exe -m eval.run --mode mock --variant enhanced --split development
 .\.venv\Scripts\python.exe -m eval.run --mode mock --variant enhanced --split holdout
+Remove-Item Env:RETRIEVAL_BACKEND
 # 重新核对官网关键事实并记录页面指纹，需要联网
 .\.venv\Scripts\python.exe scripts/verify_sources.py
 ```
 
-固定数据集共 32 个案例、36 个请求轮次，含两组三轮追问。评测会调用与网页相同的 `Agent.chat`，逐轮保留真实返回，绝不向被测 Agent 传入评分规则或预期答案。本轮结果在 `eval/reports/2026-10-13-layered/`；情境Mock为0/4，准确反映其没有真实建议能力。后续默认结果在 `eval/reports/`，同一模式/变体/分区重跑会覆盖同名报告；需要保留实验请指定 `--output eval/reports/experiment-name`。
+固定数据集共 32 个案例、36 个请求轮次，含两组三轮追问。评测会调用与网页相同的 `Agent.chat`，逐轮保留真实返回，绝不向被测 Agent 传入评分规则或预期答案。`2026-10-13-layered/` 是历史 Mock 报告，`2026-10-13-live/` 是历史真实模型报告；当前向量检索专项在 `eval/reports/2026-10-13-vector/`，10/10命中未调用回答模型，不能作为新版回答正确率。固定集仍需更新部分模式边界和等价证据标签，详见[作业要求对照与缺口](docs/project-audit.md)。同一模式/变体/分区重跑会覆盖同名报告；保留实验请指定 `--output eval/reports/experiment-name`。
 
-新检索最多返回6条，报告输出Recall@6及查询规划耗时；旧报告保留原口径。调用失败仍会影响旧评测器的意图/检索分数，不能据此断定相应阶段本身错误。规则评分不能完整判断幻觉、复杂否定和策略质量，仍需对真实模型结果做人工抽查。
+使用向量后端独立评测前先停止网页后端，避免两个进程占用同一个本地数据库。
+
+基础检索最多6条，情境建议可额外补充最多2条触发时点定义。新响应记录 `client_setup/intent_planning/retrieval/generation`；生成失败保留已完成的意图和检索结果，模型调用日志计入分类、生成、失败和重试。历史报告沿用旧口径。规则评分与引用逐字校验不能完整判断幻觉或策略推论，仍需人工核对。
 
 ## 接口示例
 
@@ -83,7 +92,7 @@ POST /api/chat
 }
 ```
 
-返回 `answer`、`intent`、`status`、`sources`、`retrieved_ids`、`retrieval_plan`、`latency_ms`、`timings_ms`、`mode`、`model_used` 和 `request_id`。`retrieval_plan`记录模型生成的查询、关键词、实体、模式及回退状态。四类意图为 `knowledge/advice/chitchat/out_of_scope`；状态为 `answered/needs_clarification/insufficient_evidence/unsupported`。异常返回 `{"error":{"code":"…","message":"…"}}`，不回显模型服务原始错误或密钥。
+返回 `answer`、`intent`、`status`、`sources`、`retrieved_ids`、`retrieval_plan`、`routing`、`model_calls`、`latency_ms`、`timings_ms`、`mode`、`model_used` 和 `request_id`。`routing`记录模型分类或故障回退，`retrieval_plan`记录查询、关键词、实体与模式，`model_calls`记录各次调用耗时及服务返回的token计数（不含密钥或思考文本），`sources[].excerpt`为经原文验证的片段。四类意图为 `knowledge/advice/chitchat/out_of_scope`；状态为 `answered/needs_clarification/insufficient_evidence/unsupported`。异常返回 `{"error":{"code":"…","message":"…"}}`，不回显模型服务原始错误或密钥。
 
 问题限制 1—1000 字；历史最多12条、合计12000字，实际模型历史保留最近6000字；不接受客户端 system 消息。知识引用链接由后端依据入库记录生成。网页历史仅存内存，刷新或清空后消失。
 
@@ -99,6 +108,7 @@ POST /api/chat
 - `data/source_audit.json`：两张官方页面指纹和11项关键事实检查。
 - [资料核验记录](docs/knowledge-audit.md)：来源、冲突、纳入/排除边界。
 - [设计与验证记录](docs/design.md)：实现取舍、评测结果和未完成项。
+- [项目与作业要求对照](docs/project-audit.md)：模块地图、逐项验收、现存缺口及收尾顺序。
 - `requirements-lock.txt`：本次 Windows / Python 3.11.5 环境的完整依赖快照；精确复现可安装该文件。
 
 支持的模型协议为非流式 Chat Completions，模型须按提示输出 JSON。不同厂商的鉴权、参数及结构化输出能力仍需实际联调；当前未承诺所有兼容服务都能直接使用。

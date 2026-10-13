@@ -75,8 +75,13 @@ async def run(args):
                 row["judge_ms"] = round((time.perf_counter()-judging)*1000, 3)
             except AgentError as exc:
                 elapsed = (time.perf_counter()-started)*1000
-                row.update(success=False, error={"code": exc.code, "message": exc.message}, judge_ms=0)
-                row["judgement"] = {"intent_correct": False, "retrieval_hit": False if turn["expected_knowledge_ids"] else None, "retrieval_recall": 0 if turn["expected_knowledge_ids"] else None, "answer_pass": False}
+                row.update(success=False, error={"code": exc.code, "message": exc.message}, judge_ms=0,
+                           model_calls=exc.model_calls, stage_result=exc.stage_result)
+                expected=set(turn['expected_knowledge_ids'])
+                retrieved=set(exc.stage_result.get('retrieved_ids',[]))
+                row["judgement"] = {"intent_correct": exc.stage_result.get('intent') == turn['expected_intent'],
+                                    "retrieval_hit": bool(expected & retrieved) if expected else None,
+                                    "retrieval_recall": len(expected & retrieved)/len(expected) if expected else None, "answer_pass": False}
                 # Do not inject a gold answer after failure. Later follow-ups see actual history.
                 history.append({"role": "user", "content": turn["message"]})
             row["elapsed_ms"] = round(elapsed, 3)
@@ -90,20 +95,22 @@ async def run(args):
         "case_count": len(cases), "turn_count": len(rows),
         "intent_accuracy": rate(sum(r["judgement"]["intent_correct"] for r in rows), len(rows)),
         "retrieval_hit_rate": rate(sum(r["judgement"]["retrieval_hit"] for r in knowledge), len(knowledge)),
-        "mean_recall_at_6": statistics.mean(r["judgement"]["retrieval_recall"] for r in knowledge) if knowledge else None,
+        "mean_evidence_recall": statistics.mean(r["judgement"]["retrieval_recall"] for r in knowledge) if knowledge else None,
         "answer_pass_rate": rate(sum(r["judgement"]["answer_pass"] for r in rows), len(rows)),
         "case_answer_pass_rate": rate(cases_pass, len(cases)),
         "success_rate": rate(len(successes), len(rows)),
         "advice_rule_pass_rate": rate(sum(bool(r["judgement"].get("advice_rubric", {}).get("passed")) for r in advice_rows), len(advice_rows)),
-        "real_model_calls": sum(r.get("result", {}).get("model_used", False) for r in rows),
+        "real_model_calls": sum(len(r.get('result', {}).get('model_calls', r.get('model_calls', []))) for r in rows),
         "successful_latency": latency([r["elapsed_ms"] for r in successes]),
         "failed_latency": latency([r["elapsed_ms"] for r in rows if not r["success"]]),
         "query_planner_successes": sum(r.get('result',{}).get('retrieval_plan',{}).get('status')=='model' for r in successes if r.get('result',{}).get('retrieval_plan')),
-        "phase_median_ms": {p: statistics.median([r["result"]["timings_ms"].get(p,0) for r in successes]) if successes else None for p in ("context_route", "query_planning", "retrieval", "generation")},
+        "phase_median_ms": {p: statistics.median([r["result"]["timings_ms"].get(p,0) for r in successes]) if successes else None for p in ("context_route", "intent_planning", "retrieval", "generation")},
     }
     report = {
         "created_at": datetime.now(timezone.utc).isoformat(), "mode": args.mode, "variant": args.variant,
         "model": settings.model if args.mode == "live" else "none", "python": platform.python_version(),
+        "retrieval_backend": settings.retrieval_backend, "vector_collection": getattr(agent.retriever,'collection',None),
+        "thinking": settings.thinking,
         "quality_evaluation_complete": False,
         "notice": "Mock 仅验证链路，不代表模型质量。" if args.mode == "mock" else "规则评分为代理指标，需人工检查事实依据和未覆盖的幻觉。",
         "dataset_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),

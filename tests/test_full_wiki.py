@@ -98,10 +98,11 @@ async def test_real_adapter_plans_then_generates(retriever):
     def handler(request):
         payload=json.loads(request.content);data=json.loads(payload['messages'][1]['content']);calls.append(data)
         if 'catalog' in data:
-            answer={'queries':['购买英雄牌能量消耗'],'keywords':['英雄','购买','费用'],'entities':[],'mode':'万象大赛','include_history':False}
+            answer={'intent':'advice','query':data['question'],'search':{'queries':['购买英雄牌能量消耗'],'keywords':['英雄','购买','费用'],'entities':[],'mode':'万象大赛','include_history':False}}
         else:
             assert any('3点能量' in r['body'] for r in data['evidence'])
-            answer={'answer':'普通英雄牌基础购买需要3点能量。','source_ids':[next(r['id'] for r in data['evidence'] if '3点能量' in r['body'])]}
+            row=next(r for r in data['evidence'] if '3点能量' in r['body'])
+            answer={'answer':'普通英雄牌基础购买需要3点能量。','source_ids':[row['id']],'quotes':[{'source_id':row['id'],'quote':row['body'][:80]}]}
         return httpx.Response(200,json={'choices':[{'message':{'content':json.dumps(answer,ensure_ascii=False)}}]})
     settings=Settings(retrieval_backend='lexical', base_url='https://model.test/v1',model='test',api_key='TEST_SECRET')
     result=await Agent(settings,llm=LLM(settings,httpx.MockTransport(handler)),retriever=retriever).chat(ChatRequest(message='我只有2点能量，够买人吗？'))
@@ -115,7 +116,7 @@ async def test_real_adapter_plans_then_generates(retriever):
 async def test_planner_failure_falls_back_without_leaking(retriever,bad):
     def handler(request):
         data=json.loads(json.loads(request.content)['messages'][1]['content'])
-        answer=bad if 'catalog' in data else json.dumps({'answer':'普通英雄购买需要3点能量。','source_ids':[data['evidence'][0]['id']]})
+        answer=bad if 'catalog' in data else json.dumps({'answer':'普通英雄购买需要3点能量。','source_ids':[data['evidence'][0]['id']], 'quotes':[{'source_id':data['evidence'][0]['id'],'quote':data['evidence'][0]['body'][:80]}]})
         return httpx.Response(200,json={'choices':[{'message':{'content':answer}}]})
     settings=Settings(retrieval_backend='lexical', base_url='https://model.test/v1',model='test',api_key='TEST_SECRET')
     result=await Agent(settings,llm=LLM(settings,httpx.MockTransport(handler)),retriever=retriever).chat(ChatRequest(message='英雄购买费用是多少？'))

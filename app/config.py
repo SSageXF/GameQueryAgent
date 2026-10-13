@@ -18,12 +18,15 @@ class Settings:
     planner_max_tokens: int = 2000
     planner_timeout: float = 20
     retrieval_backend: str = 'vector'
+    thinking: str = 'auto'
 
     def __post_init__(self):
         if self.mode not in {"live", "mock"}:
             raise ValueError("AGENT_MODE must be live or mock")
         if self.retrieval_backend not in {'vector','lexical'}:
             raise ValueError('RETRIEVAL_BACKEND must be vector or lexical')
+        if self.thinking not in {'auto', 'enabled', 'disabled'}:
+            raise ValueError('LLM_THINKING must be auto, enabled or disabled')
         if not 1 <= self.timeout <= 180:
             raise ValueError("REQUEST_TIMEOUT_SECONDS must be between 1 and 180")
         if not 100 <= self.max_tokens <= 4000:
@@ -48,4 +51,5 @@ def load_settings() -> Settings:
         planner_max_tokens=int(os.getenv('LLM_PLANNER_MAX_TOKENS','2000')),
         planner_timeout=float(os.getenv('LLM_PLANNER_TIMEOUT_SECONDS','20')),
         retrieval_backend=os.getenv('RETRIEVAL_BACKEND','vector'),
+        thinking=os.getenv('LLM_THINKING','auto'),
     )

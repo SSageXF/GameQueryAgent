@@ -98,6 +98,31 @@ class Retriever:
                 'nearby_titles':[r['title'] for r in hits],
                 'entity_names':sorted({r['entity'] for r in self.records if r.get('entity') and r.get('section') in {'hero','equipment','effect','talent','players','summons'}})}
 
+    def routing_hint(self, query):
+        # Metadata only: no preliminary embedding/search and no full entity catalog.
+        return {'sections': ['英雄', '棋手', '装备', '天赋', '机制', '成就', '攻略', '公告', '钻石狂潮'],
+                'mentioned_entities': [name for name in self.names if name in query][:32]}
+
+    def supporting_mechanics(self, evidence, mode, limit=2):
+        """Expand explicit trigger labels, so the model need not guess their meaning."""
+        body='\n'.join(r['body'] for r in evidence)
+        seen={r['id'] for r in evidence}
+        rows=[]
+        for meta in self.records:
+            name=meta.get('entity','')
+            if (meta.get('section')!='mechanics' or not name or meta['id'] in seen
+                or meta.get('mode') not in {mode,'通用'} or meta.get('eligible') is False
+                or meta.get('claim_type')=='pending'
+                or meta.get('verification') not in {'official_page_checked','official_data_matched','wiki_snapshot'}
+                or meta.get('publication_status','').startswith('historical')
+                or meta.get('publication_status') in {'off_shelf','associated_preview'}):
+                continue
+            if re.search(re.escape(name)+r'[:：]',body):
+                record=self.by_id.get(meta['id'])
+                if record: rows.append(record)
+            if len(rows)==limit:break
+        return rows
+
     def search_plan(self,original,plan:QueryPlan,k=6):
         mode=plan.mode
         if '钻石狂潮' in original:mode='钻石狂潮'

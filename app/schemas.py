@@ -42,6 +42,7 @@ class Source(BaseModel):
     claim_type: str = "rule"
     verification: str = "official_page_checked"
     official_url: str | None = None
+    excerpt: str = ''
 
 
 class ChatResponse(BaseModel):
@@ -56,3 +57,5 @@ class ChatResponse(BaseModel):
     model_used: bool
     request_id: str
     retrieval_plan: dict | None = None
+    routing: dict | None = None
+    model_calls: list[dict] = Field(default_factory=list)

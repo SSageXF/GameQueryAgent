@@ -39,7 +39,7 @@ async def test_truncation_retries_once_with_bounded_budget(always_truncated):
             'message': {'content': '' if truncated else json.dumps({'answer': '你好', 'source_ids': []})}}]})
     model = LLM(Settings(retrieval_backend='lexical', base_url='https://test.invalid/v1', api_key='test', model='test'), httpx.MockTransport(handler))
     if always_truncated:
-        with pytest.raises(AgentError, match='长度上限') as error:
+        with pytest.raises(AgentError, match='完整生成') as error:
             await model.generate('你好', [], [], 'chitchat')
         assert error.value.code == 'model_output_truncated'
     else:
