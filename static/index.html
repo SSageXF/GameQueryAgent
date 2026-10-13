@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="弈宝：有来源、能追问的王者万象棋新手向导。">
+  <title>弈宝 · 万象棋问答</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="弈宝首页"><span class="brand-mark">弈</span><span>弈宝<small>WANXIANG COMPANION</small></span></a>
+      <div class="sidebar-intro"><span class="eyebrow">你的下一步，从这里开始</span><h1>把规则弄懂，<br>让每一步有据可依。</h1><p>王者万象棋 · 新手训练向导<br>一起读规则，也一起想办法。</p></div>
+      <div class="board" aria-hidden="true"><span class="piece p1">弈</span><span class="piece p2">策</span><span class="piece p3">阵</span><span class="board-note">THINK BEFORE YOUR NEXT MOVE</span></div>
+      <div class="source-note"><span class="dot"></span><div><strong>以万象棋知识站为依据</strong><p>图鉴、棋手、机制、成就与版本资料。回答附来源，原文、解释与待确认内容分别标注。</p></div></div>
+      <footer>非官方学习 Demo · 原创向导<br>不读取账号、战绩或实时对局</footer>
+    </aside>
+    <main>
+      <header class="main-header"><div><span class="eyebrow">万象问答 / ASK YOUR GUIDE</span><h2>和弈宝聊一局</h2></div><button id="clear" class="button-quiet" type="button">清空对话 <span aria-hidden="true">↺</span></button></header>
+      <div id="mode" class="mode-banner" role="status">正在连接向导…</div>
+      <section id="conversation" class="conversation" aria-label="对话记录" role="log" aria-live="polite" aria-relevant="additions">
+        <div id="welcome" class="welcome"><div class="npc-avatar" aria-hidden="true">弈</div><span class="eyebrow">你好，我是弈宝</span><h3>今天想弄懂什么？</h3><p>从一条规则开始，或把你的局面告诉我。<br>也可以接着上一条回答继续问。</p><div class="suggestions"><button type="button" data-question="万象大赛有几个人，怎么赢？"><span>01 / 认识棋局</span>一局有几个人，怎么赢？ <b>↗</b></button><button type="button" data-question="竞拍出价相同，谁能拿到拍品？"><span>02 / 规则细节</span>竞拍同价，谁能拿到？ <b>↗</b></button><button type="button" data-question="白歌的技能是什么？"><span>03 / 认识棋手</span>白歌的技能是什么？ <b>↗</b></button><button type="button" data-question="我现在要不要升级？"><span>04 / 想想下一步</span>我现在要不要升级？ <b>↗</b></button></div></div>
+      </section>
+      <div class="composer-wrap"><form id="chat-form"><label class="sr-only" for="message">你的问题</label><textarea id="message" rows="2" maxlength="1000" placeholder="问一条规则，或描述你的棋手、回合和阵容…" required></textarea><div class="composer-bottom"><span id="counter">0 / 1000</span><button id="send" type="submit">发送 <span aria-hidden="true">↑</span></button></div></form><div class="composer-note"><span>Enter 发送 · Shift + Enter 换行</span><span>资料快照 <time datetime="2026-10-12">2026.10.12</time> · 不保证覆盖后续改动</span></div></div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,290 @@
+{
+  "collected_at": "2026-10-13T03:12:38.813311+00:00",
+  "snapshot_sha256": "9962244c2f70835059be1bab26fb10d6e6d0562933736f65d0bde73603fd52c7",
+  "catalogs": [
+    {
+      "kind": "hero",
+      "url": "https://wzwxq.com/explorer-catalogs/hero.json",
+      "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+      "site_sha256": "ea63b8f8afad952b62ab3e9b7f681f02af2918c8c3b4864b8d2ff62c753f8835",
+      "official_sha256": "79f75d56a7a6d40d64fad7db9db41ae30dc077fbfeb525cdfb10ad3af5b60b24",
+      "candidate_count": 85,
+      "selection_counts": {
+        "selected": 9,
+        "outside_curated_beginner_scope": 76
+      }
+    },
+    {
+      "kind": "equipment",
+      "url": "https://wzwxq.com/explorer-catalogs/equipment.json",
+      "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js",
+      "site_sha256": "e006a9fa5d522f2f92cd98e94cee135bea6f4d1ad085bf021a88ed2a8a96d8e9",
+      "official_sha256": "89270469674cdb18c936a0710922f4c5f8a5cb4527f4b36f9a2f7b982435b10e",
+      "candidate_count": 95,
+      "selection_counts": {
+        "selected": 6,
+        "outside_curated_beginner_scope": 67,
+        "excluded_historical_supplementary_or_off_shelf": 22
+      }
+    },
+    {
+      "kind": "effect",
+      "url": "https://wzwxq.com/explorer-catalogs/effect.json",
+      "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_2.js",
+      "site_sha256": "1347586bbb6117cb09303c83ba1dce1102e4dd2e8eae1792c57251a5971be56e",
+      "official_sha256": "593b43a74bdd0ced8c6c9b668f71be948de71d05d0f359e12035cdb2abb0edaa",
+      "candidate_count": 101,
+      "selection_counts": {
+        "selected": 6,
+        "outside_curated_beginner_scope": 92,
+        "excluded_historical_supplementary_or_off_shelf": 3
+      }
+    },
+    {
+      "kind": "talent",
+      "url": "https://wzwxq.com/explorer-catalogs/talent.json",
+      "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js",
+      "site_sha256": "d8726ed5fb132143f15e4522c0eb5152fed206d109b5cabf3fdbe8726461b43f",
+      "official_sha256": "c8fdbf635c1ae077f9504c5e659a812662a4e654c16ff4831c849523fcc9b1c4",
+      "candidate_count": 270,
+      "selection_counts": {
+        "selected": 6,
+        "outside_curated_beginner_scope": 252,
+        "excluded_historical_supplementary_or_off_shelf": 12
+      }
+    }
+  ],
+  "selected_objects": 27,
+  "record_counts": {
+    "official_original": 45,
+    "site_interpretation": 9,
+    "pending": 4
+  },
+  "field_checks": [
+    {
+      "id": "WX-hero-sulie-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-sulie-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-sulie-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-yao-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-yao-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-yao-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-sunbin-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-sunbin-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-sunbin-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-1111-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-1111-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-1111-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-1971-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-1971-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-1971-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-dunshan-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-dunshan-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-dunshan-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-1071-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-1071-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-1071-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-1201-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-1201-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-1201-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-hero-1311-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-hero-1311-awakening",
+      "matched": true,
+      "field": "awakening"
+    },
+    {
+      "id": "WX-hero-1311-skill",
+      "matched": true,
+      "field": "skill"
+    },
+    {
+      "id": "WX-equipment-643100-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-equipment-643800-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-equipment-643700-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-equipment-643600-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-equip-belt-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-equip-cup-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-effect-absorb-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-effect-study-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-effect-coin-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-effect-7087-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-effect-7523-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-effect-7041-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-talent-623003-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-talent-613003-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-talent-613005-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-talent-613007-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-talent-671003-original",
+      "matched": true,
+      "field": "original"
+    },
+    {
+      "id": "WX-talent-623002-original",
+      "matched": true,
+      "field": "original"
+    }
+  ]
+}

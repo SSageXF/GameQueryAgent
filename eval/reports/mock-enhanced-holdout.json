@@ -1,0 +1,411 @@
+{
+  "created_at": "2026-10-12T12:16:49.382764+00:00",
+  "mode": "mock",
+  "variant": "enhanced",
+  "model": "none",
+  "python": "3.11.5",
+  "quality_evaluation_complete": false,
+  "notice": "Mock 仅验证链路，不代表模型质量。",
+  "dataset_sha256": "14da37f8a177e6378ada5ff500c00f06bcaf72a683cd0790fa21656445cb7c3f",
+  "knowledge_sha256": "98e6b951dcb86f1c38db8627da871d6c91e6b1fa48dcdff8c01299fe2ff0baf5",
+  "scoring": "固定正则事实组 + 禁止模式 + 状态 + 引用检查；不以非空作为通过标准。分母为轮数，另提供整案例通过率。人工审查尚未完成。",
+  "summary": {
+    "case_count": 4,
+    "turn_count": 6,
+    "intent_accuracy": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "retrieval_hit_rate": {
+      "numerator": 5,
+      "denominator": 5,
+      "rate": 1.0
+    },
+    "mean_recall_at_3": 1.0,
+    "answer_pass_rate": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "case_answer_pass_rate": {
+      "numerator": 4,
+      "denominator": 4,
+      "rate": 1.0
+    },
+    "success_rate": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "real_model_calls": 0,
+    "successful_latency": {
+      "n": 6,
+      "median_ms": 0.17,
+      "p95_ms": 0.87
+    },
+    "failed_latency": {
+      "n": 0,
+      "median_ms": null,
+      "p95_ms": null
+    },
+    "phase_median_ms": {
+      "context_route": 0.03,
+      "retrieval": 0.1,
+      "generation": 0.02
+    }
+  },
+  "rows": [
+    {
+      "case_id": "H01",
+      "turn": 1,
+      "split": "holdout",
+      "message": "李白的技能是什么？",
+      "expected_knowledge_ids": [
+        "B01"
+      ],
+      "success": true,
+      "result": {
+        "answer": "【Mock 联调，非真实模型回答】\n官网新手专区的白歌技能说明：累计4次英雄合成会得到即兴创作，使用它可复制场上随机一名英雄。\n官网新手专区中，白歌的惊才绝艳提供一张奇才；奇才可以指定一名英雄，获得4张对应英雄牌。\n官网新手专区的白歌秘技说明：使用6张即兴创作获得灵感爆发；它对手牌中随机3张非觉醒英雄牌各生成2张转瞬版复制。\n\n资料范围：官网新手/首发资料快照，采集于2026-10-12；不保证覆盖后续改动。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "B01",
+            "title": "白歌的技能与复制",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          },
+          {
+            "id": "B03",
+            "title": "白歌的专属天赋",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          },
+          {
+            "id": "B02",
+            "title": "白歌的秘技",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          }
+        ],
+        "retrieved_ids": [
+          "B01",
+          "B03",
+          "B02"
+        ],
+        "latency_ms": 0.8,
+        "timings_ms": {
+          "context_route": 0.47,
+          "retrieval": 0.08,
+          "generation": 0.05
+        },
+        "mode": "mock",
+        "model_used": false,
+        "request_id": "fa2b9ac55c8b"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.087,
+      "elapsed_ms": 0.867
+    },
+    {
+      "case_id": "H02",
+      "turn": 1,
+      "split": "holdout",
+      "message": "竞拍结束后的分红跟血量有什么关系？",
+      "expected_knowledge_ids": [
+        "A03"
+      ],
+      "success": true,
+      "result": {
+        "answer": "【Mock 联调，非真实模型回答】\n有效出价进入分红池，结束时向所有玩家分配池内能量；生命越低，获得的分配比例越大。官网此处未给出精确分红公式。\n特定回合会进入竞拍，最高出价者获得拍品；若出价相同，先出价的人获拍。\n竞拍未成功时，不扣除本次竞价的能量。\n\n资料范围：官网新手/首发资料快照，采集于2026-10-12；不保证覆盖后续改动。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "A03",
+            "title": "竞拍分红",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          },
+          {
+            "id": "A01",
+            "title": "竞拍胜出条件",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          },
+          {
+            "id": "A02",
+            "title": "竞拍失败的费用",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          }
+        ],
+        "retrieved_ids": [
+          "A03",
+          "A01",
+          "A02"
+        ],
+        "latency_ms": 0.19,
+        "timings_ms": {
+          "context_route": 0.03,
+          "retrieval": 0.12,
+          "generation": 0.03
+        },
+        "mode": "mock",
+        "model_used": false,
+        "request_id": "69fc80a99943"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.065,
+      "elapsed_ms": 0.208
+    },
+    {
+      "case_id": "H03",
+      "turn": 1,
+      "split": "holdout",
+      "message": "那这个呢？",
+      "expected_knowledge_ids": [],
+      "success": true,
+      "result": {
+        "answer": "【Mock 联调，非真实模型回答】\n请告诉我“这个”具体指哪位棋手、哪张牌或哪项机制？",
+        "intent": "knowledge",
+        "status": "needs_clarification",
+        "sources": [],
+        "retrieved_ids": [],
+        "latency_ms": 0.03,
+        "timings_ms": {
+          "context_route": 0.03,
+          "retrieval": 0.0,
+          "generation": 0.0
+        },
+        "mode": "mock",
+        "model_used": false,
+        "request_id": "758ff3071454"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": null,
+        "retrieval_recall": null,
+        "answer_pass": true,
+        "required_group_results": [
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.037,
+      "elapsed_ms": 0.043
+    },
+    {
+      "case_id": "MT02",
+      "turn": 1,
+      "split": "holdout",
+      "message": "拍卖出价相同，谁得到拍品？",
+      "expected_knowledge_ids": [
+        "A01"
+      ],
+      "success": true,
+      "result": {
+        "answer": "【Mock 联调，非真实模型回答】\n特定回合会进入竞拍，最高出价者获得拍品；若出价相同，先出价的人获拍。\n竞拍未成功时，不扣除本次竞价的能量。\n\n资料范围：官网新手/首发资料快照，采集于2026-10-12；不保证覆盖后续改动。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "A01",
+            "title": "竞拍胜出条件",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          },
+          {
+            "id": "A02",
+            "title": "竞拍失败的费用",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          }
+        ],
+        "retrieved_ids": [
+          "A01",
+          "A02"
+        ],
+        "latency_ms": 0.15,
+        "timings_ms": {
+          "context_route": 0.02,
+          "retrieval": 0.11,
+          "generation": 0.02
+        },
+        "mode": "mock",
+        "model_used": false,
+        "request_id": "f1c196ef4ae7"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "required_group_results": [
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.042,
+      "elapsed_ms": 0.172
+    },
+    {
+      "case_id": "MT02",
+      "turn": 2,
+      "split": "holdout",
+      "message": "那它失败会扣能量吗？",
+      "expected_knowledge_ids": [
+        "A02"
+      ],
+      "success": true,
+      "result": {
+        "answer": "【Mock 联调，非真实模型回答】\n竞拍未成功时，不扣除本次竞价的能量。\n特定回合会进入竞拍，最高出价者获得拍品；若出价相同，先出价的人获拍。\n\n资料范围：官网新手/首发资料快照，采集于2026-10-12；不保证覆盖后续改动。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "A02",
+            "title": "竞拍失败的费用",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          },
+          {
+            "id": "A01",
+            "title": "竞拍胜出条件",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          }
+        ],
+        "retrieved_ids": [
+          "A02",
+          "A01"
+        ],
+        "latency_ms": 0.16,
+        "timings_ms": {
+          "context_route": 0.03,
+          "retrieval": 0.11,
+          "generation": 0.01
+        },
+        "mode": "mock",
+        "model_used": false,
+        "request_id": "d4dd589233aa"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "required_group_results": [
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.042,
+      "elapsed_ms": 0.17
+    },
+    {
+      "case_id": "MT02",
+      "turn": 3,
+      "split": "holdout",
+      "message": "那分红呢？",
+      "expected_knowledge_ids": [
+        "A03"
+      ],
+      "success": true,
+      "result": {
+        "answer": "【Mock 联调，非真实模型回答】\n有效出价进入分红池，结束时向所有玩家分配池内能量；生命越低，获得的分配比例越大。官网此处未给出精确分红公式。\n\n资料范围：官网新手/首发资料快照，采集于2026-10-12；不保证覆盖后续改动。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "A03",
+            "title": "竞拍分红",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对"
+          }
+        ],
+        "retrieved_ids": [
+          "A03"
+        ],
+        "latency_ms": 0.15,
+        "timings_ms": {
+          "context_route": 0.03,
+          "retrieval": 0.09,
+          "generation": 0.02
+        },
+        "mode": "mock",
+        "model_used": false,
+        "request_id": "b84482930e88"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.046,
+      "elapsed_ms": 0.166
+    }
+  ]
+}

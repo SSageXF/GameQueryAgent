@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-12T12:15:04.249977+00:00",
+  "scope": "当前网页是否仍包含开发代理已阅读的关键事实；不是所有条目或最新版本正确性的证明。",
+  "pages": [
+    {
+      "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+      "sha256": "f7aa4aa541baa81068d789179094d0013035290e1fe1badb5e45887a85c41a90",
+      "byte_count": 81328,
+      "checks": {
+        "six_players": true,
+        "starting_health": true,
+        "hero_cost": true,
+        "sale_return": true,
+        "auction_tie": true,
+        "hero_cap": true,
+        "white_silver_refresh": true,
+        "baige_copy": true
+      }
+    },
+    {
+      "url": "https://wxq.qq.com/",
+      "sha256": "e3dcf4ba4bfd42e1aa7dd9978b3beb6bd60d7af566e68443dd7c9f9fa85f9ae4",
+      "byte_count": 107484,
+      "checks": {
+        "beginner_lineup": true,
+        "totem_lineup": true,
+        "tactics_lineup": true
+      }
+    }
+  ]
+}

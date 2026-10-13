@@ -1,0 +1,10 @@
+{
+  "status": "run_with_failures",
+  "reason": "2026-10-13已完成原配置及临时4000 token两轮真实评测；API可用，仍有调用失败和情境建议事实问题。",
+  "successful_model_answers_in_evaluations": 46,
+  "failed_turns_in_evaluations": 6,
+  "review_report": "2026-10-13-live/test-review.md",
+  "quality_evaluation_complete": false,
+  "next_step": "处理推理输出预算、格式错误诊断与建议事实问题，再复测并独立人工验收；.env未修改。",
+  "mock_reports_are_model_quality_evidence": false
+}

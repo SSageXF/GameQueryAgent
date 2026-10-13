@@ -1,0 +1,21 @@
+{
+  "http_status": 200,
+  "finish_reason": "length",
+  "usage": {
+    "prompt_tokens": 1003,
+    "completion_tokens": 700,
+    "total_tokens": 1703,
+    "prompt_tokens_details": {
+      "cached_tokens": 896
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 700
+    }
+  },
+  "content_characters": 0,
+  "error_code": "model_failure",
+  "cause_type": "ValidationError",
+  "validation_error_types": [
+    "json_invalid"
+  ]
+}

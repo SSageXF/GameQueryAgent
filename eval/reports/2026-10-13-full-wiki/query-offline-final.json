@@ -1,0 +1,383 @@
+{
+  "created_at": "2026-10-13T06:08:36.994913+00:00",
+  "live": false,
+  "planner_attempts": 0,
+  "planner_successes": 0,
+  "retrieval_passes": 9,
+  "total": 10,
+  "notice": "仅检索与关键词规划评测，不是回答质量或关键词普遍正确性的证明。评测标签不发送给规划器。",
+  "rows": [
+    {
+      "case_id": "purchase",
+      "question": "我只有2点能量，够买人吗？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "我只有2点能量，够买人吗？",
+          "英雄购买费用 能量",
+          "升级费用 天赋 上阵名额"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-568e467dc3529f9654fe",
+          "title": "能量用在哪里？"
+        },
+        {
+          "id": "WIKI-56b48f171d5d2ea7d365",
+          "title": "能量大爆炸·商店费用与获取限制"
+        },
+        {
+          "id": "C04",
+          "title": "升级与上阵人数"
+        },
+        {
+          "id": "WIKI-c5ced8e1ba0c3962194a",
+          "title": "能量从哪里来？"
+        },
+        {
+          "id": "WIKI-455177369987f1f4415d",
+          "title": "能量超新星·商店费用与获取限制"
+        },
+        {
+          "id": "WIKI-30205acbf1ed4ab53bbf",
+          "title": "牺牲品·商店费用与获取限制"
+        }
+      ],
+      "retrieval_pass": false
+    },
+    {
+      "case_id": "hero",
+      "question": "貂蝉到100级时技能有什么变化？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "貂蝉到100级时技能有什么变化？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WX-hero-1411-skill",
+          "title": "貂蝉·技能与强化"
+        },
+        {
+          "id": "WX-hero-1411-original",
+          "title": "貂蝉·卡面原文"
+        },
+        {
+          "id": "WIKI-46634a01965240e1edd0",
+          "title": "貂蝉·关联卡牌"
+        },
+        {
+          "id": "WX-hero-1411-awakening",
+          "title": "貂蝉·觉醒"
+        },
+        {
+          "id": "WIKI-77bf2d70ed96f447c094",
+          "title": "貂蝉·属性成长"
+        },
+        {
+          "id": "WIKI-d6faee4dfdf94c21f4f3",
+          "title": "貂蝉·阶级"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "mechanic",
+      "question": "棋子写的“整备”指什么？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "棋子写的“整备”指什么？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-6247abc492f8b9c62c7e",
+          "title": "整备"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "achievement",
+      "question": "独狼这个成就怎么解锁？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "独狼这个成就怎么解锁？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-def22454adedffd6ad52",
+          "title": "独狼·成就"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "biography",
+      "question": "武凤哪天过生日？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "武凤哪天过生日？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-57a32170b4199f59629a",
+          "title": "武凤·人物档案"
+        },
+        {
+          "id": "WIKI-6c3dae2261fbc5ca636e",
+          "title": "武凤·关联牌与强化"
+        },
+        {
+          "id": "WIKI-6c3dae2261fbc5ca636e-2",
+          "title": "武凤·关联牌与强化"
+        },
+        {
+          "id": "WIKI-9189082fa6a6d76404fe-2",
+          "title": "武凤·关联牌与强化"
+        },
+        {
+          "id": "WIKI-9189082fa6a6d76404fe",
+          "title": "武凤·关联牌与强化"
+        },
+        {
+          "id": "WIKI-ccea9dd30881106b916d",
+          "title": "武凤·start"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "update",
+      "question": "10月8日版本更新了什么？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "10月8日版本更新了什么？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": true
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-e6625210905dd369ec05-14",
+          "title": "10月8日版本更新公告v1.5.1"
+        },
+        {
+          "id": "WIKI-e6625210905dd369ec05",
+          "title": "10月8日版本更新公告v1.5.1"
+        },
+        {
+          "id": "WIKI-e6625210905dd369ec05-5",
+          "title": "10月8日版本更新公告v1.5.1"
+        },
+        {
+          "id": "WIKI-e6625210905dd369ec05-13",
+          "title": "10月8日版本更新公告v1.5.1"
+        },
+        {
+          "id": "WIKI-e6625210905dd369ec05-4",
+          "title": "10月8日版本更新公告v1.5.1"
+        },
+        {
+          "id": "WIKI-e6625210905dd369ec05-11",
+          "title": "10月8日版本更新公告v1.5.1"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "diamond",
+      "question": "钻石狂潮里能逛商店买牌吗？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "钻石狂潮里能逛商店买牌吗？",
+          "英雄购买费用 能量",
+          "升级费用 天赋 上阵名额"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "钻石狂潮",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-7d686f577d8cd76ca05f",
+          "title": "与万象大赛的区别"
+        },
+        {
+          "id": "WIKI-9ef74f20d29387803b77",
+          "title": "玩法概览"
+        },
+        {
+          "id": "WIKI-a9e58c375d711f89201d",
+          "title": "人形印钻·成就"
+        },
+        {
+          "id": "WIKI-67a1df3e92936a1b0db9",
+          "title": "洒洒水啦·成就"
+        },
+        {
+          "id": "WIKI-1008f584651562972459",
+          "title": "常胜将军·成就"
+        },
+        {
+          "id": "WIKI-318e19a12d1e6a37eb90",
+          "title": "无限后手·成就"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "summon",
+      "question": "狼魂的技能和成长说明是什么？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "狼魂的技能和成长说明是什么？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "B05",
+          "title": "常小娥的成长技能"
+        },
+        {
+          "id": "WIKI-20da787f0436b0276e09",
+          "title": "狼魂"
+        },
+        {
+          "id": "B01",
+          "title": "白歌的技能与复制"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "effect",
+      "question": "研读会怎么买，费用是多少？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "研读会怎么买，费用是多少？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-6bd0ab292044f87de5c3",
+          "title": "研读会·商店费用与获取限制"
+        },
+        {
+          "id": "WX-effect-study-original",
+          "title": "研读会·卡面原文"
+        },
+        {
+          "id": "WIKI-264f349d2dfa86e26838",
+          "title": "研读会·资源"
+        },
+        {
+          "id": "WIKI-0d6c7d004b9c5e08e920",
+          "title": "研读会·获取途径"
+        },
+        {
+          "id": "WX-effect-study-interpretation",
+          "title": "研读会·站方解释"
+        },
+        {
+          "id": "WIKI-52cb161c0a450da9fdd9",
+          "title": "研读会·阶级"
+        }
+      ],
+      "retrieval_pass": true
+    },
+    {
+      "case_id": "lineup",
+      "question": "常小娥马瑶经典阵容怎么搭配？",
+      "planner_status": "rules",
+      "error": null,
+      "plan": {
+        "queries": [
+          "常小娥马瑶经典阵容怎么搭配？"
+        ],
+        "keywords": [],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false
+      },
+      "retrieved": [
+        {
+          "id": "WIKI-8fa0ddf9da24cdf11c55",
+          "title": "常小娥马瑶经典阵容"
+        },
+        {
+          "id": "WIKI-8fa0ddf9da24cdf11c55-4",
+          "title": "常小娥马瑶经典阵容"
+        },
+        {
+          "id": "WIKI-8fa0ddf9da24cdf11c55-2",
+          "title": "常小娥马瑶经典阵容"
+        },
+        {
+          "id": "WIKI-8fa0ddf9da24cdf11c55-3",
+          "title": "常小娥马瑶经典阵容"
+        },
+        {
+          "id": "WIKI-860c4732843584f490d4",
+          "title": "常小娥·entry"
+        },
+        {
+          "id": "WIKI-8b6d4fd10094ce7131dc",
+          "title": "常小娥·motionPortrait"
+        }
+      ],
+      "retrieval_pass": true
+    }
+  ]
+}

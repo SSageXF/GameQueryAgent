@@ -1,0 +1,128 @@
+{
+  "type": "offline_replay_of_recorded_live_plans",
+  "created_at": "2026-10-13T06:11:02.289717+00:00",
+  "source_sha256": "8a72d329ae3cf7e42c66bf3759f11e011be32d1ca79f2c0d16accd4a02020a1a",
+  "knowledge_sha256": "a06ef92fc1ab29f84f8193710407a24065b1ec14e99a95ddade10a54e84725d9",
+  "model_calls": 0,
+  "passed": 10,
+  "total": 10,
+  "rows": [
+    {
+      "case_id": "purchase",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-568e467dc3529f9654fe",
+        "E02",
+        "E03",
+        "WIKI-c5ced8e1ba0c3962194a",
+        "WIKI-e1fa16f06be8039f4004",
+        "WIKI-b18f43708251078058b7"
+      ]
+    },
+    {
+      "case_id": "hero",
+      "passed": true,
+      "retrieved_ids": [
+        "WX-hero-1411-skill",
+        "WX-hero-1411-awakening",
+        "WX-hero-1411-original",
+        "WIKI-46634a01965240e1edd0",
+        "WIKI-77bf2d70ed96f447c094",
+        "B05"
+      ]
+    },
+    {
+      "case_id": "mechanic",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-6247abc492f8b9c62c7e",
+        "WX-effect-7513-original",
+        "WX-talent-681012-original",
+        "WX-talent-636106-original",
+        "WIKI-7e5d8aa2cfe3611c4149",
+        "WIKI-8625042ce36940a856d1"
+      ]
+    },
+    {
+      "case_id": "achievement",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-def22454adedffd6ad52",
+        "R01",
+        "WIKI-846ee5915a0af6b2f29c"
+      ]
+    },
+    {
+      "case_id": "biography",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-57a32170b4199f59629a",
+        "WIKI-b8d74b0d6833c540bdf2",
+        "WIKI-6c3dae2261fbc5ca636e",
+        "WIKI-4d099233d2009addd4f9",
+        "WIKI-24f6fc9cf3081415793b",
+        "WIKI-6c3dae2261fbc5ca636e-2"
+      ]
+    },
+    {
+      "case_id": "update",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-e6625210905dd369ec05-14",
+        "WIKI-e6625210905dd369ec05",
+        "WIKI-deed4c85974d73d2b99c",
+        "WIKI-e6625210905dd369ec05-5",
+        "WIKI-45f2cca56920f1b5ddbf",
+        "WIKI-e6625210905dd369ec05-13"
+      ]
+    },
+    {
+      "case_id": "diamond",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-7d686f577d8cd76ca05f",
+        "WIKI-837d2f7c9f161beba2a1",
+        "WIKI-9ef74f20d29387803b77",
+        "WIKI-a9e58c375d711f89201d",
+        "WIKI-67a1df3e92936a1b0db9",
+        "WIKI-1008f584651562972459"
+      ]
+    },
+    {
+      "case_id": "summon",
+      "passed": true,
+      "retrieved_ids": [
+        "B05",
+        "WIKI-b18f43708251078058b7",
+        "WIKI-20da787f0436b0276e09",
+        "B01",
+        "C04",
+        "H03"
+      ]
+    },
+    {
+      "case_id": "effect",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-6bd0ab292044f87de5c3",
+        "WIKI-0d6c7d004b9c5e08e920",
+        "WIKI-160a8b64e404297d6522",
+        "WX-effect-study-original",
+        "WX-effect-7061-original",
+        "WIKI-9d6f6f1c98505757bec8"
+      ]
+    },
+    {
+      "case_id": "lineup",
+      "passed": true,
+      "retrieved_ids": [
+        "WIKI-8fa0ddf9da24cdf11c55",
+        "WX-hero-1321-original",
+        "WIKI-8fa0ddf9da24cdf11c55-4",
+        "WIKI-c447dacf2f85b8e87f02",
+        "WIKI-8fa0ddf9da24cdf11c55-2",
+        "WIKI-860c4732843584f490d4"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5634 @@
+{
+  "damageTypes": [
+    "physical",
+    "magical",
+    "true",
+    "unknown"
+  ],
+  "equipment": [
+    {
+      "assetUrl": "/assets/webp/装备牌_红莲炎甲_643504_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。每2秒对周围1格敌人造成20（+5%穿戴者最大生命值）点法术伤害，并降低目标50%生命恢复和吸血效果，持续3秒。",
+      "evidenceId": "official-raw:equipment:643504:desc",
+      "id": "equipment:643504",
+      "name": "红莲炎甲",
+      "passiveClassification": "direct_bounded",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": []
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_法源之杯_643402_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。每秒回复5点法力值。",
+      "evidenceId": "official-raw:equipment:643402:desc",
+      "id": "equipment:643402",
+      "name": "法源之杯",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_名刀·司命_643703_缩略图.webp",
+      "category": "function",
+      "effectText": "唯一。穿戴者首次受到致命伤害时会进入无敌和不可选中状态，持续1.5秒。",
+      "evidenceId": "official-raw:equipment:643703:desc",
+      "id": "equipment:643703",
+      "name": "名刀·司命",
+      "passiveClassification": "capability_only",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "no_expected_combat_value_modeled"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_反伤重甲_643604_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。将受到伤害的30%以真实伤害回敬给目标。",
+      "evidenceId": "official-raw:equipment:643604:desc",
+      "id": "equipment:643604",
+      "name": "反伤重甲",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_近卫荣耀_643603_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。战斗开始时，周围1格己方英雄获得10点物理和法术防御，穿戴者获得双倍效果，不可叠加。",
+      "evidenceId": "official-raw:equipment:643603:desc",
+      "id": "equipment:643603",
+      "name": "近卫荣耀",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_极寒风暴_643602_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+      "evidenceId": "official-raw:equipment:643602:desc",
+      "id": "equipment:643602",
+      "name": "极寒风暴",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_不祥征兆_643601_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。战斗前15秒，格挡50%普通攻击伤害，若攻击者攻速高于1.5，则格挡70%普通攻击伤害。",
+      "evidenceId": "official-raw:equipment:643601:desc",
+      "id": "equipment:643601",
+      "name": "不祥征兆",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_红魔_643704_缩略图.webp",
+      "category": "attack",
+      "effectText": "唯一。周围1格没有友军时，获得25%伤害加成。每承受3%最大生命值的伤害，获得1%伤害加成，上限100%。",
+      "evidenceId": "official-raw:equipment:643704:desc",
+      "id": "equipment:643704",
+      "name": "红魔",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_影牙_643301_缩略图.webp",
+      "category": "function",
+      "effectText": "攻击速度+50%。",
+      "evidenceId": "official-raw:equipment:643301:desc",
+      "id": "equipment:643301",
+      "name": "影牙",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": 50.0,
+          "axis": "attack_speed_percent",
+          "evidenceId": "official-raw:equipment:643301:desc",
+          "parseStatus": "explicit_static",
+          "unit": "%"
+        }
+      ],
+      "unresolvedItems": [
+        "passive_clause_not_mechanically_separable"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_魔女斗篷_643503_缩略图.webp",
+      "category": "defense",
+      "effectText": "法术防御力+30。战斗开始时，获得等级x5点法术护盾。",
+      "evidenceId": "official-raw:equipment:643503:desc",
+      "id": "equipment:643503",
+      "name": "魔女斗篷",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": 30.0,
+          "axis": "magical_defense_flat",
+          "evidenceId": "official-raw:equipment:643503:desc",
+          "parseStatus": "explicit_static",
+          "unit": "point"
+        }
+      ],
+      "unresolvedItems": [
+        "passive_clause_not_mechanically_separable"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_不死鸟之眼_643502_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。增加15%最大生命值，生命恢复和护盾效果提升30%。",
+      "evidenceId": "official-raw:equipment:643502:desc",
+      "id": "equipment:643502",
+      "name": "不死鸟之眼",
+      "passiveClassification": "conditional_range",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": 15.0,
+          "axis": "max_health_percent",
+          "evidenceId": "official-raw:equipment:643502:desc",
+          "parseStatus": "explicit_static",
+          "unit": "%"
+        }
+      ],
+      "unresolvedItems": [
+        "base_heal_or_shield_total",
+        "trigger_count_and_modifier_stacking"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_霸者重铠_643501_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。生命值高于70%时获得40%伤害减免。",
+      "evidenceId": "official-raw:equipment:643501:desc",
+      "id": "equipment:643501",
+      "name": "霸者重铠",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_魔律之刃_643705_缩略图.webp",
+      "category": "function",
+      "effectText": "唯一。释放技能时，35%概率重复释放一次。每有7级，额外提升1%概率。",
+      "evidenceId": "official-raw:equipment:643705:desc",
+      "id": "equipment:643705",
+      "name": "魔律之刃",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_聚灵水晶_643404_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。受击时额外获得10点法力值，最多100点。达到上限后恢复20%最大生命值。",
+      "evidenceId": "official-raw:equipment:643404:desc",
+      "id": "equipment:643404",
+      "name": "聚灵水晶",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_破茧之衣_643403_缩略图.webp",
+      "category": "function",
+      "effectText": "唯一。战斗开始时，法力值+15，同时眩晕敌方等级最高3名英雄中的随机1名，持续1秒。目标每有10级，眩晕时间增加0.5秒，上限5秒。",
+      "evidenceId": "official-raw:equipment:643403:desc",
+      "id": "equipment:643403",
+      "name": "破茧之衣",
+      "passiveClassification": "conditional_range",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "condition_distribution"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_冥王_643702_缩略图.webp",
+      "category": "attack",
+      "effectText": "唯一。穿戴者周围1格每有1个敌方单位，获得10点物理防御和15%基础物理攻击力。",
+      "evidenceId": "official-raw:equipment:643702:desc",
+      "id": "equipment:643702",
+      "name": "冥王",
+      "passiveClassification": "conditional_range",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "condition_distribution"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_痛苦面具_643401_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。单次魔法伤害超过目标最大生命值的8%时会使目标点燃：每秒造成75%法术攻击力的真实伤害，持续3秒。",
+      "evidenceId": "official-raw:equipment:643401:desc",
+      "id": "equipment:643401",
+      "name": "痛苦面具",
+      "passiveClassification": "direct_bounded",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": []
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_贤者之书_643802_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。法力值上限-10。释放技能后获得20%基础法术攻击力，最多叠加6层。",
+      "evidenceId": "official-raw:equipment:643802:desc",
+      "id": "equipment:643802",
+      "name": "贤者之书",
+      "passiveClassification": "direct_bounded",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": -10.0,
+          "axis": "max_energy_flat",
+          "evidenceId": "official-raw:equipment:643802:desc",
+          "parseStatus": "explicit_static",
+          "unit": "point"
+        }
+      ],
+      "unresolvedItems": [
+        "actual_trigger_count_is_scene_input"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_日渊_641015_缩略图.webp",
+      "category": "attack",
+      "effectText": "唯一，限定远程英雄。普通攻击会释放飞箭，对生命值最低的2名敌人造成45%物理攻击力的物理伤害。",
+      "evidenceId": "official-raw:equipment:641015:desc",
+      "id": "equipment:641015",
+      "name": "日渊",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": true,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_凝渊_641010_缩略图.webp",
+      "category": "attack",
+      "effectText": "唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+      "evidenceId": "official-raw:equipment:641010:desc",
+      "id": "equipment:641010",
+      "name": "凝渊",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": 20.0,
+          "axis": "critical_rate_percent",
+          "evidenceId": "official-raw:equipment:641010:desc",
+          "parseStatus": "explicit_static",
+          "unit": "%"
+        }
+      ],
+      "unresolvedItems": [
+        "passive_clause_not_mechanically_separable"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_破晓_643302_缩略图.webp",
+      "category": "attack",
+      "effectText": "每次普通攻击降低目标3点物防，持续5秒。目标物防首次降为0时，附加1次目标15%最大生命值的物理伤害。",
+      "evidenceId": "official-raw:equipment:643302:desc",
+      "id": "equipment:643302",
+      "name": "破晓",
+      "passiveClassification": "direct_bounded",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": []
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_炽热支配者_643803_缩略图.webp",
+      "category": "function",
+      "effectText": "唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。",
+      "evidenceId": "official-raw:equipment:643803:desc",
+      "id": "equipment:643803",
+      "name": "炽热支配者",
+      "passiveClassification": "capability_only",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "no_expected_combat_value_modeled"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_铸梦·逐风_643304_缩略图.webp",
+      "category": "function",
+      "effectText": "唯一。战斗开始及之后每过8秒，快速进行4次普通攻击。",
+      "evidenceId": "official-raw:equipment:643304:desc",
+      "id": "equipment:643304",
+      "name": "铸梦·逐风",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_无尽巨剑_643103_缩略图.webp",
+      "category": "attack",
+      "effectText": "暴击率+30%，暴击效果+60%。暴击效果不可叠加。",
+      "evidenceId": "official-raw:equipment:643103:desc",
+      "id": "equipment:643103",
+      "name": "无尽巨剑",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": 30.0,
+          "axis": "critical_rate_percent",
+          "evidenceId": "official-raw:equipment:643103:desc",
+          "parseStatus": "explicit_static",
+          "unit": "%"
+        },
+        {
+          "amount": 60.0,
+          "axis": "critical_effect_percent",
+          "evidenceId": "official-raw:equipment:643103:desc",
+          "parseStatus": "explicit_static",
+          "unit": "%"
+        }
+      ],
+      "unresolvedItems": [
+        "passive_clause_not_mechanically_separable"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_制裁之剑_643104_缩略图.webp",
+      "category": "function",
+      "effectText": "唯一。造成伤害时降低目标30%生命恢复及护盾效果，持续10秒，不可叠加。若为普通攻击，效果提升至70%。",
+      "evidenceId": "official-raw:equipment:643104:desc",
+      "id": "equipment:643104",
+      "name": "制裁之剑",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_纯净苍穹_643105_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。每2秒获得10点法术攻击力，同时清除自身负面状态。",
+      "evidenceId": "official-raw:equipment:643105:desc",
+      "id": "equipment:643105",
+      "name": "纯净苍穹",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_生命魔典_643804_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。受到伤害时会为自身和周围1格的己方单位恢复5%最大生命值，冷却2秒。",
+      "evidenceId": "official-raw:equipment:643804:desc",
+      "id": "equipment:643804",
+      "name": "生命魔典",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_虚无法杖_643202_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。获得15点法术防御穿透。",
+      "evidenceId": "official-raw:equipment:643202:desc",
+      "id": "equipment:643202",
+      "name": "虚无法杖",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_寒霜侵袭_643205_缩略图.webp",
+      "category": "attack",
+      "effectText": "唯一。普通攻击减少目标15%移速，持续5秒，最多叠加5层。叠满后目标受到的伤害提高20%，持续5秒，冷却时间10秒。",
+      "evidenceId": "official-raw:equipment:643205:desc",
+      "id": "equipment:643205",
+      "name": "寒霜侵袭",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_自然法杖_643208_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。法术攻击力+20%，远程穿戴者每消耗40点法力值（近战80点法力值）会将随机1名敌人变成小猪，持续2秒。",
+      "evidenceId": "official-raw:equipment:643208:desc",
+      "id": "equipment:643208",
+      "name": "自然法杖",
+      "passiveClassification": "conditional_range",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [
+        {
+          "amount": 20.0,
+          "axis": "magical_attack_percent",
+          "evidenceId": "official-raw:equipment:643208:desc",
+          "parseStatus": "explicit_static",
+          "unit": "%"
+        }
+      ],
+      "unresolvedItems": [
+        "condition_distribution"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_金色圣剑_643207_缩略图.webp",
+      "category": "magic",
+      "effectText": "唯一。获得30%（+15%法术攻击力）攻击速度。每次普通攻击附带20（+30%法术攻击力）点法术伤害。",
+      "evidenceId": "official-raw:equipment:643207:desc",
+      "id": "equipment:643207",
+      "name": "金色圣剑",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    },
+    {
+      "assetUrl": "/assets/webp/装备牌_御灵之纱_643805_缩略图.webp",
+      "category": "defense",
+      "effectText": "唯一。战斗开始时，获得等级×15点护盾。护盾被击破时对周围1格敌人造成1秒眩晕，击破者翻倍。",
+      "evidenceId": "official-raw:equipment:643805:desc",
+      "id": "equipment:643805",
+      "name": "御灵之纱",
+      "passiveClassification": "unresolved",
+      "requiresRangedWearer": false,
+      "sourceLayers": [
+        "official_raw",
+        "model_profile",
+        "user_confirmed_model_profile",
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "staticAttributes": [],
+      "unresolvedItems": [
+        "passive_semantics_or_trigger_frequency"
+      ]
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "base",
+      "label": "默认蓝条上限"
+    },
+    {
+      "id": "mana10",
+      "label": "10 蓝条情景",
+      "maximumMana": 10
+    }
+  ],
+  "heroes": [
+    {
+      "assetUrl": "/assets/webp/英雄牌_苏烈_1941_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1941",
+      "name": "苏烈",
+      "quality": 1,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+            "level": 10
+          },
+          {
+            "description": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+            "level": 40
+          },
+          {
+            "description": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成自身最大生命值10%的物理伤害",
+            "level": 100
+          }
+        ],
+        "name": "豪烈万军"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_曜_5221_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5221",
+      "name": "曜",
+      "quality": 1,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "曜化作星辰对当前目标造成70+120%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "施放技能额外获得100+100%物理攻击力的护盾，持续4秒",
+            "level": 10
+          },
+          {
+            "description": "每第3次施放技能会额外击飞并眩晕目标0.5秒",
+            "level": 40
+          },
+          {
+            "description": "施放技能后获得1次强化攻击，造成130+130%物理攻击力的物理伤害并恢复自身200+75%物理攻击力的生命值",
+            "level": 100
+          }
+        ],
+        "name": "逐星"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_孙膑_1181_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1181",
+      "name": "孙膑",
+      "quality": 1,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成50+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "炸弹伤害提升至50+150%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+            "level": 40
+          },
+          {
+            "description": "炸弹附着在敌人身上时沉默该目标",
+            "level": 100
+          }
+        ],
+        "name": "时空爆弹"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_狂铁_5031_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5031",
+      "name": "狂铁",
+      "quality": 1,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "施法获得持续4秒的100+10%最大生命值的护盾",
+            "level": 10
+          },
+          {
+            "description": "技能每命中1个敌人，护盾值提升100点",
+            "level": 40
+          },
+          {
+            "description": "护盾被击破时恢复10%最大生命值",
+            "level": 100
+          }
+        ],
+        "name": "碎裂之击"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_孙尚香_1111_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1111",
+      "name": "孙尚香",
+      "quality": 1,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "孙尚香朝目标敌人发射1发弩炮，造成50+100%物理攻击力的物理伤害，并降低命中敌人50%物理防御，持续5秒。",
+        "enhancements": [
+          {
+            "description": "弩炮伤害提升至50+150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "弩炮会在命中后爆炸，对附近敌人造成60%的技能伤害",
+            "level": 40
+          },
+          {
+            "description": "会额外发射1发更强力的弩炮，造成1.5倍的伤害",
+            "level": 100
+          }
+        ],
+        "name": "红莲爆弹"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_弈星_1971_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1971",
+      "name": "弈星",
+      "quality": 1,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "棋盘伤害提升至100+100%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "棋盘持续期间，内外的敌人无法进出",
+            "level": 40
+          },
+          {
+            "description": "棋盘持续时间延长至5.5秒",
+            "level": 100
+          }
+        ],
+        "name": "万变之局"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_干将莫邪_1821_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1821",
+      "name": "干将莫邪",
+      "quality": 1,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "飞剑伤害提升至150+100%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "每第2次施法会额外释放1对飞剑",
+            "level": 40
+          },
+          {
+            "description": "飞剑伤害提升至150+200%法术攻击力",
+            "level": 100
+          }
+        ],
+        "name": "雌雄双剑"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_李元芳_1731_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1731",
+      "name": "李元芳",
+      "quality": 1,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：李元芳技能造成伤害会叠加印记，叠满3层引爆印记造成100%物理攻击力的物理伤害。 主动：李元芳丢出飞镖造成150%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "印记引爆伤害提升至150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "普攻也会叠加1层印记",
+            "level": 40
+          },
+          {
+            "description": "印记引爆后，提升25%攻击速度，最多叠加5层",
+            "level": 100
+          }
+        ],
+        "name": "谍影重重"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_牛魔_1681_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1681",
+      "name": "牛魔",
+      "quality": 1,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "牛魔短暂蓄力后以巨斧猛力劈向当前的目标敌人，自身获得持续4秒的80点护盾并造成30+100%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至30+120%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "将目标击飞并眩晕1秒",
+            "level": 40
+          },
+          {
+            "description": "击飞眩晕延长至3秒",
+            "level": 100
+          }
+        ],
+        "name": "山崩地裂"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_亚连_5141_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        30.0,
+        1.6,
+        1.5,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5141",
+      "name": "亚连",
+      "quality": 2,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "magical_basic_attack",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "mixed_basic_fighter",
+        "label": "混合普攻战士",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：亚连使用“赤影”攻击时造成法术伤害，使用“守心”攻击时造成物理伤害，双剑合击时造成真实伤害。且普攻和技能伤害可以暴击。 亚连对敌人造成伤害时会获得怒气层数，每层为自身提供2%的伤害减免，最多10层。 主动：亚连挥舞双剑，对前方目标进行3次快速斩击，分别造成65%法术攻击力的法术伤害和2次65%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "技能提升至5段，还会击飞目标敌人",
+            "level": 10
+          },
+          {
+            "description": "技能提升至7段，物理伤害提升至115%；施放技能后怒气层数上限提高至20层",
+            "level": 40
+          },
+          {
+            "description": "技能变为大范围圆形",
+            "level": 100
+          }
+        ],
+        "name": "流星斩"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "法战"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_米莱狄_5041_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5041",
+      "name": "米莱狄",
+      "quality": 2,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "米莱狄在距离自己最远的敌人附近召唤1个机械仆从，继承自己100%法术攻击力。 仆从每次攻击造成50+30%法术攻击力的法术伤害，机械仆从到达最大数量后，再次施放技能，增加仆从15%攻击速度，持续5秒。",
+        "enhancements": [
+          {
+            "description": "每次召唤2个机械仆从；攻击伤害提升至50+60%法术攻击力的法术伤害",
+            "level": 10
+          },
+          {
+            "description": "机械仆从获得100%法术攻击的额外生命值；机械仆从到达上限后，再次施放技能转而恢复仆从们的所有生命值",
+            "level": 40
+          },
+          {
+            "description": "召唤机械仆从上限提升至4",
+            "level": 100
+          }
+        ],
+        "name": "机械仆从"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_项羽_1351_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1351",
+      "name": "项羽",
+      "quality": 2,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：项羽在战斗开始时向前冲撞3格距离，击退沿途敌人并在结束时击飞前方敌人造成100+5%最大生命值的物理伤害。 主动：项羽发出怒吼同时恢复自身150+5%最大生命值的生命值。",
+        "enhancements": [
+          {
+            "description": "恢复效果提升至300+8%最大生命值",
+            "level": 10
+          },
+          {
+            "description": "怒吼还会降低周围1格敌人50%攻击速度，持续5秒",
+            "level": 40
+          },
+          {
+            "description": "技能每命中1名敌人降低自身10%受到的伤害，最多5层，持续到回合结束",
+            "level": 100
+          }
+        ],
+        "name": "破釜沉舟"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_鬼谷子_1891_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1891",
+      "name": "鬼谷子",
+      "quality": 2,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "鬼谷子使用玄微子包裹随机1名友方英雄使其临时等级+5，持续8秒（不可叠加）。",
+        "enhancements": [
+          {
+            "description": "临时等级增加提升至10",
+            "level": 10
+          },
+          {
+            "description": "增益目标+1",
+            "level": 40
+          },
+          {
+            "description": "增益效果及持续时间翻倍",
+            "level": 100
+          }
+        ],
+        "name": "万物有灵"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_梦奇_1981_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1981",
+      "name": "梦奇",
+      "quality": 2,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "梦奇使用泡泡包裹自身，恢复8%最大生命值；1秒后泡泡破碎，对周围敌人造成50+70%法术攻击力的法术伤害，并降低5点物理防御和法术防御，持续5秒。",
+        "enhancements": [
+          {
+            "description": "恢复100+10%最大生命值，造成50+100%法术攻击力的法术伤害",
+            "level": 10
+          },
+          {
+            "description": "额外保护1名生命值最低的友军",
+            "level": 40
+          },
+          {
+            "description": "恢复提升至100+20%最大生命值",
+            "level": 100
+          }
+        ],
+        "name": "梦境萦绕"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_芈月_1211_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1211",
+      "name": "芈月",
+      "quality": 2,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "芈月为等级最高的近战友军召唤1只暗影仆从协助战斗，持续10秒。仆从每次攻击造成80%芈月法术攻击力的法术伤害并为友军恢复80%芈月法术攻击力的生命值，同时窃取目标1点物理防御和法术防御转移给友军（最多30层，持续至回合结束）。",
+        "enhancements": [
+          {
+            "description": "仆从伤害提升至100%法术攻击力，生命值恢复提升至100%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "仆从数量提升至5只",
+            "level": 40
+          },
+          {
+            "description": "窃取的双防提升至2点",
+            "level": 100
+          }
+        ],
+        "name": "幻翼仆从"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_沈梦溪_3121_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:3121",
+      "name": "沈梦溪",
+      "quality": 2,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "沈梦溪向敌人密集处投掷1枚混合炸弹，造成100+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至100+150%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "炸弹爆炸半径扩大1格",
+            "level": 40
+          },
+          {
+            "description": "爆炸时眩晕敌人0.5秒",
+            "level": 100
+          }
+        ],
+        "name": "综合爆款"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_盾山_5091_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5091",
+      "name": "盾山",
+      "quality": 2,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+        "enhancements": [
+          {
+            "description": "伤害减免提升至35%，持续时间延长至8秒",
+            "level": 10
+          },
+          {
+            "description": "石盾范围扩大并降低接触敌人35%攻击速度",
+            "level": 40
+          },
+          {
+            "description": "开战后立即进入防御形态，持续至回合结束",
+            "level": 100
+          }
+        ],
+        "name": "不动如山"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_曹操_1281_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1281",
+      "name": "曹操",
+      "quality": 2,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "曹操凝聚霸道之力立即恢复自身100+15%最大生命值的生命值，同时在5秒内提高20%基础攻击力。",
+        "enhancements": [
+          {
+            "description": "攻击力增益提升至50%",
+            "level": 10
+          },
+          {
+            "description": "增益时间+5秒，强化状态下普攻会施放出可穿透的剑气",
+            "level": 40
+          },
+          {
+            "description": "技能持续期间额外获得30%物理吸血",
+            "level": 100
+          }
+        ],
+        "name": "霸道枭雄"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_虞姬_1741_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1741",
+      "name": "虞姬",
+      "quality": 2,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：虞姬在普攻时有30%的概率会追加1次攻击。 主动：虞姬冲向目标敌人对其造成120%物理攻击力的物理伤害，随后向后翻腾对目标敌人快速射出4支弩矢，每支弩矢造成50+80%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "弩矢伤害提升至50+120%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "落地时提升自身50%攻击速度，持续3秒",
+            "level": 40
+          },
+          {
+            "description": "冲向目标敌人时还会将其眩晕1.5秒",
+            "level": 100
+          }
+        ],
+        "name": "阵前舞"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_马可波罗_1321_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1321",
+      "name": "马可波罗",
+      "quality": 2,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "马可波罗掏出华丽左轮朝当前方向连续射出8颗子弹，每颗子弹造成25+15%物理攻击力的物理伤害，通过技能击败敌人后，下1次技能额外增加8发子弹。",
+        "enhancements": [
+          {
+            "description": "子弹伤害提升至40+25%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "子弹数量提升至16发",
+            "level": 40
+          },
+          {
+            "description": "被马可波罗子弹命中的敌人将被永久打上标记，友军攻击标记敌人会提升50%攻击速度",
+            "level": 100
+          }
+        ],
+        "name": "华丽左轮"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_赵云_1071_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1071",
+      "name": "赵云",
+      "quality": 2,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "赵云快速刺出4次龙枪打击目标敌人，每次造成60+60%物理攻击力的物理伤害并恢复自身40点生命值。",
+        "enhancements": [
+          {
+            "description": "单次伤害提升至60+100%物理攻击力，恢复生命值提升至80点",
+            "level": 10
+          },
+          {
+            "description": "低于50%生命值时，龙枪次数+3",
+            "level": 40
+          },
+          {
+            "description": "低于30%生命值时，技能伤害和恢复效果变为1.5倍；首次低于30%生命值时会获得100+30%最大生命值的护盾",
+            "level": 100
+          }
+        ],
+        "name": "破云之龙"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_大乔_1911_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1911",
+      "name": "大乔",
+      "quality": 2,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "短蓝条技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "大乔唤出1道波浪前行，击飞并眩晕沿途敌人1秒，造成100+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至100+150%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "每第3次施法会施放1道巨型波浪（造成额外50%法术攻击力的法术伤害）",
+            "level": 40
+          },
+          {
+            "description": "每次施法都施放巨型波浪",
+            "level": 100
+          }
+        ],
+        "name": "鲤跃之潮"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_公孙离_1991_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1991",
+      "name": "公孙离",
+      "quality": 2,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "公孙离朝目标方向丢出纸伞，纸伞到达最远端悬停一段时间后收回。纸伞会对所有首次命中的敌人造成100%物理攻击力的物理伤害，并在悬停处对触碰到的敌人每秒造成100%物理攻击力的物理伤害且降低其40%移动速度。",
+        "enhancements": [
+          {
+            "description": "纸伞不在手中时提升30%攻击速度；击退并眩晕纸伞命中的首个敌人1.5秒",
+            "level": 10
+          },
+          {
+            "description": "伞脱手后获得的攻速增益提升至50%",
+            "level": 40
+          },
+          {
+            "description": "控制时间延长至2.5秒，同时击退距离大幅增加",
+            "level": 100
+          }
+        ],
+        "name": "孤鹜断霞"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_百里守约_1961_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1961",
+      "name": "百里守约",
+      "quality": 2,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_skill_shooter",
+        "label": "物理技能射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "百里守约朝最远的敌人（英雄优先）狙击。子弹对首名命中敌人造成50+700%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "狙击伤害提升至200+800%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "狙击子弹在击败敌人后会继续行进但伤害衰减30%，最多衰减60%",
+            "level": 40
+          },
+          {
+            "description": "狙击子弹的伤害不再衰减",
+            "level": 100
+          }
+        ],
+        "name": "瞄准"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_墨子_1081_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1081",
+      "name": "墨子",
+      "quality": 2,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "墨子驾驶机关人展开高能屏障，对触碰到屏障的敌人每0.5秒造成30+50%法术攻击力的法术伤害，屏障最多持续2秒。",
+        "enhancements": [
+          {
+            "description": "屏障伤害提升至50+75%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "屏障伤害时还会对敌人造成0.5秒眩晕",
+            "level": 40
+          },
+          {
+            "description": "屏障持续时间延长至5秒",
+            "level": 100
+          }
+        ],
+        "name": "墨守成规"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_百里玄策_1951_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1951",
+      "name": "百里玄策",
+      "quality": 2,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "玄策舞动钩镰对目标敌人造成50+100%物理攻击力的物理伤害，而后将其甩向玄策身后，落地时造成50+100%物理攻击力的物理伤害并眩晕1秒。",
+        "enhancements": [
+          {
+            "description": "钩镰伤害提升至130%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "钩镰会钩住目标6秒，敌人落地玄策立即突进至其身后，对沿途的敌人造成100+200%物理攻击力的物理伤害，玄策普攻对被钩住的目标造成120%物理攻击力的物理伤害",
+            "level": 40
+          },
+          {
+            "description": "施法时会标记当前目标，降低其10点物理及法术防御力；标记目标被击败时玄策进入狂暴状态（攻速提高150%，移速提高40%），持续5秒",
+            "level": 100
+          }
+        ],
+        "name": "梦魇钩锁"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_廉颇_1051_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1051",
+      "name": "廉颇",
+      "quality": 2,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "廉颇用臂甲砸向目标敌人，获得持续4秒的100点护盾，造成50+80%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至50+120%物理攻击力，护盾提升至250点",
+            "level": 10
+          },
+          {
+            "description": "每次施法护盾值额外提升40点，最多5次",
+            "level": 40
+          },
+          {
+            "description": "施法直接获得最大护盾值（不再需要多次施法提升）并恢复10%最大生命值",
+            "level": 100
+          }
+        ],
+        "name": "勇士之魂"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_蒙恬_5271_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5271",
+      "name": "蒙恬",
+      "quality": 2,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": [
+          "no_provable_active_damage_component"
+        ]
+      },
+      "skill": {
+        "description": "蒙恬召唤出1名玄雍士兵列阵作战（持续20秒，至多2名）。每名士兵会分担蒙恬5%受到的伤害。",
+        "enhancements": [
+          {
+            "description": "士兵分担伤害提升至12.5%",
+            "level": 10
+          },
+          {
+            "description": "每次召唤2名士兵（至多4名）",
+            "level": 40
+          },
+          {
+            "description": "每次召唤4名士兵",
+            "level": 100
+          }
+        ],
+        "name": "玄雍众将"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_蔡文姬_1841_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1841",
+      "name": "蔡文姬",
+      "quality": 2,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": [
+          "passive_trigger_frequency"
+        ]
+      },
+      "skill": {
+        "description": "被动：蔡文姬施放琴音每秒为自身周围1格的友军恢复30点生命值。",
+        "enhancements": [
+          {
+            "description": "为范围内的友军增加6点物理和法术防御力",
+            "level": 10
+          },
+          {
+            "description": "恢复生命值提升至80点，双防数值提升为12点",
+            "level": 40
+          },
+          {
+            "description": "技能效果范围扩大至周围2格，恢复生命值提升至150点",
+            "level": 100
+          }
+        ],
+        "name": "长歌行"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_云中君_5061_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5061",
+      "name": "云中君",
+      "quality": 3,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "云中君展翅舞蹈向周围1格射出羽箭，对命中的敌人造成50+80%物理攻击力的物理伤害，并施加2层撕裂效果。 撕裂：每秒造成目标敌人当前生命值2%的物理伤害，最多叠加5层。",
+        "enhancements": [
+          {
+            "description": "羽箭伤害提升至50+120%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "普攻对目标施加1层撕裂",
+            "level": 40
+          },
+          {
+            "description": "羽箭伤害范围+1格",
+            "level": 100
+          }
+        ],
+        "name": "若英·华彩"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_姬小满_5641_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5641",
+      "name": "姬小满",
+      "quality": 3,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "姬小满飞踢敌人造成150+100%物理攻击力的物理伤害，并将其向敌方英雄密集处击退，撞到敌人时停止。",
+        "enhancements": [
+          {
+            "description": "飞踢伤害提升至150+150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "技能对目标施加5秒印记，期间姬小满与友军对携带印记的敌人造成的伤害提升40%",
+            "level": 40
+          },
+          {
+            "description": "击退敌人后借力翻身跃向空中（期间获得70%伤害减免），并朝着当前目标重击，对范围内敌人造成150%物理攻击力的物理伤害和击飞",
+            "level": 100
+          }
+        ],
+        "name": "强攻代守"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_苍_1771_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1771",
+      "name": "苍",
+      "quality": 3,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：狼魂继承苍的攻击速度，狼魂每次攻击会为苍提供2%的物理攻击力，上限30%。 主动：苍召唤1只狼魂（上限3只）向目标敌人位置冲锋，造成50+120%物理攻击力的物理伤害。攻击替换为二连普攻，第一道子弹造成60%物理攻击力的物理伤害，第二道子弹造成80%物理攻击力的物理伤害，状态持续8秒，期间不恢复法力值，假如技能期间狼魂全部阵亡，法力值开始恢复。",
+        "enhancements": [
+          {
+            "description": "狼魂普攻伤害提升至120%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "狼魂攻击可为苍提高的攻击力上限提升至60%",
+            "level": 40
+          },
+          {
+            "description": "召唤3道狼魂冲锋",
+            "level": 100
+          }
+        ],
+        "name": "领袖姿态"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_铠_1931_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1931",
+      "name": "铠",
+      "quality": 3,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": [
+          "no_provable_active_damage_component"
+        ]
+      },
+      "skill": {
+        "description": "铠使用魔铠武装自身，获得15点伤害减免（减免后不会低于5点）。",
+        "enhancements": [
+          {
+            "description": "魔铠的伤害减免提升至20点，期间每第3次普攻获得200点护盾（不可叠加）",
+            "level": 10
+          },
+          {
+            "description": "魔铠状态下，每第3次普攻对目标额外造成100%物理攻击力的法术伤害",
+            "level": 40
+          },
+          {
+            "description": "战斗开始时，使用魔铠武装自身",
+            "level": 100
+          }
+        ],
+        "name": "不灭魔躯"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_白起_1201_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1201",
+      "name": "白起",
+      "quality": 3,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "白起怒吼，立即恢复10%最大生命值，并嘲讽周围1格敌人，持续1秒。",
+        "enhancements": [
+          {
+            "description": "施法额外获得20%最大生命值的护盾，持续4秒",
+            "level": 10
+          },
+          {
+            "description": "护盾提升至200+30%最大生命值",
+            "level": 40
+          },
+          {
+            "description": "嘲讽时间延长至4秒",
+            "level": 100
+          }
+        ],
+        "name": "生命回响"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_明世隐_5011_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5011",
+      "name": "明世隐",
+      "quality": 3,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：明世隐在备战阶段以法器连接1名最近的友方英雄。 主动：明世隐为自身和连接的英雄恢复100+60%法术攻击力的生命值。",
+        "enhancements": [
+          {
+            "description": "恢复效果提升至100+90%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "技能还会提高目标25物理和法术防御，持续5秒",
+            "level": 40
+          },
+          {
+            "description": "技能还会额外恢复20%目标最大生命值",
+            "level": 100
+          }
+        ],
+        "name": "泰卦·长生"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_阿轲_1161_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1161",
+      "name": "阿轲",
+      "quality": 3,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "阿轲挥动双刺发动2次攻击，每次造成30+100%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "单次伤害提升至30+130%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "开战后20秒内自身不会被优先攻击",
+            "level": 40
+          },
+          {
+            "description": "战斗过程中不会被优先攻击，技能必定暴击",
+            "level": 100
+          }
+        ],
+        "name": "弧光"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_马超_5181_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5181",
+      "name": "马超",
+      "quality": 3,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：马超靠近冷晖枪时会拾取回收，同时恢复自身100+75%物理攻击力的生命值，并提升5点物理攻击力。 主动：马超立即恢复自身100点生命值，快速突袭至3格内最远的敌人身边，对其造成50+100%物理攻击力的物理伤害并留下1把冷晖枪。",
+        "enhancements": [
+          {
+            "description": "突袭伤害提升至150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "突袭伤害暴击时会回收场上的冷晖枪，并对路径上的敌人造成50%物理攻击力的物理伤害",
+            "level": 40
+          },
+          {
+            "description": "每回收3把冷晖枪，下一次技能会转而在场上连续突袭至多6次",
+            "level": 100
+          }
+        ],
+        "name": "魔影突袭"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_裴擒虎_5021_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5021",
+      "name": "裴擒虎",
+      "quality": 3,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "裴擒虎化身猛虎，提升自身20点物理攻击力以及5点物理和法术防御。 若处于虎形态，则对当前目标敌人发起猛击造成120%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "猛击伤害提升至150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "开战立即化身猛虎，还会提升30%攻击速度和移动速度",
+            "level": 40
+          },
+          {
+            "description": "虎形态的属性增益翻倍，猛击伤害提升至200%攻击力",
+            "level": 100
+          }
+        ],
+        "name": "虎啸生风"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_老夫子_1391_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1391",
+      "name": "老夫子",
+      "quality": 3,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": [
+          "no_provable_active_damage_component"
+        ]
+      },
+      "skill": {
+        "description": "老夫子爆发气场，获得30%伤害减免，持续3秒。",
+        "enhancements": [
+          {
+            "description": "伤害减免提升至45%",
+            "level": 10
+          },
+          {
+            "description": "技能持续期间，每次受到伤害恢复20点生命值，最多恢复160点生命值",
+            "level": 40
+          },
+          {
+            "description": "恢复的生命值无上限",
+            "level": 100
+          }
+        ],
+        "name": "举一反三"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_西施_5231_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5231",
+      "name": "西施",
+      "quality": 3,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "西施随机向1个敌人所在位置释放持续3秒的能量球造成50+100%法术攻击力的法术伤害，3秒后能量球爆炸对这些单位造成100+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "能量球出现的伤害提升至100+120%法术攻击力，爆炸伤害提升至100+150%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "期间若目标走出能量球所处阵位，会被牵引回该阵位，到达时能量球将立即爆炸并消散，造成100点法术伤害并眩晕周围的敌方单位2秒",
+            "level": 40
+          },
+          {
+            "description": "眩晕时间延长至3.5秒",
+            "level": 100
+          }
+        ],
+        "name": "幻纱之灵"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_刘禅_1141_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        27.0,
+        1.4,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1141",
+      "name": "刘禅",
+      "quality": 3,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_skill",
+        "label": "物理技能型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+        "enhancements": [
+          {
+            "description": "护盾提升至300点",
+            "level": 10
+          },
+          {
+            "description": "护盾提升至400点，持续期间减免30%所受伤害",
+            "level": 40
+          },
+          {
+            "description": "护盾提升至600+5%最大生命值，眩晕3秒",
+            "level": 100
+          }
+        ],
+        "name": "机关魔爪"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_猪八戒_5111_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5111",
+      "name": "猪八戒",
+      "quality": 3,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": [
+          "max_health_damage_owner_or_target_unknown",
+          "unparsed_active_damage_clause"
+        ]
+      },
+      "skill": {
+        "description": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。 主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至10%最大生命值",
+            "level": 10
+          },
+          {
+            "description": "最大生命值叠层提升至60层",
+            "level": 40
+          },
+          {
+            "description": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+            "level": 100
+          }
+        ],
+        "name": "肉弹蹦床"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_程咬金_1441_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1441",
+      "name": "程咬金",
+      "quality": 3,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+        "enhancements": [
+          {
+            "description": "恢复效果提升至600+10%最大生命值",
+            "level": 10
+          },
+          {
+            "description": "技能持续期间获得15%伤害减免",
+            "level": 40
+          },
+          {
+            "description": "施法立即恢复25%已损失生命值",
+            "level": 100
+          }
+        ],
+        "name": "正义潜能"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_狄仁杰_1331_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1331",
+      "name": "狄仁杰",
+      "quality": 3,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "狄仁杰激发潜能，获得1层迅捷效果，增加自身40%基础攻击速度，持续5秒，若已经达到攻速上限，则获得3%的基础攻击力，最多叠加3次。",
+        "enhancements": [
+          {
+            "description": "基础攻速增益提升至90%",
+            "level": 10
+          },
+          {
+            "description": "每3次普攻抽出1张蓝牌，对目标造成150%物理攻击力的物理伤害",
+            "level": 40
+          },
+          {
+            "description": "普攻全部换为蓝牌，并且每10次普攻抽出1张黄牌，额外造成0.5秒眩晕效果",
+            "level": 100
+          }
+        ],
+        "name": "迅捷"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_张良_1561_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1561",
+      "name": "张良",
+      "quality": 3,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "张良以言灵之术抓住1名敌人，持续1.5秒，期间每0.5秒造成100点法术伤害，并持续压制对方。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至100+50%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "同时每0.5秒削减5点目标敌人法力值",
+            "level": 40
+          },
+          {
+            "description": "持续时间提升至3秒，并将敌人法力值清空",
+            "level": 100
+          }
+        ],
+        "name": "言灵·操纵"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_少司缘_5771_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5771",
+      "name": "少司缘",
+      "quality": 3,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "少司缘指挥成群的缘崽向前拥簇飞行，恢复沿途友军100+50%法术攻击力的生命值。",
+        "enhancements": [
+          {
+            "description": "恢复提升至150+100%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "同时提升沿途友军30%攻击速度，持续4秒",
+            "level": 40
+          },
+          {
+            "description": "对沿途敌人造成150+50%法术攻击力的法术伤害，并降低其15%伤害，持续5秒",
+            "level": 100
+          }
+        ],
+        "name": "因缘际会"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_亚瑟_1661_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1661",
+      "name": "亚瑟",
+      "quality": 3,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "亚瑟召唤圣盾围绕自身旋转，持续5秒。每秒对1格内敌人造成50%物理攻击力的物理伤害并获得15%伤害减免，亚瑟每次参与击杀获得30点最大生命值。",
+        "enhancements": [
+          {
+            "description": "圣盾伤害提升至80%物理攻击力，伤害减免提高至25%",
+            "level": 10
+          },
+          {
+            "description": "减伤持续时间延长至8秒",
+            "level": 40
+          },
+          {
+            "description": "举起圣剑跃向敌方人群密集处，额外造成其15%最大生命的法术伤害并禁止范围内所有敌人恢复法力值，持续3秒",
+            "level": 100
+          }
+        ],
+        "name": "誓约之盾"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_钟馗_1751_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1751",
+      "name": "钟馗",
+      "quality": 3,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "钟馗投出钩锁，将距离自己最远的1名敌人拉到身边，造成50+100%法术攻击力的法术伤害，并使其成为友军的优先攻击目标。",
+        "enhancements": [
+          {
+            "description": "战斗开始时充满法力值",
+            "level": 10
+          },
+          {
+            "description": "技能伤害提升至50+150%法术攻击力",
+            "level": 40
+          },
+          {
+            "description": "减少50点最大法力值",
+            "level": 100
+          }
+        ],
+        "name": "湮灭之锁"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_貂蝉_1411_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1411",
+      "name": "貂蝉",
+      "quality": 3,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "貂蝉向周围2格的随机敌人施放5朵花球，每朵花球造成50+40%法术攻击力的法术伤害并降低敌人70%生命恢复效果，持续5秒。",
+        "enhancements": [
+          {
+            "description": "花球伤害提升至50+60%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "花球数量+4",
+            "level": 40
+          },
+          {
+            "description": "施法时会远离敌人",
+            "level": 100
+          }
+        ],
+        "name": "语·花印"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_安琪拉_1421_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1421",
+      "name": "安琪拉",
+      "quality": 3,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "安琪拉引导魔力朝敌人最多的方向施放炽热光辉，持续3秒，对路径上的敌人每0.1秒造成10%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "激光伤害提升至17%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "激光数量增加到3道",
+            "level": 40
+          },
+          {
+            "description": "每击败1名敌人会延长2秒激光持续时间，并提升15%伤害",
+            "level": 100
+          }
+        ],
+        "name": "炽热光辉"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_瑶_5051_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5051",
+      "name": "瑶",
+      "quality": 3,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": [
+          "passive_trigger_frequency"
+        ]
+      },
+      "skill": {
+        "description": "被动：瑶在备战阶段，选择最近的友方英雄作为保护目标并在开战时附身其上。附身提供200+20%瑶最大生命值的护盾，以及10点双攻和5点双防，直到目标被击败。附身期间瑶会每2秒随机攻击至多2名敌人，造成50+50%法术伤害。",
+        "enhancements": [
+          {
+            "description": "附身额外提供30点双攻及10点双防；护盾提升至300+25%最大生命值",
+            "level": 10
+          },
+          {
+            "description": "附身攻击会对目标造成0.5秒眩晕",
+            "level": 40
+          },
+          {
+            "description": "瑶会分享自身30%主要属性给保护目标（最大生命、双攻、双防、攻速）",
+            "level": 100
+          }
+        ],
+        "name": "独立兮山之上"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_镜_5311_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5311",
+      "name": "镜",
+      "quality": 3,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "镜旋转攻击，对当前目标敌人造成60+80%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至80+120%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "施法时产生1名镜像，同时对目标造成80+150%物理攻击力的物理伤害",
+            "level": 40
+          },
+          {
+            "description": "产生2名镜像攻击，并会恢复自身450点生命值",
+            "level": 100
+          }
+        ],
+        "name": "裂空"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_朵莉亚_1591_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1591",
+      "name": "朵莉亚",
+      "quality": 3,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：朵莉亚在自身创建的水域内会化身人鱼形态。普通攻击会额外恢复5点法力值，对目标附带50%法术攻击力的法术伤害，在水域内再次施放技能，原水域消失形成新水域。 主动：跃向3格内友军密集处创造一片水域，水域持续10秒，朵莉亚在水域中化身人鱼形态，落地立即恢复范围内友军75+100%法术攻击力的生命值，10点法力值（法力值恢复不对朵莉亚生效），水域每秒恢复范围内友军50%法术攻击力的生命值，朵莉亚离开水域时水域消失并且恢复人形态。",
+        "enhancements": [
+          {
+            "description": "落地时的生命值恢复提升至100+150%法术攻击力，法力值恢复提升至20点",
+            "level": 10
+          },
+          {
+            "description": "水域可持续到回合结束；人鱼形态下，通过普攻恢复的法力值会共享给水域内的友军",
+            "level": 40
+          },
+          {
+            "description": "落地时会立即恢复水域内友军100%最大法力值",
+            "level": 100
+          }
+        ],
+        "name": "逐浪"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_莱西奥_5451_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5451",
+      "name": "莱西奥",
+      "quality": 4,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：莱西奥每8次普攻，会使用小火鹰发射1枚强化飞弹，对目标造成150%物理攻击力的物理伤害并且对周围1格敌人造成50%物理攻击力的物理伤害，若未发射，则充能1层，最多储存5层。 主动：莱西奥扔出烟雾弹制造1片烟雾，使处于烟雾中的英雄不会被优先攻击，并且增加30%攻击速度。",
+        "enhancements": [
+          {
+            "description": "攻速增益提升至50%",
+            "level": 10
+          },
+          {
+            "description": "莱西奥会和烟雾中的友军攻击同一目标，烟雾中的友军每次对敌人造成伤害也会为莱西奥的小火鹰进行1次充能",
+            "level": 40
+          },
+          {
+            "description": "施法进入快速发射模式：立即发射5枚强化飞弹；并将储能层数扩充到10层，持续5秒",
+            "level": 100
+          }
+        ],
+        "name": "传奇英雄登场"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_上官婉儿_5131_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5131",
+      "name": "上官婉儿",
+      "quality": 4,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "上官婉儿朝最远处的敌人挥出1记笔墨，对沿途敌人造成100+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "笔墨伤害提升至100+150%法术伤害",
+            "level": 10
+          },
+          {
+            "description": "笔墨每命中1名敌人伤害提升50%，最多150%",
+            "level": 40
+          },
+          {
+            "description": "笔墨伤害提升至100+240%法术伤害",
+            "level": 100
+          }
+        ],
+        "name": "篆法·疾势"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_艾琳_3551_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.4,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:3551",
+      "name": "艾琳",
+      "quality": 4,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_basic_attack",
+          "physical_basic_attack"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：艾琳每次普攻为自己累积1层月桂祝福，当达到10/20层时，艾琳的技能会获得进化。 主动：艾琳向当前目标敌人发出1束月桂叶，造成100%法术攻击力的法术伤害。 10层进化：若周围2格有敌人，则位移至敌人较少处，随后向目标发出1片月桂飞叶，造成100%法术攻击力的法术伤害。 20层进化：若周围2格有敌人，则位移至敌人较少处，向目标发出5片月桂飞叶，每片造成100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至150%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "30层时，获得额外一次进化：每次普攻获得2点法术攻击力，并附带10%法术攻击力的法术伤害",
+            "level": 40
+          },
+          {
+            "description": "开战时艾琳挥舞翅膀绕场飞行，获得无限攻击距离，并且释放技能时普攻获得穿透效果，持续5秒",
+            "level": 100
+          }
+        ],
+        "name": "叶舞·致意"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "法射"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_扁鹊_1191_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1191",
+      "name": "扁鹊",
+      "quality": 4,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": [
+          "no_provable_active_damage_component"
+        ]
+      },
+      "skill": {
+        "description": "扁鹊朝场上生命值比例最低的3个单位扔出药瓶，药瓶触地后破碎留下药液，持续5秒。处于药液中的友军每秒恢复20+60%法术攻击力的生命值，处于药液中的敌人每秒受到20+60%法术攻击力的法术伤害，效果可叠加。",
+        "enhancements": [
+          {
+            "description": "药液伤害提升至20+90%法术攻击力，生命值恢复提升至20+90%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "药瓶数量提升至5个",
+            "level": 40
+          },
+          {
+            "description": "药液可提升友军40%攻速，降低敌人40%攻速",
+            "level": 100
+          }
+        ],
+        "name": "万变灵药"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_嬴政_1101_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1101",
+      "name": "嬴政",
+      "quality": 4,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "嬴政展示王权，锁定最近的敌人，在5秒内号令80把飞剑朝其冲击，每把飞剑造成10+10%法术攻击力的法术伤害。若当前路径上没有敌人，嬴政会立即转向下个目标。",
+        "enhancements": [
+          {
+            "description": "飞剑伤害提升至15+15%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "飞剑基础数量增加到100把，并且每击败1名敌人延长2秒技能持续时间",
+            "level": 40
+          },
+          {
+            "description": "飞剑基础数量增加到120把，每击败1名敌人范围增加2格，最多增加4格",
+            "level": 100
+          }
+        ],
+        "name": "至尊王权"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_李信_5071_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5071",
+      "name": "李信",
+      "quality": 4,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_skill_carry",
+        "label": "后排物理主C",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "剑气伤害提升至100+220%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "剑气数量增加至3道",
+            "level": 40
+          },
+          {
+            "description": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+            "level": 100
+          }
+        ],
+        "name": "力量觉醒"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_李白_1311_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1311",
+      "name": "李白",
+      "quality": 4,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": [
+          "multi_target_damage_split"
+        ]
+      },
+      "skill": {
+        "description": "被动：李白施放技能时会积累1道剑气，最多4道。每道剑气提升10%基础物理攻击力。 主动：李白施展剑阵，降低目标敌人及其相邻敌人6点物理防御。随后化身剑气施展6次斩击，每次造成80%物理攻击力的物理伤害，伤害由范围内的敌人平均分摊。",
+        "enhancements": [
+          {
+            "description": "斩击伤害提升至120%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "斩击伤害提升至150%物理攻击力",
+            "level": 40
+          },
+          {
+            "description": "斩击期间不可选中",
+            "level": 100
+          }
+        ],
+        "name": "青莲剑歌"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_雅典娜_1831_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1831",
+      "name": "雅典娜",
+      "quality": 4,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+        "enhancements": [
+          {
+            "description": "获得35%最大生命值的护盾",
+            "level": 10
+          },
+          {
+            "description": "敌人额外受到眩晕效果1.5秒",
+            "level": 40
+          },
+          {
+            "description": "技能范围增加1格",
+            "level": 100
+          }
+        ],
+        "name": "敬畏圣盾"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_太乙真人_1861_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1861",
+      "name": "太乙真人",
+      "quality": 4,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "太乙真人将自身拉向最远敌人，并嘲讽周围1格的敌人。",
+        "enhancements": [
+          {
+            "description": "施法时自身获得400点护盾",
+            "level": 10
+          },
+          {
+            "description": "护盾被击破会对周围1格敌人造成400点法术伤害",
+            "level": 40
+          },
+          {
+            "description": "拉向目标途中击飞自身周围1格的敌人1秒",
+            "level": 100
+          }
+        ],
+        "name": "第三只手"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_孙悟空_1671_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1671",
+      "name": "孙悟空",
+      "quality": 4,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至100+500%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+            "level": 40
+          },
+          {
+            "description": "技能范围扩大至4格",
+            "level": 100
+          }
+        ],
+        "name": "大圣神威"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_甄姬_1271_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1271",
+      "name": "甄姬",
+      "quality": 4,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": [
+          "unparsed_active_damage_clause"
+        ]
+      },
+      "skill": {
+        "description": "甄姬施放水流冲击当前目标敌人并弹向3格内最远的敌人，最多弹射4次，每次造成30+40%法术攻击力的法术伤害。敌人在3秒内受到3次水流伤害后会被冻结1秒。若目标附近无其他敌人则直接对其造成3倍水流伤害并直接被冻结。",
+        "enhancements": [
+          {
+            "description": "水流伤害提升至30+75%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "冻结持续时间+1秒，并在冻结结束时额外造成50+100%法术攻击力的法术伤害",
+            "level": 40
+          },
+          {
+            "description": "弹射次数上限+4",
+            "level": 100
+          }
+        ],
+        "name": "叹息水流"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_小乔_1061_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1061",
+      "name": "小乔",
+      "quality": 4,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": [
+          "no_provable_active_damage_component"
+        ]
+      },
+      "skill": {
+        "description": "小乔持续引导1道旋风吹起最近的敌人，使其浮空并每0.2秒受到10%法术攻击力的法术伤害，最多3秒。",
+        "enhancements": [
+          {
+            "description": "旋风伤害提升至15%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "再额外吹起1名附近敌人",
+            "level": 40
+          },
+          {
+            "description": "额外吹起1名最远的敌人",
+            "level": 100
+          }
+        ],
+        "name": "甜蜜恋风"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_大司命_5171_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.6,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5171",
+      "name": "大司命",
+      "quality": 4,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：大司命的普通攻击会持续连接敌人，在3秒内造成5次伤害，每次造成50%物理攻击力的物理伤害。 主动：大司命神巫之力全开，从天而临对附近2格敌人造成150+200%物理攻击力的物理伤害并恢复100+5%最大生命值的生命值。同时凝聚1名范围内敌人的灵体协助战斗（视作召唤物）。之后进入神巫状态，无法恢复法力值，但普攻会恢复10+1%最大生命值的生命值。 灵体继承大司命部分属性，并且在大司命神巫状态攻击时，获得同样的生命恢复效果。",
+        "enhancements": [
+          {
+            "description": "恢复效果提升至250+10%最大生命值",
+            "level": 10
+          },
+          {
+            "description": "神巫状态下大司命可以同时攻击范围内最多3名敌人",
+            "level": 40
+          },
+          {
+            "description": "最大灵体数量提升至3",
+            "level": 100
+          }
+        ],
+        "name": "魂归忘忧"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "物理坦克"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_庄周_1131_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1131",
+      "name": "庄周",
+      "quality": 4,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "庄周幻化梦域保护队友和自身，驱散自身和左右两边2格内友军，并获得200点护盾，持续5秒。",
+        "enhancements": [
+          {
+            "description": "护盾提升至300点",
+            "level": 10
+          },
+          {
+            "description": "在护盾持续时间内免控",
+            "level": 40
+          },
+          {
+            "description": "技能范围扩大至全体友军",
+            "level": 100
+          }
+        ],
+        "name": "天人合一"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_刘邦_1491_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1491",
+      "name": "刘邦",
+      "quality": 4,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "刘邦在4秒内将普攻切换为范围横扫，期间每秒获得50点护盾。被横扫的敌人会被打上印记，友方造成伤害时会消耗标记，造成100+50%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "每秒获得的护盾提升至80点；每拥有15点法术攻击力提升20%攻速",
+            "level": 10
+          },
+          {
+            "description": "技能持续期间每秒为周围1格的友军提供80点护盾",
+            "level": 40
+          },
+          {
+            "description": "护盾被击破对周围1格敌人造成100+50%法术攻击力的法术伤害",
+            "level": 100
+          }
+        ],
+        "name": "统御战场"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_诸葛亮_1901_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1901",
+      "name": "诸葛亮",
+      "quality": 4,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": [
+          "unparsed_active_damage_clause"
+        ]
+      },
+      "skill": {
+        "description": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+        "enhancements": [
+          {
+            "description": "元气弹伤害提升至150+200%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "元气弹击败敌人时恢复自身70%最大法力值",
+            "level": 40
+          },
+          {
+            "description": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+            "level": 100
+          }
+        ],
+        "name": "元气弹"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_韩信_1501_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1501",
+      "name": "韩信",
+      "quality": 4,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "team_utility"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_assassin",
+        "label": "物理刺客",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。 主动：韩信枪挑敌人造成击飞并且造成100点物理伤害。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至100+150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "增加戳刺造成100+200%攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的伤害",
+            "level": 40
+          },
+          {
+            "description": "技能增加至3段，对主目标造成100+200%物理攻击力的伤害，对其他目标造成200点伤害，最后1段击飞周围1格敌人",
+            "level": 100
+          }
+        ],
+        "name": "国士无双"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "刺客"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_蒙犽_5241_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5241",
+      "name": "蒙犽",
+      "quality": 4,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "蒙犽发射8枚导弹攻击随机敌人，每枚造成30+100%物理攻击力的物理伤害。多枚导弹命中同一目标时，后续伤害衰减40%。",
+        "enhancements": [
+          {
+            "description": "导弹伤害提升至30+150%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "多枚导弹命中的伤害衰减降低至10%",
+            "level": 40
+          },
+          {
+            "description": "导弹数量提升至11；每施法1次，下次技能导弹数量+1（至多20枚）",
+            "level": 100
+          }
+        ],
+        "name": "狂轰火线"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_东皇太一_1871_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1871",
+      "name": "东皇太一",
+      "quality": 5,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": [
+          "no_provable_active_damage_component"
+        ]
+      },
+      "skill": {
+        "description": "被动：东皇太一创造3颗能量球绕自身转动。能量球触碰到敌人时会造成其3%最大生命值的法术伤害并恢复东皇3%的最大生命值。 主动：东皇太一施展堕神契约压制目标敌人5秒，期间双方承受等量伤害。若期间目标距离过远，则效果提前中断。",
+        "enhancements": [
+          {
+            "description": "能量球伤害及恢复的最大生命值系数提升至5%",
+            "level": 10
+          },
+          {
+            "description": "压制时能量球转速提升50%",
+            "level": 40
+          },
+          {
+            "description": "技能效果会持续到其中1方阵亡",
+            "level": 100
+          }
+        ],
+        "name": "堕神契约"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_敖隐_5191_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5191",
+      "name": "敖隐",
+      "quality": 5,
+      "relationName": "大河流域",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "敖隐唤出白龙冲向敌人密集处，造成100+75%的物理伤害。",
+        "enhancements": [
+          {
+            "description": "随机解锁\"薄日掌火\"与\"擎天司雨\"两种武器中的一个，造成范围伤害 薄日掌火：普攻附带10%物理攻击力的真实伤害 擎天司雨：普攻恢复20点生命值，施法额外恢复100点生命值",
+            "level": 10
+          },
+          {
+            "description": "薄日掌火：真实伤害提升至15%物理攻击力 擎天司雨：普攻恢复提升至20+2%最大生命值，施法恢复提升至350点",
+            "level": 40
+          },
+          {
+            "description": "同时拥有两种武器效果",
+            "level": 100
+          }
+        ],
+        "name": "隐介藏形"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_鲁班大师_5251_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        27.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5251",
+      "name": "鲁班大师",
+      "quality": 5,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "utility_support",
+        "label": "团队功能辅助",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "鲁班大师跃入敌人最密集处连接3格内1名敌人并强制拽离，在落地后造成50+60%法术攻击力的法术伤害并眩晕0.5秒。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至50+90%法术攻击力，获得250点护盾",
+            "level": 10
+          },
+          {
+            "description": "控制目标增加至最多3名",
+            "level": 40
+          },
+          {
+            "description": "控制目标增加至最多6名",
+            "level": 100
+          }
+        ],
+        "name": "助推跳跃"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "辅助"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_花木兰_1541_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1541",
+      "name": "花木兰",
+      "quality": 5,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：花木兰可以通过战场上的剑切换形态，两种形态的基础属性不同。 主动：轻剑形态下，挥舞双剑对目标发起7段攻击，每段造成80%物理攻击力的物理伤害。 重剑形态下，蓄力3秒后，将前方区域内敌人击飞并眩晕1.5秒，造成80+60%物理攻击力的物理伤害。蓄力期间自身处于免控状态。",
+        "enhancements": [
+          {
+            "description": "轻剑：伤害提升至115%物理攻击力 重剑：眩晕延长至2.5秒",
+            "level": 10
+          },
+          {
+            "description": "轻剑：斩击持续至目标阵亡 重剑：蓄力期间获得40%伤害免疫",
+            "level": 40
+          },
+          {
+            "description": "轻剑：若目标被击败，将立即回满法力值 重剑：技能范围扩大至全场",
+            "level": 100
+          }
+        ],
+        "name": "长城巡守者"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_司空震_5371_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5371",
+      "name": "司空震",
+      "quality": 5,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "magical_basic_attack",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "user_confirmed_model_profile",
+        "evidenceSummary": "用户确认的角色动作画像叠加英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_basic_mage",
+        "label": "法术普攻法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "司空震升入空中，使用雷鼓轰击全场敌人，造成50+65%法术攻击力的法术伤害。 雷霆之王：基础攻击速度增加25%。普攻能产生可传导3次的闪电链，造成100+50%法术攻击力的法术伤害，伤害逐次递减25%。闪电链伤害的40%会转化为自身护盾，上限300点。",
+        "enhancements": [
+          {
+            "description": "雷鼓伤害提升至50+100%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "轰击后化身雷霆之王，持续8秒",
+            "level": 40
+          },
+          {
+            "description": "战斗开始时，变身雷霆之王并轰击全场造成法术伤害，持续到回合结束",
+            "level": 100
+          }
+        ],
+        "name": "雷霆万钧"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_姜子牙_1481_缩略图.webp",
+      "attackDistance": 6,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1481",
+      "name": "姜子牙",
+      "quality": 5,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "姜子牙变为天人形态，获得免控并朝最远的敌方汇聚天地能量2秒，发射1道冲击波对路径上的敌人造成80+80%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "冲击波伤害增加至120+120%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "额外发射2道冲击波，并降低敌人50%生命恢复效果，持续5秒（不可叠加）",
+            "level": 40
+          },
+          {
+            "description": "冲击波改为向周围8个方向散射",
+            "level": 100
+          }
+        ],
+        "name": "天人法则"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_武则天_1361_缩略图.webp",
+      "attackDistance": 4,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1361",
+      "name": "武则天",
+      "quality": 5,
+      "relationName": "河洛",
+      "roleProfile": {
+        "channels": [
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "武则天以女帝权威施行制裁，持续吟唱8秒，每隔0.75秒随机选择1名敌人，在其脚下召唤法阵并引爆，命中时造成100+75%法术攻击力的法术伤害，并使其生命恢复效果降低50%，持续6秒（不可叠加）。法阵在3秒内连续命中相同敌人时，伤害将衰减15%，最多45%。",
+        "enhancements": [
+          {
+            "description": "法阵伤害提升至100+100%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "吟唱结束时还会生成1个额外巨型法阵对所有敌人造成100+125%法术攻击力的法术伤害",
+            "level": 40
+          },
+          {
+            "description": "持续吟唱到回合结束，并且每造成5次伤害后生成巨型法阵，对所有敌人造成100+125%法术攻击力的法术伤害",
+            "level": 100
+          }
+        ],
+        "name": "君命无二"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_吕布_1231_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        30.0,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1231",
+      "name": "吕布",
+      "quality": 5,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "mana_cycle",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "被动：吕布的普通攻击能对身前敌人造成范围伤害。 主动：吕布跃入敌人密集区域，将2格内敌人击飞1秒并造成120+120%物理攻击力的物理伤害，降低其70%生命恢复效果，持续5秒。每命中1名敌人恢复5%最大生命值并在接下来的5秒内提升20%物理吸血。",
+        "enhancements": [
+          {
+            "description": "技能伤害提升至120+200%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "5秒内还会提高自身100%攻击速度",
+            "level": 40
+          },
+          {
+            "description": "技能范围扩大至整个战场",
+            "level": 100
+          }
+        ],
+        "name": "魔神降世"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "战士"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_海月_5211_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5211",
+      "name": "海月",
+      "quality": 5,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": [
+          "unparsed_active_damage_clause"
+        ]
+      },
+      "skill": {
+        "description": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化30%护盾值为最大生命值。 主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+        "enhancements": [
+          {
+            "description": "琉璃法球伤害提升至100+250%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "施法获得可叠加的50+10%最大生命的护盾，持续5秒",
+            "level": 40
+          },
+          {
+            "description": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和自身5%最大生命值的真实伤害",
+            "level": 100
+          }
+        ],
+        "name": "流光"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "法坦"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_鲁班七号_1121_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        21.0,
+        1.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1121",
+      "name": "鲁班七号",
+      "quality": 5,
+      "relationName": "逐鹿",
+      "roleProfile": {
+        "channels": [
+          "mana_cycle",
+          "physical_basic_attack",
+          "physical_skill",
+          "physical_skill_scaling",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "physical_basic_shooter",
+        "label": "物理普攻射手",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "鲁班七号呼唤河豚飞艇朝战场投掷4枚炸弹。炸弹对命中敌人造成50+80%物理攻击力的物理伤害并留下弹坑。弹坑中的敌人每秒受到80%物理攻击力的物理伤害，并降低70%生命恢复效果，持续4秒，效果不可叠加。",
+        "enhancements": [
+          {
+            "description": "炸弹伤害提升至50+100%物理攻击力，弹坑伤害提升至100%物理攻击力",
+            "level": 10
+          },
+          {
+            "description": "投掷炸弹数量提升至8个",
+            "level": 40
+          },
+          {
+            "description": "飞艇会在投掷完炸弹后坠毁，对所有敌人造成200+300%物理攻击力的物理伤害",
+            "level": 100
+          }
+        ],
+        "name": "火力压制"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "射手"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_海诺_5631_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:5631",
+      "name": "海诺",
+      "quality": 5,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "海诺朝目标方向掷出能量化的命运神杖，对命中的敌人造成100+150%法术攻击力的法术伤害并朝目标敌人附近2名敌人掷出子杖，造成50+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "神杖伤害提升至150+250%法术攻击力；子杖伤害提升至100+150%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "会连续施放2次技能",
+            "level": 40
+          },
+          {
+            "description": "对场上至多14名敌人投掷子杖",
+            "level": 100
+          }
+        ],
+        "name": "追芒"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_露娜_1461_缩略图.webp",
+      "attackDistance": 1,
+      "attackStyle": "近战",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.6,
+        1.9,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1461",
+      "name": "露娜",
+      "quality": 5,
+      "relationName": "日落海",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill",
+        "label": "法术技能型",
+        "unresolvedItems": [
+          "max_health_damage_owner_or_target_unknown",
+          "unparsed_active_damage_clause"
+        ]
+      },
+      "skill": {
+        "description": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+        "enhancements": [
+          {
+            "description": "突击伤害系数提升至100+200%法术攻击力",
+            "level": 10
+          },
+          {
+            "description": "击败敌人时恢复15点法力值",
+            "level": 40
+          },
+          {
+            "description": "可连续进行2次突击",
+            "level": 100
+          }
+        ],
+        "name": "新月突击"
+      },
+      "sourceLayers": [
+        "model_derivation",
+        "user_confirmed_model_rule"
+      ],
+      "template": "法刺"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_杨玉环_1761_缩略图.webp",
+      "attackDistance": 5,
+      "attackStyle": "远程",
+      "defaultView": "output",
+      "growthPerLevel": [
+        24.0,
+        1.2,
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1761",
+      "name": "杨玉环",
+      "quality": 5,
+      "relationName": "无阵营",
+      "roleProfile": {
+        "channels": [
+          "high_single_hit_magical_skill",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "magical_skill_mage",
+        "label": "法术技能法师",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一： 清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。 破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "description": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+            "level": 10
+          },
+          {
+            "description": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+            "level": 40
+          },
+          {
+            "description": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+            "level": 100
+          }
+        ],
+        "name": "惊鸿调"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法师"
+    },
+    {
+      "assetUrl": "/assets/webp/英雄牌_周瑜_1241_缩略图.webp",
+      "attackDistance": 2,
+      "attackStyle": "远程",
+      "defaultView": "frontline",
+      "growthPerLevel": [
+        33.0,
+        1.2,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": "hero:1241",
+      "name": "周瑜",
+      "quality": 5,
+      "relationName": "三分之地",
+      "roleProfile": {
+        "channels": [
+          "frontline_survival",
+          "magical_scaling",
+          "magical_skill",
+          "mana_cycle",
+          "team_utility"
+        ],
+        "classification": "model_profile",
+        "evidenceSummary": "英雄成长模板、法力上限与技能正文的可解析攻击系数；权重由当前可用输出、承伤、法力循环和团队功能通道选择。",
+        "id": "frontline",
+        "label": "前排承伤型",
+        "unresolvedItems": []
+      },
+      "skill": {
+        "description": "周瑜召唤火焰，对周围2格范围内敌人造成100+50%法术攻击力的法术伤害并恢复自身100+50%法术攻击力生命值，同时会留下焦土，持续至周瑜被击败。焦土内的敌人每秒受到其1%最大生命值的法术伤害，而周瑜每秒恢复10%法术攻击力+2%最大生命值的生命值。",
+        "enhancements": [
+          {
+            "description": "火焰的伤害和恢复提升至100+120%法术攻击力，焦土恢复提升至20%法术攻击力+2.5%最大生命值",
+            "level": 10
+          },
+          {
+            "description": "施放技能时会对焦土内的敌人唤出火焰风暴，造成100+150%法术攻击力的法术伤害和1.5秒眩晕",
+            "level": 40
+          },
+          {
+            "description": "战斗开始时，将整个战场化为焦土",
+            "level": 100
+          }
+        ],
+        "name": "烽火赤壁"
+      },
+      "sourceLayers": [
+        "model_derivation"
+      ],
+      "template": "法坦"
+    }
+  ],
+  "levelRange": {
+    "default": 40,
+    "max": 100,
+    "min": 1,
+    "quickLevels": [
+      10,
+      40,
+      100
+    ]
+  },
+  "measurementClasses": [
+    "strict",
+    "expected_value",
+    "scenario_bounded",
+    "conditional",
+    "capability_only"
+  ],
+  "measurementComponents": [
+    {
+      "id": "outgoing_damage",
+      "label": "18秒输出增量"
+    },
+    {
+      "id": "counterattack_damage",
+      "label": "受击反伤"
+    },
+    {
+      "id": "physical_damage_capacity",
+      "label": "物理扛伤"
+    },
+    {
+      "id": "magical_damage_capacity",
+      "label": "法术扛伤"
+    },
+    {
+      "id": "action_denial",
+      "label": "动作压制"
+    },
+    {
+      "id": "natural_wand_control",
+      "label": "变形控制"
+    },
+    {
+      "id": "frost_invasion_control",
+      "label": "减速与易伤"
+    },
+    {
+      "id": "recovery_or_shield_denial",
+      "label": "恢复与护盾压制"
+    },
+    {
+      "id": "self_control_removal",
+      "label": "控制解除"
+    },
+    {
+      "id": "capability_or_condition",
+      "label": "条件与能力效果"
+    }
+  ],
+  "rulerAxes": [
+    {
+      "id": "physical_output",
+      "label": "物理输出"
+    },
+    {
+      "id": "magical_output",
+      "label": "法术输出"
+    },
+    {
+      "id": "physical_survival",
+      "label": "物理抗伤"
+    },
+    {
+      "id": "magical_survival",
+      "label": "法术抗伤"
+    }
+  ],
+  "schema": "equipment-value-v30-release/v2",
+  "source": {
+    "hashes": {
+      "equipment": "d0f0b21719be187de542596e3aa7436bb46f765ef46d3c23b3ac8c9f8ac2201b",
+      "heroGrowth": "eb85f45f26cc4898f64af6ef3a7303fb2a6046d6ebd2c07649b25b098c8dbc46"
+    },
+    "layers": [
+      "official_raw",
+      "model_profile",
+      "user_confirmed_model_profile",
+      "model_derivation",
+      "user_confirmed_model_rule"
+    ],
+    "snapshotHash": "359807a19fe4c21845bfe6c7dd7069a7ccd4ee2ec77161d5d2a46c9e41c39908",
+    "snapshotId": "equipment-value-demo:117607447477bb2e"
+  },
+  "statAxes": [
+    {
+      "id": "max_health",
+      "label": "生命"
+    },
+    {
+      "id": "physical_attack",
+      "label": "物攻"
+    },
+    {
+      "id": "magical_attack",
+      "label": "法攻"
+    },
+    {
+      "id": "physical_defense",
+      "label": "物防"
+    },
+    {
+      "id": "magical_defense",
+      "label": "法防"
+    },
+    {
+      "id": "attack_speed",
+      "label": "攻速"
+    },
+    {
+      "id": "critical_rate",
+      "label": "暴击"
+    },
+    {
+      "id": "initial_mana",
+      "label": "初始法力"
+    },
+    {
+      "id": "maximum_mana",
+      "label": "最大法力"
+    }
+  ],
+  "collected_at": "2026-10-13"
+}

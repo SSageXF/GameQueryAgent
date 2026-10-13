@@ -1,0 +1,614 @@
+{
+  "source": {
+    "hashes": {
+      "equipment": "d0f0b21719be187de542596e3aa7436bb46f765ef46d3c23b3ac8c9f8ac2201b",
+      "heroGrowth": "eb85f45f26cc4898f64af6ef3a7303fb2a6046d6ebd2c07649b25b098c8dbc46"
+    },
+    "layers": [
+      "official_raw",
+      "model_profile",
+      "user_confirmed_model_profile",
+      "model_derivation",
+      "user_confirmed_model_rule"
+    ],
+    "snapshotHash": "359807a19fe4c21845bfe6c7dd7069a7ccd4ee2ec77161d5d2a46c9e41c39908",
+    "snapshotId": "equipment-value-demo:117607447477bb2e"
+  },
+  "items": [
+    {
+      "file": "hero-1941.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1941.json?v=359807a19fe4",
+      "hero_id": "hero:1941",
+      "levels": 100,
+      "sha256": "f40694401170b9f3fd8ae8a8e3c9defc4d85349b86facc03335fee83652e033b"
+    },
+    {
+      "file": "hero-5221.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5221.json?v=359807a19fe4",
+      "hero_id": "hero:5221",
+      "levels": 100,
+      "sha256": "d0fda718969806879d3ad1759ebd5070ac5fbd0ed11766e065cd02aded870000"
+    },
+    {
+      "file": "hero-1181.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1181.json?v=359807a19fe4",
+      "hero_id": "hero:1181",
+      "levels": 100,
+      "sha256": "9fa8ed4e7be55756f31eb940372047d68c2e2a134ec584842b27567fad258c82"
+    },
+    {
+      "file": "hero-5031.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5031.json?v=359807a19fe4",
+      "hero_id": "hero:5031",
+      "levels": 100,
+      "sha256": "84451e8baa131f7a70c4d7ab947522a82d7d207629e0837aa6a8a06f5899c093"
+    },
+    {
+      "file": "hero-1111.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1111.json?v=359807a19fe4",
+      "hero_id": "hero:1111",
+      "levels": 100,
+      "sha256": "96e81cfee7be7571ec4e789f1c6736711bc0d3263963d9cb6e662f79b1b9088c"
+    },
+    {
+      "file": "hero-1971.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1971.json?v=359807a19fe4",
+      "hero_id": "hero:1971",
+      "levels": 100,
+      "sha256": "8b7d4c95bfe8b14805a7abe94fe5cf3f2910313aaffb82675686e6d8a17d3900"
+    },
+    {
+      "file": "hero-1821.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1821.json?v=359807a19fe4",
+      "hero_id": "hero:1821",
+      "levels": 100,
+      "sha256": "7b929e4cd4009617101c00434c1ea33dae87859665c1baad034a3bc8de0995ab"
+    },
+    {
+      "file": "hero-1731.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1731.json?v=359807a19fe4",
+      "hero_id": "hero:1731",
+      "levels": 100,
+      "sha256": "07f4b4d6c737619e891a994813e33c7ce2d59eef57480ce1bf2c6a637aa9b090"
+    },
+    {
+      "file": "hero-1681.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1681.json?v=359807a19fe4",
+      "hero_id": "hero:1681",
+      "levels": 100,
+      "sha256": "5e1fe53f8aa8a77979d0476fd91063d7028519aeccf99998b95378d4d3220a5b"
+    },
+    {
+      "file": "hero-5141.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5141.json?v=359807a19fe4",
+      "hero_id": "hero:5141",
+      "levels": 100,
+      "sha256": "12c074116d3f95ba4493c7df627f14d6cdd2ab3b901542612bd895d9347e8634"
+    },
+    {
+      "file": "hero-5041.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5041.json?v=359807a19fe4",
+      "hero_id": "hero:5041",
+      "levels": 100,
+      "sha256": "3da8fcf2adeb959bbe7ff21a1d69b60548e840ea164e9ddbff2e422d57c0417e"
+    },
+    {
+      "file": "hero-1351.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1351.json?v=359807a19fe4",
+      "hero_id": "hero:1351",
+      "levels": 100,
+      "sha256": "abd04d2b4fd74424b5203199d705626010117ab0054a74b2bd3583130a3c3932"
+    },
+    {
+      "file": "hero-1891.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1891.json?v=359807a19fe4",
+      "hero_id": "hero:1891",
+      "levels": 100,
+      "sha256": "48212e862f69dc9f3038d7a4f939e5421a5324f367d0792288af8130a13da9e9"
+    },
+    {
+      "file": "hero-1981.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1981.json?v=359807a19fe4",
+      "hero_id": "hero:1981",
+      "levels": 100,
+      "sha256": "4ea3f9490a5085721a5521b3dcfbe91dc1483e409481552eccbcfdbc1e0644fc"
+    },
+    {
+      "file": "hero-1211.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1211.json?v=359807a19fe4",
+      "hero_id": "hero:1211",
+      "levels": 100,
+      "sha256": "37a6cb824bb239c2137a0a9efcc44a229be3749bd49d5c0fe92a5fc24534ce1a"
+    },
+    {
+      "file": "hero-3121.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-3121.json?v=359807a19fe4",
+      "hero_id": "hero:3121",
+      "levels": 100,
+      "sha256": "f83c9ef0f6100e050d9358fbe492f5b22918a99769072505cf86face3cc3463e"
+    },
+    {
+      "file": "hero-5091.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5091.json?v=359807a19fe4",
+      "hero_id": "hero:5091",
+      "levels": 100,
+      "sha256": "b29f8ea8e2d44f202abbd44190ba94a0a414fb428dbf649c92246b501266ac1e"
+    },
+    {
+      "file": "hero-1281.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1281.json?v=359807a19fe4",
+      "hero_id": "hero:1281",
+      "levels": 100,
+      "sha256": "69acf6515ecd7679aab434481e0e4a5a83071aa7867b7dd81c66033faf47fb70"
+    },
+    {
+      "file": "hero-1741.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1741.json?v=359807a19fe4",
+      "hero_id": "hero:1741",
+      "levels": 100,
+      "sha256": "4dc919793ff7f34f651383a93aeea893f9350a5cc5b8a68f3dde978a0d4bc578"
+    },
+    {
+      "file": "hero-1321.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1321.json?v=359807a19fe4",
+      "hero_id": "hero:1321",
+      "levels": 100,
+      "sha256": "862a2cc9cd90ebd95fdfabc335ce817b1ac0ad8b3bb95d2f8a448acb9e0546fc"
+    },
+    {
+      "file": "hero-1071.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1071.json?v=359807a19fe4",
+      "hero_id": "hero:1071",
+      "levels": 100,
+      "sha256": "f6038dcbeb857773c02949e21f978a3a8ef206736f5bf8fc65611c88897acd5e"
+    },
+    {
+      "file": "hero-1911.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1911.json?v=359807a19fe4",
+      "hero_id": "hero:1911",
+      "levels": 100,
+      "sha256": "85c25e4d1bbf54359086411328b1f153f7284860f7217d79ec113b31a9e7ef4d"
+    },
+    {
+      "file": "hero-1991.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1991.json?v=359807a19fe4",
+      "hero_id": "hero:1991",
+      "levels": 100,
+      "sha256": "29595f8be46aedf09f7675b0f9e340dc58349f8a616a852fcd785d7b44aed6f3"
+    },
+    {
+      "file": "hero-1961.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1961.json?v=359807a19fe4",
+      "hero_id": "hero:1961",
+      "levels": 100,
+      "sha256": "539b06f1b390d6c6e81e0fbd8893b4b165a6976e052b41270f19ce1fb48126a0"
+    },
+    {
+      "file": "hero-1081.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1081.json?v=359807a19fe4",
+      "hero_id": "hero:1081",
+      "levels": 100,
+      "sha256": "14f8c371d4e9760b390f7c25bb98f45e0607ecb30e6d55038185421aef3cf481"
+    },
+    {
+      "file": "hero-1951.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1951.json?v=359807a19fe4",
+      "hero_id": "hero:1951",
+      "levels": 100,
+      "sha256": "cc2df56af44b1eb658dc7fc6c287d0f4f46e6a1442ce720a9f38be1259dfd8b9"
+    },
+    {
+      "file": "hero-1051.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1051.json?v=359807a19fe4",
+      "hero_id": "hero:1051",
+      "levels": 100,
+      "sha256": "c19e15509e4135400cf15141c5ec66d48a3d45f701d42d9184ab0045cdba997a"
+    },
+    {
+      "file": "hero-5271.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5271.json?v=359807a19fe4",
+      "hero_id": "hero:5271",
+      "levels": 100,
+      "sha256": "288d168725947f12e1e101b8f48378b9bde78d1b3d89a0b39e78b8310f3e0158"
+    },
+    {
+      "file": "hero-1841.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1841.json?v=359807a19fe4",
+      "hero_id": "hero:1841",
+      "levels": 100,
+      "sha256": "5ea8a8b8ea059a35d652f5bc20b36815599f3ddf41325fb3912f6b6e93381fe9"
+    },
+    {
+      "file": "hero-5061.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5061.json?v=359807a19fe4",
+      "hero_id": "hero:5061",
+      "levels": 100,
+      "sha256": "1a0ec477834d2f1886637421deb9f53f5e2fd75f67fdbdb6c12006a75e365361"
+    },
+    {
+      "file": "hero-5641.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5641.json?v=359807a19fe4",
+      "hero_id": "hero:5641",
+      "levels": 100,
+      "sha256": "91acae5b221aa3ae7e06efeb1a0a74791635e8f234b6ab57a35bb1681ac4fca7"
+    },
+    {
+      "file": "hero-1771.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1771.json?v=359807a19fe4",
+      "hero_id": "hero:1771",
+      "levels": 100,
+      "sha256": "520b958f0766e8515acd1b971c6ce2fac0fc3bf3168e04fba97e4a6ddc2a0ee4"
+    },
+    {
+      "file": "hero-1931.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1931.json?v=359807a19fe4",
+      "hero_id": "hero:1931",
+      "levels": 100,
+      "sha256": "ec1a2096ac9daf751e166a86e03dcfa4745a42977b8c3afadda6f039eb2d99c5"
+    },
+    {
+      "file": "hero-1201.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1201.json?v=359807a19fe4",
+      "hero_id": "hero:1201",
+      "levels": 100,
+      "sha256": "a856f8cb17795786c75c1d964f085f2723b43175d029f887d774ef15c2cdc4ef"
+    },
+    {
+      "file": "hero-5011.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5011.json?v=359807a19fe4",
+      "hero_id": "hero:5011",
+      "levels": 100,
+      "sha256": "76a3c5d31beffcf26c1c123ca65c44b6d7b49d889e33d7185fb949cfc84fd787"
+    },
+    {
+      "file": "hero-1161.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1161.json?v=359807a19fe4",
+      "hero_id": "hero:1161",
+      "levels": 100,
+      "sha256": "3fa2751c941fd0353ba9c160636366122b6b6eb7765486155eb826e492b84fab"
+    },
+    {
+      "file": "hero-5181.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5181.json?v=359807a19fe4",
+      "hero_id": "hero:5181",
+      "levels": 100,
+      "sha256": "5259a3875d41ab23c37a30550d2c365f79292b0622b0c1df551519848ef1e904"
+    },
+    {
+      "file": "hero-5021.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5021.json?v=359807a19fe4",
+      "hero_id": "hero:5021",
+      "levels": 100,
+      "sha256": "3ab86d20ef579181e949b4c2f1d680c31be7a15220d37116fcd1b9b2d224f497"
+    },
+    {
+      "file": "hero-1391.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1391.json?v=359807a19fe4",
+      "hero_id": "hero:1391",
+      "levels": 100,
+      "sha256": "754cf74e44c9c9b7f6c211bd18a6cc3ddffac827f1b361eebabb651e5b214ad4"
+    },
+    {
+      "file": "hero-5231.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5231.json?v=359807a19fe4",
+      "hero_id": "hero:5231",
+      "levels": 100,
+      "sha256": "fb9def5f5dcf36f3719af3c7dc6b6f6cb30248b7b597611bc174928561e41abd"
+    },
+    {
+      "file": "hero-1141.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1141.json?v=359807a19fe4",
+      "hero_id": "hero:1141",
+      "levels": 100,
+      "sha256": "2b1fd796f871bdc0c2fdfe450f3211f3596c1087ea14f66f1221986cfa1a102d"
+    },
+    {
+      "file": "hero-5111.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5111.json?v=359807a19fe4",
+      "hero_id": "hero:5111",
+      "levels": 100,
+      "sha256": "3bcb633313d995d799233c09c9281b3172f8e88c7535686eff1670fbaa15649d"
+    },
+    {
+      "file": "hero-1441.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1441.json?v=359807a19fe4",
+      "hero_id": "hero:1441",
+      "levels": 100,
+      "sha256": "2a08affa20a77f0607fb106e9972e4cd6c5b3d8995621542c5f3bd211e085298"
+    },
+    {
+      "file": "hero-1331.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1331.json?v=359807a19fe4",
+      "hero_id": "hero:1331",
+      "levels": 100,
+      "sha256": "7d503001330570c780213f8991e2f74e1a9bf143703a24bdf53802fa4c02b91b"
+    },
+    {
+      "file": "hero-1561.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1561.json?v=359807a19fe4",
+      "hero_id": "hero:1561",
+      "levels": 100,
+      "sha256": "fc545367ffa98b588c242c22e0241bd7c0ac4462294683f378469eda1a9156ea"
+    },
+    {
+      "file": "hero-5771.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5771.json?v=359807a19fe4",
+      "hero_id": "hero:5771",
+      "levels": 100,
+      "sha256": "3f480d594171a722f7d597417e2b0f98999a3f9e9fa0669efa738cd881055c07"
+    },
+    {
+      "file": "hero-1661.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1661.json?v=359807a19fe4",
+      "hero_id": "hero:1661",
+      "levels": 100,
+      "sha256": "03835cbed3015128ec580682366daff25f7b77cdc61bfda1c2205959c416889e"
+    },
+    {
+      "file": "hero-1751.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1751.json?v=359807a19fe4",
+      "hero_id": "hero:1751",
+      "levels": 100,
+      "sha256": "e1e9ebba195c1d7f3bb8fdb29a783b4aa3d00b7d0793c4bc8d6b56966bb9d8f9"
+    },
+    {
+      "file": "hero-1411.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1411.json?v=359807a19fe4",
+      "hero_id": "hero:1411",
+      "levels": 100,
+      "sha256": "6ed2dd5670a034024be3fcd9e766beeaac3d450c496415166912aad52a826652"
+    },
+    {
+      "file": "hero-1421.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1421.json?v=359807a19fe4",
+      "hero_id": "hero:1421",
+      "levels": 100,
+      "sha256": "3e99bfa35d332cd81bcdf12d38f0fcd552a8dd6134d06dcc2ed291dbb885a80d"
+    },
+    {
+      "file": "hero-5051.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5051.json?v=359807a19fe4",
+      "hero_id": "hero:5051",
+      "levels": 100,
+      "sha256": "39725b3610392174d788f84b892ad293ad2d17eca8535c42c38a182c5eef0a78"
+    },
+    {
+      "file": "hero-5311.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5311.json?v=359807a19fe4",
+      "hero_id": "hero:5311",
+      "levels": 100,
+      "sha256": "f72c8ac979ac4ee387736c3bc249382794624a26ecd9092ab96af232f5c797b8"
+    },
+    {
+      "file": "hero-1591.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1591.json?v=359807a19fe4",
+      "hero_id": "hero:1591",
+      "levels": 100,
+      "sha256": "77d5f7a4a4eaec022a86cc9c16797170b88d2072d7a1d2c3a6e851330cab6813"
+    },
+    {
+      "file": "hero-5451.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5451.json?v=359807a19fe4",
+      "hero_id": "hero:5451",
+      "levels": 100,
+      "sha256": "2cce8d5816136eff766bbc6f8dc1e648a50bb1675cf43e481a00112eb4493da0"
+    },
+    {
+      "file": "hero-5131.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5131.json?v=359807a19fe4",
+      "hero_id": "hero:5131",
+      "levels": 100,
+      "sha256": "08f0c4fd2a5bb61a0514b8d31b2b85d02ea14bfa318699c83962c3451321464c"
+    },
+    {
+      "file": "hero-3551.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-3551.json?v=359807a19fe4",
+      "hero_id": "hero:3551",
+      "levels": 100,
+      "sha256": "bb920b6f970a85a52c0ad31962dda3e0e7dd2427bd9b36b716b2747f6fe642a3"
+    },
+    {
+      "file": "hero-1191.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1191.json?v=359807a19fe4",
+      "hero_id": "hero:1191",
+      "levels": 100,
+      "sha256": "dccf9ede1717fa35002e70c365ff99fff1537793e00258cffcea76394b4277e9"
+    },
+    {
+      "file": "hero-1101.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1101.json?v=359807a19fe4",
+      "hero_id": "hero:1101",
+      "levels": 100,
+      "sha256": "0bb933e436a1a436a72e55ee6ff7a0e3b8ce60ffd522e64f362a23a534cb7fa0"
+    },
+    {
+      "file": "hero-5071.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5071.json?v=359807a19fe4",
+      "hero_id": "hero:5071",
+      "levels": 100,
+      "sha256": "f8321836abaed4e23d293f2beb36784a435aefee024cbf67e1e842b0d973a96c"
+    },
+    {
+      "file": "hero-1311.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1311.json?v=359807a19fe4",
+      "hero_id": "hero:1311",
+      "levels": 100,
+      "sha256": "c444316c57f8e04f80f525626616d32f5f52ba41ed0038bf6202dbd1c29c4f27"
+    },
+    {
+      "file": "hero-1831.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1831.json?v=359807a19fe4",
+      "hero_id": "hero:1831",
+      "levels": 100,
+      "sha256": "efce4f3254f518bca3af6a11dd4104d820c4e738eeeba83f030208b21d672060"
+    },
+    {
+      "file": "hero-1861.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1861.json?v=359807a19fe4",
+      "hero_id": "hero:1861",
+      "levels": 100,
+      "sha256": "70a0bef38332d87990009709f993b30da0635e25df1948be8acd95b64ce88d75"
+    },
+    {
+      "file": "hero-1671.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1671.json?v=359807a19fe4",
+      "hero_id": "hero:1671",
+      "levels": 100,
+      "sha256": "00b5eacf965fe17f8deb360e1fccfe2b5cb1368e460922fba29a31c428b554e9"
+    },
+    {
+      "file": "hero-1271.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1271.json?v=359807a19fe4",
+      "hero_id": "hero:1271",
+      "levels": 100,
+      "sha256": "2c662c703e9e7e9750a051f3a5337e0ca4ef0bd127a538315b28e11ada020e73"
+    },
+    {
+      "file": "hero-1061.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1061.json?v=359807a19fe4",
+      "hero_id": "hero:1061",
+      "levels": 100,
+      "sha256": "6edc5d0183506a192a191bcb922a72c4c0f782e438fb3d4ca93248b3b364b639"
+    },
+    {
+      "file": "hero-5171.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5171.json?v=359807a19fe4",
+      "hero_id": "hero:5171",
+      "levels": 100,
+      "sha256": "2f14458374510fa7e5fa3dba5039c40a0edbbcfba6fdfbdd0b6fdf40fb0dfda1"
+    },
+    {
+      "file": "hero-1131.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1131.json?v=359807a19fe4",
+      "hero_id": "hero:1131",
+      "levels": 100,
+      "sha256": "d6fb3139ce7a9cfbb128c1dbd77113f215ef88ed38ffaf751e8524366061c3f8"
+    },
+    {
+      "file": "hero-1491.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1491.json?v=359807a19fe4",
+      "hero_id": "hero:1491",
+      "levels": 100,
+      "sha256": "1ac9df0f65ec8a4a7755e849694aa218f19df61119f7f19b4aa3aa54f29094c0"
+    },
+    {
+      "file": "hero-1901.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1901.json?v=359807a19fe4",
+      "hero_id": "hero:1901",
+      "levels": 100,
+      "sha256": "2c70db149de31362eb58ea100fec7317d46e502bf5ab2f398b6515160026b0d3"
+    },
+    {
+      "file": "hero-1501.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1501.json?v=359807a19fe4",
+      "hero_id": "hero:1501",
+      "levels": 100,
+      "sha256": "2269aced681ad2c3e724eccd371778fe0a4ef57c96c2e9004bea71beb2aafd2e"
+    },
+    {
+      "file": "hero-5241.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5241.json?v=359807a19fe4",
+      "hero_id": "hero:5241",
+      "levels": 100,
+      "sha256": "00b0d3100147b945cf24549351a28d69b0245c2c41457c9f385911fcd31b013e"
+    },
+    {
+      "file": "hero-1871.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1871.json?v=359807a19fe4",
+      "hero_id": "hero:1871",
+      "levels": 100,
+      "sha256": "34e874cf1e6e453ad00608c5cc166c96c0703f4e96b1b738ea7604a20b7a6be1"
+    },
+    {
+      "file": "hero-5191.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5191.json?v=359807a19fe4",
+      "hero_id": "hero:5191",
+      "levels": 100,
+      "sha256": "825e61e0d3ede794626fd4a926670ab882606323a186b5f90baf307bc803d1e6"
+    },
+    {
+      "file": "hero-5251.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5251.json?v=359807a19fe4",
+      "hero_id": "hero:5251",
+      "levels": 100,
+      "sha256": "6fcc805c05506cabb820358bb3bfa0b4a1c4b68daaad3feb465a72dd59b73991"
+    },
+    {
+      "file": "hero-1541.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1541.json?v=359807a19fe4",
+      "hero_id": "hero:1541",
+      "levels": 100,
+      "sha256": "35084abe1d8d286fca265f3e668c2ccfa6337548aded496b094a9e96a960c655"
+    },
+    {
+      "file": "hero-5371.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5371.json?v=359807a19fe4",
+      "hero_id": "hero:5371",
+      "levels": 100,
+      "sha256": "2e58f828a55c131f3ec3c9531653d075cbafcbf303044c10ee1f831d40c2504f"
+    },
+    {
+      "file": "hero-1481.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1481.json?v=359807a19fe4",
+      "hero_id": "hero:1481",
+      "levels": 100,
+      "sha256": "ec8e3ac0a35accf489ad26148ccdfec61169cca0f6ee4a3725fdc234e4e92516"
+    },
+    {
+      "file": "hero-1361.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1361.json?v=359807a19fe4",
+      "hero_id": "hero:1361",
+      "levels": 100,
+      "sha256": "fa510aa6cff6149edea8e0ff0394c6a3c17222bdcf9611880106d44dc5150162"
+    },
+    {
+      "file": "hero-1231.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1231.json?v=359807a19fe4",
+      "hero_id": "hero:1231",
+      "levels": 100,
+      "sha256": "3cdbbd2c8acd5480e556f081a89937bd072e258091c9fe13ef55a8ecb4197125"
+    },
+    {
+      "file": "hero-5211.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5211.json?v=359807a19fe4",
+      "hero_id": "hero:5211",
+      "levels": 100,
+      "sha256": "e712976a1c723563931e228d09672cf99344f03bf25809115bf11bfd28356777"
+    },
+    {
+      "file": "hero-1121.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1121.json?v=359807a19fe4",
+      "hero_id": "hero:1121",
+      "levels": 100,
+      "sha256": "2bb5c3b41730380cab6017ff1d6fa332c3d644408f6232181abb387e23c2d58d"
+    },
+    {
+      "file": "hero-5631.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-5631.json?v=359807a19fe4",
+      "hero_id": "hero:5631",
+      "levels": 100,
+      "sha256": "ee419575281f850b596d2588a444897119b87b833f85f0eebd4ae123003a3ae3"
+    },
+    {
+      "file": "hero-1461.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1461.json?v=359807a19fe4",
+      "hero_id": "hero:1461",
+      "levels": 100,
+      "sha256": "2a67f39fff23424f12bf1a1fa4cab22806b5396af08baf23d75db6e9d755a0c5"
+    },
+    {
+      "file": "hero-1761.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1761.json?v=359807a19fe4",
+      "hero_id": "hero:1761",
+      "levels": 100,
+      "sha256": "6695f775c1723685db642f9b6ced31f41dbbcbda1c22ca3cccd877d4d03f9e7e"
+    },
+    {
+      "file": "hero-1241.json.gz",
+      "url": "https://assets.wanxiangqiwiki.com/equipment-value-v30/heroes/hero-1241.json?v=359807a19fe4",
+      "hero_id": "hero:1241",
+      "levels": 100,
+      "sha256": "d2ab94d2cb0c31ee47c4789c93cd08afea90f93380adfd5ebc795e94e494f5cb"
+    }
+  ]
+}
