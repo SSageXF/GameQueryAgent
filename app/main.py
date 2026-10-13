@@ -68,7 +68,7 @@ def create_app(settings: Settings | None = None, agent: Agent | None = None) -> 
     @app.get("/api/health")
     async def health():
         records = app.state.agent.retriever.records
-        return {"mode": settings.mode, "model_configured": settings.ready, "knowledge_count": len(records), "snapshot_date": max(r["collected_at"] for r in records), "request_timeout_seconds": settings.timeout+settings.planner_timeout, "query_planning": "model_with_fallback" if settings.mode=='live' else 'mock_rules'}
+        return {"mode": settings.mode, "retrieval_backend": settings.retrieval_backend, "model_configured": settings.ready, "knowledge_count": len(records), "snapshot_date": max(r["collected_at"] for r in records), "request_timeout_seconds": settings.timeout+settings.planner_timeout, "query_planning": "model_with_fallback" if settings.mode=='live' else 'mock_rules'}
 
     @app.post("/api/chat", response_model=ChatResponse)
     async def chat(request: ChatRequest):

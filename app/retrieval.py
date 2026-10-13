@@ -39,7 +39,7 @@ class Retriever:
                 and re.search(r'是否|能否|能不能|顺序|时点|重复|独立|冲突',query)
                 and r.get('mode')==fallback_plan(query).mode][:3]
 
-    def rank(self,query,mode='万象大赛',include_history=False):
+    def rank(self,query,mode='万象大赛',include_history=False,semantic_scores=None):
         q=set(tokens(query));found=[n for n in self.names if n in query]
         entities={n for n in found if not any(n!=other and n in other for other in found)}
         leveling=bool(re.search(r'(?:要不要|该不该|是否|先|建议).{0,4}升级|升级.{0,6}(?:还是|划算)',query))
@@ -61,7 +61,8 @@ class Retriever:
             if date_terms and row.get('section') in {'official_updates','site_updates'} and not any(t in row['title'] or t in row['version_scope'] for t in date_terms):continue
             anchors=[a for a in row.get('aliases',[]) if a and a in query]
             overlap=q&self.titles[i]
-            if not anchors and len(overlap)<2:continue
+            semantic=(semantic_scores or {}).get(row['id'],0)
+            if not anchors and len(overlap)<2 and semantic<0.8:continue
             score=sum(3+min(len(a),6) for a in anchors)+len(overlap)*1.5
             for t in q:
                 tf=counts[t]
@@ -73,6 +74,7 @@ class Retriever:
             if date_terms and any(t in row['title'] for t in date_terms):score+=80
             if row.get('field')=='original':score+=3
             if len(row['body'])<12 and row.get('field') not in {'original','awakening'}:score-=12
+            score+=semantic*20
             if score>=6:ranked.append((score,row))
         ranked.sort(key=lambda x:(-x[0],x[1]['id']))
         return ranked

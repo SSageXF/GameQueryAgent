@@ -1,0 +1,43 @@
+# 向量知识库
+
+默认后端为 Qdrant 本地持久化模式，嵌入使用 FastEmbed 的 `BAAI/bge-small-zh-v1.5`（512 维中文模型）。聊天模型与嵌入模型独立，不需要新的付费 API。原始 JSON 和来源快照保留供审计，运行时正文从 Qdrant payload 读取；Python 只保存来源、名称等目录元数据，不再为全部正文建立词频表。
+
+## 构建与更新
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.txt
+.\.venv\Scripts\python.exe -m scripts.index_knowledge
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+首次需要下载模型。索引导入 `data/knowledge.json` 和 `data/wiki/records.json` 全部记录，保留知识编号、正文、URL、来源层级、游戏模式和版本信息。长正文按窗口嵌入后归一化平均，避免只嵌入开头；原文仍完整保存在 payload。
+
+模型固定到 Qdrant Hugging Face 仓库版本 `46fbe35fd4374a00fee7de77dfddaeb6dd6a2c59`；后端启动只加载本地模型，不访问下载服务。Windows Anaconda 环境优先在进程中加载系统 C++ 运行库，避免 Conda 旧 DLL 与 ONNX 冲突；不修改系统或 Conda 安装。
+
+索引指纹包含源文件、模型名称和处理版本；同一份完整索引再次构建直接复用。数据变化会生成新集合，全部记录写入并核对数量后原子替换清单。旧集合保留，避免构建失败破坏已有数据。源数据变化后运行时拒绝旧指纹，要求重新索引。模型与数据库生成物已被 Git 忽略。
+
+索引程序与后端不能同时占用本地 Qdrant 目录；停止后端再更新，服务使用单 worker。当前本地模式适用于本项目规模，并不声称具备服务端 HNSW 的规模和并发性能；扩大部署时应迁移至 Qdrant 服务端。
+
+## 检索流程
+
+1. 意图区分与模型检索规划沿用现有流程。
+2. 本地模型把检索问题转成向量，Qdrant 返回最多 100 个候选；在数据库中先过滤模式、核验状态、待确认和历史资料。
+3. 明确出现的英雄等实体补充精确匹配候选，减少专有名称被语义搜索遗漏。
+4. 对候选做词法和向量分数混合排序，再应用原有实体、栏目、日期等限制。没有足够词法依据的候选需满足较高的余弦相似度门槛，该门槛是工程初值，不代表正确率。
+5. 多条查询合并，默认选择最多六条证据供生成模型回答，引用仍对应原始知识编号。
+
+多英雄购买问题优先保留购买成本和各明确英雄的卡面原文，避免有限证据全部被同一个英雄占满。用户反馈的五英雄商店场景现可在六条证据内同时覆盖全部英雄与成本；这只是资料覆盖改善，不代表策略建议一定正确。
+
+检索在线程中执行，避免本地嵌入阻塞异步接口。查询结果有有界缓存。`/api/health` 返回实际配置的检索后端。
+
+向量化不会缩小原始资料，也不会消除模型幻觉。数据库、模型缓存会增加磁盘占用；这里改善的是检索方式和应用层全文索引方式。Qdrant 本地实现仍会占用向量与 payload 内存，不把这次迁移表述为已经验证的内存优化。
+
+## 验证
+
+`python -m pytest -q`：现有规则回归，以及临时真实 Qdrant 数据库的向量召回、版本/模式/待确认过滤、过期索引拒绝。单元测试用固定测试向量，不证明中文嵌入质量。
+
+`python -m eval.wiki_eval --output eval/reports/vector-query.json`：使用实际索引和中文模型执行十类知识检索。`--live` 额外调用聊天模型生成检索词。检索命中不等于回答正确。
+
+2026-10-13 本机已导入 7,731 条知识。实际向量检索十类样本全部命中；接口联调用真实向量检索与 Mock 回答，未将 Mock 结果作为模型质量评分。报告保存于 `eval/reports/2026-10-13-vector/`，其中初次 9/10 的报告保留用于记录修复前状态。
+
+参考：[Qdrant Python 客户端](https://github.com/qdrant/qdrant-client)、[FastEmbed 支持的模型](https://qdrant.github.io/fastembed/examples/Supported_Models/)。

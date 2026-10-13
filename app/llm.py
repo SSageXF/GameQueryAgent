@@ -79,9 +79,17 @@ class LLM:
         }
         try:
             async with httpx.AsyncClient(timeout=self.settings.timeout, transport=self.transport, follow_redirects=False) as client:
-                response = await client.post(self.settings.base_url + "/chat/completions", json=payload, headers={"Authorization": "Bearer " + self.settings.api_key})
-                response.raise_for_status()
-                content = response.json()["choices"][0]["message"]["content"]
+                for attempt in range(2):
+                    response = await client.post(self.settings.base_url + "/chat/completions", json=payload, headers={"Authorization": "Bearer " + self.settings.api_key})
+                    response.raise_for_status()
+                    choice = response.json()["choices"][0]
+                    if choice.get('finish_reason') == 'length':
+                        if attempt == 0 and payload['max_tokens'] < 4000:
+                            payload['max_tokens'] = 4000
+                            continue
+                        raise AgentError('model_output_truncated', '模型输出达到长度上限，未能生成完整回答，请缩小问题范围后重试。')
+                    content = choice['message']['content']
+                    break
             if not isinstance(content, str):
                 raise ValueError("Missing textual completion")
             content = re.sub(r"^```(?:json)?\s*|\s*```$", "", content.strip())

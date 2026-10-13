@@ -1,6 +1,6 @@
 # 弈宝 · 王者万象棋问答 Agent
 
-一个有来源、能追问的新手训练向导。FastAPI + 原生 HTML/JS + 本地 JSON 知识库，无数据库或前端构建步骤。
+一个有来源、能追问的新手训练向导。FastAPI + 原生 HTML/JS + Qdrant 本地向量数据库，使用 BGE 中文嵌入模型，无需 Docker 或额外嵌入 API。
 
 **当前状态：Wiki公开栏目全量快照已接入，真实模型先生成检索词再回答；10类真实检索抽查通过。模型回答质量尚未完成独立验收，详见[知识库与检索说明](docs/full-wiki.md)。**
 
@@ -16,6 +16,7 @@ Copy-Item .env.example .env
 
 ```dotenv
 AGENT_MODE=live
+RETRIEVAL_BACKEND=vector
 LLM_BASE_URL=https://your-provider.example/v1
 LLM_API_KEY=your-local-key
 LLM_MODEL=your-model-name
@@ -27,9 +28,16 @@ LLM_PLANNER_TIMEOUT_SECONDS=20
 
 密钥只放后端 `.env`，该文件已忽略。无需将密钥交给网页。环境变量优先于 `.env`；如果此前在终端设置过 Mock，先运行 `Remove-Item Env:AGENT_MODE -ErrorAction SilentlyContinue`。修改配置后重启服务。
 
+生成模型返回 `finish_reason=length` 时，后端会将输出预算提高到 4000 token 重试一次（首次已经是 4000 时不重试），两次调用共用原有生成阶段超时。推理模型的推理过程也可能占用输出预算；重试会增加调用费用和耗时。再次截断会返回 `model_output_truncated`，不会展示不完整答案。
+
 ```powershell
+.\.venv\Scripts\python.exe -m scripts.index_knowledge
 .\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
+
+首次索引会下载 `BAAI/bge-small-zh-v1.5` 并向量化全部知识。之后启动复用本地数据库；更新 Wiki 后停止后端，重新运行索引命令再启动。模型缓存位于 `data/models/`，数据库位于 `data/vector/`，均不提交 Git。原始 JSON 保留作核验与重建材料。详见[向量检索说明](docs/vector-retrieval.md)。
+
+本地 Qdrant 仅支持一个进程打开同一目录，请保持单 worker，索引时先停止后端。`RETRIEVAL_BACKEND=lexical` 可显式切回旧检索作对照；向量索引缺失或过期时会明确报错，不会静默回退。
 
 访问 <http://127.0.0.1:8000>，接口说明 <http://127.0.0.1:8000/docs>。默认仅绑定本机；本 Demo 没有面向公网的鉴权和限流。
 

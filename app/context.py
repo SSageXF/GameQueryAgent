@@ -34,6 +34,14 @@ def prepare(message: str, history: list[Message], enhanced: bool = True, entity_
     query = normalize(message, enhanced)
     if not enhanced:
         return Context(query, recent)
+    # Elaboration refers to the previous topic, not necessarily a named card.
+    elaboration = re.compile(r"^(?:(?:你)?(?:上面|刚才|之前)说的|上文|这个|那)?[，,\s]*(?:请|再|能不能|可以)?(?:详细|具体)?(?:讲|说|解释|展开说说|展开)(?:得)?(?:详细|具体|清楚)?(?:一)?(?:点|些|下)?[。！!？?\s]*$")
+    if elaboration.fullmatch(query):
+        users = [normalize(x['content']) for x in recent if x['role'] == 'user']
+        topics = [x for x in users if not elaboration.fullmatch(x)]
+        if topics:
+            return Context(topics[-1] + '；追问：' + query, recent)
+        return Context(query, recent, True)
     is_followup = bool(re.search(r"这个|那个|它|他|她|那.*呢|还要|然后呢", query))
     people_names=tuple(dict.fromkeys([*PEOPLE,*(entity_names or [])]))
     def mentioned(text):

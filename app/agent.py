@@ -21,7 +21,13 @@ class Agent:
     def __init__(self, settings: Settings, llm=None, retriever=None, enhanced=True):
         self.settings = settings
         self.llm = llm or LLM(settings)
-        self.retriever = retriever or Retriever(enhanced=enhanced)
+        if retriever is not None:
+            self.retriever = retriever
+        elif settings.retrieval_backend == 'vector':
+            from .vector_store import get_vector_retriever
+            self.retriever = get_vector_retriever()
+        else:
+            self.retriever = Retriever(enhanced=enhanced)
         self.enhanced = enhanced
 
     async def chat(self, request: ChatRequest) -> ChatResponse:
@@ -56,14 +62,15 @@ class Agent:
                 if self.settings.mode=='live' and hasattr(self.llm,'plan_query'):
                     try:
                         async with asyncio.timeout(self.settings.planner_timeout):
-                            plan=await self.llm.plan_query(route.query,context.history,self.retriever.catalog_hint(route.query))
+                            catalog=await asyncio.to_thread(self.retriever.catalog_hint,route.query)
+                            plan=await self.llm.plan_query(route.query,context.history,catalog)
                         planner_status='model'
                     except (AgentError,TimeoutError) as exc:
                         error_code=exc.code if isinstance(exc,AgentError) else 'planner_timeout'
                 timings['query_planning']=(time.perf_counter()-tick)*1000
                 retrieval_plan={**plan.model_dump(),'status':planner_status,'error_code':error_code}
                 tick=time.perf_counter()
-                evidence = self.retriever.search_plan(route.query,plan)
+                evidence = await asyncio.to_thread(self.retriever.search_plan,route.query,plan)
                 tool_record=equipment_context(route.query)
                 if tool_record:evidence=[tool_record,*evidence[:5]]
                 timings["retrieval"] = (time.perf_counter() - tick) * 1000

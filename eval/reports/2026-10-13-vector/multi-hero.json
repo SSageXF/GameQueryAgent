@@ -1,0 +1,30 @@
+{
+  "question": "现在我场上有曹操，商店里有李白，孙尚香，蔡文姬，武则天，我只有3能量，我可以怎么买？",
+  "pass": true,
+  "retrieved": [
+    {
+      "id": "E03",
+      "title": "购买卡牌消耗"
+    },
+    {
+      "id": "WX-hero-1281-original",
+      "title": "曹操·卡面原文"
+    },
+    {
+      "id": "WX-hero-1311-original",
+      "title": "李白·卡面原文"
+    },
+    {
+      "id": "WX-hero-1111-original",
+      "title": "孙尚香·卡面原文"
+    },
+    {
+      "id": "WX-hero-1841-original",
+      "title": "蔡文姬·卡面原文"
+    },
+    {
+      "id": "WX-hero-1361-original",
+      "title": "武则天·卡面原文"
+    }
+  ]
+}

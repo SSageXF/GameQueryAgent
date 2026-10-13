@@ -52,7 +52,7 @@ async def test_pending_response_does_not_call_model():
     class Never:
         async def generate(self, *args):
             raise AssertionError("Pending mechanism must not be sent as confirmed fact")
-    result = await Agent(Settings(mode="mock"), llm=Never()).chat(ChatRequest(message="苏烈复生后是否可以重复触发牺牲？"))
+    result = await Agent(Settings(retrieval_backend='lexical', mode="mock"), llm=Never()).chat(ChatRequest(message="苏烈复生后是否可以重复触发牺牲？"))
     assert result.status == "insufficient_evidence"
     assert result.sources[0].claim_type == "pending"
     assert not result.model_used
@@ -89,7 +89,7 @@ def test_actionable_conditional_advice_passes_rule_rubric():
 
 async def test_mock_advice_fails_stricter_quality_check():
     turn = advice_turn()
-    result = (await Agent(Settings(mode="mock")).chat(ChatRequest(message=turn["message"]))).model_dump()
+    result = (await Agent(Settings(retrieval_backend='lexical', mode="mock")).chat(ChatRequest(message=turn["message"]))).model_dump()
     assert not judge(turn, result)["answer_pass"]
 
 

@@ -18,7 +18,7 @@ from eval.run import affirmative_match, judge
 
 @pytest.fixture
 def client():
-    with TestClient(create_app(Settings(mode="mock"))) as client:
+    with TestClient(create_app(Settings(retrieval_backend='lexical', mode="mock"))) as client:
         yield client
 
 
@@ -101,14 +101,14 @@ def test_clarification_followup(client):
 
 
 def test_missing_live_config():
-    with TestClient(create_app(Settings())) as client:
+    with TestClient(create_app(Settings(retrieval_backend='lexical', ))) as client:
         response = client.post("/api/chat", json={"message":"你好"})
         assert response.status_code == 503
         assert response.json()["error"]["code"] == "model_not_configured"
 
 
 def live_settings():
-    return Settings(base_url="https://model.test/v1", api_key="TEST_SECRET", model="test-model")
+    return Settings(retrieval_backend='lexical', base_url="https://model.test/v1", api_key="TEST_SECRET", model="test-model")
 
 
 async def test_live_adapter_request_and_valid_citation():
@@ -159,7 +159,7 @@ async def test_total_timeout():
         async def generate(self, *args):
             await asyncio.sleep(2)
     with pytest.raises(AgentError) as exc:
-        await Agent(Settings(mode="mock", timeout=1), llm=Slow()).chat(ChatRequest(message="你好"))
+        await Agent(Settings(retrieval_backend='lexical', mode="mock", timeout=1), llm=Slow()).chat(ChatRequest(message="你好"))
     assert exc.value.code == "request_timeout"
 
 

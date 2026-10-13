@@ -23,5 +23,6 @@ def fallback_plan(query: str) -> QueryPlan:
     import re
     mode='钻石狂潮' if '钻石狂潮' in query else '其他玩法' if re.search('抉择之弈|竞猜|王中王|王牌对决',query) else '万象大赛'
     qs=[query[:200]]
-    if re.search('升级|买人|买牌|钱不够|能量不够',query):qs+=['英雄购买费用 能量','升级费用 天赋 上阵名额']
+    if re.search('买人|买牌|怎么买|买哪个|买谁|钱不够|能量不够',query):qs+=['英雄购买费用 能量']
+    if re.search('升级|升本|升阶',query):qs+=['升级费用 天赋 上阵名额']
     return QueryPlan(queries=qs,mode=mode,include_history=bool(re.search('公告|更新|版本|历史|旧版|下架',query)))

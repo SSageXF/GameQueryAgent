@@ -103,7 +103,7 @@ async def test_real_adapter_plans_then_generates(retriever):
             assert any('3点能量' in r['body'] for r in data['evidence'])
             answer={'answer':'普通英雄牌基础购买需要3点能量。','source_ids':[next(r['id'] for r in data['evidence'] if '3点能量' in r['body'])]}
         return httpx.Response(200,json={'choices':[{'message':{'content':json.dumps(answer,ensure_ascii=False)}}]})
-    settings=Settings(base_url='https://model.test/v1',model='test',api_key='TEST_SECRET')
+    settings=Settings(retrieval_backend='lexical', base_url='https://model.test/v1',model='test',api_key='TEST_SECRET')
     result=await Agent(settings,llm=LLM(settings,httpx.MockTransport(handler)),retriever=retriever).chat(ChatRequest(message='我只有2点能量，够买人吗？'))
     assert len(calls)==2
     assert result.retrieval_plan['status']=='model'
@@ -117,7 +117,7 @@ async def test_planner_failure_falls_back_without_leaking(retriever,bad):
         data=json.loads(json.loads(request.content)['messages'][1]['content'])
         answer=bad if 'catalog' in data else json.dumps({'answer':'普通英雄购买需要3点能量。','source_ids':[data['evidence'][0]['id']]})
         return httpx.Response(200,json={'choices':[{'message':{'content':answer}}]})
-    settings=Settings(base_url='https://model.test/v1',model='test',api_key='TEST_SECRET')
+    settings=Settings(retrieval_backend='lexical', base_url='https://model.test/v1',model='test',api_key='TEST_SECRET')
     result=await Agent(settings,llm=LLM(settings,httpx.MockTransport(handler)),retriever=retriever).chat(ChatRequest(message='英雄购买费用是多少？'))
     assert result.retrieval_plan['status']=='fallback'
     assert result.sources
@@ -130,5 +130,5 @@ async def test_chitchat_does_not_plan(retriever):
         async def generate(self,*args):
             from app.llm import Generation
             return Generation(answer='你好，我是弈宝。',source_ids=[])
-    result=await Agent(Settings(mode='mock'),llm=Fake(),retriever=retriever).chat(ChatRequest(message='你好'))
+    result=await Agent(Settings(retrieval_backend='lexical', mode='mock'),llm=Fake(),retriever=retriever).chat(ChatRequest(message='你好'))
     assert result.retrieval_plan is None

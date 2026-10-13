@@ -24,7 +24,8 @@ CASES=[
 ]
 
 async def run(live,output):
-    s=load_settings();llm=LLM(s);retriever=Retriever();rows=[]
+    from app.agent import Agent
+    s=load_settings();llm=LLM(s);retriever=Agent(s).retriever;rows=[]
     for cid,q,check in CASES:
         plan=fallback_plan(q);status='rules';error=None
         if live:
@@ -38,7 +39,7 @@ async def run(live,output):
         result={'case_id':cid,'question':q,'planner_status':status,'error':error,'plan':plan.model_dump(),
                 'retrieved':[{'id':r['id'],'title':r['title']} for r in hits],'retrieval_pass':check(hits)}
         rows.append(result);print(cid,status,result['retrieval_pass'],flush=True)
-    out={'created_at':datetime.now(timezone.utc).isoformat(),'live':live,'planner_attempts':len(CASES) if live else 0,
+    out={'created_at':datetime.now(timezone.utc).isoformat(),'backend':s.retrieval_backend,'collection':getattr(retriever,'collection',None),'live':live,'planner_attempts':len(CASES) if live else 0,
          'planner_successes':sum(r['planner_status']=='model' for r in rows),'retrieval_passes':sum(r['retrieval_pass'] for r in rows),
          'total':len(rows),'notice':'仅检索与关键词规划评测，不是回答质量或关键词普遍正确性的证明。评测标签不发送给规划器。','rows':rows}
     path=Path(output);path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')

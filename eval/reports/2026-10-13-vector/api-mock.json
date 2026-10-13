@@ -1,0 +1,48 @@
+{
+  "notice": "真实本地向量检索 + Mock 回答，仅验证接口与检索，不代表生成质量",
+  "health": {
+    "mode": "mock",
+    "retrieval_backend": "vector",
+    "model_configured": true,
+    "knowledge_count": 7731,
+    "snapshot_date": "2026-10-13",
+    "request_timeout_seconds": 65,
+    "query_planning": "mock_rules"
+  },
+  "rows": [
+    {
+      "question": "万象大赛有几个人，怎么赢？",
+      "intent": "knowledge",
+      "status": "answered",
+      "retrieved_ids": [
+        "R01",
+        "WIKI-846ee5915a0af6b2f29c"
+      ],
+      "latency_ms": 440.32
+    },
+    {
+      "question": "你上面说的讲详细点",
+      "intent": "knowledge",
+      "status": "answered",
+      "retrieved_ids": [
+        "R01",
+        "WIKI-846ee5915a0af6b2f29c"
+      ],
+      "latency_ms": 439.14
+    },
+    {
+      "question": "现在我场上有曹操，商店里有李白，孙尚香，蔡文姬，武则天，我只有3能量，我可以怎么买？",
+      "intent": "advice",
+      "status": "answered",
+      "retrieved_ids": [
+        "WX-hero-1841-original",
+        "E03",
+        "WX-hero-1841-awakening",
+        "WIKI-568e467dc3529f9654fe",
+        "WIKI-f824143e9d1808e024ef-2",
+        "WIKI-c5ced8e1ba0c3962194a"
+      ],
+      "latency_ms": 1107.99
+    }
+  ]
+}
