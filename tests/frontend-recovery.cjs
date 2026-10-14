@@ -54,7 +54,7 @@ const path = require('node:path');
         if (scenario === 'answer') {
           await page.getByText('查看资料原文与来源（1）').click();
           assert.equal(await page.locator('blockquote').textContent(), '初始天赋');
-          assert(await page.getByText('相关资料原文，供你核对').isVisible());
+          assert(await page.getByText('相关资料原文，放在这里方便你核对').isVisible());
         }
       } else {
         assert(await page.getByRole('button', {name:'再试一次'}).isVisible());

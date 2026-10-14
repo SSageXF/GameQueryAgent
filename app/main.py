@@ -25,7 +25,7 @@ class BodyLimit:
                 return
             size += len(event.get("body", b""))
             if size > 262144:
-                response = JSONResponse({"error": {"code": "body_too_large", "message": "请求体超过256KB，请缩短对话。"}}, status_code=413)
+                response = JSONResponse({"error": {"code": "body_too_large", "message": "这段对话超过了256KB，试着缩短一点，或清空对话后再聊吧。"}}, status_code=413)
                 return await response(scope, receive, send)
             chunks.append(event)
             if not event.get("more_body", False):
@@ -51,7 +51,7 @@ def create_app(settings: Settings | None = None, agent: Agent | None = None) -> 
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, exc: RequestValidationError):
-        return JSONResponse({"error": {"code": "invalid_input", "message": "请输入1—1000字的问题；历史最多24条、合计24000字，仅允许玩家和向导角色。"}}, status_code=422)
+        return JSONResponse({"error": {"code": "invalid_input", "message": "这条消息没能提交成功。问题需要1—1000字，历史最多24条、合计24000字，只能包含玩家和向导的消息；调整后就可以继续聊。"}}, status_code=422)
 
     @app.exception_handler(AgentError)
     async def model_error(request: Request, exc: AgentError):

@@ -16,8 +16,8 @@ from .wiki_tools import equipment_context
 from .schemas import ChatRequest, ChatResponse, Source
 
 logger = logging.getLogger('gamequery')
-ROUTING_UNAVAILABLE = '这次没能完整理解你的请求，可以再试一次。'
-MOCK_LIMIT = 'Mock：未接入个人数据查询或游戏操作；这里只演示王者万象棋问答。'
+ROUTING_UNAVAILABLE = '这次我没能顺利处理你的问题。问题不用改，稍后再发一次就好。'
+MOCK_LIMIT = '现在是 Mock 演示，可以看看万象棋问答流程，还不能读取个人数据或替你操作游戏。'
 
 
 class Agent:
@@ -54,13 +54,13 @@ class Agent:
         clarification = None
         if route.intent != 'out_of_scope':
             if context.ambiguous:
-                clarification = '你说的“这个”具体是哪位棋手、哪张牌或哪项机制呀？'
+                clarification = '我想先和你对一下，你说的“这个”指哪位棋手、哪张牌，还是哪项机制？'
             elif route.intent == 'advice' and (missing := missing_conditions(route.query)):
-                clarification = '再告诉我' + '、'.join(missing[:2]) + '吧，我好帮你一起判断。' + ('还缺：' + '、'.join(missing[2:]) + '。' if len(missing) > 2 else '')
+                clarification = '咱们一起看看怎么选。再告诉我' + '、'.join(missing[:2]) + '吧，我好结合你的局面判断。'
         fallback_limit = MOCK_LIMIT if self.settings.mode == 'mock' else ROUTING_UNAVAILABLE
         return Decision(intent=route.intent, query=route.query, restricted=route.restricted,
                         clarification=clarification,
-                        reply='你好呀，我是弈宝。咱们慢慢来，可以一起看看规则，也可以聊聊刚才那局。' if route.intent == 'chitchat' else fallback_limit if route.intent == 'out_of_scope' else None,
+                        reply='我在呢。咱们可以一起看规则，也可以聊聊刚才那局。' if route.intent == 'chitchat' else fallback_limit if route.intent == 'out_of_scope' else None,
                         limitation=fallback_limit if route.restricted and route.intent!='out_of_scope' else None,
                         search=fallback_plan(route.query) if route.intent in {'knowledge', 'advice'} and not clarification else None), context
 
@@ -105,14 +105,14 @@ class Agent:
         elif intent == 'chitchat':
             answer = decision.reply
         elif route_status != 'model' and re.search(r'今天.*胜率|实时|体验服|觉醒.*概率', query):
-            answer, status = '这个版本的具体数据还需要对照对应公告。你说的是正式服还是体验服？', 'insufficient_evidence'
+            answer, status = '这个得结合版本来看。你玩的是正式服还是体验服？咱们先对一下。', 'insufficient_evidence'
         else:
             tick = time.perf_counter()
             pending = self.retriever.pending(query)
             if pending:
                 evidence = used = pending
                 excerpts = {r['id']: r['body'][:360] for r in pending}
-                answer, status = '这点资料里还标着待确认，暂时不能下结论：\n' + '\n'.join(r['body'] for r in pending), 'insufficient_evidence'
+                answer, status = '这点目前还没确认。我把相关说明放在下面，咱们先看看哪些地方还不确定：\n' + '\n'.join(r['body'] for r in pending), 'insufficient_evidence'
             else:
                 plan = decision.search or fallback_plan(query)
                 retrieval_plan = {**plan.model_dump(), 'status': route_status, 'error_code': route_error}
@@ -126,14 +126,14 @@ class Agent:
             timings['retrieval'] = (time.perf_counter() - tick) * 1000
             if not pending:
                 if not evidence:
-                    answer, status = '暂时还没找到这项内容的明确说明。你可以告诉我它属于哪个玩法，或提供更完整的卡牌名称，我再帮你核对。', 'insufficient_evidence'
+                    answer, status = '这次还没查到能解答你这个问题的资料。要是方便，把游戏里对应的描述贴给我，咱们一起看看。', 'insufficient_evidence'
                 else:
                     tick = time.perf_counter()
                     try:
                         async with asyncio.timeout(self.settings.timeout):
                             generation = await self.llm.generate(request.message, context.history, evidence, intent)
                     except (TimeoutError, AgentError) as exc:
-                        error = exc if isinstance(exc, AgentError) else AgentError('request_timeout', '这次等得有点久，请稍后重试。', 504)
+                        error = exc if isinstance(exc, AgentError) else AgentError('request_timeout', '这次等得有点久，先把找到的资料留给你参考。', 504)
                         generation = evidence_fallback(evidence, error.code)
                         logger.warning('generation_fallback request_id=%s code=%s', request_id, error.code)
                     timings['generation'] = (time.perf_counter() - tick) * 1000
@@ -147,7 +147,7 @@ class Agent:
         if decision.restricted and intent != 'out_of_scope':
             answer = decision.limitation + '\n\n' + answer
         if self.settings.mode == 'mock':
-            answer = '【Mock 联调，非真实模型回答】\n' + answer
+            answer = '【Mock 演示，非模型回答】\n' + answer
         result = ChatResponse(
             answer=answer, intent=intent, status=status,
             sources=[Source(id=r['id'], title=r['title'], source_title=r['source_title'], url=r['source_url'],

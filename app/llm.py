@@ -70,7 +70,7 @@ class LLM:
 
     async def _complete(self, system, data, stage, budget, timeout):
         if not self.settings.ready:
-            raise AgentError('model_not_configured', '弈宝还没连上模型，请先检查后端配置。', 503)
+            raise AgentError('model_not_configured', '弈宝还没连上模型，检查好后端配置后，咱们就能继续聊。', 503)
         history = data.get('history', [])
         current = {k:v for k,v in data.items() if k != 'history'}
         payload = {'model': self.settings.model, 'messages': [
@@ -113,10 +113,10 @@ class LLM:
                 return await send(temporary)
         except httpx.TimeoutException as exc:
             record['error_code'] = 'model_timeout'
-            raise AgentError('model_timeout', '这次模型回复有点慢，稍后再试一下吧。', 504) from exc
+            raise AgentError('model_timeout', '这次等得有点久，还没收到模型回复。问题不用改，稍后再试一次就好。', 504) from exc
         except (httpx.HTTPError, KeyError, IndexError, TypeError, ValueError) as exc:
             record['error_code'] = 'model_failure'
-            raise AgentError('model_failure', '这次没能收到完整回复，请再试一下。') from exc
+            raise AgentError('model_failure', '我这边刚才没收到完整回复。问题不用改，稍后再试一次就好。') from exc
         finally:
             record['elapsed_ms'] = round((time.perf_counter() - tick) * 1000, 2)
 
@@ -135,7 +135,7 @@ class LLM:
                                           'intent_planning', self.settings.planner_max_tokens, self.settings.planner_timeout)
             return self._parse(choice, Decision)
         except (KeyError, IndexError, TypeError, ValueError) as exc:
-            raise AgentError('router_failure', '这次没能理解问题，已改用基础识别。') from exc
+            raise AgentError('router_failure', '这次没能完成模型分类，先用备用方式理解你的问题。') from exc
 
     async def plan_query(self, query: str, history: list[dict], catalog: dict) -> QueryPlan:
         # Compatibility entry for the standalone retrieval evaluation.
@@ -144,15 +144,15 @@ class LLM:
                                           'query_planning', self.settings.planner_max_tokens, self.settings.planner_timeout)
             return self._parse(choice, QueryPlan)
         except (KeyError, IndexError, TypeError, ValueError) as exc:
-            raise AgentError('planner_failure', '检索规划失败，使用原问题检索。') from exc
+            raise AgentError('planner_failure', '这次没能整理好检索词，先按你的原问题找找资料。') from exc
 
     async def generate(self, query: str, history: list[dict], evidence: list[dict], intent: str) -> Generation:
         if self.settings.mode == 'mock':
             if intent == 'chitchat':
-                return Generation(answer='你好呀，我是弈宝。咱们可以一起看规则，也可以聊聊刚才那局。', source_ids=[])
+                return Generation(answer='我在呢。咱们可以一起看规则，也可以聊聊刚才那局。', source_ids=[])
             body = '\n'.join(r['body'] for r in evidence)
             if intent == 'advice':
-                body = '你给出的条件是：' + query + '\n建议先核对以下规则，再结合当前阵容决定；不能保证获胜。\n' + body
+                body = '咱们先按你给出的情况来看：' + query + '\n下面是相关规则的演示摘录，具体怎么选还要结合当前阵容，也不能保证获胜。\n' + body
             cited = [r for r in evidence if r['body'].strip()][:48]
             return Generation(answer=body[:12000], source_ids=[r['id'] for r in cited],
                               quotes=[Quote(source_id=r['id'], quote=r['body'][:360]) for r in cited])
@@ -177,4 +177,4 @@ class LLM:
                     budget = min(32768, max(8192, budget*2)) if truncated else budget
                     continue
                 code = 'model_output_truncated' if truncated else 'model_failure'
-                raise AgentError(code, '这次没能完整生成回复，我先保留已找到的资料。') from exc
+                raise AgentError(code, '这次没能完整生成回复，先把找到的资料留给你参考。') from exc

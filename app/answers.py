@@ -70,7 +70,7 @@ def resolve_answer(content, evidence):
                             kind='quote' if exact else 'reference'))
     notice = None
     if evidence and not insufficient and not quotes:
-        notice = '这次回答未附上可核验的来源，供你参考。'
+        notice = '这次回答还没有可核对的来源，先把它当作参考就好。'
     return Generation(answer=data['answer'], source_ids=[q.source_id for q in quotes], quotes=quotes,
                       insufficient_evidence=insufficient, notice=notice)
 
@@ -78,7 +78,7 @@ def resolve_answer(content, evidence):
 def evidence_fallback(evidence, code):
     rows = [r for r in evidence if r['body'].strip()][:6]
     return Generation(
-        answer=('我先把查到的相关资料列给你：\n\n' + '\n\n'.join(f"{r['title']}：\n{r['body'][:300]}" for r in rows))[:3000],
+        answer=('我先把找到的相关资料放在下面，咱们可以先看原文：\n\n' + '\n\n'.join(f"{r['title']}：\n{r['body'][:300]}" for r in rows))[:3000],
         source_ids=[r['id'] for r in rows],
         quotes=[Quote(source_id=r['id'], quote=r['body'][:360], kind='reference') for r in rows],
-        notice='模型暂时没能完成整理，以上是资料原文摘录。', fallback_code=code)
+        notice='这次没能把回答整理好，上面先列出了资料原文。', fallback_code=code)

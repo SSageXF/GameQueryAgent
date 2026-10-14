@@ -26,16 +26,16 @@ function sourceUrl(value) {
   catch { return null; }
 }
 function serviceMessage(code) {
-  if (code === 'model_not_configured') return '弈宝还没连上模型，配置好后就可以继续聊。';
-  if (code === 'invalid_input' || code === 'body_too_large') return '这段消息有点长或格式不对，可以缩短消息，或清空对话后继续。';
-  return '这次服务暂时没能完成回复。问题不用改，稍后可以直接再试一次。';
+  if (code === 'model_not_configured') return '我这边还没连上模型，配置好后咱们就能继续聊。';
+  if (code === 'invalid_input' || code === 'body_too_large') return '这段消息的长度或格式不太合适。试着缩短一点，或清空对话后再发吧。';
+  return '我这边刚才没能完成回复。问题不用改，点“再试一次”就好。';
 }
 async function send(message, retryRow = null) {
   if (active || !message.trim()) return;
   message = message.trim();
   if (message.length > 1000) return;
   if (retryRow) retryRow.remove(); else addMessage('user', message);
-  const pending = addMessage('assistant', '让我看看，马上来…', 'loading');
+  const pending = addMessage('assistant', '我来看看，稍等一下…', 'loading');
   const controller = new AbortController(); active = controller;
   $('send').disabled = true; input.value = ''; updateCounter();
   const timer = setTimeout(() => controller.abort('timeout'), timeoutSeconds * 1000);
@@ -66,7 +66,7 @@ async function send(message, retryRow = null) {
         details.append(link, scope);
         if (source.excerpt) {
           if (source.excerpt_kind === 'reference') {
-            const label = document.createElement('small'); label.textContent = '相关资料原文，供你核对'; details.append(label);
+            const label = document.createElement('small'); label.textContent = '相关资料原文，放在这里方便你核对'; details.append(label);
           }
           const quote = document.createElement('blockquote'); quote.textContent = source.excerpt;
           details.append(quote);
@@ -80,11 +80,11 @@ async function send(message, retryRow = null) {
       }
       row.append(details);
       const note = document.createElement('small'); note.className = 'source-scope';
-      note.textContent = '引用来自已收录的资料快照，日期和原文见来源。'; row.append(note);
+      note.textContent = '这些引用来自已收录的资料快照，原文和日期都在上面的来源里。'; row.append(note);
     }
     if (result.routing?.status === 'fallback') {
       const note = document.createElement('div'); note.className = 'meta';
-      note.textContent = '这次模型分类未完成，已使用基础识别。'; row.append(note);
+      note.textContent = '这次先用了备用方式理解你的问题。'; row.append(note);
     }
     if (result.retrieval_plan) {
       const plan = result.retrieval_plan;
@@ -99,7 +99,7 @@ async function send(message, retryRow = null) {
   } catch (error) {
     if (active !== controller) return;
     pending.remove();
-    const errorText = controller.signal.aborted ? '这次连接等得有点久。问题不用改，稍后可以直接再试一次。' : error instanceof TypeError ? '暂时没连上服务。问题已经保留，连接恢复后可以继续。' : error.message || serviceMessage();
+    const errorText = controller.signal.aborted ? '这次等得有点久，还没收到回复。问题已经留着，点“再试一次”就好。' : error instanceof TypeError ? '我这边暂时没连上服务。问题还留着，连接恢复后点“再试一次”就好。' : error.message || serviceMessage();
     const row = addMessage('assistant', errorText);
     const retry = document.createElement('button'); retry.type = 'button'; retry.className = 'retry'; retry.textContent = '再试一次';
     retry.addEventListener('click', () => send(message, row)); row.append(retry); scrollBottom();
@@ -123,5 +123,5 @@ fetch('/api/health').then(response => { if (!response.ok) throw new Error(); ret
   $('mode').className = 'mode-banner ' + (health.mode === 'mock' ? 'mock' : !health.model_configured ? 'unready' : '');
   document.querySelector('time').dateTime = health.snapshot_date;
   document.querySelector('time').textContent = health.snapshot_date.replaceAll('-', '.');
-  $('mode').textContent = health.mode === 'mock' ? 'MOCK 联调模式 · 当前展示为规则与资料拼接，不是真实模型回答，不能用于模型质量评测。' : health.model_configured ? `向导已连接 · ${health.knowledge_count} 条分层资料 · 原文、解释与待确认项分开处理` : '模型尚未配置 · 请按 README 在后端 .env 中配置模型，再重启服务。';
-}).catch(() => { $('mode').className = 'mode-banner unready'; $('mode').textContent = '暂时无法连接服务，请检查后端后刷新页面。'; });
+  $('mode').textContent = health.mode === 'mock' ? '现在是 Mock 演示：回复由规则和资料拼接，方便体验流程，不代表模型的回答质量。' : health.model_configured ? `向导已连接 · ${health.knowledge_count} 条分层资料 · 原文、解释与待确认项分开处理` : '还差一步就能开聊：按 README 配好后端 .env 中的模型，再重启服务。';
+}).catch(() => { $('mode').className = 'mode-banner unready'; $('mode').textContent = '我这边暂时没连上服务，启动好后端后刷新一下就能重试。'; });
