@@ -2,7 +2,7 @@
 
 一个有来源、能追问的新手训练向导。FastAPI + 原生 HTML/JS + Qdrant 本地向量数据库，使用 BGE 中文嵌入模型，无需 Docker 或额外嵌入 API。
 
-**当前状态：大模型在一次调用中完成意图分类和检索规划，使用本地向量库按需检索；回答附经逐字校验的资料片段及来源。已做真实对话与耗时回归；小样本通过不代表完整语义质量验收，详见[本次改造与实测](docs/agent-upgrade.md)。**
+**当前状态：大模型在一次调用中完成意图分类和检索规划，使用本地向量库按需检索；引用问题不再阻断回答。来源区展示核验过的引文或标明供参考的入库原文，不展示虚构来源。已做真实对话与耗时回归；小样本通过不代表完整语义质量验收，详见[改造与实测](docs/agent-upgrade.md)。**
 
 ## 快速运行（PowerShell / Python 3.11+）
 
@@ -31,7 +31,7 @@ LLM_THINKING=auto
 
 `LLM_THINKING=auto` 对名称包含 DeepSeek 的模型发送 `thinking.type=disabled`，减少短问答的推理等待；其他模型不额外发送该参数。`enabled/disabled` 可显式配置服务支持的行为。DeepSeek 还启用 JSON 输出格式；当前已配置的代理服务通过真实调用验证，不代表任意服务兼容。既有 `.env` 无需更换密钥即可使用默认优化。
 
-生成模型返回 `finish_reason=length` 时，后端会将输出预算提高到 4000 token 重试一次（首次已经是 4000 时不重试），两次调用共用原有生成阶段超时。推理模型的推理过程也可能占用输出预算；重试会增加调用费用和耗时。再次截断会返回 `model_output_truncated`，不会展示不完整答案。
+生成结果中的短引文、重复编号、缺失或不匹配引文不再导致整段回答失败。已知来源的不匹配片段改为展示对应资料真实原文，并标注供参考；未知来源省略，正文保留。纯文本回答、JSON中完整正文之后损坏的引用字段也可恢复。没有可用正文时最多自动重试一次；截断时重试预算为4000 token，两次共用生成阶段超时。仍失败或接口异常时，有检索证据则返回资料摘录（`partial_answer`），并说明尚未完成模型整理。前端网络/服务异常使用普通对话气泡与保留原问题的重试按钮，不显示红框。
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.index_knowledge
@@ -92,7 +92,7 @@ POST /api/chat
 }
 ```
 
-返回 `answer`、`intent`、`status`、`sources`、`retrieved_ids`、`retrieval_plan`、`routing`、`model_calls`、`latency_ms`、`timings_ms`、`mode`、`model_used` 和 `request_id`。`routing`记录模型分类或故障回退，`retrieval_plan`记录查询、关键词、实体与模式，`model_calls`记录各次调用耗时及服务返回的token计数（不含密钥或思考文本），`sources[].excerpt`为经原文验证的片段。四类意图为 `knowledge/advice/chitchat/out_of_scope`；状态为 `answered/needs_clarification/insufficient_evidence/unsupported`。异常返回 `{"error":{"code":"…","message":"…"}}`，不回显模型服务原始错误或密钥。
+返回 `answer`、`intent`、`status`、`sources`、`retrieved_ids`、`retrieval_plan`、`routing`、`model_calls`、`latency_ms`、`timings_ms`、`mode`、`model_used` 和 `request_id`。`routing`记录模型分类或故障回退，`retrieval_plan`记录查询、关键词、实体与模式，`model_calls`记录各次调用耗时及服务返回的token计数（不含密钥或思考文本）。`sources[].excerpt`始终取自入库原文，`excerpt_kind=quote`表示模型引文逐字匹配，`reference`表示后端选取的资料摘录，不表示逐句支持答案。`notice`说明无可核验来源或资料降级，`generation_error`记录降级原因。四类意图为 `knowledge/advice/chitchat/out_of_scope`；状态为 `answered/partial_answer/needs_clarification/insufficient_evidence/unsupported`。无可用回答的配置或请求异常仍保留非成功HTTP状态，前端以普通对话提示呈现，不回显模型服务原始错误或密钥。
 
 问题限制 1—1000 字；历史最多12条、合计12000字，实际模型历史保留最近6000字；不接受客户端 system 消息。知识引用链接由后端依据入库记录生成。网页历史仅存内存，刷新或清空后消失。
 

@@ -9,6 +9,7 @@ from .config import Settings
 from .context import prepare
 from .intent import classify, missing_conditions, Decision
 from .llm import AgentError, LLM
+from .answers import evidence_fallback
 from .retrieval import Retriever
 from .query import fallback_plan
 from .wiki_tools import equipment_context
@@ -90,6 +91,7 @@ class Agent:
                    'retrieval_required': decision.search is not None, 'error_code': route_error}
         retrieval_plan = None
         status, evidence, used, excerpts = 'answered', [], [], {}
+        excerpt_kinds, notice, generation_error = {}, None, None
         model_used = route_status == 'model'
         if intent == 'out_of_scope':
             answer, status = LIMIT + '你可以把局面告诉我，咱们一起分析。', 'unsupported'
@@ -127,17 +129,16 @@ class Agent:
                             generation = await self.llm.generate(query, context.history, evidence, intent)
                     except (TimeoutError, AgentError) as exc:
                         error = exc if isinstance(exc, AgentError) else AgentError('request_timeout', '这次等得有点久，请稍后重试。', 504)
-                        error.stage_result = {'intent': intent, 'retrieved_ids': [r['id'] for r in evidence], 'routing': routing,
-                                              'timings_ms': {**timings, 'generation': round((time.perf_counter()-tick)*1000, 2)}}
-                        if error is exc:
-                            raise
-                        raise error from exc
+                        generation = evidence_fallback(evidence, error.code)
+                        logger.warning('generation_fallback request_id=%s code=%s', request_id, error.code)
                     timings['generation'] = (time.perf_counter() - tick) * 1000
                     answer = generation.answer
-                    status = 'insufficient_evidence' if generation.insufficient_evidence else 'answered'
+                    status = 'partial_answer' if generation.fallback_code else 'insufficient_evidence' if generation.insufficient_evidence else 'answered'
                     used = [r for r in evidence if r['id'] in generation.source_ids]
                     excerpts = {q.source_id: q.quote for q in generation.quotes}
-                    model_used = self.settings.mode == 'live'
+                    excerpt_kinds = {q.source_id: q.kind for q in generation.quotes}
+                    notice, generation_error = generation.notice, generation.fallback_code
+                    model_used = model_used or (self.settings.mode == 'live' and not generation.fallback_code)
         if decision.restricted and intent != 'out_of_scope':
             answer = LIMIT + '\n\n' + answer
         if self.settings.mode == 'mock':
@@ -147,10 +148,10 @@ class Agent:
             sources=[Source(id=r['id'], title=r['title'], source_title=r['source_title'], url=r['source_url'],
                             collected_at=r['collected_at'], version_scope=r['version_scope'], claim_type=r.get('claim_type', 'rule'),
                             verification=r.get('verification', 'official_page_checked'), official_url=r.get('official_url'),
-                            excerpt=excerpts.get(r['id'], r['body'][:360])) for r in used],
+                            excerpt=excerpts.get(r['id'], r['body'][:360]), excerpt_kind=excerpt_kinds.get(r['id'], 'quote')) for r in used],
             retrieved_ids=[r['id'] for r in evidence], latency_ms=round((time.perf_counter()-start)*1000, 2),
             timings_ms={k: round(v, 2) for k, v in timings.items()}, mode=self.settings.mode, model_used=model_used,
-            request_id=request_id, retrieval_plan=retrieval_plan, routing=routing)
+            request_id=request_id, retrieval_plan=retrieval_plan, routing=routing, notice=notice, generation_error=generation_error)
         logger.info('request_id=%s intent=%s status=%s latency_ms=%s retrieved=%s mode=%s',
                     request_id, intent, status, result.latency_ms, result.retrieved_ids, result.mode)
         return result

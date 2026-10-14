@@ -58,30 +58,32 @@ async def test_model_direct_routes_do_not_retrieve_or_generate(retriever,monkeyp
     assert len(seen)==len(result.model_calls)==1
 
 @pytest.mark.parametrize('quote',['普通英雄需要八点能量','普通英雄…能量',None])
-async def test_invented_or_missing_quote_is_rejected(retriever,quote):
+async def test_inexact_quote_keeps_answer_and_uses_real_reference(retriever,quote):
     data={'answer':'普通英雄需要3点能量。','source_ids':['E03'],'quotes':[] if quote is None else [{'source_id':'E03','quote':quote}]}
-    with pytest.raises(AgentError) as error:
-        await LLM(settings(),httpx.MockTransport(lambda r:response(data))).generate('买牌费用',[],[retriever.by_id['E03']],'knowledge')
-    assert error.value.code in {'citation_mismatch','model_failure'}
+    result = await LLM(settings(),httpx.MockTransport(lambda r:response(data))).generate('买牌费用',[],[retriever.by_id['E03']],'knowledge')
+    assert result.answer == data['answer']
+    assert result.source_ids == ['E03']
+    assert result.quotes[0].quote in retriever.by_id['E03']['body']
+    assert result.quotes[0].kind == 'reference'
 
 async def test_irrelevant_evidence_may_return_no_source(retriever):
     data={'answer':'这部分我还没查到，能补充卡牌原文吗？','source_ids':[],'quotes':[],'insufficient_evidence':True}
     result=await LLM(settings(),httpx.MockTransport(lambda r:response(data))).generate('不存在的技能',[],[retriever.by_id['E03']],'knowledge')
     assert result.insufficient_evidence and not result.source_ids
 
-async def test_generation_failure_retains_successful_route_and_retrieval(retriever):
+async def test_generation_failure_returns_sources_and_diagnostics(retriever):
     def handler(request):
         data=json.loads(json.loads(request.content)['messages'][1]['content'])
         if 'catalog' in data:
             return response({'intent':'knowledge','query':'英雄购买费用','search':fallback_plan('英雄购买费用').model_dump()})
         return httpx.Response(500,text='secret')
-    with pytest.raises(AgentError) as error:
-        await Agent(settings(),llm=LLM(settings(),httpx.MockTransport(handler)),retriever=retriever).chat(ChatRequest(message='英雄购买费用'))
-    assert error.value.stage_result['intent']=='knowledge'
-    assert 'E03' in error.value.stage_result['retrieved_ids']
-    assert len(error.value.model_calls)==2
-    assert error.value.model_calls[-1]['success'] is False
-    assert 'secret' not in json.dumps(error.value.model_calls)
+    result=await Agent(settings(),llm=LLM(settings(),httpx.MockTransport(handler)),retriever=retriever).chat(ChatRequest(message='英雄购买费用'))
+    assert result.intent=='knowledge' and result.status=='partial_answer'
+    assert result.generation_error=='model_failure'
+    assert 'E03' in result.retrieved_ids and result.sources
+    assert len(result.model_calls)==2
+    assert result.model_calls[-1]['success'] is False
+    assert 'secret' not in result.model_dump_json()
 
 async def test_request_traces_isolated_during_concurrent_chat(retriever):
     async def handler(request):

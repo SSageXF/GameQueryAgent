@@ -2,7 +2,7 @@ const $ = (id) => document.getElementById(id);
 const conversation = $('conversation');
 const input = $('message');
 const labels = {knowledge:'规则问答', advice:'情境建议', chitchat:'闲聊', out_of_scope:'能力说明'};
-const states = {answered:'已回答', needs_clarification:'需要补充', insufficient_evidence:'资料不足', unsupported:'未接入'};
+const states = {answered:'已回答', partial_answer:'资料参考', needs_clarification:'需要补充', insufficient_evidence:'资料不足', unsupported:'未接入'};
 let history = [], active = null, timeoutSeconds = 50;
 
 function scrollBottom() { conversation.scrollTop = conversation.scrollHeight; }
@@ -21,6 +21,15 @@ function boundedHistory(items) {
   while (selected.reduce((n, item) => n + item.content.length, 0) > 12000) selected = selected.slice(2);
   return selected;
 }
+function sourceUrl(value) {
+  try { const url = new URL(value); return url.protocol === 'https:' ? url : null; }
+  catch { return null; }
+}
+function serviceMessage(code) {
+  if (code === 'model_not_configured') return '弈宝还没连上模型，配置好后就可以继续聊。';
+  if (code === 'invalid_input' || code === 'body_too_large') return '这段消息有点长或格式不对，可以缩短消息，或清空对话后继续。';
+  return '这次服务暂时没能完成回复。问题不用改，稍后可以直接再试一次。';
+}
 async function send(message, retryRow = null) {
   if (active || !message.trim()) return;
   message = message.trim();
@@ -32,32 +41,39 @@ async function send(message, retryRow = null) {
   const timer = setTimeout(() => controller.abort('timeout'), timeoutSeconds * 1000);
   try {
     const response = await fetch('/api/chat', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({message, history:boundedHistory(history)}), signal:controller.signal});
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error?.message || `请求失败（${response.status}）`);
+    const result = await response.json().catch(() => null);
+    if (!response.ok || !result || typeof result.answer !== 'string') throw new Error(serviceMessage(result?.error?.code));
     if (active !== controller) return;
     pending.remove();
     const row = addMessage('assistant', result.answer);
     const meta = document.createElement('div'); meta.className = 'meta';
     meta.textContent = `${labels[result.intent]} · ${states[result.status]} · ${result.latency_ms < 1000 ? result.latency_ms + ' ms' : (result.latency_ms / 1000).toFixed(1) + ' s'}${result.mode === 'mock' ? ' · MOCK' : ''}`;
     row.append(meta);
-    if (result.sources.length) {
+    if (result.notice) {
+      const note = document.createElement('small'); note.className = 'source-scope';
+      note.textContent = result.notice; row.append(note);
+    }
+    const sources = (Array.isArray(result.sources) ? result.sources : []).filter(source => source && sourceUrl(source.url));
+    if (sources.length) {
       const details = document.createElement('details'); details.className = 'sources';
-      const summary = document.createElement('summary'); summary.textContent = `查看引用原文与来源（${result.sources.length}）`; details.append(summary);
-      for (const source of result.sources) {
-        const url = new URL(source.url);
-        if (url.protocol !== 'https:') continue;
+      const summary = document.createElement('summary'); summary.textContent = `查看资料原文与来源（${sources.length}）`; details.append(summary);
+      for (const source of sources) {
+        const url = sourceUrl(source.url);
         const link = document.createElement('a'); link.href = url.href; link.target = '_blank'; link.rel = 'noopener noreferrer';
         link.textContent = `${source.id} · ${source.title} ↗`;
         const kinds = {official_original:'官方原文 · 已逐字段核对', wiki_original:'Wiki收录原文', wiki_reference:'Wiki结构化资料', site_model:'站点工具模型 · 非实战保证', site_interpretation:'站方解释 · 非官方结论', pending:'待确认 · 不作确定依据', rule:'官网规则整理', official_recommendation:'官方入门推荐'};
         const scope = document.createElement('small'); scope.textContent = `${kinds[source.claim_type] || source.claim_type} · ${source.source_title} · 采集于 ${source.collected_at} · ${source.version_scope}`;
         details.append(link, scope);
         if (source.excerpt) {
+          if (source.excerpt_kind === 'reference') {
+            const label = document.createElement('small'); label.textContent = '相关资料原文，供你核对'; details.append(label);
+          }
           const quote = document.createElement('blockquote'); quote.textContent = source.excerpt;
           details.append(quote);
         }
         if (source.official_url) {
-          const official = new URL(source.official_url);
-          if (official.protocol === 'https:' && official.hostname === 'game.gtimg.cn') {
+          const official = sourceUrl(source.official_url);
+          if (official && official.hostname === 'game.gtimg.cn') {
             const proof = document.createElement('a'); proof.href = official.href; proof.target = '_blank'; proof.rel = 'noopener noreferrer'; proof.textContent = '官网比对数据 ↗'; details.append(proof);
           }
         }
@@ -75,7 +91,7 @@ async function send(message, retryRow = null) {
       const detail = document.createElement('details'); detail.className = 'sources';
       const summary = document.createElement('summary'); summary.textContent = '查看检索词';
       const text = document.createElement('small');
-      text.textContent = `${plan.status === 'model' ? '模型生成' : plan.status === 'mock_rules' ? 'Mock规则' : '规划失败，使用回退检索'} · ${plan.mode}\n${plan.queries.join('；')}\n关键词：${plan.keywords.join('、') || '原问题'}`;
+      text.textContent = `${plan.status === 'model' ? '模型生成' : plan.status === 'mock_rules' ? 'Mock规则' : '规划失败，使用回退检索'} · ${plan.mode}\n${(plan.queries || []).join('；')}\n关键词：${(plan.keywords || []).join('、') || '原问题'}`;
       detail.append(summary, text); row.append(detail);
     }
     history = boundedHistory([...history, {role:'user', content:message}, {role:'assistant', content:result.answer.slice(0,3000)}]);
@@ -83,9 +99,9 @@ async function send(message, retryRow = null) {
   } catch (error) {
     if (active !== controller) return;
     pending.remove();
-    const errorText = controller.signal.aborted ? '等待超时，请重试。' : error instanceof TypeError ? '无法连接后端，请确认服务已启动后重试。' : error.message || '请求失败，请稍后重试。';
-    const row = addMessage('assistant', errorText, 'error');
-    const retry = document.createElement('button'); retry.type = 'button'; retry.className = 'retry'; retry.textContent = '重新发送';
+    const errorText = controller.signal.aborted ? '这次连接等得有点久。问题不用改，稍后可以直接再试一次。' : error instanceof TypeError ? '暂时没连上服务。问题已经保留，连接恢复后可以继续。' : error.message || serviceMessage();
+    const row = addMessage('assistant', errorText);
+    const retry = document.createElement('button'); retry.type = 'button'; retry.className = 'retry'; retry.textContent = '再试一次';
     retry.addEventListener('click', () => send(message, row)); row.append(retry); scrollBottom();
   } finally {
     clearTimeout(timer);

@@ -127,12 +127,11 @@ async def test_live_adapter_request_and_valid_citation():
 
 
 @pytest.mark.parametrize("content", [
-    "not json", '{"answer":"错误","source_ids":["FAKE"]}',
-    '{"answer":"无来源","source_ids":[]}',
+    '{"answer":',
     '{"answer":"https://evil.test","source_ids":["R01"]}',
     '{"answer":"   ","source_ids":["R01"]}',
 ])
-async def test_malformed_or_invented_citations_fail(content):
+async def test_no_usable_answer_still_reports_adapter_failure(content):
     transport = httpx.MockTransport(lambda request: httpx.Response(200, json={"choices":[{"message":{"content":content}}]}))
     with pytest.raises(AgentError) as exc:
         await LLM(live_settings(), transport).generate("几个人", [], [Retriever().records[0]], "knowledge")
@@ -162,9 +161,10 @@ async def test_total_timeout():
             return Decision(intent='knowledge', query='万象大赛几个人', search=fallback_plan('万象大赛几个人'))
         async def generate(self, *args):
             await asyncio.sleep(2)
-    with pytest.raises(AgentError) as exc:
-        await Agent(Settings(retrieval_backend='lexical', timeout=1), llm=Slow()).chat(ChatRequest(message="你好"))
-    assert exc.value.code == "request_timeout"
+    result = await Agent(Settings(retrieval_backend='lexical', timeout=1), llm=Slow()).chat(ChatRequest(message="你好"))
+    assert result.status == 'partial_answer'
+    assert result.generation_error == 'request_timeout'
+    assert result.sources and '资料' in result.answer
 
 
 def test_knowledge_provenance():

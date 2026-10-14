@@ -3,7 +3,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 Intent = Literal["knowledge", "advice", "chitchat", "out_of_scope"]
-Status = Literal["answered", "needs_clarification", "insufficient_evidence", "unsupported"]
+Status = Literal["answered", "partial_answer", "needs_clarification", "insufficient_evidence", "unsupported"]
 
 
 class Message(BaseModel):
@@ -43,6 +43,7 @@ class Source(BaseModel):
     verification: str = "official_page_checked"
     official_url: str | None = None
     excerpt: str = ''
+    excerpt_kind: Literal['quote', 'reference'] = 'quote'
 
 
 class ChatResponse(BaseModel):
@@ -59,3 +60,5 @@ class ChatResponse(BaseModel):
     retrieval_plan: dict | None = None
     routing: dict | None = None
     model_calls: list[dict] = Field(default_factory=list)
+    notice: str | None = None
+    generation_error: str | None = None
