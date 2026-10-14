@@ -158,8 +158,36 @@ class Retriever:
 
     def routing_hint(self, query):
         # Metadata only: no preliminary embedding/search and no full entity catalog.
+        names=[name for name in self.names if name in query][:32]
+        objects={}
+        for row in self.records:
+            if row.get('entity') not in names or not self.eligible(row,row.get('mode'),False):continue
+            key=(row['entity'],row.get('section'),row.get('mode'))
+            fields=objects.setdefault(key,{})
+            if row.get('field'):fields.setdefault(row['field'],row['title'])
         return {'sections': ['英雄', '棋手', '装备', '天赋', '机制', '成就', '攻略', '公告', '钻石狂潮'],
-                'mentioned_entities': [name for name in self.names if name in query][:32]}
+                'mentioned_entities': names,
+                'matching_rule_titles': [r['title'] for r in self.records if not r.get('entity')
+                                         and any(alias and alias in query for alias in r.get('aliases',[]))][:12],
+                'objects': [{'name':name,'section':section,'mode':mode,
+                             'fields':[{'field':field,'title':title} for field,title in fields.items()]}
+                            for (name,section,mode),fields in objects.items()]}
+
+    def catalog_fast_path(self, plan, mode):
+        """Only enumerate lists here; a named object needs its full searchable fields."""
+        if plan.selection is None or len(plan.selection.names)==1:
+            return []
+        return self.select_catalog(plan.selection,mode,plan.include_history)
+
+    @staticmethod
+    def matches_selection_names(row, selection):
+        # A failed catalog filter is not proof of absent knowledge. Search across
+        # sections, while keeping explicitly named objects so fallback cannot
+        # replace an unknown object with a vaguely related known one.
+        if selection is None or not selection.names:return True
+        names={name.casefold() for name in selection.names}
+        identities={str(value).casefold() for value in [row.get('entity',''),*row.get('aliases',[])] if value}
+        return bool(names & identities)
 
     def supporting_mechanics(self, evidence, mode, limit=2):
         """Expand explicit trigger labels, so the model need not guess their meaning."""
@@ -185,10 +213,11 @@ class Retriever:
         mode=plan.mode
         if '钻石狂潮' in original:mode='钻石狂潮'
         elif '万象大赛' in original:mode='万象大赛'
-        if plan.selection is not None:
-            return self.select_catalog(plan.selection,mode,plan.include_history)
+        catalog=self.catalog_fast_path(plan,mode)
+        if catalog:return catalog
         queries=list(dict.fromkeys([original,*plan.queries,' '.join(plan.entities+plan.keywords)]))
-        batches=[self.rank(q,mode,plan.include_history) for q in queries if q.strip()]
+        batches=[[hit for hit in self.rank(q,mode,plan.include_history)
+                  if self.matches_selection_names(hit[1],plan.selection)] for q in queries if q.strip()]
         selected=[];seen=set()
         for depth in range(k):
             for batch in batches:

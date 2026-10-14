@@ -23,8 +23,17 @@ class Decision(BaseModel):
     def ignore_unused_search(cls, value):
         # A model may fill the example's search object even for a non-search intent.
         # Keep its semantic intent, discard fields that can never be executed.
-        if isinstance(value, dict) and value.get('intent') in {'chitchat', 'out_of_scope'}:
-            value = {**value, 'search': None, 'clarification': None}
+        if isinstance(value, dict):
+            value = dict(value)
+            # A well-formed selection sometimes appears next to search instead
+            # of inside it. Normalize placement, then validate the same schema.
+            selection = value.pop('selection', None)
+            if selection is not None and isinstance(value.get('search'), dict):
+                search = dict(value['search'])
+                if search.get('selection') is None:search['selection'] = selection
+                value['search'] = search
+            if value.get('intent') in {'chitchat', 'out_of_scope'}:
+                value.update(search=None, clarification=None)
         return value
 
     @model_validator(mode='after')
@@ -54,9 +63,9 @@ knowledge：询问本游戏玩法事实；advice：结合个人局面作选择�
 混合请求优先处理能回答的游戏部分，query保留该部分，restricted=true，limitation用一两句说明本轮不支持的具体部分；不要把所有能力限制罗列一遍。闲聊夹游戏问题优先游戏。陌生本游戏名词、缺资料及版本问题仍归knowledge，不能因为不了解就判越界。
 结合整个对话承接最近的主题、列表、资源、阵容和否定条件。列表后的“分别介绍”“每一个的效果”“它们怎么选”等都是对已讨论对象的继续询问，不应反问是刚才那些还是全局所有对象；若用户明确换主题或更改范围，以最新意图为准。仅在完整对话仍存在多个合理指代、或缺少关键条件使建议无法开始时clarification自然承接并追问最关键的一两项。不要一边枚举所有升级类型，一边索要完整局面；已有条件不要再问。不要因为缺少事实资料而澄清用户已经说明的主题。
 chitchat的reply直接用一两句自然中文回应，保持弈宝身份，不提供游戏事实或声称未接入操作，search=null。out_of_scope也直接在reply中简短解释本轮请求的具体限制，search=null：查询战绩说无法读取个人战绩；好友状态说没有好友在线数据；其他游戏技能说明当前资料面向《王者万象棋》，不要套用账号限制。用户刚纠正游戏名称时，先接住纠正，避免只重复服务范围后又邀请他来问已经否定的游戏。可以引导查看对应游戏内的英雄介绍等明确可行的方向，不编造其他游戏答案、查询结果、工具操作或外部出处；不要求密码、验证码等凭证，不重复上一轮无关限制，不用固定模板。需要澄清时search=null。其他knowledge/advice的reply=null且search必须存在。不含混合限制时limitation=null。
-query保留用户明确的所有实体、数字、模式和限制，不把英雄李白换成棋手白歌。queries优先1条，复杂建议最多3条，必须覆盖费用及相关英雄条件；向量检索需要清楚的语义，不要机械堆词。每条至多200字、关键词最多12个、实体最多8个，每个至多80字。catalog仅是少量名称提示，不限制用户询问范围。
+query保留用户明确的所有实体、数字、模式和限制，不把英雄李白换成棋手白歌。queries优先1条，复杂建议最多3条，必须覆盖费用及相关英雄条件；向量检索需要清楚的语义，不要机械堆词。每条至多200字、关键词最多12个、实体最多8个，每个至多80字。catalog.objects给出实际收录对象的栏目、模式和字段标题，仅用于规划，不是事实答案。players是棋手，hero是英雄，diamond是钻石狂潮；按用户和目录区分对象，不把所有角色都当英雄。目录只是提示，不限制用户询问范围。
 mode为万象大赛/钻石狂潮/通用/其他玩法，承接用户模式，默认万象大赛；仅明确询问旧版或更新公告时include_history=true。不要创造事实、技能或卡名。
-清单类问题以及一组对象的效果/对比，在search内增加selection：{"section":"talent|hero|equipment|effect","related_to":["用户关注的阵营或机制"],"names":["明确指定或上一轮讨论的对象名"]}。section分别代表天赋、英雄、装备、效果牌。按类别和关联主题查清单时填related_to，names为空；承接上一轮已列出的具体对象时填names，不要重新问范围。不要为用户未指定的筛选项添加条件。普通规则问题selection=null。selection请求会返回对象效果原文和关联依据，不需要把对象名猜全。
+selection必须放在search内，不能放在顶层；它只用于“有哪些”的类别枚举，以及多张天赋/装备/效果牌的卡面原文清单：{"section":"talent|hero|equipment|effect","related_to":["用户关注的阵营或机制"],"names":["明确指定或上一轮讨论的对象名"]}。按类别和关联主题查清单时填related_to，names为空；承接已有卡面清单时填names，不重新问范围，一份清单覆盖整组，不要为每个名字分别生成queries。它只读取卡面original和关联资料，不能查询觉醒、战斗技能、棋手技能/秘技/专属或其他模式。查一个具体对象、含觉醒等字段的多对象对比、普通规则时selection=null，用queries检索完整语义；“觉醒卡面”查awakening而不是普通original，“英雄技能”查skill/officialSkill，“棋手技能/秘技/专属”查players的skillSections。不要把“觉醒”“技能”当阵营关联条件，也不要为了凑selection把棋手或钻石狂潮塞进hero。用户只说“介绍”时检索该对象的相关资料，不限于卡面原文。
 最后检查用户将看到的短回复：澄清先温和接住想一起拿主意的请求，再问最多两个独立信息点，别只以“得看情况”开头把问题丢回去；纠正先承认理解变化，再简短说明相关边界。照弈宝的交流方式写，不输出分类报告或客服通知。
 '''
 

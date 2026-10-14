@@ -142,8 +142,8 @@ class VectorRetriever(Retriever):
 
     def search_plan(self, original, plan, k=6):
         mode='钻石狂潮' if '钻石狂潮' in original else '万象大赛' if '万象大赛' in original else plan.mode
-        if plan.selection is not None:
-            return self.select_catalog(plan.selection,mode,plan.include_history)
+        catalog=self.catalog_fast_path(plan,mode)
+        if catalog:return catalog
         hero_names={r.get('entity') for r in self.records if r.get('section')=='hero' and r.get('entity')}
         named=sorted((n for n in hero_names if n in original),key=original.index)
         purchase=len(named)>=2 and bool(re.search('怎么买|买谁|买哪个|购买|商店',original))
@@ -165,7 +165,8 @@ class VectorRetriever(Retriever):
         # Semantic search needs sentences, not an extra keyword-bag embedding.
         # Bound repeated full scans of the local Qdrant collection to three queries.
         queries=list(dict.fromkeys([original, *plan.queries]))[:3]
-        batches=[self.rank(q,mode,plan.include_history) for q in queries if q.strip()]
+        batches=[[hit for hit in self.rank(q,mode,plan.include_history)
+                  if self.matches_selection_names(hit[1],plan.selection)] for q in queries if q.strip()]
         selected=[];seen=set()
         for depth in range(k):
             for batch in batches:

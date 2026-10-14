@@ -1,0 +1,31 @@
+{
+  "reviewer": "development_agent",
+  "user_acceptance": "not_reviewed",
+  "scope": "检查用户四问、同源检索问题和格式回归，保留全量失分；不是全量独立人工验收。",
+  "stages": {
+    "reported": "检索修复后的用户四问：4轮均检索并回答，最后一轮分类回退。",
+    "full": "增加MT06后的37例49轮；尚未包含后续查询说明/数量/selection位置规范化。",
+    "final": "格式规范化后的6例13轮；不得冒充重新执行49轮全集。"
+  },
+  "retrieval_checks": [
+    {"cases":["MT01/1","MT06/1"],"verdict":"pass","notes":"白歌按棋手资料检索，神来之笔每4次合成得到即兴创作，与players/skillSections及B01一致。"},
+    {"cases":["MT01/2","MT01/3"],"verdict":"pass_for_requested_effect","notes":"连续追问保留白歌；天生我才使用6张即兴创作获得灵感爆发，惊才绝艳获得奇才并复制4张目标英雄牌。没有因使用talent目录而返回无资料。"},
+    {"cases":["WX01/1","MT06/3","MT06/4"],"verdict":"pass","notes":"苏烈觉醒两种问法均取得WX-hero-sulie-awakening，回答牺牲时等级永久+4；没有将普通卡面的+2作为觉醒值。"},
+    {"cases":["MT06/2"],"verdict":"pass","notes":"豪烈万军伤害、减防、持续时间及10/40/100级强化与检索到的officialSkill逐项相符。"},
+    {"cases":["WX04/1"],"verdict":"pass","notes":"钻石狂潮按对应模式取回苏烈牺牲等级永久+2，未混用万象大赛觉醒+4。"},
+    {"cases":["WX05/1"],"verdict":"pass","notes":"英雄李白回答青莲剑歌及强化，未仅返回古币卡面效果。"},
+    {"cases":["MT03/1","MT03/2"],"verdict":"retrieval_pass_answer_partial","notes":"五项原文均检索并引用，逐项效果和数量完整。首轮末尾却写来客是直接给李信加3能量，容易误解为能量给英雄；应为玩家获得3能量和1张李信。规则未识别这个总结错误，不能宣称全文正确。第二轮无该总结。"},
+    {"cases":["MT03/3"],"verdict":"answer_pass_with_degraded_routing","notes":"正确选出河洛强援并引用来源，但routing.status=fallback，不能算正常模型路由成功。"}
+  ],
+  "remaining_full_run_findings": [
+    "H01棋手李白仍被理解成英雄李白；白歌本名的检索恢复不等于所有别名均已修复。",
+    "U01仍把觉醒概率混成觉醒效果。H03仍未按严格预期澄清含糊指代。",
+    "A02/A03/A05/A06情境建议仍有依据、决策或评分覆盖不足，0/4不能仅归因于语气。",
+    "MT02第二轮回答竞拍失败扣能量，与已检索规则相反，是回答错误，不能因为检索命中而通过。",
+    "O02和MT04/3包含合理限制表达但旧正则未识别；M01也有表达匹配问题且重复说明限制。这轮未为提高成绩修改评分规则。",
+    "V01给出非体验服资料并说明局限，仍需审核其版本断言；不能把普通资料当体验服最新确认。",
+    "较早全量中的截断、额外字段、查询数和selection位置错误都留在原始日志/报告；最终专项不代表所有回退已消失。"
+  ],
+  "tests": {"offline_passed":162,"warning":"已有Starlette/httpx弃用提示一条"},
+  "limitations": "没有对模型隐藏思考作判断；知识库快照不变。精确引文真实不等于回答每句话都有充分支持，仍需进一步质量工作。"
+}

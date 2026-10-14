@@ -1,0 +1,2632 @@
+{
+  "created_at": "2026-10-14T08:46:38.009214+00:00",
+  "mode": "live",
+  "variant": "enhanced",
+  "model": "deepseek-v4.1-flash",
+  "python": "3.11.5",
+  "retrieval_backend": "vector",
+  "vector_collection": "knowledge_78e5590ad1bc165b",
+  "thinking": "disabled",
+  "runtime_config": {
+    "max_tokens": 16384,
+    "planner_max_tokens": 4096,
+    "timeout_seconds": 120.0,
+    "planner_timeout_seconds": 60.0
+  },
+  "dataset_coverage": {
+    "case_count": 37,
+    "turn_count": 49,
+    "intents": {
+      "knowledge": 33,
+      "advice": 6,
+      "chitchat": 3,
+      "out_of_scope": 7
+    },
+    "multi_turn_cases": 6,
+    "tags": {
+      "clarification": 1,
+      "unsupported": 2,
+      "unknown": 1,
+      "version": 1,
+      "injection": 1,
+      "mixed": 1,
+      "holdout": 3,
+      "alias": 1,
+      "ambiguous": 1,
+      "multi_turn": 6,
+      "pending": 1,
+      "mode": 1,
+      "entity": 1,
+      "situational": 2,
+      "resource_contrast": 2,
+      "catalog": 2,
+      "reported_regression": 4,
+      "scope_switch": 1,
+      "retrieval_paraphrase": 1
+    }
+  },
+  "selected_case_ids": [
+    "MT01",
+    "WX01",
+    "WX04",
+    "WX05",
+    "MT03",
+    "MT06"
+  ],
+  "quality_evaluation_complete": false,
+  "notice": "规则评分为代理指标，需人工检查事实依据和未覆盖的幻觉。",
+  "dataset_sha256": "4c26266067733c449f0677d0d58832db72b30266415450e0594f736832634b5e",
+  "prompt_sha256": {
+    "router": "836f8fc9f801345fa5aabc4247e279ecba077a1100e4d58e0739c774c4155a58",
+    "generation": "0a8def9b1a8353ee71ca08df7feaebc20740112da94f322e8104c499fe633c80"
+  },
+  "knowledge_sha256": {
+    "data/knowledge.json": "98e6b951dcb86f1c38db8627da871d6c91e6b1fa48dcdff8c01299fe2ff0baf5",
+    "data/wiki/records.json": "a06ef92fc1ab29f84f8193710407a24065b1ec14e99a95ddade10a54e84725d9"
+  },
+  "rubric_version": "3.0-context-boundaries-evidence-groups",
+  "scorer_sha256": {
+    "eval/run.py": "b6453db843504d6aba0dbb071642d04cc23c47653b64231b93b6602e4e87b007",
+    "eval/advice.py": "15dc80191841013c7122f019d22c221d03a590467dbb08aa2d6f2eec9b22da2e",
+    "eval/text.py": "9c9da93d76206cb30f94b11a24eccae8f2286be0915655c90115daee99500958",
+    "eval/dataset.py": "3a6efa4b09deb9b646543493c72a895911329257dd1558a1d79d1bd70933d604"
+  },
+  "metric_denominators": {
+    "intent_accuracy": "所有执行轮次，调用失败仍计入",
+    "retrieval_hit_rate": "预期证据组非空的轮次；至少一个组命中",
+    "mean_evidence_recall": "各有证据轮次的事实组覆盖率均值；组内是人工登记的等价来源",
+    "answer_pass_rate": "所有执行轮次；事实/行为/禁止断言/状态/来源及建议规则",
+    "success_rate": "所有执行轮次；模型异常或路由回退/资料摘录降级不计成功",
+    "response_rate": "所有执行轮次；收到结构化结果，包含降级回复"
+  },
+  "scoring": "固定正则事实组 + 禁止模式 + 状态 + 引用检查；不以非空作为通过标准。分母为轮数，另提供整案例通过率。人工审查尚未完成。",
+  "summary": {
+    "case_count": 6,
+    "turn_count": 13,
+    "intent_accuracy": {
+      "numerator": 13,
+      "denominator": 13,
+      "rate": 1.0
+    },
+    "retrieval_hit_rate": {
+      "numerator": 13,
+      "denominator": 13,
+      "rate": 1.0
+    },
+    "mean_evidence_recall": 1.0,
+    "answer_pass_rate": {
+      "numerator": 13,
+      "denominator": 13,
+      "rate": 1.0
+    },
+    "case_answer_pass_rate": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "success_rate": {
+      "numerator": 12,
+      "denominator": 13,
+      "rate": 0.9231
+    },
+    "response_rate": {
+      "numerator": 13,
+      "denominator": 13,
+      "rate": 1.0
+    },
+    "degraded_responses": 1,
+    "advice_rule_pass_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "real_model_calls": 26,
+    "successful_latency": {
+      "n": 12,
+      "median_ms": 7289.1,
+      "p95_ms": 9071.21
+    },
+    "failed_latency": {
+      "n": 1,
+      "median_ms": 5756.92,
+      "p95_ms": 5756.92
+    },
+    "all_latency": {
+      "n": 13,
+      "median_ms": 7146.83,
+      "p95_ms": 9071.21
+    },
+    "judge_latency": {
+      "n": 13,
+      "median_ms": 0.44,
+      "p95_ms": 3.4
+    },
+    "query_planner_successes": 12,
+    "phase_median_ms": {
+      "client_setup": 1.57,
+      "context_route": 0.07,
+      "intent_planning": 2171.545,
+      "retrieval": 2716.69,
+      "generation": 2535.365
+    }
+  },
+  "rows": [
+    {
+      "case_id": "MT01",
+      "turn": 1,
+      "split": "development",
+      "message": "白歌的技能是什么？",
+      "input_history": [],
+      "expectation": {
+        "message": "白歌的技能是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "介绍白歌合成获得即兴创作",
+        "expected_knowledge_ids": [
+          "B01"
+        ],
+        "required_groups": [
+          [
+            "4次",
+            "四次"
+          ],
+          [
+            "即兴创作"
+          ]
+        ],
+        "forbidden_patterns": [
+          "PWNED"
+        ],
+        "answer_points": [
+          "介绍白歌合成获得即兴创作"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "B01",
+            "WIKI-a707692151fe8ded9573",
+            "WIKI-21d2e1a3f53e6605a8a5"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "B01"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "白歌的技能有三项：\n\n技能「神来之笔」：每进行4次英雄合成，白歌获得1张即兴创作。\n\n秘技「天生我才」：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n专属「惊才绝艳」：获得1张奇才，指定1名英雄，获得4张该英雄牌。\n\n补充一下即兴创作本身的效果：随机获得场上1名英雄的复制。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WIKI-a707692151fe8ded9573",
+            "title": "白歌·棋手技能",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "1.正文：每进行4次英雄合成，白歌获得1张即兴创作。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-21d2e1a3f53e6605a8a5",
+            "title": "白歌·currentCards",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "2.id：93300\n2.name：即兴创作\n2.说明：随机获得场上1名英雄的复制。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WIKI-a707692151fe8ded9573",
+          "C01",
+          "B01",
+          "WIKI-bc5ef4503b092277df26",
+          "WIKI-0978e8e4f7fcbf6090d4",
+          "WIKI-21d2e1a3f53e6605a8a5"
+        ],
+        "latency_ms": 7493.61,
+        "timings_ms": {
+          "context_route": 0.05,
+          "intent_planning": 2154.01,
+          "retrieval": 2491.67,
+          "generation": 2517.85,
+          "client_setup": 329.76
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "66a9d789ea8c",
+        "retrieval_plan": {
+          "queries": [
+            "白歌 棋手技能 技能效果"
+          ],
+          "keywords": [
+            "白歌",
+            "棋手技能"
+          ],
+          "entities": [
+            "白歌"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "白歌的棋手技能是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2148.03,
+            "success": true,
+            "input_chars": 4673,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2381,
+            "completion_tokens": 75,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2516.52,
+            "success": true,
+            "input_chars": 6626,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3334,
+            "completion_tokens": 254,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.41,
+      "elapsed_ms": 7504.529
+    },
+    {
+      "case_id": "MT01",
+      "turn": 2,
+      "split": "development",
+      "message": "那他的秘技呢？",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "白歌的技能是什么？"
+        },
+        {
+          "role": "assistant",
+          "content": "白歌的技能有三项：\n\n技能「神来之笔」：每进行4次英雄合成，白歌获得1张即兴创作。\n\n秘技「天生我才」：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n专属「惊才绝艳」：获得1张奇才，指定1名英雄，获得4张该英雄牌。\n\n补充一下即兴创作本身的效果：随机获得场上1名英雄的复制。"
+        }
+      ],
+      "expectation": {
+        "message": "那他的秘技呢？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "承接白歌，介绍灵感爆发",
+        "expected_knowledge_ids": [
+          "B02"
+        ],
+        "required_groups": [
+          [
+            "灵感爆发"
+          ],
+          [
+            "6张",
+            "六张"
+          ]
+        ],
+        "forbidden_patterns": [
+          "瑶妹"
+        ],
+        "answer_points": [
+          "承接白歌，介绍灵感爆发"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "B02",
+            "WIKI-a707692151fe8ded9573"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "B02"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "白歌的秘技「天生我才」：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n这张灵感爆发牌的效果是：对手牌中随机3张非觉醒英雄牌，各生成2张转瞬版复制。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "B02",
+            "title": "白歌的秘技",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "官网新手专区的白歌秘技说明：使用6张即兴创作获得灵感爆发；它对手牌中随机3张非觉醒英雄牌各生成2张转瞬版复制。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-a707692151fe8ded9573",
+            "title": "白歌·棋手技能",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "2.type：秘技\n2.name：天生我才\n2.正文：使用6张即兴创作，获得1张秘技牌灵感爆发。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "B02",
+          "WIKI-a707692151fe8ded9573",
+          "C02",
+          "WIKI-8551cf44cffbd2d1b2ed",
+          "WIKI-738a7028d9a6f576eaac",
+          "WIKI-21d2e1a3f53e6605a8a5"
+        ],
+        "latency_ms": 6842.4,
+        "timings_ms": {
+          "context_route": 0.09,
+          "intent_planning": 1871.55,
+          "retrieval": 2587.23,
+          "generation": 2381.68,
+          "client_setup": 1.71
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "26927048cec4",
+        "retrieval_plan": {
+          "queries": [
+            "白歌 秘技 天生我才 效果"
+          ],
+          "keywords": [
+            "白歌",
+            "秘技",
+            "天生我才"
+          ],
+          "entities": [
+            "白歌"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "白歌的秘技是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 1866.2,
+            "success": true,
+            "input_chars": 4825,
+            "max_tokens": 4096,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2491,
+            "completion_tokens": 81,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2381.16,
+            "success": true,
+            "input_chars": 7663,
+            "max_tokens": 16384,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3878,
+            "completion_tokens": 205,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.4,
+      "elapsed_ms": 6851.818
+    },
+    {
+      "case_id": "MT01",
+      "turn": 3,
+      "split": "development",
+      "message": "那他的专属天赋呢？",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "白歌的技能是什么？"
+        },
+        {
+          "role": "assistant",
+          "content": "白歌的技能有三项：\n\n技能「神来之笔」：每进行4次英雄合成，白歌获得1张即兴创作。\n\n秘技「天生我才」：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n专属「惊才绝艳」：获得1张奇才，指定1名英雄，获得4张该英雄牌。\n\n补充一下即兴创作本身的效果：随机获得场上1名英雄的复制。"
+        },
+        {
+          "role": "user",
+          "content": "那他的秘技呢？"
+        },
+        {
+          "role": "assistant",
+          "content": "白歌的秘技「天生我才」：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n这张灵感爆发牌的效果是：对手牌中随机3张非觉醒英雄牌，各生成2张转瞬版复制。"
+        }
+      ],
+      "expectation": {
+        "message": "那他的专属天赋呢？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "继续承接白歌，介绍奇才",
+        "expected_knowledge_ids": [
+          "B03"
+        ],
+        "required_groups": [
+          [
+            "奇才"
+          ],
+          [
+            "4张",
+            "四张"
+          ]
+        ],
+        "forbidden_patterns": [
+          "小鹿"
+        ],
+        "answer_points": [
+          "继续承接白歌，介绍奇才"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "B03",
+            "WIKI-a707692151fe8ded9573"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "B03"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "白歌的专属天赋「惊才绝艳」：获得1张奇才，可以指定1名英雄，获得4张该英雄牌。\n\n另外提醒一下，专属天赋是棋手升到6级后领取的。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "B03",
+            "title": "白歌的专属天赋",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "官网新手专区中，白歌的惊才绝艳提供一张奇才；奇才可以指定一名英雄，获得4张对应英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "C03",
+            "title": "专属天赋",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "棋手达到6级可以领取专属天赋。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-a707692151fe8ded9573",
+            "title": "白歌·棋手技能",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "3.type：专属\n3.name：惊才绝艳\n3.正文：获得1张奇才：指定1名英雄，获得4张该英雄牌。\n3.cardId：663307\n3.currentOfficial：True",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "B03",
+          "C03",
+          "WIKI-3a753fa8d5377c46962a",
+          "WIKI-a707692151fe8ded9573",
+          "WIKI-21d2e1a3f53e6605a8a5",
+          "WIKI-738a7028d9a6f576eaac"
+        ],
+        "latency_ms": 7135.84,
+        "timings_ms": {
+          "context_route": 0.1,
+          "intent_planning": 2004.16,
+          "retrieval": 2717.62,
+          "generation": 2412.37,
+          "client_setup": 1.4
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "b6629e7acc06",
+        "retrieval_plan": {
+          "queries": [
+            "白歌 专属天赋 效果"
+          ],
+          "keywords": [
+            "白歌",
+            "专属天赋"
+          ],
+          "entities": [
+            "白歌"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "白歌的专属天赋效果是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 1998.82,
+            "success": true,
+            "input_chars": 4909,
+            "max_tokens": 4096,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2552,
+            "completion_tokens": 76,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2411.77,
+            "success": true,
+            "input_chars": 7239,
+            "max_tokens": 16384,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3738,
+            "completion_tokens": 234,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.393,
+      "elapsed_ms": 7146.826
+    },
+    {
+      "case_id": "WX01",
+      "turn": 1,
+      "split": "development",
+      "message": "苏烈觉醒卡面的效果是什么？",
+      "input_history": [],
+      "expectation": {
+        "message": "苏烈觉醒卡面的效果是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "尊重证据层级；事实按原文回答，未确认机制不作结论",
+        "expected_knowledge_ids": [
+          "WX-hero-sulie-awakening"
+        ],
+        "required_groups": [
+          [
+            "牺牲"
+          ],
+          [
+            "永久.{0,5}(?:\\+|提升|增加)?4"
+          ]
+        ],
+        "forbidden_patterns": [],
+        "answer_points": [
+          "苏烈觉醒牺牲时等级永久+4"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-hero-sulie-awakening"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-sulie-awakening"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "苏烈觉醒卡面的效果是：牺牲，苏烈的等级永久+4。\n\n作为对照，苏烈的普通卡面写的是等级永久+2。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-sulie-awakening",
+            "title": "苏烈·觉醒",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+4。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-hero-sulie-original",
+            "title": "苏烈·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+2。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-sulie-awakening",
+          "WX-hero-sulie-original",
+          "WIKI-31db0bbc7302bee05ed5-2",
+          "WX-hero-sulie-skill",
+          "WIKI-f9fd1c048154ec751974",
+          "WIKI-33e5bd6f94ae230bf2a8"
+        ],
+        "latency_ms": 9061.94,
+        "timings_ms": {
+          "context_route": 0.06,
+          "intent_planning": 3791.62,
+          "retrieval": 2715.76,
+          "generation": 2552.88,
+          "client_setup": 1.49
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "224bbc933b4e",
+        "retrieval_plan": {
+          "queries": [
+            "苏烈 觉醒 卡面 效果"
+          ],
+          "keywords": [
+            "苏烈",
+            "觉醒"
+          ],
+          "entities": [
+            "苏烈"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "hero",
+            "related_to": [],
+            "names": [
+              "苏烈"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "苏烈觉醒卡面的效果是什么？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 3786.36,
+            "success": true,
+            "input_chars": 4878,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2440,
+            "completion_tokens": 92,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2552.29,
+            "success": true,
+            "input_chars": 5707,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2918,
+            "completion_tokens": 128,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.357,
+      "elapsed_ms": 9071.207
+    },
+    {
+      "case_id": "WX04",
+      "turn": 1,
+      "split": "development",
+      "message": "钻石狂潮里苏烈的技能是什么？",
+      "input_history": [],
+      "expectation": {
+        "message": "钻石狂潮里苏烈的技能是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "使用钻石狂潮资料回答，不套用其他模式的苏烈觉醒",
+        "expected_knowledge_ids": [
+          "WIKI-837c20cc5ea7b9ad1c64"
+        ],
+        "required_groups": [
+          [
+            "牺牲"
+          ],
+          [
+            "永久.{0,5}(?:\\+|提升|增加)?2"
+          ]
+        ],
+        "forbidden_patterns": [
+          "永久.{0,5}\\+4"
+        ],
+        "answer_points": [
+          "依据钻石狂潮对应条目回答苏烈牺牲等级永久+2，不混用万象大赛觉醒+4"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WIKI-837c20cc5ea7b9ad1c64"
+          ]
+        ],
+        "expected_mode": "钻石狂潮"
+      },
+      "expected_knowledge_ids": [
+        "WIKI-837c20cc5ea7b9ad1c64"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "钻石狂潮里苏烈的技能是「牺牲」：苏烈的等级永久+2。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WIKI-837c20cc5ea7b9ad1c64",
+            "title": "苏烈",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/modes/diamond-frenzy",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：2026-10-02；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "牺牲：苏烈的等级永久+2。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WIKI-837c20cc5ea7b9ad1c64"
+        ],
+        "latency_ms": 4777.64,
+        "timings_ms": {
+          "context_route": 0.06,
+          "intent_planning": 1906.67,
+          "retrieval": 965.24,
+          "generation": 1903.86,
+          "client_setup": 1.68
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "eb70e9091bd2",
+        "retrieval_plan": {
+          "queries": [
+            "钻石狂潮 苏烈 技能"
+          ],
+          "keywords": [
+            "钻石狂潮",
+            "苏烈",
+            "技能"
+          ],
+          "entities": [
+            "苏烈"
+          ],
+          "mode": "钻石狂潮",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "钻石狂潮里苏烈的技能是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 1901.35,
+            "success": true,
+            "input_chars": 4879,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2441,
+            "completion_tokens": 82,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 1903.5,
+            "success": true,
+            "input_chars": 4137,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2231,
+            "completion_tokens": 91,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.571,
+      "elapsed_ms": 4791.275
+    },
+    {
+      "case_id": "WX05",
+      "turn": 1,
+      "split": "development",
+      "message": "英雄李白的技能是什么？",
+      "input_history": [],
+      "expectation": {
+        "message": "英雄李白的技能是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "尊重证据层级；事实按原文回答，未确认机制不作结论",
+        "expected_knowledge_ids": [
+          "WX-hero-1311-skill"
+        ],
+        "required_groups": [
+          [
+            "李白"
+          ],
+          [
+            "青莲剑歌"
+          ],
+          [
+            "剑气"
+          ],
+          [
+            "斩击"
+          ]
+        ],
+        "forbidden_patterns": [
+          "即兴创作",
+          "灵感爆发"
+        ],
+        "answer_points": [
+          "李白青莲剑歌含剑气积累与斩击；不能换成棋手白歌"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-hero-1311-skill"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-1311-skill"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "李白（万象大赛）的技能是「青莲剑歌」：\n\n被动：李白施放技能时会积累1道剑气，最多4道。每道剑气提升10%基础物理攻击力。\n\n主动：李白施展剑阵，降低目标敌人及其相邻敌人6点物理防御。随后化身剑气施展6次斩击，每次造成80%物理攻击力的物理伤害，伤害由范围内的敌人平均分摊。\n\n等级会强化这个技能：\n- 10级：斩击伤害提升至120%物理攻击力\n- 40级：斩击伤害提升至150%物理攻击力\n- 100级：斩击期间不可选中",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-1311-skill",
+            "title": "李白·技能与强化",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-1311",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "name：青莲剑歌\n卡面原文：被动：李白施放技能时会积累1道剑气，最多4道。每道剑气提升10%基础物理攻击力。 主动：李白施展剑阵，降低目标敌人及其相邻敌人6点物理防御。随后化身剑气施展6次斩击，每次造成80%物理攻击力的物理伤害，伤害由范围内的敌人平均分摊。\n强化节点：1.level：10\n强化节点：1.正文：斩击伤害提升至120%物理攻击力\n强化节点：2.level：40\n强化节点：2.正文：斩击伤害提升至150%物理攻击力\n强化节点：3.level：100\n强化节点：3.正文：斩击期间不可选中",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-1311-skill",
+          "B01",
+          "WIKI-979d76a6e37d6bc79273",
+          "WIKI-22c02044cfc7c1be85f0",
+          "WX-hero-1311-original",
+          "WIKI-b18f43708251078058b7"
+        ],
+        "latency_ms": 8978.33,
+        "timings_ms": {
+          "context_route": 0.06,
+          "intent_planning": 2526.74,
+          "retrieval": 2788.88,
+          "generation": 3661.05,
+          "client_setup": 1.49
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "8e69a1600946",
+        "retrieval_plan": {
+          "queries": [
+            "李白 技能 强化 万象大赛"
+          ],
+          "keywords": [
+            "李白",
+            "技能",
+            "强化"
+          ],
+          "entities": [
+            "李白"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "英雄李白在《王者万象棋》万象大赛中的技能是什么？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2521.02,
+            "success": true,
+            "input_chars": 4672,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2365,
+            "completion_tokens": 117,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3660.56,
+            "success": true,
+            "input_chars": 7400,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3839,
+            "completion_tokens": 355,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.443,
+      "elapsed_ms": 8989.785
+    },
+    {
+      "case_id": "MT03",
+      "turn": 1,
+      "split": "development",
+      "message": "和河洛相关的河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援这五个天赋，介绍一下。",
+      "input_history": [],
+      "expectation": {
+        "message": "和河洛相关的河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援这五个天赋，介绍一下。",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "逐项介绍明确指定的五个天赋",
+        "answer_points": [
+          "五个对象均覆盖"
+        ],
+        "expected_knowledge_ids": [
+          "WX-talent-635015-original",
+          "WX-talent-635017-original",
+          "WX-talent-635016-original",
+          "WX-talent-635018-original",
+          "WX-talent-635014-original"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-talent-635015-original"
+          ],
+          [
+            "WX-talent-635017-original"
+          ],
+          [
+            "WX-talent-635016-original"
+          ],
+          [
+            "WX-talent-635018-original"
+          ],
+          [
+            "WX-talent-635014-original"
+          ]
+        ],
+        "required_groups": [
+          [
+            "河洛来客"
+          ],
+          [
+            "河洛精兵"
+          ],
+          [
+            "河洛增援"
+          ],
+          [
+            "河洛强援"
+          ],
+          [
+            "河洛新援"
+          ]
+        ],
+        "forbidden_patterns": []
+      },
+      "expected_knowledge_ids": [
+        "WX-talent-635015-original",
+        "WX-talent-635017-original",
+        "WX-talent-635016-original",
+        "WX-talent-635018-original",
+        "WX-talent-635014-original"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "这五个天赋都跟【河洛】英雄牌或李信有关，我按卡面效果分别说：\n\n- 河洛来客：获得3能量以及1张李信。\n- 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n- 河洛精兵：卡牌3选1，选项是4阶或5阶的【河洛】英雄。\n- 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n- 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n\n简单看下来，新援给的是低阶河洛牌，精兵、增援、强援给的是更高阶的河洛牌，其中强援还额外给5能量，来客则是直接给李信加3能量。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-talent-635016-original",
+            "title": "河洛增援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635016",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "随机获得3张3-4阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635018-original",
+            "title": "河洛强援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635018",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635014-original",
+            "title": "河洛新援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635014",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得2能量，以及随机1张2-3阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635015-original",
+            "title": "河洛来客·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635015",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得3能量以及1张李信。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635017-original",
+            "title": "河洛精兵·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635017",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "卡牌3选1（4阶或5阶的【河洛】英雄）。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-talent-635016-original",
+          "WX-talent-635018-original",
+          "WX-talent-635014-original",
+          "WX-talent-635015-original",
+          "WX-talent-635017-original"
+        ],
+        "latency_ms": 5900.92,
+        "timings_ms": {
+          "context_route": 0.06,
+          "intent_planning": 2402.74,
+          "retrieval": 69.92,
+          "generation": 3426.42,
+          "client_setup": 1.55
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "bc9ede02b1c0",
+        "retrieval_plan": {
+          "queries": [
+            "河洛来客 河洛精兵 河洛增援 河洛强援 河洛新援 天赋 卡面效果"
+          ],
+          "keywords": [
+            "河洛来客",
+            "河洛精兵",
+            "河洛增援",
+            "河洛强援",
+            "河洛新援",
+            "天赋"
+          ],
+          "entities": [
+            "河洛来客",
+            "河洛精兵",
+            "河洛增援",
+            "河洛强援",
+            "河洛新援"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "talent",
+            "related_to": [
+              "河洛"
+            ],
+            "names": [
+              "河洛来客",
+              "河洛精兵",
+              "河洛增援",
+              "河洛强援",
+              "河洛新援"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "介绍《王者万象棋》万象大赛中与河洛相关的五个天赋：河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援的卡面效果",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2395.85,
+            "success": true,
+            "input_chars": 6340,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3081,
+            "completion_tokens": 219,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3425.78,
+            "success": true,
+            "input_chars": 5398,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2734,
+            "completion_tokens": 436,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.601,
+      "elapsed_ms": 5913.062
+    },
+    {
+      "case_id": "MT03",
+      "turn": 2,
+      "split": "development",
+      "message": "每一个天赋的具体效果是什么",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "和河洛相关的河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援这五个天赋，介绍一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "这五个天赋都跟【河洛】英雄牌或李信有关，我按卡面效果分别说：\n\n- 河洛来客：获得3能量以及1张李信。\n- 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n- 河洛精兵：卡牌3选1，选项是4阶或5阶的【河洛】英雄。\n- 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n- 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n\n简单看下来，新援给的是低阶河洛牌，精兵、增援、强援给的是更高阶的河洛牌，其中强援还额外给5能量，来客则是直接给李信加3能量。"
+        }
+      ],
+      "expectation": {
+        "message": "每一个天赋的具体效果是什么",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "承接上一轮五天赋列表，给出具体效果，不重复询问范围",
+        "answer_points": [
+          "来客3能量和李信；精兵4或5阶三选一；增援3张3—4阶；强援5能量和3张4—5阶；新援2能量和1张2—3阶"
+        ],
+        "expected_knowledge_ids": [
+          "WX-talent-635015-original",
+          "WX-talent-635017-original",
+          "WX-talent-635016-original",
+          "WX-talent-635018-original",
+          "WX-talent-635014-original"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-talent-635015-original"
+          ],
+          [
+            "WX-talent-635017-original"
+          ],
+          [
+            "WX-talent-635016-original"
+          ],
+          [
+            "WX-talent-635018-original"
+          ],
+          [
+            "WX-talent-635014-original"
+          ]
+        ],
+        "required_groups": [
+          [
+            "河洛来客[^。；\\n]{0,40}3.{0,2}能量"
+          ],
+          [
+            "河洛精兵[^。；\\n]{0,50}(?:3选1|三选一)"
+          ],
+          [
+            "河洛增援[^。；\\n]{0,50}3[—–~至到-]4"
+          ],
+          [
+            "河洛强援[^。；\\n]{0,40}5.{0,2}能量"
+          ],
+          [
+            "河洛新援[^。；\\n]{0,40}2.{0,2}能量"
+          ]
+        ],
+        "forbidden_patterns": [
+          "你是指",
+          "还是全局",
+          "先不给你编",
+          "具体效果我这边还没查到",
+          "(?:精兵、增援、强援|这三种|这三个).{0,25}4阶以上"
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-talent-635015-original",
+        "WX-talent-635017-original",
+        "WX-talent-635016-original",
+        "WX-talent-635018-original",
+        "WX-talent-635014-original"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "按卡面原文，这五个天赋的效果分别是：\n\n- 河洛来客：获得3能量以及1张李信。\n- 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n- 河洛精兵：卡牌3选1，选项是4阶或5阶的【河洛】英雄。\n- 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n- 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-talent-635016-original",
+            "title": "河洛增援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635016",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "随机获得3张3-4阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635018-original",
+            "title": "河洛强援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635018",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635014-original",
+            "title": "河洛新援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635014",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得2能量，以及随机1张2-3阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635015-original",
+            "title": "河洛来客·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635015",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得3能量以及1张李信。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-talent-635017-original",
+            "title": "河洛精兵·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635017",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "卡牌3选1（4阶或5阶的【河洛】英雄）。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-talent-635016-original",
+          "WX-talent-635018-original",
+          "WX-talent-635014-original",
+          "WX-talent-635015-original",
+          "WX-talent-635017-original"
+        ],
+        "latency_ms": 6042.51,
+        "timings_ms": {
+          "context_route": 0.09,
+          "intent_planning": 2883.59,
+          "retrieval": 5.17,
+          "generation": 3151.81,
+          "client_setup": 1.59
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "c2b68a2a0eb0",
+        "retrieval_plan": {
+          "queries": [
+            "河洛来客 天赋 卡面原文 具体效果",
+            "河洛精兵 天赋 卡面原文 具体效果",
+            "河洛增援 天赋 卡面原文 具体效果",
+            "河洛强援 天赋 卡面原文 具体效果"
+          ],
+          "keywords": [
+            "河洛来客",
+            "河洛精兵",
+            "河洛增援",
+            "河洛强援",
+            "河洛新援",
+            "天赋",
+            "卡面原文"
+          ],
+          "entities": [
+            "河洛来客",
+            "河洛精兵",
+            "河洛增援",
+            "河洛强援",
+            "河洛新援"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "talent",
+            "related_to": [],
+            "names": [
+              "河洛来客",
+              "河洛精兵",
+              "河洛增援",
+              "河洛强援",
+              "河洛新援"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援这五个天赋的具体效果分别是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2876.37,
+            "success": true,
+            "input_chars": 6586,
+            "max_tokens": 4096,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3281,
+            "completion_tokens": 246,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3151.09,
+            "success": true,
+            "input_chars": 5644,
+            "max_tokens": 16384,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2934,
+            "completion_tokens": 440,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 3.397,
+      "elapsed_ms": 6053.642
+    },
+    {
+      "case_id": "MT03",
+      "turn": 3,
+      "split": "development",
+      "message": "那其中能给5能量的是哪个？",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "和河洛相关的河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援这五个天赋，介绍一下。"
+        },
+        {
+          "role": "assistant",
+          "content": "这五个天赋都跟【河洛】英雄牌或李信有关，我按卡面效果分别说：\n\n- 河洛来客：获得3能量以及1张李信。\n- 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n- 河洛精兵：卡牌3选1，选项是4阶或5阶的【河洛】英雄。\n- 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n- 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n\n简单看下来，新援给的是低阶河洛牌，精兵、增援、强援给的是更高阶的河洛牌，其中强援还额外给5能量，来客则是直接给李信加3能量。"
+        },
+        {
+          "role": "user",
+          "content": "每一个天赋的具体效果是什么"
+        },
+        {
+          "role": "assistant",
+          "content": "按卡面原文，这五个天赋的效果分别是：\n\n- 河洛来客：获得3能量以及1张李信。\n- 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n- 河洛精兵：卡牌3选1，选项是4阶或5阶的【河洛】英雄。\n- 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n- 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。"
+        }
+      ],
+      "expectation": {
+        "message": "那其中能给5能量的是哪个？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "继续承接五个天赋，定位河洛强援",
+        "answer_points": [
+          "河洛强援提供5能量和3张随机4—5阶河洛英雄"
+        ],
+        "expected_knowledge_ids": [
+          "WX-talent-635018-original"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-talent-635018-original"
+          ]
+        ],
+        "required_groups": [
+          [
+            "河洛强援"
+          ],
+          [
+            "5.{0,2}能量"
+          ],
+          [
+            "3张"
+          ],
+          [
+            "4[—–~至到-]5"
+          ]
+        ],
+        "forbidden_patterns": []
+      },
+      "expected_knowledge_ids": [
+        "WX-talent-635018-original"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": false,
+      "result": {
+        "answer": "这五个里能给5能量的是河洛强援，它同时还会给3张随机4-5阶【河洛】英雄牌。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-talent-635018-original",
+            "title": "河洛强援·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/talent-635018",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-effect-7075-original",
+          "WIKI-c5ced8e1ba0c3962194a",
+          "WX-talent-632001-original",
+          "WIKI-568e467dc3529f9654fe",
+          "WX-talent-635030-original",
+          "WX-talent-635018-original"
+        ],
+        "latency_ms": 5743.46,
+        "timings_ms": {
+          "context_route": 0.11,
+          "intent_planning": 2184.12,
+          "retrieval": 1380.47,
+          "generation": 2174.38,
+          "client_setup": 3.31
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "17ff69534ca1",
+        "retrieval_plan": {
+          "queries": [
+            "那其中能给5能量的是哪个？"
+          ],
+          "keywords": [],
+          "entities": [],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "fallback",
+          "error_code": "router_failure"
+        },
+        "routing": {
+          "status": "fallback",
+          "intent": "knowledge",
+          "resolved_query": "那其中能给5能量的是哪个？",
+          "retrieval_required": true,
+          "error_code": "router_failure"
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2166.97,
+            "success": true,
+            "input_chars": 6778,
+            "max_tokens": 4096,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3432,
+            "completion_tokens": 112,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2173.77,
+            "success": true,
+            "input_chars": 5838,
+            "max_tokens": 16384,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3140,
+            "completion_tokens": 95,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 1.232,
+      "elapsed_ms": 5756.919
+    },
+    {
+      "case_id": "MT06",
+      "turn": 1,
+      "split": "development",
+      "message": "白歌的技能是什么？",
+      "input_history": [],
+      "expectation": {
+        "message": "白歌的技能是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "在当前模式检索具体对象的正确字段并引用原文",
+        "answer_points": [
+          "白歌为棋手；每4次英雄合成获得即兴创作"
+        ],
+        "expected_knowledge_ids": [
+          "B01",
+          "WIKI-a707692151fe8ded9573"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "B01",
+            "WIKI-a707692151fe8ded9573"
+          ]
+        ],
+        "required_groups": [
+          [
+            "4次",
+            "四次"
+          ],
+          [
+            "合成"
+          ],
+          [
+            "即兴创作"
+          ]
+        ],
+        "forbidden_patterns": [
+          "暂时还没找到",
+          "没有.{0,6}资料"
+        ]
+      },
+      "expected_knowledge_ids": [
+        "B01",
+        "WIKI-a707692151fe8ded9573"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "白歌的技能是这样的：\n\n神来之笔（技能）：每进行4次英雄合成，白歌获得1张即兴创作。\n\n即兴创作（技能衍生牌）：随机获得场上1名英雄的复制。\n\n天生我才（秘技）：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n惊才绝艳（专属）：获得1张奇才：指定1名英雄，获得4张该英雄牌。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WIKI-a707692151fe8ded9573",
+            "title": "白歌·棋手技能",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "1.type：技能\n1.name：神来之笔\n1.正文：每进行4次英雄合成，白歌获得1张即兴创作。\n1.cardId：93399\n1.currentOfficial：True\n2.type：秘技\n2.name：天生我才\n2.正文：使用6张即兴创作，获得1张秘技牌灵感爆发。\n2.cardId：663301\n2.currentOfficial：True\n3.type：专属\n3.name：惊才绝艳\n3.正文：获得1张奇才：指定1名英雄，获得4张该英雄牌。\n3.cardId：663307\n3.currentOfficial：True",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-21d2e1a3f53e6605a8a5",
+            "title": "白歌·currentCards",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "1.name：神来之笔\n1.说明：每进行4次英雄合成，白歌获得1张即兴创作。\n1.rawDescription：每进行4次英雄合成，白歌获得1张即兴创作。\n1.path：https://assets.wanxiangqiwiki.com/assets/players/current-20260929/7bfa5221c71724b0b036134a.webp\n1.sourceUrl：https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/c362eff66a859191ae248960485f1344332183d9b05efd735eae478066db5867.png\n1.previewCardIDs：1.9330",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WIKI-a707692151fe8ded9573",
+          "C01",
+          "B01",
+          "WIKI-bc5ef4503b092277df26",
+          "WIKI-0978e8e4f7fcbf6090d4",
+          "WIKI-21d2e1a3f53e6605a8a5"
+        ],
+        "latency_ms": 8629.7,
+        "timings_ms": {
+          "context_route": 0.06,
+          "intent_planning": 2060.39,
+          "retrieval": 2758.73,
+          "generation": 3808.73,
+          "client_setup": 1.61
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "f80c3a881aba",
+        "retrieval_plan": {
+          "queries": [
+            "白歌 棋手技能"
+          ],
+          "keywords": [
+            "白歌",
+            "棋手技能"
+          ],
+          "entities": [
+            "白歌"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "白歌的棋手技能是什么？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2053.37,
+            "success": true,
+            "input_chars": 4673,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2381,
+            "completion_tokens": 77,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3808.09,
+            "success": true,
+            "input_chars": 6626,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3334,
+            "completion_tokens": 571,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.488,
+      "elapsed_ms": 8640.421
+    },
+    {
+      "case_id": "MT06",
+      "turn": 2,
+      "split": "development",
+      "message": "苏烈的技能是什么",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "白歌的技能是什么？"
+        },
+        {
+          "role": "assistant",
+          "content": "白歌的技能是这样的：\n\n神来之笔（技能）：每进行4次英雄合成，白歌获得1张即兴创作。\n\n即兴创作（技能衍生牌）：随机获得场上1名英雄的复制。\n\n天生我才（秘技）：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n惊才绝艳（专属）：获得1张奇才：指定1名英雄，获得4张该英雄牌。"
+        }
+      ],
+      "expectation": {
+        "message": "苏烈的技能是什么",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "在当前模式检索具体对象的正确字段并引用原文",
+        "answer_points": [
+          "豪烈万军，旋转造成80+80%物攻伤害，降低4物防5秒；技能与普通卡面区分"
+        ],
+        "expected_knowledge_ids": [
+          "WX-hero-sulie-skill"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-hero-sulie-skill"
+          ]
+        ],
+        "required_groups": [
+          [
+            "豪烈万军"
+          ],
+          [
+            "80"
+          ],
+          [
+            "4点",
+            "4物理",
+            "物理防御.{0,4}4"
+          ],
+          [
+            "5秒"
+          ]
+        ],
+        "forbidden_patterns": [
+          "暂时还没找到",
+          "没有.{0,6}资料"
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-sulie-skill"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "苏烈的技能是豪烈万军：苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。\n\n随着等级提升，这个技能还会强化：\n- 10级：技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点。\n- 40级：战斗中首次被击败后复生，并且拥有50%最大生命值。\n- 100级：复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒，并造成10%最大生命值的物理伤害。\n\n另外，苏烈还有牺牲效果：苏烈的等级永久+2；觉醒后变为等级永久+4。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-sulie-skill",
+            "title": "苏烈·技能与强化",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "卡面原文：苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。\n强化节点：1.level：10\n强化节点：1.正文：技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点\n强化节点：2.level：40\n强化节点：2.正文：战斗中首次被击败后复生，并且拥有50%最大生命值\n强化节点：3.level：100\n强化节点：3.正文：复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-hero-sulie-original",
+            "title": "苏烈·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+2。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-hero-sulie-awakening",
+            "title": "苏烈·觉醒",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+4。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-sulie-skill",
+          "WX-hero-sulie-original",
+          "WIKI-fda26c3bd6e1be155eb0",
+          "WIKI-31db0bbc7302bee05ed5-2",
+          "WIKI-f885fa503c110f4fc952",
+          "WX-hero-sulie-awakening"
+        ],
+        "latency_ms": 8428.64,
+        "timings_ms": {
+          "context_route": 0.08,
+          "intent_planning": 2189.08,
+          "retrieval": 2860.22,
+          "generation": 3377.61,
+          "client_setup": 1.45
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "7f2a0e452aba",
+        "retrieval_plan": {
+          "queries": [
+            "苏烈 英雄技能 强化 万象大赛"
+          ],
+          "keywords": [
+            "苏烈",
+            "技能"
+          ],
+          "entities": [
+            "苏烈"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "苏烈的技能是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2183.2,
+            "success": true,
+            "input_chars": 5878,
+            "max_tokens": 4096,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2883,
+            "completion_tokens": 75,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3376.89,
+            "success": true,
+            "input_chars": 5752,
+            "max_tokens": 16384,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2978,
+            "completion_tokens": 437,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.471,
+      "elapsed_ms": 8439.871
+    },
+    {
+      "case_id": "MT06",
+      "turn": 3,
+      "split": "development",
+      "message": "苏烈觉醒的效果是什么？",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "白歌的技能是什么？"
+        },
+        {
+          "role": "assistant",
+          "content": "白歌的技能是这样的：\n\n神来之笔（技能）：每进行4次英雄合成，白歌获得1张即兴创作。\n\n即兴创作（技能衍生牌）：随机获得场上1名英雄的复制。\n\n天生我才（秘技）：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n惊才绝艳（专属）：获得1张奇才：指定1名英雄，获得4张该英雄牌。"
+        },
+        {
+          "role": "user",
+          "content": "苏烈的技能是什么"
+        },
+        {
+          "role": "assistant",
+          "content": "苏烈的技能是豪烈万军：苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。\n\n随着等级提升，这个技能还会强化：\n- 10级：技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点。\n- 40级：战斗中首次被击败后复生，并且拥有50%最大生命值。\n- 100级：复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒，并造成10%最大生命值的物理伤害。\n\n另外，苏烈还有牺牲效果：苏烈的等级永久+2；觉醒后变为等级永久+4。"
+        }
+      ],
+      "expectation": {
+        "message": "苏烈觉醒的效果是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "在当前模式检索具体对象的正确字段并引用原文",
+        "answer_points": [
+          "牺牲：苏烈的等级永久+4"
+        ],
+        "expected_knowledge_ids": [
+          "WX-hero-sulie-awakening"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-hero-sulie-awakening"
+          ]
+        ],
+        "required_groups": [
+          [
+            "牺牲"
+          ],
+          [
+            "永久"
+          ],
+          [
+            "\\+4",
+            "提升4",
+            "增加4",
+            "提高4",
+            "加4"
+          ]
+        ],
+        "forbidden_patterns": [
+          "暂时还没找到",
+          "没有.{0,6}资料"
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-sulie-awakening"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "苏烈觉醒后，牺牲效果会从等级永久+2提升为等级永久+4。也就是说，普通的牺牲是+2，觉醒版本直接翻倍成+4。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-sulie-awakening",
+            "title": "苏烈·觉醒",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+4。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WX-hero-sulie-original",
+            "title": "苏烈·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+2。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-sulie-awakening",
+          "WX-hero-sulie-original",
+          "WIKI-31db0bbc7302bee05ed5-2",
+          "WIKI-f9fd1c048154ec751974",
+          "WIKI-33e5bd6f94ae230bf2a8",
+          "WIKI-fda26c3bd6e1be155eb0"
+        ],
+        "latency_ms": 7079.98,
+        "timings_ms": {
+          "context_route": 0.09,
+          "intent_planning": 2110.28,
+          "retrieval": 2776.99,
+          "generation": 2190.83,
+          "client_setup": 1.45
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "801b3e10bdca",
+        "retrieval_plan": {
+          "queries": [
+            "苏烈 觉醒 效果"
+          ],
+          "keywords": [
+            "苏烈",
+            "觉醒"
+          ],
+          "entities": [
+            "苏烈"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "hero",
+            "related_to": [],
+            "names": [
+              "苏烈"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "苏烈的觉醒效果是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2105.38,
+            "success": true,
+            "input_chars": 6128,
+            "max_tokens": 4096,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3049,
+            "completion_tokens": 86,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2190.32,
+            "success": true,
+            "input_chars": 5870,
+            "max_tokens": 16384,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3045,
+            "completion_tokens": 142,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.331,
+      "elapsed_ms": 7090.794
+    },
+    {
+      "case_id": "MT06",
+      "turn": 4,
+      "split": "development",
+      "message": "苏烈觉醒卡面的效果是什么？",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "白歌的技能是什么？"
+        },
+        {
+          "role": "assistant",
+          "content": "白歌的技能是这样的：\n\n神来之笔（技能）：每进行4次英雄合成，白歌获得1张即兴创作。\n\n即兴创作（技能衍生牌）：随机获得场上1名英雄的复制。\n\n天生我才（秘技）：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n惊才绝艳（专属）：获得1张奇才：指定1名英雄，获得4张该英雄牌。"
+        },
+        {
+          "role": "user",
+          "content": "苏烈的技能是什么"
+        },
+        {
+          "role": "assistant",
+          "content": "苏烈的技能是豪烈万军：苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。\n\n随着等级提升，这个技能还会强化：\n- 10级：技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点。\n- 40级：战斗中首次被击败后复生，并且拥有50%最大生命值。\n- 100级：复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒，并造成10%最大生命值的物理伤害。\n\n另外，苏烈还有牺牲效果：苏烈的等级永久+2；觉醒后变为等级永久+4。"
+        },
+        {
+          "role": "user",
+          "content": "苏烈觉醒的效果是什么？"
+        },
+        {
+          "role": "assistant",
+          "content": "苏烈觉醒后，牺牲效果会从等级永久+2提升为等级永久+4。也就是说，普通的牺牲是+2，觉醒版本直接翻倍成+4。"
+        }
+      ],
+      "expectation": {
+        "message": "苏烈觉醒卡面的效果是什么？",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "在当前模式检索具体对象的正确字段并引用原文",
+        "answer_points": [
+          "与上一轮同一觉醒效果，不能因增加卡面二字就称无资料"
+        ],
+        "expected_knowledge_ids": [
+          "WX-hero-sulie-awakening"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "WX-hero-sulie-awakening"
+          ]
+        ],
+        "required_groups": [
+          [
+            "牺牲"
+          ],
+          [
+            "永久"
+          ],
+          [
+            "\\+4",
+            "提升4",
+            "增加4",
+            "提高4",
+            "加4"
+          ]
+        ],
+        "forbidden_patterns": [
+          "暂时还没找到",
+          "没有.{0,6}资料"
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-sulie-awakening"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "苏烈觉醒卡面的效果是：牺牲：苏烈的等级永久+4。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-sulie-awakening",
+            "title": "苏烈·觉醒",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+4。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-sulie-awakening",
+          "WX-hero-sulie-original",
+          "WIKI-31db0bbc7302bee05ed5-2",
+          "WX-hero-sulie-skill",
+          "WIKI-f9fd1c048154ec751974",
+          "WIKI-33e5bd6f94ae230bf2a8"
+        ],
+        "latency_ms": 7420.03,
+        "timings_ms": {
+          "context_route": 0.13,
+          "intent_planning": 2500.19,
+          "retrieval": 2878.4,
+          "generation": 2037.89,
+          "client_setup": 3.24
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "a95ac350dddb",
+        "retrieval_plan": {
+          "queries": [
+            "苏烈 觉醒 卡面原文 效果"
+          ],
+          "keywords": [
+            "苏烈",
+            "觉醒",
+            "卡面"
+          ],
+          "entities": [
+            "苏烈"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "hero",
+            "related_to": [],
+            "names": [
+              "苏烈"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "苏烈觉醒卡面的效果是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2492.9,
+            "success": true,
+            "input_chars": 6195,
+            "max_tokens": 4096,
+            "history_messages": 6,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3098,
+            "completion_tokens": 95,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2037.38,
+            "success": true,
+            "input_chars": 6164,
+            "max_tokens": 16384,
+            "history_messages": 6,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3229,
+            "completion_tokens": 82,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.106,
+      "elapsed_ms": 7431.381
+    }
+  ]
+}

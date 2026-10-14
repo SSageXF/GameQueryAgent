@@ -1,0 +1,222 @@
+{
+  "health": {
+    "mode": "live",
+    "retrieval_backend": "vector",
+    "model_configured": true,
+    "knowledge_count": 7731,
+    "snapshot_date": "2026-10-13",
+    "request_timeout_seconds": 180.0,
+    "query_planning": "combined_intent_and_search"
+  },
+  "rows": [
+    {
+      "question": "白歌的技能是什么？",
+      "result": {
+        "answer": "白歌的技能分三部分：\n\n技能「神来之笔」：每进行4次英雄合成，获得1张即兴创作。\n\n秘技「天生我才」：使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n专属「惊才绝艳」：获得1张奇才，指定1名英雄，获得4张该英雄牌。\n\n另外，即兴创作是用来复制场上随机一名英雄的。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WIKI-a707692151fe8ded9573",
+            "title": "白歌·棋手技能",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/players/%E7%99%BD%E6%AD%8C",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "1.name：神来之笔\n1.正文：每进行4次英雄合成，白歌获得1张即兴创作。\n1.cardId：93399\n1.currentOfficial：True\n2.type：秘技\n2.name：天生我才\n2.正文：使用6张即兴创作，获得1张秘技牌灵感爆发。\n2.cardId：663301\n2.currentOfficial：True\n3.type：专属\n3.name：惊才绝艳\n3.正文：获得1张奇才：指定1名英雄，获得4张该英雄牌。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "B01",
+            "title": "白歌的技能与复制",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "累计4次英雄合成会得到即兴创作，使用它可复制场上随机一名英雄。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WIKI-a707692151fe8ded9573",
+          "B01",
+          "C01",
+          "WIKI-738a7028d9a6f576eaac",
+          "WIKI-bc5ef4503b092277df26",
+          "WIKI-f66b9088869234b25380"
+        ],
+        "latency_ms": 8688.94,
+        "timings_ms": {
+          "context_route": 0.08,
+          "intent_planning": 2681.17,
+          "retrieval": 2394.6,
+          "generation": 3264.95,
+          "client_setup": 318.69
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "d5f7fe726e40",
+        "retrieval_plan": {
+          "queries": [
+            "白歌 棋手技能"
+          ],
+          "keywords": [],
+          "entities": [
+            "白歌"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "白歌的技能是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2674.71,
+            "success": true,
+            "input_chars": 4673,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2381,
+            "completion_tokens": 66,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3264.01,
+            "success": true,
+            "input_chars": 5808,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 3042,
+            "completion_tokens": 330,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      }
+    },
+    {
+      "question": "苏烈觉醒卡面的效果是什么？",
+      "result": {
+        "answer": "苏烈觉醒卡的效果是：牺牲——苏烈的等级永久+4。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-sulie-awakening",
+            "title": "苏烈·觉醒",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-sulie",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "official_original",
+            "verification": "official_data_matched",
+            "official_url": "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_1.js",
+            "excerpt": "牺牲：苏烈的等级永久+4。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-sulie-awakening",
+          "WX-hero-sulie-original",
+          "WIKI-31db0bbc7302bee05ed5-2",
+          "WX-hero-sulie-skill",
+          "WIKI-33e5bd6f94ae230bf2a8",
+          "WIKI-f9fd1c048154ec751974"
+        ],
+        "latency_ms": 6562.16,
+        "timings_ms": {
+          "context_route": 0.05,
+          "intent_planning": 2033.9,
+          "retrieval": 2393.4,
+          "generation": 2105.29,
+          "client_setup": 1.16
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "af63b9783849",
+        "retrieval_plan": {
+          "queries": [
+            "苏烈 觉醒 卡面效果"
+          ],
+          "keywords": [
+            "苏烈",
+            "觉醒",
+            "卡面效果"
+          ],
+          "entities": [
+            "苏烈"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "hero",
+            "related_to": [],
+            "names": [
+              "苏烈"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "苏烈觉醒卡面的效果是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2029.91,
+            "success": true,
+            "input_chars": 4878,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2440,
+            "completion_tokens": 94,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2104.76,
+            "success": true,
+            "input_chars": 5707,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2918,
+            "completion_tokens": 81,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      }
+    }
+  ]
+}

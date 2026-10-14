@@ -101,6 +101,41 @@ def test_non_search_intent_ignores_unused_example_fields():
     assert result.search is None and result.clarification is None
 
 
+async def test_search_annotation_does_not_discard_valid_model_plan(retriever):
+    def handler(request):
+        data=json.loads(json.loads(request.content)['messages'][-1]['content'])
+        if 'catalog' in data:
+            return response({'intent':'knowledge','query':data['question'],
+                'search':{**fallback_plan('英雄购买费用').model_dump(),
+                          'queries_note':'这里是检索说明，不是查询参数'}})
+        return response({'answer':'英雄牌基础购买费用为3点能量。','source_ids':['E03'],
+                         'quotes':[{'source_id':'E03','quote':retriever.by_id['E03']['body']}]})
+    result=await Agent(settings(),llm=LLM(settings(),httpx.MockTransport(handler)),retriever=retriever).chat(
+        ChatRequest(message='英雄购买费用是多少？'))
+    assert result.routing['status']=='model' and result.status=='answered'
+    assert len(result.model_calls)==2 and 'E03' in result.retrieved_ids
+    assert 'queries_note' not in result.retrieval_plan
+
+
+def test_surplus_queries_and_misplaced_selection_keep_complete_catalog(retriever):
+    names=['河洛来客','河洛精兵','河洛增援','河洛强援','河洛新援']
+    decision=Decision.model_validate({'intent':'knowledge','query':'这五个天赋的具体效果',
+        'search':{'queries':[name+'效果' for name in names]},
+        'selection':{'section':'talent','names':names}})
+    assert len(decision.search.queries)==4
+    rows=retriever.search_plan(decision.query,decision.search)
+    assert {row['entity'] for row in rows}==set(names)
+
+
+@pytest.mark.parametrize('search',[
+    {'queries':[]}, {'queries':['苏烈觉醒'],'mode':'王者荣耀'},
+    {'queries':['苏烈觉醒'],'selection':{'section':'invalid','names':['苏烈']}},
+])
+def test_tolerating_annotations_keeps_search_validation(search):
+    with pytest.raises(ValueError):
+        Decision.model_validate({'intent':'knowledge','query':'苏烈觉醒','search':search})
+
+
 def test_advice_adds_trigger_definitions_without_guessing(retriever):
     evidence=[retriever.by_id['WX-hero-1111-original'],retriever.by_id['WX-hero-1281-original']]
     support=retriever.supporting_mechanics(evidence,'万象大赛')
