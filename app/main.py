@@ -2,7 +2,7 @@ import logging
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from .agent import Agent
@@ -77,6 +77,10 @@ def create_app(settings: Settings | None = None, agent: Agent | None = None) -> 
     @app.get("/")
     async def index():
         return FileResponse(ROOT / "static/index.html")
+
+    @app.get("/favicon.ico", include_in_schema=False)
+    async def favicon():
+        return RedirectResponse(url="/static/favicon.svg")
 
     app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
     return app
