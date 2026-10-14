@@ -25,7 +25,7 @@ async def test_model_decides_unseen_wording_and_combines_plan(retriever):
     calls=[]
     def handler(request):
         payload=json.loads(request.content); data=json.loads(payload['messages'][1]['content']); calls.append(data)
-        assert payload['thinking']=={'type':'disabled'}
+        assert payload['thinking']=={'type':'enabled'}
         if 'catalog' in data:
             assert 'entity_names' not in data['catalog']
             assert data['question']=='兜里就两点，还能从店里带个英雄走不？'

@@ -2,6 +2,7 @@ import json
 import math
 import re
 from collections import Counter
+from functools import lru_cache
 
 from .config import ROOT
 from .query import QueryPlan, fallback_plan
@@ -24,7 +25,8 @@ class Retriever:
         ids=[r['id'] for r in records]
         if len(ids)!=len(set(ids)):raise ValueError('Duplicate knowledge IDs')
         self.by_id={r['id']:r for r in records}
-        self.counts=[Counter(tokens(r['title']+' '+r['body'])) for r in records]
+        sections={'talent':'天赋','hero':'英雄','equipment':'装备','effect':'效果牌'}
+        self.counts=[Counter(tokens(r['title']+' '+r['body']+' '+sections.get(r.get('section'),''))) for r in records]
         self.lengths=[sum(c.values()) for c in self.counts]
         self.titles=[set(tokens(r['title'])) for r in records]
         self.df=Counter(t for c in self.counts for t in c)
@@ -32,6 +34,59 @@ class Retriever:
         self.idf={t:math.log(1+(len(records)-n+.5)/(n+.5)) for t,n in self.df.items()}
         self.names=sorted({r['entity'] for r in records if r.get('entity')},key=lambda x:(-len(x),x))
         self.context_entities=sorted({r['entity'] for r in records if r.get('entity') and r.get('section') in {'hero','equipment','effect','talent','players','summons'}})
+
+    @staticmethod
+    def eligible(row, mode, include_history):
+        publication=row.get('publication_status','')
+        return (row.get('mode') in {mode,'通用'}
+                and row.get('verification') in {'official_page_checked','official_data_matched','wiki_snapshot'}
+                and row.get('eligible') is not False and row.get('claim_type')!='pending'
+                and (include_history or not (publication.startswith('historical') or publication in {'off_shelf','associated_preview'})))
+
+    def fetch_many(self, ids):
+        return [self.by_id[key] for key in ids if key in self.by_id]
+
+    @lru_cache(maxsize=8)
+    def catalog_records(self, section):
+        # The vector backend fetches these payloads from Qdrant in one batch.
+        # Category labels alone cannot answer questions about an object's effects.
+        ids=[r['id'] for r in self.records if r.get('section')==section
+             and r.get('field') in {'original','faction','relatedCards'}]
+        return self.fetch_many(ids)
+
+    def select_catalog(self, selection, mode, include_history, limit=24):
+        groups={}
+        for row in self.catalog_records(selection.section):
+            if self.eligible(row,mode,include_history):
+                groups.setdefault(row.get('object_id') or row.get('entity'),[]).append(row)
+        matches=[]
+        names=set(selection.names)
+        terms=[term.casefold() for term in selection.related_to]
+        for rows in groups.values():
+            originals=[r for r in rows if r.get('field')=='original']
+            if not originals:continue
+            original=sorted(originals,key=lambda r:r['id'])[0]
+            if names and original.get('entity') not in names:continue
+            direct=[original,*[r for r in rows if r.get('field')=='faction']]
+            direct_text='\n'.join(r['title']+'\n'+r['body'] for r in direct).casefold()
+            missing=[term for term in terms if term not in direct_text]
+            related=[r for r in rows if r.get('field')=='relatedCards']
+            # Every requested condition must have a documented match. Include the
+            # relation record when the card text itself doesn't establish the link.
+            support=[r for r in related if any(t in r['body'].casefold() for t in missing)]
+            if any(not any(t in r['body'].casefold() for r in support) for t in missing):continue
+            if not support:
+                support=[r for r in direct[1:] if any(t not in (original['title']+'\n'+original['body']).casefold()
+                                                     and t in r['body'].casefold() for t in terms)]
+            matches.append((original,support,'related_card' if missing else 'direct_text'))
+        matches.sort(key=lambda item:(item[2]=='related_card',item[0]['entity'],item[0]['id']))
+        total=len(matches)
+        selected=matches[:limit]
+        evidence=[]
+        for original,support,kind in selected:
+            for row in [original,*support[:1]]:
+                evidence.append({**row,'relation_kind':kind,'selection_total':total,'selection_returned':len(selected)})
+        return evidence
 
     def pending(self,query):
         return [r for r in self.records if r.get('claim_type')=='pending' and r.get('entity') and r['entity'] in query
@@ -62,7 +117,10 @@ class Retriever:
             anchors=[a for a in row.get('aliases',[]) if a and a in query]
             overlap=q&self.titles[i]
             semantic=(semantic_scores or {}).get(row['id'],0)
-            if not anchors and len(overlap)<2 and semantic<0.8:continue
+            # A fixed 0.8 gate discarded relevant BGE hits even when their body
+            # contained the requested subject. Keep body matches as lexical evidence.
+            body_overlap=q & counts.keys()
+            if not anchors and len(overlap)<2 and not (semantic>=0.5 and len(body_overlap)>=2) and semantic<0.8:continue
             score=sum(3+min(len(a),6) for a in anchors)+len(overlap)*1.5
             for t in q:
                 tf=counts[t]
@@ -127,6 +185,8 @@ class Retriever:
         mode=plan.mode
         if '钻石狂潮' in original:mode='钻石狂潮'
         elif '万象大赛' in original:mode='万象大赛'
+        if plan.selection is not None:
+            return self.select_catalog(plan.selection,mode,plan.include_history)
         queries=list(dict.fromkeys([original,*plan.queries,' '.join(plan.entities+plan.keywords)]))
         batches=[self.rank(q,mode,plan.include_history) for q in queries if q.strip()]
         selected=[];seen=set()

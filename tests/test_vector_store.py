@@ -1,11 +1,13 @@
 import json
 from contextlib import closing
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
 from app import vector_store as vs
 from app.vector_store import QdrantClient, models
 from app.query import fallback_plan
+from app.query import CatalogSelection, QueryPlan
 
 
 class FixedEncoder:
@@ -65,3 +67,36 @@ def test_changed_snapshot_rejects_stale_index(store, monkeypatch, tmp_path):
     (tmp_path/'manifest.json').write_text(json.dumps({'model':vs.MODEL,'fingerprint':'old'}))
     with pytest.raises(RuntimeError,match='重建索引'):
         vs.VectorRetriever(tmp_path,model=FixedEncoder())
+
+
+def test_catalog_reads_qdrant_originals_and_applies_version_mode_filters(store,monkeypatch):
+    rows=[]
+    for name,mode,status,claim in [('甲','万象大赛','current','wiki_original'),
+                                 ('乙','万象大赛','historical','wiki_original'),
+                                 ('丙','万象大赛','current','pending'),
+                                 ('丁','钻石狂潮','current','wiki_original')]:
+        for field,body in [('original','为指定英雄提升等级。'),('relatedCards','关联英雄属于河洛。'),('talentGroup','初始天赋')]:
+            rows.append(dict(id=name+field,entity=name,object_id=name,section='talent',field=field,title=name+'天赋',body=body,
+                             mode=mode,verification='wiki_snapshot',claim_type=claim,publication_status=status))
+    store.client.upsert('test',points=[models.PointStruct(id=vs.point_id(r['id']),vector=[1.0,0.0],payload=r) for r in rows])
+    store.records.extend({k:v for k,v in r.items() if k!='body'} for r in rows)
+    monkeypatch.setattr(store.model,'query_embed',lambda *args:pytest.fail('Structured catalog needs no embedding'))
+    plan=QueryPlan(queries=['河洛天赋'],selection=CatalogSelection(section='talent',related_to=['河洛']))
+    hits=store.search_plan('河洛天赋',plan)
+    assert {r['id'] for r in hits}=={'甲original','甲relatedCards'}
+    assert all(r['selection_total']==1 for r in hits)
+    assert all('body' not in r for r in store.records)
+    plan.include_history=True
+    assert {r['entity'] for r in store.search_plan('河洛天赋',plan)}=={'甲','乙'}
+    plan.mode='钻石狂潮'
+    assert {r['entity'] for r in store.search_plan('河洛天赋',plan)}=={'丁'}
+
+
+def test_base_rule_alias_recalls_record_missed_by_semantic_top_k(store,monkeypatch):
+    row=dict(id='cost-rule',title='购买卡牌消耗',body='购买英雄牌基础消耗3点能量。',
+             aliases=['购买','费用'],mode='万象大赛',verification='official_page_checked',claim_type='rule')
+    store.client.upsert('test',points=[models.PointStruct(id=vs.point_id(row['id']),vector=[0.0,1.0],payload=row)])
+    store.records.append({k:v for k,v in row.items() if k!='body'})
+    monkeypatch.setattr(store.client,'query_points',lambda *a,**kw:SimpleNamespace(points=[]))
+    ranked=store.rank('王者万象棋中英雄的购买费用是多少')
+    assert [r['id'] for _,r in ranked]==['cost-rule']

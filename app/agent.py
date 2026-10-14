@@ -100,7 +100,7 @@ class Agent:
         elif intent == 'chitchat':
             answer = decision.reply
         elif route_status != 'model' and re.search(r'今天.*胜率|实时|体验服|觉醒.*概率', query):
-            answer, status = '这部分我还没查到核验过的版本或精确数据，资料不足。你有对应的公告或卡牌说明吗？', 'insufficient_evidence'
+            answer, status = '这个版本的具体数据还需要对照对应公告。你说的是正式服还是体验服？', 'insufficient_evidence'
         else:
             tick = time.perf_counter()
             pending = self.retriever.pending(query)
@@ -121,12 +121,12 @@ class Agent:
             timings['retrieval'] = (time.perf_counter() - tick) * 1000
             if not pending:
                 if not evidence:
-                    answer, status = '这点我还没找到足够资料，先不猜。你能补充具体卡牌名字或那段说明吗？', 'insufficient_evidence'
+                    answer, status = '暂时还没找到这项内容的明确说明。你可以告诉我它属于哪个玩法，或提供更完整的卡牌名称，我再帮你核对。', 'insufficient_evidence'
                 else:
                     tick = time.perf_counter()
                     try:
                         async with asyncio.timeout(self.settings.timeout):
-                            generation = await self.llm.generate(query, context.history, evidence, intent)
+                            generation = await self.llm.generate(request.message, context.history, evidence, intent)
                     except (TimeoutError, AgentError) as exc:
                         error = exc if isinstance(exc, AgentError) else AgentError('request_timeout', '这次等得有点久，请稍后重试。', 504)
                         generation = evidence_fallback(evidence, error.code)

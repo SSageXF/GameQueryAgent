@@ -9,13 +9,13 @@ Status = Literal["answered", "partial_answer", "needs_clarification", "insuffici
 class Message(BaseModel):
     model_config = ConfigDict(extra="forbid")
     role: Literal["user", "assistant"]
-    content: str = Field(min_length=1, max_length=3000)
+    content: str = Field(min_length=1, max_length=12000)
 
 
 class ChatRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     message: str = Field(min_length=1, max_length=1000)
-    history: list[Message] = Field(default_factory=list, max_length=12)
+    history: list[Message] = Field(default_factory=list, max_length=24)
 
     @field_validator("message")
     @classmethod
@@ -27,8 +27,8 @@ class ChatRequest(BaseModel):
 
     @model_validator(mode="after")
     def history_budget(self):
-        if sum(len(m.content) for m in self.history) > 12000:
-            raise ValueError("历史上下文过长，请清空或缩短对话")
+        if sum(len(m.content) for m in self.history) > 24000:
+            raise ValueError("历史上下文超过24000字，请清空或缩短对话")
         return self
 
 

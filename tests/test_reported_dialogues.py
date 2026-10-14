@@ -44,4 +44,4 @@ async def test_truncation_retries_once_with_bounded_budget(always_truncated):
         assert error.value.code == 'model_output_truncated'
     else:
         assert (await model.generate('你好', [], [], 'chitchat')).answer == '你好'
-    assert budgets == [700, 4000]
+    assert budgets == [16384, 32768]

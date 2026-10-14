@@ -13,9 +13,9 @@ class Quote(BaseModel):
 
 
 class Generation(BaseModel):
-    answer: str = Field(min_length=1, max_length=3000)
-    source_ids: list[str] = Field(default_factory=list, max_length=6)
-    quotes: list[Quote] = Field(default_factory=list, max_length=6)
+    answer: str = Field(min_length=1, max_length=12000)
+    source_ids: list[str] = Field(default_factory=list, max_length=48)
+    quotes: list[Quote] = Field(default_factory=list, max_length=48)
     insufficient_evidence: bool = False
     notice: str | None = None
     fallback_code: str | None = None
@@ -44,7 +44,7 @@ def read_answer(content):
     answer = re.sub(r'https?://\S+|www\.\S+', '', answer).strip()
     if not answer:
         raise ValueError('Empty answer')
-    return {**data, 'answer': answer[:3000]}
+    return {**data, 'answer': answer[:12000]}
 
 
 def resolve_answer(content, evidence):
@@ -61,7 +61,7 @@ def resolve_answer(content, evidence):
             selected.append(key)
     insufficient = data.get('insufficient_evidence') is True
     quotes = []
-    for key in ([] if insufficient else selected[:6]):
+    for key in ([] if insufficient else selected[:48]):
         body = allowed[key]['body']
         exact = next((q['quote'] for q in supplied if q['source_id'] == key
                       and isinstance(q.get('quote'), str) and q['quote'].strip() and q['quote'] in body), None)

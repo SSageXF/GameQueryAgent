@@ -67,7 +67,23 @@ const path = require('node:path');
       }
       console.log(`PASS ${scenario}: no red error bubble, content/retry preserved`);
     }
-    await page.getByText('查看资料原文与来源（1）').click();
+    outcome = 'answer';
+    await page.goto(url);
+    const longAnswer = '先讨论天赋的效果。'.repeat(700);
+    const shortAnswer = answer.answer;
+    answer.answer = longAnswer;
+    await page.locator('#message').fill('先聊聊天赋');
+    await page.locator('#send').click();
+    await page.waitForFunction(() => !document.querySelector('#send').disabled);
+    answer.answer = shortAnswer;
+    await page.locator('#message').fill('把它们分别说清楚');
+    await page.locator('#send').click();
+    await page.waitForFunction(() => !document.querySelector('#send').disabled);
+    assert.deepEqual(requests.at(-1).history, [
+      {role:'user', content:'先聊聊天赋'}, {role:'assistant', content:longAnswer}
+    ]);
+    console.log('PASS dialogue: prior user question and full long answer sent with follow-up');
+    await page.getByText('查看资料原文与来源（1）').last().click();
     outcome = 'network';
     await page.locator('#message').fill('再讲详细一点');
     await page.locator('#send').click();

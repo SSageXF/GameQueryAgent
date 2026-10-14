@@ -1,0 +1,1108 @@
+{
+  "model": "deepseek-v4.1-flash",
+  "backend": "vector",
+  "thinking": "enabled",
+  "generation_max_tokens": 16384,
+  "planner_max_tokens": 4096,
+  "results": [
+    {
+      "case": "fresh_catalog",
+      "question": "和河洛相关的天赋有哪些？",
+      "history_messages": 0,
+      "answer": "和河洛相关的天赋共17项，按关联方式分三组：\n一、卡面直接点名【河洛】或专门针对河洛生效：\n1. 丝绸之路：每出售4名场上英雄获得1张古币，每出售1张古币获得1张【河洛】英雄牌。\n2. 古币机：召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。\n3. 多彩古币：获得1张古币。古币只能对非【河洛】英雄主动使用：随机变成其他同阶非【河洛】英雄，等级额外+7。\n4. 最终守卫：你最后1名【河洛】英雄受到致命伤害时进入无敌状态，并提升50%攻击速度，持续1秒。战斗中你的英雄每触发过1次牺牲效果，无敌时间增加0.25秒。\n5. 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n6. 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n7. 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n8. 河洛精兵：卡牌3选1（4阶或5阶的【河洛】英雄）。\n9. 红豆之托：获得1张【河洛】英雄王维。备战阶段，场上英雄总等级分别达到100/200/400级时，再获得1张王维。\n10. 自我奉献：【河洛】英雄获得牺牲：所有友方单位+1临时等级，每次触发此牺牲效果时，临时等级额外+1。\n11. 钱生战力：战斗开始时，随机4名【河洛】英雄获得累计使用古币数（选择此天赋后）的临时等级。\n二、名称带“河洛”但卡面效果未直接写【河洛】：\n12. 河洛来客：获得3能量以及1张李信。\n三、通过关联卡牌与河洛产生联系：\n13. 兄妹：获得1张铠和1张露娜。共战时，铠首次释放技能，露娜可以无限释放技能，持续7秒。露娜每次释放技能，铠提升40%攻速。关联卡牌铠有“复生 牺牲：你的【河洛】英雄获得5临时等级。”\n14. 古币翻新：获得1张古币。古币牌会额外提供2级。关联卡牌古币有“转瞬 指定1名【河洛】英雄等级+2。”\n15. 旋刃：获得1张李元芳和1张公孙离。共战时二人共享法力值（不会变更），技能变为融合技：旋刃（详见技能面板）。旋刃每造成2次伤害，李元芳等级永久+1。关联卡牌李元芳有“整备：对距离最近的【河洛】英雄使用1张古币。”\n16. 起舞：获得1张貂蝉和1张上官婉儿。共战时，参与击败敌方英雄后，二人均+10点法术攻击力并+1级。关联卡牌上官婉儿有“整备：随机对3名不同【河洛】英雄使用1张古币。”\n17. 零钱兑换：你获得的古币会自动兑换为2张无法提供等级的破损古币，精致古币则兑换为4张。关联卡牌破损古币有“转瞬 指定1名【河洛】英雄使用，无法提供等级。”",
+      "intent": "knowledge",
+      "status": "answered",
+      "sources": [
+        {
+          "id": "WX-talent-636214-original",
+          "title": "丝绸之路·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636214",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "每出售4名场上英雄获得1张古币，每出售1张古币获得1张【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636204-original",
+          "title": "古币机·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636204",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636201-original",
+          "title": "多彩古币·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636201",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官网当前卡面 · 2026-10-10；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张古币。古币只能对非【河洛】英雄主动使用：随机变成其他同阶非【河洛】英雄，等级额外+7。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636217-original",
+          "title": "最终守卫·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636217",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "你最后1名【河洛】英雄受到致命伤害时进入无敌状态，并提升50%攻击速度，持续1秒。战斗中你的英雄每触发过1次牺牲效果，无敌时间增加0.25秒。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635016-original",
+          "title": "河洛增援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "随机获得3张3-4阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635018-original",
+          "title": "河洛强援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635018",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635014-original",
+          "title": "河洛新援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635014",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得2能量，以及随机1张2-3阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635015-original",
+          "title": "河洛来客·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635015",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得3能量以及1张李信。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635017-original",
+          "title": "河洛精兵·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635017",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "卡牌3选1（4阶或5阶的【河洛】英雄）。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636224-original",
+          "title": "红豆之托·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636224",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张【河洛】英雄王维。备战阶段，场上英雄总等级分别达到100/200/400级时，再获得1张王维。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636211-original",
+          "title": "自我奉献·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636211",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "【河洛】英雄获得牺牲：所有友方单位+1临时等级，每次触发此牺牲效果时，临时等级额外+1。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636219-original",
+          "title": "钱生战力·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636219",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "战斗开始时，随机4名【河洛】英雄获得累计使用古币数（选择此天赋后）的临时等级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-637001-original",
+          "title": "兄妹·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637001",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张铠和1张露娜。共战时，铠首次释放技能，露娜可以无限释放技能，持续7秒。露娜每次释放技能，铠提升40%攻速。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-ad9db2e26ad5ebb813e5",
+          "title": "兄妹·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637001",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.descriptionPlain：复生 牺牲：你的【河洛】英雄获得5临时等级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636209-original",
+          "title": "古币翻新·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636209",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张古币。古币牌会额外提供2级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-b95a0169a23bb3b49fdb",
+          "title": "古币翻新·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636209",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.descriptionPlain：转瞬 指定1名【河洛】英雄等级+2。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-637016-original",
+          "title": "旋刃·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张李元芳和1张公孙离。共战时二人共享法力值（不会变更），技能变为融合技：旋刃（详见技能面板）。旋刃每造成2次伤害，李元芳等级永久+1。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-907ddd0a696b40a387fd",
+          "title": "旋刃·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.descriptionPlain：整备：对距离最近的【河洛】英雄使用1张古币。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-63700601-original",
+          "title": "起舞·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-63700601",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张貂蝉和1张上官婉儿。共战时，参与击败敌方英雄后，二人均+10点法术攻击力并+1级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-fa3557014a907dd7281b",
+          "title": "起舞·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-63700601",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.relation：preview\n1.id：1411\n1.name：貂蝉\n1.entityType：hero\n1.descriptionPlain：登场：【三分】英雄等级+1。\n2.relation：preview\n2.id：5131\n2.name：上官婉儿\n2.entityType：hero\n2.descriptionPlain：整备：随机对3名不同【河洛】英雄使用1张古币。",
+          "excerpt_kind": "reference"
+        },
+        {
+          "id": "WX-talent-636215-original",
+          "title": "零钱兑换·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636215",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "你获得的古币会自动兑换为2张无法提供等级的破损古币，精致古币则兑换为4张。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-9f6be82e45524c221541",
+          "title": "零钱兑换·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636215",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.descriptionPlain：转瞬 指定1名【河洛】英雄使用，无法提供等级。",
+          "excerpt_kind": "quote"
+        }
+      ],
+      "retrieved_ids": [
+        "WX-talent-636214-original",
+        "WX-talent-636204-original",
+        "WX-talent-636201-original",
+        "WX-talent-636217-original",
+        "WX-talent-635016-original",
+        "WX-talent-635018-original",
+        "WX-talent-635014-original",
+        "WX-talent-635015-original",
+        "WX-talent-635017-original",
+        "WX-talent-636224-original",
+        "WX-talent-636211-original",
+        "WX-talent-636219-original",
+        "WX-talent-637001-original",
+        "WIKI-ad9db2e26ad5ebb813e5",
+        "WX-talent-636209-original",
+        "WIKI-b95a0169a23bb3b49fdb",
+        "WX-talent-637016-original",
+        "WIKI-907ddd0a696b40a387fd",
+        "WX-talent-63700601-original",
+        "WIKI-fa3557014a907dd7281b",
+        "WX-talent-636215-original",
+        "WIKI-9f6be82e45524c221541"
+      ],
+      "latency_ms": 59617.99,
+      "timings_ms": {
+        "context_route": 0.03,
+        "intent_planning": 3619.7,
+        "retrieval": 37.22,
+        "generation": 55810.04,
+        "client_setup": 150.4
+      },
+      "mode": "live",
+      "model_used": true,
+      "retrieval_plan": {
+        "queries": [
+          "和河洛相关的天赋有哪些"
+        ],
+        "keywords": [
+          "河洛",
+          "天赋"
+        ],
+        "entities": [
+          "河洛"
+        ],
+        "mode": "万象大赛",
+        "include_history": false,
+        "selection": {
+          "section": "talent",
+          "related_to": [
+            "河洛"
+          ],
+          "names": []
+        },
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "knowledge",
+        "resolved_query": "和河洛相关的天赋有哪些？",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 3619.19,
+          "success": true,
+          "input_chars": 1816,
+          "max_tokens": 4096,
+          "history_messages": 0,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 909,
+          "completion_tokens": 180,
+          "reasoning_tokens": 90
+        },
+        {
+          "stage": "generation",
+          "elapsed_ms": 55808.71,
+          "success": true,
+          "input_chars": 12465,
+          "max_tokens": 16384,
+          "history_messages": 0,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 5373,
+          "completion_tokens": 9091,
+          "reasoning_tokens": 6985
+        }
+      ],
+      "notice": null,
+      "generation_error": null,
+      "checks": {
+        "model_routed": true,
+        "answered_without_clarification": true,
+        "both_stages_received_history": true,
+        "source_excerpts_are_original": true
+      }
+    },
+    {
+      "case": "natural_followup",
+      "question": "每一个天赋的具体效果是什么",
+      "history_messages": 2,
+      "answer": "按上一轮的三组逐项说效果。\n\n一、卡面直接写【河洛】或专门针对河洛\n1. 丝绸之路：每出售4名场上英雄获得1张古币，每出售1张古币获得1张【河洛】英雄牌。\n2. 古币机：召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得随机5张河洛英雄牌、1件贤者的庇护；之后随机获得1张超速成长、1张普通装备牌或8能量。\n3. 多彩古币：获得1张古币。古币只能对非【河洛】英雄主动使用：随机变成其他同阶非【河洛】英雄，等级额外+7。\n4. 最终守卫：你最后1名【河洛】英雄受到致命伤害时进入无敌状态，并提升50%攻击速度，持续1秒。战斗中你的英雄每触发过1次牺牲效果，无敌时间增加0.25秒。\n5. 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n6. 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n7. 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n8. 河洛精兵：卡牌3选1（4阶或5阶的【河洛】英雄）。\n9. 红豆之托：获得1张【河洛】英雄王维。备战阶段，场上英雄总等级分别达到100/200/400级时，再获得1张王维。\n10. 自我奉献：【河洛】英雄获得牺牲：所有友方单位+1临时等级，每次触发此牺牲效果时，临时等级额外+1。\n11. 钱生战力：战斗开始时，随机4名【河洛】英雄获得累计使用古币数（选择此天赋后）的临时等级。\n\n二、名称带“河洛”但卡面效果未直接写【河洛】\n12. 河洛来客：获得3能量以及1张李信。\n\n三、通过关联卡牌与河洛产生联系\n13. 兄妹：获得1张铠和1张露娜。共战时，铠首次释放技能，露娜可以无限释放技能，持续7秒；露娜每次释放技能，铠提升40%攻速。关联卡牌铠自身效果：复生 牺牲：你的【河洛】英雄获得5临时等级。\n14. 古币翻新：获得1张古币，古币牌会额外提供2级。关联卡牌古币自身效果：转瞬 指定1名【河洛】英雄等级+2。\n15. 旋刃：获得1张李元芳和1张公孙离。共战时二人共享法力值（不会变更），技能变为融合技：旋刃（详见技能面板）；旋刃每造成2次伤害，李元芳等级永久+1。关联卡牌李元芳自身效果：整备：对距离最近的【河洛】英雄使用1张古币。\n16. 起舞：获得1张貂蝉和1张上官婉儿。共战时，参与击败敌方英雄后，二人均+10点法术攻击力并+1级。关联卡牌上官婉儿自身效果：整备：随机对3名不同【河洛】英雄使用1张古币。\n17. 零钱兑换：你获得的古币会自动兑换为2张无法提供等级的破损古币，精致古币则兑换为4张。关联卡牌破损古币自身效果：转瞬 指定1名【河洛】英雄使用，无法提供等级。\n\n关联卡牌那几项说的是卡牌自身效果，不等于天赋额外附加；天赋本身的效果以每条前半段为准。",
+      "intent": "knowledge",
+      "status": "answered",
+      "sources": [
+        {
+          "id": "WX-talent-636214-original",
+          "title": "丝绸之路·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636214",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "每出售4名场上英雄获得1张古币，每出售1张古币获得1张【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636204-original",
+          "title": "古币机·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636204",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636201-original",
+          "title": "多彩古币·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636201",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官网当前卡面 · 2026-10-10；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张古币。古币只能对非【河洛】英雄主动使用：随机变成其他同阶非【河洛】英雄，等级额外+7。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636217-original",
+          "title": "最终守卫·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636217",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "你最后1名【河洛】英雄受到致命伤害时进入无敌状态，并提升50%攻击速度，持续1秒。战斗中你的英雄每触发过1次牺牲效果，无敌时间增加0.25秒。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635016-original",
+          "title": "河洛增援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "随机获得3张3-4阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635018-original",
+          "title": "河洛强援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635018",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635014-original",
+          "title": "河洛新援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635014",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得2能量，以及随机1张2-3阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635015-original",
+          "title": "河洛来客·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635015",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得3能量以及1张李信。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635017-original",
+          "title": "河洛精兵·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635017",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "卡牌3选1（4阶或5阶的【河洛】英雄）。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636224-original",
+          "title": "红豆之托·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636224",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张【河洛】英雄王维。备战阶段，场上英雄总等级分别达到100/200/400级时，再获得1张王维。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636211-original",
+          "title": "自我奉献·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636211",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "【河洛】英雄获得牺牲：所有友方单位+1临时等级，每次触发此牺牲效果时，临时等级额外+1。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636219-original",
+          "title": "钱生战力·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636219",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "战斗开始时，随机4名【河洛】英雄获得累计使用古币数（选择此天赋后）的临时等级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-637001-original",
+          "title": "兄妹·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637001",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张铠和1张露娜。共战时，铠首次释放技能，露娜可以无限释放技能，持续7秒。露娜每次释放技能，铠提升40%攻速。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-ad9db2e26ad5ebb813e5",
+          "title": "兄妹·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637001",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.name：铠\n1.entityType：hero\n1.descriptionPlain：复生 牺牲：你的【河洛】英雄获得5临时等级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-636209-original",
+          "title": "古币翻新·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636209",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张古币。古币牌会额外提供2级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-b95a0169a23bb3b49fdb",
+          "title": "古币翻新·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636209",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.name：古币\n1.entityType：effect\n1.descriptionPlain：转瞬 指定1名【河洛】英雄等级+2。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-637016-original",
+          "title": "旋刃·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张李元芳和1张公孙离。共战时二人共享法力值（不会变更），技能变为融合技：旋刃（详见技能面板）。旋刃每造成2次伤害，李元芳等级永久+1。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-907ddd0a696b40a387fd",
+          "title": "旋刃·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-637016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.name：李元芳\n1.entityType：hero\n1.descriptionPlain：整备：对距离最近的【河洛】英雄使用1张古币。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-63700601-original",
+          "title": "起舞·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-63700601",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得1张貂蝉和1张上官婉儿。共战时，参与击败敌方英雄后，二人均+10点法术攻击力并+1级。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-fa3557014a907dd7281b",
+          "title": "起舞·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-63700601",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.relation：preview\n1.id：1411\n1.name：貂蝉\n1.entityType：hero\n1.descriptionPlain：登场：【三分】英雄等级+1。\n2.relation：preview\n2.id：5131\n2.name：上官婉儿\n2.entityType：hero\n2.descriptionPlain：整备：随机对3名不同【河洛】英雄使用1张古币。",
+          "excerpt_kind": "reference"
+        },
+        {
+          "id": "WX-talent-636215-original",
+          "title": "零钱兑换·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636215",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "你获得的古币会自动兑换为2张无法提供等级的破损古币，精致古币则兑换为4张。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-9f6be82e45524c221541",
+          "title": "零钱兑换·关联卡牌",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-636215",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_reference",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "1.name：破损古币\n1.entityType：effect\n1.descriptionPlain：转瞬 指定1名【河洛】英雄使用，无法提供等级。",
+          "excerpt_kind": "quote"
+        }
+      ],
+      "retrieved_ids": [
+        "WX-talent-636214-original",
+        "WX-talent-636204-original",
+        "WX-talent-636201-original",
+        "WX-talent-636217-original",
+        "WX-talent-635016-original",
+        "WX-talent-635018-original",
+        "WX-talent-635014-original",
+        "WX-talent-635015-original",
+        "WX-talent-635017-original",
+        "WX-talent-636224-original",
+        "WX-talent-636211-original",
+        "WX-talent-636219-original",
+        "WX-talent-637001-original",
+        "WIKI-ad9db2e26ad5ebb813e5",
+        "WX-talent-636209-original",
+        "WIKI-b95a0169a23bb3b49fdb",
+        "WX-talent-637016-original",
+        "WIKI-907ddd0a696b40a387fd",
+        "WX-talent-63700601-original",
+        "WIKI-fa3557014a907dd7281b",
+        "WX-talent-636215-original",
+        "WIKI-9f6be82e45524c221541"
+      ],
+      "latency_ms": 33716.27,
+      "timings_ms": {
+        "context_route": 0.06,
+        "intent_planning": 4759.04,
+        "retrieval": 6.54,
+        "generation": 28948.96,
+        "client_setup": 1.42
+      },
+      "mode": "live",
+      "model_used": true,
+      "retrieval_plan": {
+        "queries": [
+          "和河洛相关的所有天赋各自的具体效果",
+          "河洛相关天赋效果一览"
+        ],
+        "keywords": [
+          "河洛",
+          "天赋",
+          "效果"
+        ],
+        "entities": [
+          "河洛"
+        ],
+        "mode": "万象大赛",
+        "include_history": false,
+        "selection": {
+          "section": "talent",
+          "related_to": [
+            "河洛"
+          ],
+          "names": []
+        },
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "knowledge",
+        "resolved_query": "和河洛相关的每一个天赋的具体效果分别是什么",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 4758.21,
+          "success": true,
+          "input_chars": 2912,
+          "max_tokens": 4096,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 1722,
+          "completion_tokens": 512,
+          "reasoning_tokens": 407
+        },
+        {
+          "stage": "generation",
+          "elapsed_ms": 28947.39,
+          "success": true,
+          "input_chars": 13561,
+          "max_tokens": 16384,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 6186,
+          "completion_tokens": 5238,
+          "reasoning_tokens": 3047
+        }
+      ],
+      "notice": null,
+      "generation_error": null,
+      "checks": {
+        "model_routed": true,
+        "answered_without_clarification": true,
+        "both_stages_received_history": true,
+        "source_excerpts_are_original": true
+      }
+    },
+    {
+      "case": "reported_five_followup",
+      "question": "每一个天赋的具体效果是什么",
+      "history_messages": 2,
+      "answer": "这五个天赋的卡面效果如下：\n\n1. 河洛来客：获得3能量以及1张李信。\n2. 河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n3. 河洛精兵：卡牌3选1（4阶或5阶的【河洛】英雄）。\n4. 河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n5. 河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n\n可以看出它们大致分成两档：来客、新援偏起步，给能量加低阶牌或固定英雄；精兵、增援、强援走的是4阶以上的高阶河洛牌，其中精兵是三选一，强援还额外给5能量。",
+      "intent": "knowledge",
+      "status": "answered",
+      "sources": [
+        {
+          "id": "WX-talent-635016-original",
+          "title": "河洛增援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "随机获得3张3-4阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635018-original",
+          "title": "河洛强援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635018",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635014-original",
+          "title": "河洛新援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635014",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得2能量，以及随机1张2-3阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635015-original",
+          "title": "河洛来客·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635015",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得3能量以及1张李信。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635017-original",
+          "title": "河洛精兵·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635017",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "卡牌3选1（4阶或5阶的【河洛】英雄）。",
+          "excerpt_kind": "quote"
+        }
+      ],
+      "retrieved_ids": [
+        "WX-talent-635016-original",
+        "WX-talent-635018-original",
+        "WX-talent-635014-original",
+        "WX-talent-635015-original",
+        "WX-talent-635017-original"
+      ],
+      "latency_ms": 7481.28,
+      "timings_ms": {
+        "context_route": 0.07,
+        "intent_planning": 3012.41,
+        "retrieval": 84.78,
+        "generation": 4381.15,
+        "client_setup": 2.75
+      },
+      "mode": "live",
+      "model_used": true,
+      "retrieval_plan": {
+        "queries": [
+          "河洛来客 天赋效果",
+          "河洛精兵 河洛增援 河洛强援 河洛新援 天赋效果"
+        ],
+        "keywords": [
+          "河洛",
+          "天赋",
+          "效果"
+        ],
+        "entities": [
+          "河洛来客",
+          "河洛精兵",
+          "河洛增援",
+          "河洛强援",
+          "河洛新援"
+        ],
+        "mode": "万象大赛",
+        "include_history": false,
+        "selection": {
+          "section": "talent",
+          "related_to": [
+            "河洛"
+          ],
+          "names": [
+            "河洛来客",
+            "河洛精兵",
+            "河洛增援",
+            "河洛强援",
+            "河洛新援"
+          ]
+        },
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "knowledge",
+        "resolved_query": "河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援五个与河洛相关的天赋各自的具体效果是什么",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 3011.92,
+          "success": true,
+          "input_chars": 1929,
+          "max_tokens": 4096,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 988,
+          "completion_tokens": 260,
+          "reasoning_tokens": 70
+        },
+        {
+          "stage": "generation",
+          "elapsed_ms": 4380.63,
+          "success": true,
+          "input_chars": 4183,
+          "max_tokens": 16384,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 2018,
+          "completion_tokens": 468,
+          "reasoning_tokens": 36
+        }
+      ],
+      "notice": null,
+      "generation_error": null,
+      "checks": {
+        "model_routed": true,
+        "answered_without_clarification": true,
+        "both_stages_received_history": true,
+        "source_excerpts_are_original": true
+      }
+    },
+    {
+      "case": "explicit_topic_switch",
+      "question": "先不聊天赋了，英雄购买费用是多少？",
+      "history_messages": 2,
+      "answer": "购买英雄牌的基础消耗是3点能量。效果牌的消耗看卡牌右上角，另外，某些特殊效果可能会改变实际消耗。\n\n顺便区分一下：商店里英雄牌会按1费到5费分层，但相关表格说的是商店单个栏位出现各费用层的概率，不等于购买价格，也不等于某张指定英雄牌出现的概率。",
+      "intent": "knowledge",
+      "status": "answered",
+      "sources": [
+        {
+          "id": "E03",
+          "title": "购买卡牌消耗",
+          "source_title": "王者万象棋官方新手指引",
+          "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+          "collected_at": "2026-10-12",
+          "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+          "claim_type": "rule",
+          "verification": "official_page_checked",
+          "official_url": null,
+          "excerpt": "基础规则中，购买英雄牌消耗3点能量；效果牌的消耗看卡牌右上角。特殊效果可能改变实际消耗。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WIKI-f24a785b54051ac26f7a",
+          "title": "英雄商店概率",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/mechanics/hero-shop-odds",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+          "claim_type": "site_interpretation",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "定义：表格描述商店单个栏位出现各费用层的概率，不等同于某一张指定英雄牌的命中概率。",
+          "excerpt_kind": "quote"
+        }
+      ],
+      "retrieved_ids": [
+        "WIKI-fedcb42cde23360623b9",
+        "E03",
+        "WIKI-f24a785b54051ac26f7a",
+        "WIKI-75ddb5e0f623f8ac0a5c",
+        "WIKI-7d0c9bf12cf6c4c59aa3",
+        "WIKI-c377529ba962e5e524f8"
+      ],
+      "latency_ms": 11777.04,
+      "timings_ms": {
+        "context_route": 0.09,
+        "intent_planning": 2758.78,
+        "retrieval": 1338.05,
+        "generation": 7678.83,
+        "client_setup": 1.17
+      },
+      "mode": "live",
+      "model_used": true,
+      "retrieval_plan": {
+        "queries": [
+          "万象大赛 英雄购买费用 价格规则"
+        ],
+        "keywords": [
+          "英雄",
+          "购买费用"
+        ],
+        "entities": [],
+        "mode": "万象大赛",
+        "include_history": false,
+        "selection": null,
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "knowledge",
+        "resolved_query": "万象大赛中英雄的购买费用是多少",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 2756.5,
+          "success": true,
+          "input_chars": 1933,
+          "max_tokens": 4096,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 994,
+          "completion_tokens": 109,
+          "reasoning_tokens": 33
+        },
+        {
+          "stage": "generation",
+          "elapsed_ms": 7678.36,
+          "success": true,
+          "input_chars": 6776,
+          "max_tokens": 16384,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 3341,
+          "completion_tokens": 674,
+          "reasoning_tokens": 472
+        }
+      ],
+      "notice": null,
+      "generation_error": null,
+      "checks": {
+        "model_routed": true,
+        "answered_without_clarification": true,
+        "both_stages_received_history": true,
+        "source_excerpts_are_original": true
+      }
+    }
+  ],
+  "review": {
+    "reviewed_by": "development_agent",
+    "semantic_accuracy_is_not_implied_by_checks": true,
+    "findings": [
+      {
+        "case": "fresh_catalog",
+        "assessment": "17项原文及关联依据已覆盖；多彩古币针对非河洛，不应概括为统一强化河洛。"
+      },
+      {
+        "case": "natural_followup",
+        "assessment": "承接完整17项清单，数量、范围、触发条件及关联卡牌来源已核对。"
+      },
+      {
+        "case": "reported_five_followup",
+        "assessment": "逐项效果正确，但末尾将增援3—4阶错误概括为4阶以上；此轮不作为完全正确。"
+      },
+      {
+        "case": "explicit_topic_switch",
+        "assessment": "切换到购买费用，基础3点能量与特殊效果例外正确。"
+      }
+    ],
+    "followup": "收紧不擅自合并数值范围的提示后，原问题专项复测见2026-10-14-followup-final.json。"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "model": "deepseek-v4.1-flash",
+  "backend": "vector",
+  "thinking": "enabled",
+  "generation_max_tokens": 16384,
+  "planner_max_tokens": 4096,
+  "results": [
+    {
+      "case": "reported_five_followup",
+      "question": "每一个天赋的具体效果是什么",
+      "history_messages": 2,
+      "answer": "五个天赋的效果分别如下：\n\n河洛来客：获得3能量以及1张李信。\n\n河洛精兵：卡牌3选1，选项是4阶或5阶的【河洛】英雄。\n\n河洛增援：随机获得3张3-4阶【河洛】英雄牌。\n\n河洛强援：获得5能量和3张随机4-5阶【河洛】英雄牌。\n\n河洛新援：获得2能量，以及随机1张2-3阶【河洛】英雄牌。\n\n这几条都属于万象大赛模式下的卡面收录内容。",
+      "intent": "knowledge",
+      "status": "answered",
+      "sources": [
+        {
+          "id": "WX-talent-635016-original",
+          "title": "河洛增援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635016",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "随机获得3张3-4阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635018-original",
+          "title": "河洛强援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635018",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得5能量和3张随机4-5阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635014-original",
+          "title": "河洛新援·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635014",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得2能量，以及随机1张2-3阶【河洛】英雄牌。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635015-original",
+          "title": "河洛来客·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635015",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "获得3能量以及1张李信。",
+          "excerpt_kind": "quote"
+        },
+        {
+          "id": "WX-talent-635017-original",
+          "title": "河洛精兵·卡面原文",
+          "source_title": "万象棋知识站",
+          "url": "https://wzwxq.com/explore/talent-635017",
+          "collected_at": "2026-10-13",
+          "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+          "claim_type": "wiki_original",
+          "verification": "wiki_snapshot",
+          "official_url": null,
+          "excerpt": "卡牌3选1（4阶或5阶的【河洛】英雄）。",
+          "excerpt_kind": "quote"
+        }
+      ],
+      "retrieved_ids": [
+        "WX-talent-635016-original",
+        "WX-talent-635018-original",
+        "WX-talent-635014-original",
+        "WX-talent-635015-original",
+        "WX-talent-635017-original"
+      ],
+      "latency_ms": 11653.47,
+      "timings_ms": {
+        "context_route": 0.15,
+        "intent_planning": 3600.08,
+        "retrieval": 57.07,
+        "generation": 7733.47,
+        "client_setup": 262.43
+      },
+      "mode": "live",
+      "model_used": true,
+      "retrieval_plan": {
+        "queries": [
+          "河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援五个河洛天赋的具体效果分别是什么"
+        ],
+        "keywords": [],
+        "entities": [
+          "河洛来客",
+          "河洛精兵",
+          "河洛增援",
+          "河洛强援",
+          "河洛新援"
+        ],
+        "mode": "万象大赛",
+        "include_history": false,
+        "selection": {
+          "section": "talent",
+          "related_to": [
+            "河洛"
+          ],
+          "names": [
+            "河洛来客",
+            "河洛精兵",
+            "河洛增援",
+            "河洛强援",
+            "河洛新援"
+          ]
+        },
+        "status": "model",
+        "error_code": null
+      },
+      "routing": {
+        "status": "model",
+        "intent": "knowledge",
+        "resolved_query": "河洛来客、河洛精兵、河洛增援、河洛强援、河洛新援这五个河洛相关天赋的具体效果分别是什么",
+        "retrieval_required": true,
+        "error_code": null
+      },
+      "model_calls": [
+        {
+          "stage": "intent_planning",
+          "elapsed_ms": 3599.12,
+          "success": true,
+          "input_chars": 1929,
+          "max_tokens": 4096,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 988,
+          "completion_tokens": 297,
+          "reasoning_tokens": 112
+        },
+        {
+          "stage": "generation",
+          "elapsed_ms": 7732.45,
+          "success": true,
+          "input_chars": 4242,
+          "max_tokens": 16384,
+          "history_messages": 2,
+          "thinking": "enabled",
+          "finish_reason": "stop",
+          "prompt_tokens": 2055,
+          "completion_tokens": 474,
+          "reasoning_tokens": 100
+        }
+      ],
+      "notice": null,
+      "generation_error": null,
+      "checks": {
+        "model_routed": true,
+        "answered_without_clarification": true,
+        "both_stages_received_history": true,
+        "source_excerpts_are_original": true
+      }
+    }
+  ],
+  "review": {
+    "reviewed_by": "development_agent",
+    "scope": "逐项核对本轮五天赋效果与引用原文，并检查无范围反问、错误概括或防御性拒答。",
+    "assessment": "本次样本通过；不代表所有未来回答均正确。"
+  }
+}

@@ -25,7 +25,7 @@ class Context:
 
 def prepare(message: str, history: list[Message], enhanced: bool = True, entity_names=None) -> Context:
     # Budget from the most recent end; no model-generated summary of untrusted history.
-    recent, remaining = [], 6000
+    recent, remaining = [], 24000
     for item in reversed(history):
         if len(item.content) > remaining:
             break

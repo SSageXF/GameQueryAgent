@@ -13,10 +13,10 @@ class Settings:
     base_url: str = ""
     api_key: str = ""
     model: str = ""
-    timeout: float = 45
-    max_tokens: int = 700
-    planner_max_tokens: int = 2000
-    planner_timeout: float = 20
+    timeout: float = 120
+    max_tokens: int = 16384
+    planner_max_tokens: int = 4096
+    planner_timeout: float = 60
     retrieval_backend: str = 'vector'
     thinking: str = 'auto'
 
@@ -29,9 +29,9 @@ class Settings:
             raise ValueError('LLM_THINKING must be auto, enabled or disabled')
         if not 1 <= self.timeout <= 180:
             raise ValueError("REQUEST_TIMEOUT_SECONDS must be between 1 and 180")
-        if not 100 <= self.max_tokens <= 4000:
-            raise ValueError("LLM_MAX_TOKENS must be between 100 and 4000")
-        if not 100 <= self.planner_max_tokens <= 4000 or not 1 <= self.planner_timeout <= 60:
+        if not 100 <= self.max_tokens <= 32768:
+            raise ValueError("LLM_MAX_TOKENS must be between 100 and 32768")
+        if not 100 <= self.planner_max_tokens <= 16384 or not 1 <= self.planner_timeout <= 120:
             raise ValueError('Invalid query planner budget')
 
     @property
@@ -46,10 +46,10 @@ def load_settings() -> Settings:
         base_url=os.getenv("LLM_BASE_URL", "").rstrip("/"),
         api_key=os.getenv("LLM_API_KEY", ""),
         model=os.getenv("LLM_MODEL", ""),
-        timeout=float(os.getenv("REQUEST_TIMEOUT_SECONDS", "45")),
-        max_tokens=int(os.getenv("LLM_MAX_TOKENS", "700")),
-        planner_max_tokens=int(os.getenv('LLM_PLANNER_MAX_TOKENS','2000')),
-        planner_timeout=float(os.getenv('LLM_PLANNER_TIMEOUT_SECONDS','20')),
+        timeout=float(os.getenv("REQUEST_TIMEOUT_SECONDS", "120")),
+        max_tokens=int(os.getenv("LLM_MAX_TOKENS", "16384")),
+        planner_max_tokens=int(os.getenv('LLM_PLANNER_MAX_TOKENS','4096')),
+        planner_timeout=float(os.getenv('LLM_PLANNER_TIMEOUT_SECONDS','60')),
         retrieval_backend=os.getenv('RETRIEVAL_BACKEND','vector'),
         thinking=os.getenv('LLM_THINKING','auto'),
     )

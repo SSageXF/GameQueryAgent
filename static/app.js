@@ -3,7 +3,7 @@ const conversation = $('conversation');
 const input = $('message');
 const labels = {knowledge:'规则问答', advice:'情境建议', chitchat:'闲聊', out_of_scope:'能力说明'};
 const states = {answered:'已回答', partial_answer:'资料参考', needs_clarification:'需要补充', insufficient_evidence:'资料不足', unsupported:'未接入'};
-let history = [], active = null, timeoutSeconds = 50;
+let history = [], active = null, timeoutSeconds = 185;
 
 function scrollBottom() { conversation.scrollTop = conversation.scrollHeight; }
 function addMessage(role, text, className = '') {
@@ -17,8 +17,8 @@ function addMessage(role, text, className = '') {
   return wrapper;
 }
 function boundedHistory(items) {
-  let selected = items.slice(-12);
-  while (selected.reduce((n, item) => n + item.content.length, 0) > 12000) selected = selected.slice(2);
+  let selected = items.slice(-24);
+  while (selected.reduce((n, item) => n + item.content.length, 0) > 24000) selected = selected.slice(2);
   return selected;
 }
 function sourceUrl(value) {
@@ -94,7 +94,7 @@ async function send(message, retryRow = null) {
       text.textContent = `${plan.status === 'model' ? '模型生成' : plan.status === 'mock_rules' ? 'Mock规则' : '规划失败，使用回退检索'} · ${plan.mode}\n${(plan.queries || []).join('；')}\n关键词：${(plan.keywords || []).join('、') || '原问题'}`;
       detail.append(summary, text); row.append(detail);
     }
-    history = boundedHistory([...history, {role:'user', content:message}, {role:'assistant', content:result.answer.slice(0,3000)}]);
+    history = boundedHistory([...history, {role:'user', content:message}, {role:'assistant', content:result.answer.slice(0,12000)}]);
     scrollBottom();
   } catch (error) {
     if (active !== controller) return;

@@ -20,18 +20,18 @@ RETRIEVAL_BACKEND=vector
 LLM_BASE_URL=https://your-provider.example/v1
 LLM_API_KEY=your-local-key
 LLM_MODEL=your-model-name
-REQUEST_TIMEOUT_SECONDS=45
-LLM_MAX_TOKENS=700
-LLM_PLANNER_MAX_TOKENS=2000
-LLM_PLANNER_TIMEOUT_SECONDS=20
+REQUEST_TIMEOUT_SECONDS=120
+LLM_MAX_TOKENS=16384
+LLM_PLANNER_MAX_TOKENS=4096
+LLM_PLANNER_TIMEOUT_SECONDS=60
 LLM_THINKING=auto
 ```
 
 密钥只放后端 `.env`，该文件已忽略。无需将密钥交给网页。环境变量优先于 `.env`；如果此前在终端设置过 Mock，先运行 `Remove-Item Env:AGENT_MODE -ErrorAction SilentlyContinue`。修改配置后重启服务。
 
-`LLM_THINKING=auto` 对名称包含 DeepSeek 的模型发送 `thinking.type=disabled`，减少短问答的推理等待；其他模型不额外发送该参数。`enabled/disabled` 可显式配置服务支持的行为。DeepSeek 还启用 JSON 输出格式；当前已配置的代理服务通过真实调用验证，不代表任意服务兼容。既有 `.env` 无需更换密钥即可使用默认优化。
+`LLM_THINKING=auto` 对名称包含 DeepSeek 的模型启用额外思考；其他模型不额外发送该参数。`enabled/disabled` 可显式配置服务支持的行为。DeepSeek 还启用 JSON 输出格式，服务兼容性以实测为准。当前默认侧重回答质量：分类规划4096 token、生成16384 token；这是上限，不会强制写满。既有 `.env` 的显式值优先，需同步调整预算和思考开关，修改后重启服务。
 
-生成结果中的短引文、重复编号、缺失或不匹配引文不再导致整段回答失败。已知来源的不匹配片段改为展示对应资料真实原文，并标注供参考；未知来源省略，正文保留。纯文本回答、JSON中完整正文之后损坏的引用字段也可恢复。没有可用正文时最多自动重试一次；截断时重试预算为4000 token，两次共用生成阶段超时。仍失败或接口异常时，有检索证据则返回资料摘录（`partial_answer`），并说明尚未完成模型整理。前端网络/服务异常使用普通对话气泡与保留原问题的重试按钮，不显示红框。
+生成结果中的短引文、重复编号、缺失或不匹配引文不再导致整段回答失败。已知来源的不匹配片段改为展示对应资料真实原文，并标注供参考；未知来源省略，正文保留。纯文本回答、JSON中完整正文之后损坏的引用字段也可恢复。没有可用正文时最多自动重试一次；截断时重试预算翻倍（至少8192、最多32768 token），两次共用生成阶段超时。仍失败或接口异常时，有检索证据则返回资料摘录（`partial_answer`），并说明尚未完成模型整理。前端网络/服务异常使用普通对话气泡与保留原问题的重试按钮，不显示红框。
 
 ```powershell
 .\.venv\Scripts\python.exe -m scripts.index_knowledge
@@ -63,6 +63,8 @@ $env:AGENT_MODE="mock"
 .\.venv\Scripts\python.exe -m eval.run --mode live
 # 本轮9个真实场景回归（含模型分类、引用原文、阶段耗时，会调用API）
 .\.venv\Scripts\python.exe -m eval.upgrade_eval
+# 多轮上下文、天赋完整效果、显式换话题（实际Qdrant和模型API）
+.\.venv\Scripts\python.exe -m eval.conversation_eval --live --output artifacts/conversation-quality.json
 # 可重复的词法基线对照（向量后端下不是纯词法基线实验）
 $env:RETRIEVAL_BACKEND="lexical"
 .\.venv\Scripts\python.exe -m eval.run --mode mock --variant baseline --split development
@@ -77,7 +79,7 @@ Remove-Item Env:RETRIEVAL_BACKEND
 
 使用向量后端独立评测前先停止网页后端，避免两个进程占用同一个本地数据库。
 
-基础检索最多6条，情境建议可额外补充最多2条触发时点定义。新响应记录 `client_setup/intent_planning/retrieval/generation`；生成失败保留已完成的意图和检索结果，模型调用日志计入分类、生成、失败和重试。历史报告沿用旧口径。规则评分与引用逐字校验不能完整判断幻觉或策略推论，仍需人工核对。
+基础检索最多6条，情境建议可额外补充最多2条触发时点定义。清单检索最多24个对象、48条效果与关联证据，保留对象总数和本轮覆盖数。响应记录 `client_setup/intent_planning/retrieval/generation`；生成失败保留已完成的意图和检索结果，模型调用日志计入分类、生成、失败和重试。历史报告沿用旧口径。规则评分与引用逐字校验不能完整判断幻觉或策略推论，仍需人工核对。
 
 ## 接口示例
 
@@ -94,7 +96,7 @@ POST /api/chat
 
 返回 `answer`、`intent`、`status`、`sources`、`retrieved_ids`、`retrieval_plan`、`routing`、`model_calls`、`latency_ms`、`timings_ms`、`mode`、`model_used` 和 `request_id`。`routing`记录模型分类或故障回退，`retrieval_plan`记录查询、关键词、实体与模式，`model_calls`记录各次调用耗时及服务返回的token计数（不含密钥或思考文本）。`sources[].excerpt`始终取自入库原文，`excerpt_kind=quote`表示模型引文逐字匹配，`reference`表示后端选取的资料摘录，不表示逐句支持答案。`notice`说明无可核验来源或资料降级，`generation_error`记录降级原因。四类意图为 `knowledge/advice/chitchat/out_of_scope`；状态为 `answered/partial_answer/needs_clarification/insufficient_evidence/unsupported`。无可用回答的配置或请求异常仍保留非成功HTTP状态，前端以普通对话提示呈现，不回显模型服务原始错误或密钥。
 
-问题限制 1—1000 字；历史最多12条、合计12000字，实际模型历史保留最近6000字；不接受客户端 system 消息。知识引用链接由后端依据入库记录生成。网页历史仅存内存，刷新或清空后消失。
+问题限制 1—1000 字；历史最多24条、合计24000字，单条最多12000字。分类规划与回答生成均按user/assistant顺序接收同一段完整近期对话及本轮原始问题，后端不再二次缩短历史；不接受客户端system消息。知识引用链接由后端依据入库记录生成。网页历史仅存内存，刷新或清空后消失。
 
 ## 资料与设计
 

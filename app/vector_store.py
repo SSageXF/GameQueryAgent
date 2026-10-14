@@ -134,8 +134,16 @@ class VectorRetriever(Retriever):
     def pending(self, query):
         return Retriever(self.pending_records).pending(query)
 
+    def fetch_many(self, ids):
+        if not ids:return []
+        with self.lock:
+            points=self.client.retrieve(self.collection,ids=[point_id(key) for key in ids],with_payload=True)
+        return [p.payload for p in points]
+
     def search_plan(self, original, plan, k=6):
         mode='钻石狂潮' if '钻石狂潮' in original else '万象大赛' if '万象大赛' in original else plan.mode
+        if plan.selection is not None:
+            return self.select_catalog(plan.selection,mode,plan.include_history)
         hero_names={r.get('entity') for r in self.records if r.get('section')=='hero' and r.get('entity')}
         named=sorted((n for n in hero_names if n in original),key=original.index)
         purchase=len(named)>=2 and bool(re.search('怎么买|买谁|买哪个|购买|商店',original))
@@ -176,14 +184,6 @@ class VectorRetriever(Retriever):
             if len(result)==k:break
         return result
 
-    @staticmethod
-    def eligible(row, mode, include_history):
-        publication=row.get('publication_status','')
-        return (row.get('mode') in {mode,'通用'}
-                and row.get('verification') in {'official_page_checked','official_data_matched','wiki_snapshot'}
-                and row.get('eligible') is not False and row.get('claim_type')!='pending'
-                and (include_history or not (publication.startswith('historical') or publication in {'off_shelf','associated_preview'})))
-
     @lru_cache(maxsize=256)
     def rank(self, query, mode='万象大赛', include_history=False):
         with self.lock:
@@ -202,8 +202,14 @@ class VectorRetriever(Retriever):
             # Exact names prevent rare hero names being lost in semantic recall.
             names=[n for n in self.names if n in query]
             names=[n for n in names if not any(n!=other and n in other for other in names)]
-            if names:
-                ids=[point_id(r['id']) for r in self.records if r.get('entity') in names and self.eligible(r,mode,include_history)]
+            # Base rules have aliases but no entity name. Recall their payloads
+            # too, so a long query prefixed with the game's name cannot push a
+            # directly matching rule out of the semantic top 100.
+            exact_metadata=[r for r in self.records if self.eligible(r,mode,include_history)
+                            and (r.get('entity') in names or (not r.get('entity')
+                                 and any(a and a in query for a in r.get('aliases',[]))))]
+            if exact_metadata:
+                ids=[point_id(r['id']) for r in exact_metadata]
                 exact=self.client.retrieve(self.collection,ids=ids,with_payload=True)
                 rows.update({p.payload['id']:p.payload for p in exact})
             return Retriever(list(rows.values())).rank(query,mode,include_history,semantic_scores=scores)
