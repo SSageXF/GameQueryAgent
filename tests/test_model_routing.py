@@ -43,7 +43,7 @@ async def test_model_decides_unseen_wording_and_combines_plan(retriever):
 
 @pytest.mark.parametrize('decision,expected_status',[
     ({'intent':'chitchat','query':'又输了，有点泄气','reply':'先歇一会儿，等你想复盘了我陪你看。'},'answered'),
-    ({'intent':'out_of_scope','query':'帮我登录领奖'},'unsupported'),
+    ({'intent':'out_of_scope','query':'帮我登录领奖','reply':'我没法登录账号或领取奖励，你需要在游戏里操作。'},'unsupported'),
     ({'intent':'advice','query':'这轮怎么站','clarification':'你场上有哪些英雄呀？'},'needs_clarification'),
 ])
 async def test_model_direct_routes_do_not_retrieve_or_generate(retriever,monkeypatch,decision,expected_status):

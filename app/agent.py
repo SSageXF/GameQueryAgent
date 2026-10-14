@@ -16,7 +16,8 @@ from .wiki_tools import equipment_context
 from .schemas import ChatRequest, ChatResponse, Source
 
 logger = logging.getLogger('gamequery')
-LIMIT = '我还没接入账号、个人战绩或实时对局，也不能替你操作游戏。'
+ROUTING_UNAVAILABLE = '这次没能完整理解你的请求，可以再试一次。'
+MOCK_LIMIT = 'Mock：未接入个人数据查询或游戏操作；这里只演示王者万象棋问答。'
 
 
 class Agent:
@@ -56,9 +57,11 @@ class Agent:
                 clarification = '你说的“这个”具体是哪位棋手、哪张牌或哪项机制呀？'
             elif route.intent == 'advice' and (missing := missing_conditions(route.query)):
                 clarification = '再告诉我' + '、'.join(missing[:2]) + '吧，我好帮你一起判断。' + ('还缺：' + '、'.join(missing[2:]) + '。' if len(missing) > 2 else '')
+        fallback_limit = MOCK_LIMIT if self.settings.mode == 'mock' else ROUTING_UNAVAILABLE
         return Decision(intent=route.intent, query=route.query, restricted=route.restricted,
                         clarification=clarification,
-                        reply='你好呀，我是弈宝。咱们慢慢来，可以一起看看规则，也可以聊聊刚才那局。' if route.intent == 'chitchat' else None,
+                        reply='你好呀，我是弈宝。咱们慢慢来，可以一起看看规则，也可以聊聊刚才那局。' if route.intent == 'chitchat' else fallback_limit if route.intent == 'out_of_scope' else None,
+                        limitation=fallback_limit if route.restricted and route.intent!='out_of_scope' else None,
                         search=fallback_plan(route.query) if route.intent in {'knowledge', 'advice'} and not clarification else None), context
 
     async def _chat(self, request):
@@ -94,7 +97,9 @@ class Agent:
         excerpt_kinds, notice, generation_error = {}, None, None
         model_used = route_status == 'model'
         if intent == 'out_of_scope':
-            answer, status = LIMIT + '你可以把局面告诉我，咱们一起分析。', 'unsupported'
+            answer, status = decision.reply, 'unsupported'
+            if route_status=='fallback':
+                status, generation_error = 'partial_answer', route_error or 'router_failure'
         elif decision.clarification:
             answer, status = decision.clarification, 'needs_clarification'
         elif intent == 'chitchat':
@@ -140,7 +145,7 @@ class Agent:
                     notice, generation_error = generation.notice, generation.fallback_code
                     model_used = model_used or (self.settings.mode == 'live' and not generation.fallback_code)
         if decision.restricted and intent != 'out_of_scope':
-            answer = LIMIT + '\n\n' + answer
+            answer = decision.limitation + '\n\n' + answer
         if self.settings.mode == 'mock':
             answer = '【Mock 联调，非真实模型回答】\n' + answer
         result = ChatResponse(

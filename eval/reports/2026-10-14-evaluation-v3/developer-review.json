@@ -1,0 +1,134 @@
+{
+  "reviewer": "development_agent",
+  "scope": "逐条检查上述实际可见回复、引用及检索规划；未冒充提交者人工验收；其余轮次未逐句复核。",
+  "original_answer_pass": 28,
+  "rescored_answer_pass": 33,
+  "total_turns": 45,
+  "scoring_corrections": [
+    "限制说明同义词：读不到/查不到/没法确认",
+    "澄清不必一轮问齐固定字段",
+    "判断实际检索而非未执行的search提示"
+  ],
+  "rows": [
+    {
+      "case_id": "A01",
+      "turn": 1,
+      "verdict": "pass",
+      "notes": "先澄清升级对象与阵容是合理行为，旧规则不应强制第一句同时询问能量。"
+    },
+    {
+      "case_id": "A02",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "缺少实际升级费用依据；有条件建议和机会成本，但无法证明10能量可完成升级。规则也存在同义表达漏判，不能仅据低分判每句话错误。"
+    },
+    {
+      "case_id": "A03",
+      "turn": 1,
+      "verdict": "needs_review",
+      "notes": "新库返回其他公开阵容，规则仍以三分登场为参考；其他方案的早期成型、难度等判断缺乏充分证据，需独立验证，不能直接按名称改成通过。"
+    },
+    {
+      "case_id": "A04",
+      "turn": 1,
+      "verdict": "pass",
+      "notes": "询问阵容与主力英雄，未执行检索；旧分数把未执行的规划字段误当已检索。"
+    },
+    {
+      "case_id": "U01",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "把获取觉醒的概率问题回答成觉醒卡面效果是否固定，答非所问。"
+    },
+    {
+      "case_id": "V01",
+      "turn": 1,
+      "verdict": "pass",
+      "notes": "明确没法确认最新体验服，旧断言漏收“没法确认”。"
+    },
+    {
+      "case_id": "H01",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "棋手李白被当成英雄李白，没有检索白歌技能。"
+    },
+    {
+      "case_id": "H03",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "多对象指代未澄清，错误进入hero目录查询白歌/瑶妹。"
+    },
+    {
+      "case_id": "MT01",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "白歌是棋手，模型selection使用hero，直接返回空清单，未回到向量检索。"
+    },
+    {
+      "case_id": "MT01",
+      "turn": 3,
+      "verdict": "fail",
+      "notes": "棋手专属天赋未通过当前talent相关性字段匹配到，模型错误断言无资料。"
+    },
+    {
+      "case_id": "WX01",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "selection将觉醒作为关联主题，当前清单只取original等字段，遗漏实际已有awakening。"
+    },
+    {
+      "case_id": "WX04",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "钻石狂潮苏烈已在diamond栏目，selection限定hero返回空。修正预期后暴露真实检索缺口。"
+    },
+    {
+      "case_id": "WX05",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "只取李白卡面效果original，遗漏战斗技能officialSkill，未完整回答技能问题。"
+    },
+    {
+      "case_id": "A05",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "虽后面补充看升级按钮条件，开头仍无依据说2能量基本升不了；把英雄基础消耗说成固定且无例外。"
+    },
+    {
+      "case_id": "A06",
+      "turn": 1,
+      "verdict": "fail",
+      "notes": "缺少实际升级费用；将留能量无利息说成普遍结论，未核对存款利息等效果。"
+    },
+    {
+      "case_id": "MT04",
+      "turn": 1,
+      "verdict": "pass",
+      "notes": "明确没有账号接口、读不到个人战绩；不声称已查询。"
+    },
+    {
+      "case_id": "MT04",
+      "turn": 2,
+      "verdict": "pass",
+      "notes": "针对好友在线数据和接口说明限制，未套用个人战绩模板。"
+    },
+    {
+      "case_id": "MT04",
+      "turn": 3,
+      "verdict": "pass",
+      "notes": "说明服务王者万象棋，不编造王者荣耀小乔技能，未罗列账号限制。"
+    },
+    {
+      "case_id": "MT05",
+      "turn": 1,
+      "verdict": "pass",
+      "notes": "区分英雄联盟与王者万象棋的服务范围。"
+    },
+    {
+      "case_id": "MT05",
+      "turn": 2,
+      "verdict": "pass",
+      "notes": "切回万象棋后正常回答小乔登场效果，随机3名英雄等级+1符合原文。"
+    }
+  ]
+}

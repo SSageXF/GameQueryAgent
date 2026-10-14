@@ -2,7 +2,7 @@ const $ = (id) => document.getElementById(id);
 const conversation = $('conversation');
 const input = $('message');
 const labels = {knowledge:'规则问答', advice:'情境建议', chitchat:'闲聊', out_of_scope:'能力说明'};
-const states = {answered:'已回答', partial_answer:'资料参考', needs_clarification:'需要补充', insufficient_evidence:'资料不足', unsupported:'未接入'};
+const states = {answered:'已回答', partial_answer:'资料参考', needs_clarification:'需要补充', insufficient_evidence:'资料不足', unsupported:'范围说明'};
 let history = [], active = null, timeoutSeconds = 185;
 
 function scrollBottom() { conversation.scrollTop = conversation.scrollHeight; }
