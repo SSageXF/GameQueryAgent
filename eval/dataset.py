@@ -28,7 +28,10 @@ def validate_cases(cases, knowledge_ids):
                 re.compile(pattern)
             groups=evidence_groups(turn)
             if any(not group for group in groups):raise ValueError('Empty evidence group: '+case['id'])
-            ids=set(turn['expected_knowledge_ids']) | {key for group in groups for key in group}
+            statuses=turn.get('accepted_statuses',[turn['expected_status']])
+            if not statuses or set(statuses)-{'answered','partial_answer','needs_clarification','insufficient_evidence','unsupported'}:
+                raise ValueError('Invalid accepted status: '+case['id'])
+            ids=set(turn['expected_knowledge_ids']) | {key for group in groups for key in group} | set(turn.get('optional_source_ids',[]))
             if ids-knowledge_ids:raise ValueError('Unknown knowledge IDs: '+','.join(sorted(ids-knowledge_ids)))
     return {'case_count':len(cases),'turn_count':sum(len(c['turns']) for c in cases),
             'intents':dict(Counter(t['expected_intent'] for c in cases for t in c['turns'])),

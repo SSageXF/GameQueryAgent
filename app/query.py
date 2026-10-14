@@ -1,6 +1,22 @@
 """Structured query planning. Plans are search hints, never game-rule evidence."""
 from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator
+import re
+
+
+def resolve_mode(message, proposed='万象大赛', history=()):
+    """Shared evidence is a record label, not a separate player game mode."""
+    def explicit(text):
+        matches=list(re.finditer('万象大赛|钻石狂潮|抉择之弈|竞猜|王中王|王牌对决',text))
+        if not matches:return None
+        value=matches[-1].group()
+        return value if value in {'万象大赛','钻石狂潮'} else '其他玩法'
+    current=explicit(message)
+    if current:return current
+    # Explicit user context wins over a planner default on short follow-ups.
+    for item in reversed(history):
+        if item['role']=='user' and (prior:=explicit(item['content'])):return prior
+    return proposed if proposed in {'万象大赛','钻石狂潮','其他玩法'} else '万象大赛'
 
 Term=Annotated[str,Field(min_length=1,max_length=80)]
 class CatalogSelection(BaseModel):
@@ -33,7 +49,7 @@ PLANNER_SYSTEM='''你是弈宝的知识库检索规划器，只改写查询，�
 queries为1到4条，每条最多200字；keywords最多12个，每个最多80字；entities最多8个，每个最多80字。保留用户明确实体、数字、版本、否定与限制；结合最近用户消息解释代词。别把英雄李白改成棋手白歌，除非明确问棋手。
 catalog.objects给出实际对象的section、mode和字段标题；players是棋手，hero是英雄，diamond是钻石狂潮。它们用于区分对象及选择检索词，不是事实答案。
 selection仅用于类别枚举和多张天赋/装备/效果牌的普通卡面清单：{"section":"talent|hero|equipment|effect","related_to":["阵营或机制"],"names":["具体对象名"]}。查某类关联对象时names为空；承接已有卡面列表时names填该列表。具体对象查询、觉醒/战斗技能/棋手技能/秘技/专属及其多对象比较、其他模式和普通规则问题selection=null，用queries表达完整需求；觉醒卡面查awakening，不是original。不要将棋手或其他模式塞进hero或把觉醒当关联筛选。历史回复帮助确定对象，不能作为事实证据。
-mode只能是万象大赛、钻石狂潮、通用、其他玩法；默认万象大赛。历史版本/公告问题include_history=true，不能把普通机制问题变成历史问题。
+mode填写万象大赛、钻石狂潮、其他玩法；默认万象大赛。“通用”是共享资料标签，不是玩家玩法。catalog.entity_aliases给出带类型的别名，尊重玩家指定棋手或英雄。历史版本/公告问题include_history=true，不能把普通机制问题变成历史问题。
 把自然问法映射到知识库术语；例如“钱不够买人”需要检索能量、英雄购买费用；建议类问题除核心机制外，补充相关成本、资源获取和限制查询。查询不同实体时分别给查询。不要编造卡名；未在catalog中的用户实体保持原词。
 无论catalog是否命中都给出合理搜索词，关键词是检索提示，不是回答证据。'''
 

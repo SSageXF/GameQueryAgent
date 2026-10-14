@@ -90,6 +90,8 @@ class Agent:
             decision, context = self.fallback_decision(request)
         timings['intent_planning'] = (time.perf_counter() - tick) * 1000
         query, intent = decision.query, decision.intent
+        if decision.search is not None:
+            query,decision.search=self.retriever.ground_plan(request.message,query,decision.search,context.history)
         routing = {'status': route_status, 'intent': intent, 'resolved_query': query,
                    'retrieval_required': decision.search is not None, 'error_code': route_error}
         retrieval_plan = None
@@ -104,23 +106,24 @@ class Agent:
             answer, status = decision.clarification, 'needs_clarification'
         elif intent == 'chitchat':
             answer = decision.reply
-        elif route_status != 'model' and re.search(r'今天.*胜率|实时|体验服|觉醒.*概率', query):
+        elif self.settings.mode == 'mock' and re.search(r'今天.*胜率|实时|体验服|觉醒.*概率', query):
             answer, status = '这个得结合版本来看。你玩的是正式服还是体验服？咱们先对一下。', 'insufficient_evidence'
         else:
             tick = time.perf_counter()
-            pending = self.retriever.pending(query)
+            plan = decision.search or fallback_plan(query)
+            pending = self.retriever.pending(query,mode=plan.mode)
             if pending:
                 evidence = used = pending
                 excerpts = {r['id']: r['body'][:360] for r in pending}
                 answer, status = '这点目前还没确认。我把相关说明放在下面，咱们先看看哪些地方还不确定：\n' + '\n'.join(r['body'] for r in pending), 'insufficient_evidence'
             else:
-                plan = decision.search or fallback_plan(query)
                 retrieval_plan = {**plan.model_dump(), 'status': route_status, 'error_code': route_error}
                 evidence = await asyncio.to_thread(self.retriever.search_plan, query, plan)
                 if intent == 'advice':
-                    mode='钻石狂潮' if '钻石狂潮' in query else '万象大赛' if '万象大赛' in query else plan.mode
-                    evidence += await asyncio.to_thread(self.retriever.supporting_mechanics, evidence, mode)
-                tool_record = equipment_context(query)
+                    evidence += await asyncio.to_thread(self.retriever.supporting_rules,evidence,plan.mode,plan.include_history)
+                    evidence += await asyncio.to_thread(self.retriever.supporting_mechanics,evidence,plan.mode)
+                evidence=await asyncio.to_thread(self.retriever.expand_documents,evidence,plan.mode,plan.include_history)
+                tool_record = equipment_context(query,mode=plan.mode)
                 if tool_record:
                     evidence = [tool_record, *evidence[:5]]
             timings['retrieval'] = (time.perf_counter() - tick) * 1000

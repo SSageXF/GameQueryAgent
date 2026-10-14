@@ -13,8 +13,8 @@ def manifest():
 def shard(hero_id):
     return json.loads(gzip.decompress((ROOT/'data/wiki/tool-snapshots'/f'{hero_id.replace(":","-")}.json.gz').read_bytes()))
 
-def equipment_context(query):
-    if '钻石狂潮' in query or not re.search('装备价值|装备评分|装备排名',query):return None
+def equipment_context(query, mode='万象大赛'):
+    if mode!='万象大赛' or '钻石狂潮' in query or not re.search('装备价值|装备评分|装备排名',query):return None
     m=manifest(); heroes=[h for h in m['heroes'] if h['name'] in query]
     level_match=re.search(r'(?<!\d)(\d{1,3})\s*级',query)
     if len(heroes)!=1 or not level_match:return None

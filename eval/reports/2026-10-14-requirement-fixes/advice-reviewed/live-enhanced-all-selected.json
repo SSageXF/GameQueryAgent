@@ -1,0 +1,1723 @@
+{
+  "created_at": "2026-10-14T11:22:19.139056+00:00",
+  "mode": "live",
+  "variant": "enhanced",
+  "model": "deepseek-v4.1-flash",
+  "python": "3.11.5",
+  "retrieval_backend": "vector",
+  "vector_collection": "knowledge_78e5590ad1bc165b",
+  "thinking": "disabled",
+  "runtime_config": {
+    "max_tokens": 16384,
+    "planner_max_tokens": 4096,
+    "timeout_seconds": 120.0,
+    "planner_timeout_seconds": 60.0
+  },
+  "dataset_coverage": {
+    "case_count": 37,
+    "turn_count": 49,
+    "intents": {
+      "knowledge": 33,
+      "advice": 6,
+      "chitchat": 3,
+      "out_of_scope": 7
+    },
+    "multi_turn_cases": 6,
+    "tags": {
+      "clarification": 1,
+      "unsupported": 2,
+      "unknown": 1,
+      "version": 1,
+      "injection": 1,
+      "mixed": 1,
+      "holdout": 3,
+      "alias": 1,
+      "ambiguous": 1,
+      "multi_turn": 6,
+      "pending": 1,
+      "mode": 1,
+      "entity": 1,
+      "situational": 2,
+      "resource_contrast": 2,
+      "catalog": 2,
+      "reported_regression": 4,
+      "scope_switch": 1,
+      "retrieval_paraphrase": 1
+    }
+  },
+  "selected_case_ids": [
+    "A02",
+    "A03",
+    "A05",
+    "A06"
+  ],
+  "quality_evaluation_complete": false,
+  "notice": "规则评分为代理指标，需人工检查事实依据和未覆盖的幻觉。",
+  "dataset_sha256": "2eb25a443ea13741ba10f5212f30ec1075a775d44c98e235686f9b96d29b4354",
+  "prompt_sha256": {
+    "router": "817ac803bb638eb0104114c83fb27058cf99974234e1183fc9bdfb229573b68b",
+    "generation": "f7418bcca4f289e01657a4a89a4d743eb4718b065fc16ed2ec5ca7705db63b6a",
+    "advice": "f8bd42d9d5ef5271239c6a1b79d964e2145d4c496545435b1b0ddf55f4336a28",
+    "advice_review": "d0c914cf175b4ce6133a9876906b223d78a0dda5a0e81c7b111b8e09b88e728e"
+  },
+  "knowledge_sha256": {
+    "data/knowledge.json": "98e6b951dcb86f1c38db8627da871d6c91e6b1fa48dcdff8c01299fe2ff0baf5",
+    "data/wiki/records.json": "a06ef92fc1ab29f84f8193710407a24065b1ec14e99a95ddade10a54e84725d9"
+  },
+  "rubric_version": "4.1-audited-behaviors-and-resource-context",
+  "retrieval_links_sha256": "60d743ec692c6fc4f9310815034bdb2efba379cbd232e1ebc89d29e878f133dd",
+  "implementation_sha256": {
+    "app/__init__.py": "f4f16aa7a5b41380125d8471da2b87be9c97be11887033c4670b575828114970",
+    "app/agent.py": "f56de5dd185626272cf329cea4329cd8f2c128aa4bf2b7bcd60b8f4c87d73fe2",
+    "app/answers.py": "dce7600fdcfc0795209156c4c009710298da20e8b32acd6e1c622e3706f4efd1",
+    "app/config.py": "9a42a80f317ee2257ac38ffe1fa1b4656f8e29f647116cc3377d1e7a9b4f04bb",
+    "app/context.py": "388279a80540b109bf9f529d0b056c99ad4ee44048d7605abba8031a192f9fb7",
+    "app/intent.py": "94ee098fca6dd6f883fb4360657e9b7588857b07a52297e850c98409d3156572",
+    "app/llm.py": "9ea1d07ad043ddf046efaaa4d1a885346c964d88957f42e64d2a3a139a7aba63",
+    "app/main.py": "75299c476d4524b8202da8eee287763514f31828ba168104e33025e652fe6ec3",
+    "app/native_runtime.py": "8a7296543b2c6b28c37c2216941cdfb01bcc380c1555d7e088ea3b9d10808cb3",
+    "app/persona.py": "2c8a8bfe4f11d27d79f6e41aabc00da82f21452f41aa2297902224b7f74751a1",
+    "app/query.py": "86acc84b37f9b81e49e9b1cd66084a51c3501a7c7277173882fc38ae08c32ab9",
+    "app/retrieval.py": "6e8e9f1d5cf277977eff64e8ca1a351df993a80b920fa93940c623fef4ba8614",
+    "app/schemas.py": "daf2129df7ae8053182154b353e81651fd73c5a042b3b9999e73c20cd518edaf",
+    "app/vector_store.py": "f30fb1380dbde9b04e0a90ce15787da7d8dac9bf1a8a69b37882f3e22f23b2cb",
+    "app/wiki_tools.py": "6c364322968e5b5392b7b4e84f6df291bb5a840de6a97b3d9e21a2ec0ea43616"
+  },
+  "scorer_sha256": {
+    "eval/run.py": "64a25e9167c472ed572a0416bd73b10ff19b42010ec3d7d2e0fde5c31c62d756",
+    "eval/advice.py": "15dc80191841013c7122f019d22c221d03a590467dbb08aa2d6f2eec9b22da2e",
+    "eval/text.py": "9c9da93d76206cb30f94b11a24eccae8f2286be0915655c90115daee99500958",
+    "eval/dataset.py": "56a2b12e4d2d475d8473ad06b137c3d0478b911f4c51c81de8ffff8fb05cc317"
+  },
+  "metric_denominators": {
+    "intent_accuracy": "所有执行轮次，调用失败仍计入",
+    "retrieval_hit_rate": "预期证据组非空的轮次；至少一个组命中",
+    "mean_evidence_recall": "各有证据轮次的事实组覆盖率均值；组内是人工登记的等价来源",
+    "answer_pass_rate": "所有执行轮次；事实/行为/禁止断言/状态/来源及建议规则",
+    "success_rate": "所有执行轮次；模型异常或路由回退/资料摘录降级不计成功",
+    "response_rate": "所有执行轮次；收到结构化结果，包含降级回复"
+  },
+  "scoring": "固定正则事实组 + 禁止模式 + 状态 + 引用检查；不以非空作为通过标准。分母为轮数，另提供整案例通过率。人工审查尚未完成。",
+  "summary": {
+    "case_count": 4,
+    "turn_count": 4,
+    "intent_accuracy": {
+      "numerator": 4,
+      "denominator": 4,
+      "rate": 1.0
+    },
+    "retrieval_hit_rate": {
+      "numerator": 4,
+      "denominator": 4,
+      "rate": 1.0
+    },
+    "mean_evidence_recall": 1.0,
+    "answer_pass_rate": {
+      "numerator": 0,
+      "denominator": 4,
+      "rate": 0.0
+    },
+    "case_answer_pass_rate": {
+      "numerator": 0,
+      "denominator": 4,
+      "rate": 0.0
+    },
+    "success_rate": {
+      "numerator": 3,
+      "denominator": 4,
+      "rate": 0.75
+    },
+    "response_rate": {
+      "numerator": 4,
+      "denominator": 4,
+      "rate": 1.0
+    },
+    "degraded_responses": 1,
+    "advice_rule_pass_rate": {
+      "numerator": 1,
+      "denominator": 4,
+      "rate": 0.25
+    },
+    "real_model_calls": 12,
+    "successful_latency": {
+      "n": 3,
+      "median_ms": 15045.52,
+      "p95_ms": 18083.92
+    },
+    "failed_latency": {
+      "n": 1,
+      "median_ms": 30568.85,
+      "p95_ms": 30568.85
+    },
+    "all_latency": {
+      "n": 4,
+      "median_ms": 16564.72,
+      "p95_ms": 30568.85
+    },
+    "judge_latency": {
+      "n": 4,
+      "median_ms": 3.03,
+      "p95_ms": 10.66
+    },
+    "query_planner_successes": 3,
+    "phase_median_ms": {
+      "client_setup": 1.98,
+      "context_route": 0.05,
+      "intent_planning": 2312.46,
+      "retrieval": 3253.84,
+      "generation": 9163.3
+    }
+  },
+  "rows": [
+    {
+      "case_id": "A02",
+      "turn": 1,
+      "split": "development",
+      "message": "第5回合，10点能量，棋手3级，阵容：吕布、赵云，我要不要升级？",
+      "input_history": [],
+      "expectation": {
+        "message": "第5回合，10点能量，棋手3级，阵容：吕布、赵云，我要不要升级？",
+        "history": [],
+        "expected_intent": "advice",
+        "expected_status": "answered",
+        "expected_behavior": "依据资料回答并展示实际使用的引用",
+        "expected_knowledge_ids": [
+          "C04",
+          "E04"
+        ],
+        "required_groups": [
+          [
+            "10",
+            "5回合",
+            "3级"
+          ],
+          [
+            "升级"
+          ],
+          [
+            "按钮",
+            "消耗",
+            "费用",
+            "花费"
+          ]
+        ],
+        "forbidden_patterns": [
+          "保证获胜",
+          "一定吃鸡",
+          "3级升到4级(?:就|会|能|可以)?(?:增加|多|获得).{0,5}(?:上阵|人口|名额)"
+        ],
+        "advice_rubric": {
+          "threshold": 8,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "给出升级或保留资源的可执行下一步",
+              "all_of": [
+                [
+                  "先不(?:急着)?(?:点|升)|暂(?:缓|时不)升级|优先.{0,8}(?:升级|补强|买牌)|先.{0,8}(?:升级|补强|留着|攒着)|再升级|保留.{0,8}能量",
+                  "可以考虑升|倾向升|稳一手|先.{0,8}(?:买牌|补阵容)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "context_reason",
+              "description": "将玩家资源条件与决策联系起来",
+              "all_of": [
+                [
+                  "10(?:点)?能量.{0,60}(?:不足|足够|剩|留|所以|因此|意味着|花完|补强|买牌)|(?:只有|考虑到|因为).{0,20}10.{0,6}能量",
+                  "(?:如果|若|因为|要是|花费).{0,45}(?:能量|费用|按钮|花费).{0,35}10(?:点)?.{0,60}(?:补强|升级|可以|留|买牌|见底)|(?:如果|若|花费).{0,20}(?:低于|等于|超过|接近)10.{0,60}(?:留|买牌|能量|升级)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "tradeoff",
+              "description": "明确比较升级收益与资源机会成本",
+              "all_of": [
+                [
+                  "天赋|上阵名额|高阶"
+                ],
+                [
+                  "买牌|刷新|补强|剩余能量|保留能量|留.{0,8}能量"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            },
+            {
+              "id": "conditional",
+              "description": "给出可改变结论的条件",
+              "all_of": [
+                [
+                  "(?:如果|若|当|要是).{0,100}(?:消耗|费用|按钮|能量|花费).{0,100}(?:则|再|优先|可以|就|否则|先)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "boundary",
+              "description": "不编造缺失费用，明确查证方式或信息限制",
+              "all_of": [
+                [
+                  "按钮|未提供.{0,12}费用|不知道.{0,12}消耗|先确认.{0,12}费用"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            }
+          ],
+          "forbidden_recommendations": [
+            "(?:立刻|无条件|必定|直接)升级.{0,8}(?:就能|保证|必胜)",
+            "升级固定(?:消耗|需要)\\d+"
+          ]
+        },
+        "answer_points": [
+          "结合10能量给条件式升级或保留资源方案",
+          "核对实际升级消耗，比较升级收益与买牌补强机会成本"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "C04",
+            "WIKI-79c68b769e0390cb63a4"
+          ],
+          [
+            "E04",
+            "WIKI-568e467dc3529f9654fe"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "C04",
+        "E04"
+      ],
+      "advice_applicable": true,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "咱们按你现在的情况看，可以先偏向买牌补强，不急着升4级。\n\n你手里10能量，普通英雄牌一张3能量，还能连买几张。现在3级、场上只有吕布和赵云两张牌，阵容还比较薄；升级虽然能提高高阶英雄牌出现的概率，但3级的+1上阵名额你已经拿到了，再升级不会重复获得这个收益。升级具体花多少能量，看你升级按钮上显示的数值。\n\n所以如果按钮上的升级费用比买两张英雄牌还贵，或者商店里有吕布、赵云这类能合成、能马上上场的牌，优先买牌更实在；要是升级只花三四点，而商店里没有能补阵容的牌，也可以先升上去，为之后出高阶牌做铺垫。先把升级按钮显示的费用和这轮商店里的牌报给我，咱们再定。",
+        "intent": "advice",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "C04",
+            "title": "升级与上阵人数",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "使用能量提升棋手等级，每次升级免费获得一个天赋。标有人数符号的等级会增加1个上阵名额；更高棋手等级也提高高阶英雄牌出现的概率。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "E04",
+            "title": "升级消耗的查看位置",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "棋手升级需要能量；当前所需数值显示在升级按钮上，不应为所有等级编造一个统一价格。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-8d1c3420e3a98a6b2db6",
+            "title": "上阵人数",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/mechanics/population",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "site_interpretation",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "定义：棋手在3级和5级时各增加1个上阵名额。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "E03",
+            "title": "购买卡牌消耗",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "基础规则中，购买英雄牌消耗3点能量；效果牌的消耗看卡牌右上角。特殊效果可能改变实际消耗。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "C04",
+          "E04",
+          "WIKI-8d1c3420e3a98a6b2db6",
+          "WIKI-fb6349db41c97103af3c-5",
+          "WIKI-79c68b769e0390cb63a4",
+          "WIKI-fb6349db41c97103af3c-3",
+          "E03",
+          "R01",
+          "R02",
+          "WIKI-fb6349db41c97103af3c",
+          "WIKI-fb6349db41c97103af3c-2",
+          "WIKI-fb6349db41c97103af3c-4",
+          "WIKI-fb6349db41c97103af3c-6",
+          "WIKI-fb6349db41c97103af3c-7",
+          "WIKI-fb6349db41c97103af3c-8",
+          "WIKI-fb6349db41c97103af3c-9",
+          "WIKI-fb6349db41c97103af3c-10",
+          "WIKI-fb6349db41c97103af3c-11"
+        ],
+        "latency_ms": 18076.29,
+        "timings_ms": {
+          "context_route": 0.05,
+          "intent_planning": 2337.57,
+          "retrieval": 3105.77,
+          "generation": 12394.96,
+          "client_setup": 236.94
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "452428f0b36d",
+        "retrieval_plan": {
+          "queries": [
+            "棋手升级消耗与作用 万象大赛",
+            "棋手等级与上阵人数 回合节奏",
+            "吕布 赵云 阵容 棋手升级"
+          ],
+          "keywords": [
+            "升级",
+            "棋手等级",
+            "能量",
+            "上阵人数",
+            "吕布",
+            "赵云",
+            "第5回合"
+          ],
+          "entities": [
+            "吕布",
+            "赵云"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "advice",
+          "resolved_query": "万象大赛第5回合，10点能量，棋手3级，场上吕布、赵云，要不要升级棋手？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2333.11,
+            "success": true,
+            "input_chars": 5762,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2845,
+            "completion_tokens": 129,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 4935.64,
+            "success": true,
+            "input_chars": 25451,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 11629,
+            "completion_tokens": 406,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "advice_review",
+            "elapsed_ms": 7456.48,
+            "success": true,
+            "input_chars": 26334,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 12122,
+            "completion_tokens": 423,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": false,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": {
+          "score": 8,
+          "maximum": 10,
+          "threshold": 8,
+          "passed": false,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "给出升级或保留资源的可执行下一步",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "先偏向买牌补强",
+                  "再升级",
+                  "优先买牌更实在；要是升级",
+                  "先把升级",
+                  "先偏向买牌",
+                  "先买牌"
+                ]
+              ]
+            },
+            {
+              "id": "context_reason",
+              "description": "将玩家资源条件与决策联系起来",
+              "passed": false,
+              "points": 0,
+              "critical": true,
+              "matched_evidence": [
+                []
+              ]
+            },
+            {
+              "id": "tradeoff",
+              "description": "明确比较升级收益与资源机会成本",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "高阶",
+                  "上阵名额",
+                  "高阶"
+                ],
+                [
+                  "买牌",
+                  "补强",
+                  "买牌"
+                ]
+              ]
+            },
+            {
+              "id": "conditional",
+              "description": "给出可改变结论的条件",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "如果按钮上的升级费用比买两张英雄牌还贵，或者商店里有吕布、赵云这类能合成、能马上上场的牌，优先买牌更实在；要是升级只花三四点，而商店里没有能补阵容的牌，也可以先升上去，为之后出高阶牌做铺垫。先把升级按钮显示的费用和这轮商店里的牌报给我，咱们再"
+                ]
+              ]
+            },
+            {
+              "id": "boundary",
+              "description": "不编造缺失费用，明确查证方式或信息限制",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "按钮",
+                  "按钮",
+                  "按钮"
+                ]
+              ]
+            }
+          ],
+          "violations": [],
+          "human_review_required": true
+        },
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 10.657,
+      "elapsed_ms": 18083.922
+    },
+    {
+      "case_id": "A03",
+      "turn": 1,
+      "split": "development",
+      "message": "新手适合什么入门阵容？",
+      "input_history": [],
+      "expectation": {
+        "message": "新手适合什么入门阵容？",
+        "history": [],
+        "expected_intent": "advice",
+        "expected_status": "answered",
+        "expected_behavior": "依据资料回答并展示实际使用的引用",
+        "expected_knowledge_ids": [
+          "L01"
+        ],
+        "required_groups": [
+          [
+            "三分登场",
+            "大河图腾"
+          ],
+          [
+            "低阶",
+            "养成",
+            "自动成长"
+          ]
+        ],
+        "forbidden_patterns": [
+          "必胜",
+          "胜率100"
+        ],
+        "advice_rubric": {
+          "threshold": 8,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "明确推荐对象及第一步",
+              "all_of": [
+                [
+                  "(?:推荐|优先|先从|试试|可以.{0,8}看).{0,30}(?:三分登场|大河图腾)"
+                ],
+                [
+                  "先.{0,25}(?:找|买|收集|熟悉|了解|练习)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "context_reason",
+              "description": "解释新手条件为什么适合",
+              "all_of": [
+                [
+                  "新手|入门"
+                ],
+                [
+                  "低阶|容易|简单|自动成长"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "tradeoff",
+              "description": "说明入门便利与实战限制",
+              "all_of": [
+                [
+                  "低阶|养成|自动成长"
+                ],
+                [
+                  "来牌|对手|局面|版本|不保证"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            },
+            {
+              "id": "conditional",
+              "description": "说明什么情况下调整",
+              "all_of": [
+                [
+                  "(?:若|如果).{0,40}(?:来牌|核心|对手|找不到).{0,40}(?:调整|转|换|再)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "boundary",
+              "description": "区分入门参考与强度排名",
+              "all_of": [
+                [
+                  "入门参考|不代表.{0,12}强度|不是.{0,12}强度|不保证"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            }
+          ],
+          "forbidden_recommendations": [
+            "保证.{0,5}(?:获胜|吃鸡)"
+          ]
+        },
+        "answer_points": [
+          "推荐有明确入门依据的阵容并解释理由、起步动作及来牌变化下的调整；不保证获胜。L01/L02作为已核对的不同可行方案，不强制唯一答案。"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "L01",
+            "L02"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "L01"
+      ],
+      "advice_applicable": true,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "新手入门可以先看官网首发专题标出的两套参考阵容。\n\n第一套是白歌的三分登场流：官网把它作为新手参考，低阶英雄较多、养成相对容易，适合先熟悉英雄牌和登场节奏。\n\n第二套是瑶妹的大河图腾流：以敖隐为输出核心，组齐后走自动成长，实战仍取决于来牌和版本。\n\n这两套都是入门示例，不代表当前强度排名，也不能保证必胜。建议先挑一套，开局优先抓体系里的低阶牌，凑齐后再考虑站位和装备；来牌不顺就换另一套，别硬追单张核心。你想先试白歌还是瑶妹这套？",
+        "intent": "advice",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "L01",
+            "title": "三分登场流入门参考",
+            "source_title": "王者万象棋官网·首发专题",
+            "url": "https://wxq.qq.com/",
+            "collected_at": "2026-10-12",
+            "version_scope": "首发专题快照；不代表当前版本强度",
+            "claim_type": "official_recommendation",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "官网首发专题将三分登场流作为白歌的新手参考，说明其低阶英雄较多，养成相对容易。这是入门示例，不是当前强度排名或必胜保证。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "L02",
+            "title": "大河图腾流入门参考",
+            "source_title": "王者万象棋官网·首发专题",
+            "url": "https://wxq.qq.com/",
+            "collected_at": "2026-10-12",
+            "version_scope": "首发专题快照；不代表当前版本强度",
+            "claim_type": "official_recommendation",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "官网首发专题将大河图腾流作为瑶妹的入门参考，以敖隐为输出核心，强调组齐后的自动成长。具体实战仍取决于来牌及版本。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "L01",
+          "WIKI-8fa0ddf9da24cdf11c55",
+          "L02",
+          "WIKI-a4303516b397bb385e14",
+          "WIKI-089260827f7f61696a6e",
+          "WIKI-5d7be16eec3f1f43372e",
+          "WIKI-8fa0ddf9da24cdf11c55-2",
+          "WIKI-8fa0ddf9da24cdf11c55-3",
+          "WIKI-8fa0ddf9da24cdf11c55-4",
+          "WIKI-a4303516b397bb385e14-2",
+          "WIKI-a4303516b397bb385e14-3",
+          "WIKI-a4303516b397bb385e14-4",
+          "WIKI-a4303516b397bb385e14-5",
+          "WIKI-089260827f7f61696a6e-2",
+          "WIKI-089260827f7f61696a6e-3",
+          "WIKI-089260827f7f61696a6e-4",
+          "WIKI-089260827f7f61696a6e-5"
+        ],
+        "latency_ms": 12485.77,
+        "timings_ms": {
+          "context_route": 0.07,
+          "intent_planning": 2058.93,
+          "retrieval": 3253.84,
+          "generation": 7170.73,
+          "client_setup": 1.98
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "9879fedd42cb",
+        "retrieval_plan": {
+          "queries": [
+            "新手入门阵容推荐 简单易上手 运营思路",
+            "三分登场流入门参考 阵容组成"
+          ],
+          "keywords": [],
+          "entities": [],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "advice",
+          "resolved_query": "新手适合什么入门阵容",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2054.55,
+            "success": true,
+            "input_chars": 4269,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2299,
+            "completion_tokens": 75,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3731.02,
+            "success": true,
+            "input_chars": 27409,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 12296,
+            "completion_tokens": 302,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "advice_review",
+            "elapsed_ms": 3437.95,
+            "success": true,
+            "input_chars": 28068,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 12663,
+            "completion_tokens": 270,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": false,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": {
+          "score": 6,
+          "maximum": 10,
+          "threshold": 8,
+          "passed": false,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "明确推荐对象及第一步",
+              "passed": false,
+              "points": 0,
+              "critical": true,
+              "matched_evidence": [
+                [],
+                [
+                  "先熟悉"
+                ]
+              ]
+            },
+            {
+              "id": "context_reason",
+              "description": "解释新手条件为什么适合",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "新手",
+                  "入门",
+                  "新手",
+                  "入门"
+                ],
+                [
+                  "低阶",
+                  "容易",
+                  "自动成长",
+                  "低阶"
+                ]
+              ]
+            },
+            {
+              "id": "tradeoff",
+              "description": "说明入门便利与实战限制",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "低阶",
+                  "养成",
+                  "自动成长",
+                  "低阶"
+                ],
+                [
+                  "来牌",
+                  "版本",
+                  "来牌"
+                ]
+              ]
+            },
+            {
+              "id": "conditional",
+              "description": "说明什么情况下调整",
+              "passed": false,
+              "points": 0,
+              "critical": true,
+              "matched_evidence": [
+                []
+              ]
+            },
+            {
+              "id": "boundary",
+              "description": "区分入门参考与强度排名",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "不代表当前强度"
+                ]
+              ]
+            }
+          ],
+          "violations": [],
+          "human_review_required": true
+        },
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 4.021,
+      "elapsed_ms": 12493.389
+    },
+    {
+      "case_id": "A05",
+      "turn": 1,
+      "split": "development",
+      "message": "第5回合，2点能量，棋手3级，生命8，阵容：吕布、赵云，我要不要升级？",
+      "input_history": [],
+      "expectation": {
+        "message": "第5回合，2点能量，棋手3级，生命8，阵容：吕布、赵云，我要不要升级？",
+        "history": [],
+        "expected_intent": "advice",
+        "expected_status": "answered",
+        "expected_behavior": "依据资料回答并展示实际使用的引用",
+        "expected_knowledge_ids": [
+          "C04",
+          "E04"
+        ],
+        "required_groups": [
+          [
+            "2",
+            "5回合",
+            "3级"
+          ],
+          [
+            "升级"
+          ],
+          [
+            "按钮",
+            "消耗",
+            "费用",
+            "花费"
+          ]
+        ],
+        "forbidden_patterns": [
+          "保证获胜",
+          "一定吃鸡",
+          "3级升到4级(?:就|会|能|可以)?(?:增加|多|获得).{0,5}(?:上阵|人口|名额)"
+        ],
+        "advice_rubric": {
+          "threshold": 8,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "给出升级或保留资源的可执行下一步",
+              "all_of": [
+                [
+                  "先不(?:急着)?(?:点|升)|暂(?:缓|时不)升级|优先.{0,8}(?:升级|补强|买牌)|先.{0,8}(?:升级|补强|留着|攒着)|再升级|保留.{0,8}能量",
+                  "可以考虑升|倾向升|稳一手|先.{0,8}(?:买牌|补阵容)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "context_reason",
+              "description": "将能量和生命条件都与行动权衡联系，而非只复述数字",
+              "all_of": [
+                [
+                  "2(?:点)?能量.{0,60}(?:不足|足够|剩|留|所以|因此|意味着|花完|补强|买牌)|(?:只有|考虑到|因为).{0,20}2.{0,6}能量",
+                  "(?:如果|若|因为|要是|花费).{0,45}(?:能量|费用|按钮|花费).{0,35}2(?:点)?.{0,60}(?:补强|升级|可以|留|买牌|见底)|(?:如果|若|花费).{0,20}(?:低于|等于|超过|接近)2.{0,60}(?:留|买牌|能量|升级)"
+                ],
+                [
+                  "(?:8.{0,5}(?:生命|血)|(?:生命|血量).{0,5}8).{0,70}(?:风险|压力|稳|余地|补强|生存|缓冲|发育)|(?:风险|压力|稳|补强|生存).{0,70}8.{0,5}(?:生命|血)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "tradeoff",
+              "description": "明确比较升级收益与资源机会成本",
+              "all_of": [
+                [
+                  "天赋|上阵名额|高阶"
+                ],
+                [
+                  "买牌|刷新|补强|剩余能量|保留能量|留.{0,8}能量"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            },
+            {
+              "id": "conditional",
+              "description": "给出可改变结论的条件",
+              "all_of": [
+                [
+                  "(?:如果|若|当|要是).{0,100}(?:消耗|费用|按钮|能量|花费).{0,100}(?:则|再|优先|可以|就|否则|先)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "boundary",
+              "description": "不编造缺失费用，明确查证方式或信息限制",
+              "all_of": [
+                [
+                  "按钮|未提供.{0,12}费用|不知道.{0,12}消耗|先确认.{0,12}费用"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            }
+          ],
+          "forbidden_recommendations": [
+            "(?:立刻|无条件|必定|直接)升级.{0,8}(?:就能|保证|必胜)",
+            "升级固定(?:消耗|需要)\\d+",
+            "无视血量",
+            "不管费用"
+          ]
+        },
+        "answer_points": [
+          "结合2能量、8生命的压力给可行条件式决策，不无视升级费用"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "C04",
+            "WIKI-79c68b769e0390cb63a4"
+          ],
+          [
+            "E04",
+            "WIKI-568e467dc3529f9654fe"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "C04",
+        "E04"
+      ],
+      "advice_applicable": true,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "咱们看下具体情况：你3级已经拿到过本级的上阵名额+1了，升4级不会再给上阵名额，主要收益是提高高阶牌出现概率，还能免费解锁一个天赋。但升级要花多少能量，得看你按钮上标的当前数值——这个费用资料里没有统一价格。\n\n你手上只有2点能量，买一张英雄牌就要3点，所以如果升级按钮的消耗不超过2点，升完就没钱操作了；好处是拿到天赋、牌池概率提升。生命8确实偏低，但资料里没有你对手的战力参考，我不硬说这局安不安全。\n\n条件式建议：如果升级费用≤2且你更想长期提升牌池，可以升；如果升级费用>2，这回合根本升不了，只能留着能量；如果你觉得当下战力吃紧，优先攒够3点下回合买牌补强。你看一眼升级按钮标的是多少能量，我对一下。",
+        "intent": "advice",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WIKI-79c68b769e0390cb63a4",
+            "title": "升级棋手有什么作用？",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/guide",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "棋手可花费能量提升等级，每次升级后可免费解锁1个天赋。部分等级会带有人数标志，升至该等级时可获得+1上阵人数。棋手等级提升，获得高阶英雄牌的概率也将随之提升。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "E04",
+            "title": "升级消耗的查看位置",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "棋手升级需要能量；当前所需数值显示在升级按钮上，不应为所有等级编造一个统一价格。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "E03",
+            "title": "购买卡牌消耗",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "基础规则中，购买英雄牌消耗3点能量；效果牌的消耗看卡牌右上角。特殊效果可能改变实际消耗。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-8d1c3420e3a98a6b2db6",
+            "title": "上阵人数",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/mechanics/population",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "site_interpretation",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "定义：棋手在3级和5级时各增加1个上阵名额。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WIKI-fb6349db41c97103af3c-3",
+          "WIKI-79c68b769e0390cb63a4",
+          "WIKI-ca5a5f78c747c6692e70",
+          "WIKI-089260827f7f61696a6e-4",
+          "C04",
+          "WIKI-fb6349db41c97103af3c-5",
+          "E04",
+          "E03",
+          "R01",
+          "R02",
+          "WIKI-8d1c3420e3a98a6b2db6",
+          "WIKI-fb6349db41c97103af3c",
+          "WIKI-fb6349db41c97103af3c-2",
+          "WIKI-fb6349db41c97103af3c-4",
+          "WIKI-fb6349db41c97103af3c-6",
+          "WIKI-fb6349db41c97103af3c-7",
+          "WIKI-fb6349db41c97103af3c-8",
+          "WIKI-fb6349db41c97103af3c-9",
+          "WIKI-fb6349db41c97103af3c-10",
+          "WIKI-fb6349db41c97103af3c-11",
+          "WIKI-089260827f7f61696a6e",
+          "WIKI-089260827f7f61696a6e-2",
+          "WIKI-089260827f7f61696a6e-3"
+        ],
+        "latency_ms": 15037.32,
+        "timings_ms": {
+          "context_route": 0.05,
+          "intent_planning": 2312.46,
+          "retrieval": 3560.22,
+          "generation": 9163.3,
+          "client_setup": 1.05
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "6a9560f0eabd",
+        "retrieval_plan": {
+          "queries": [
+            "升级棋手有什么作用 消耗能量 上阵人数",
+            "第5回合 2点能量 棋手3级 升级还是买英雄 运营思路"
+          ],
+          "keywords": [
+            "升级棋手",
+            "能量",
+            "回合",
+            "上阵人数"
+          ],
+          "entities": [
+            "吕布",
+            "赵云"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "advice",
+          "resolved_query": "第5回合，2点能量，棋手3级，生命8，阵容吕布赵云，要不要升级？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2307.41,
+            "success": true,
+            "input_chars": 5765,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2848,
+            "completion_tokens": 142,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 4489.05,
+            "success": true,
+            "input_chars": 33733,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 15194,
+            "completion_tokens": 455,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "advice_review",
+            "elapsed_ms": 4671.93,
+            "success": true,
+            "input_chars": 34739,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 15747,
+            "completion_tokens": 520,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": false,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": {
+          "score": 8,
+          "maximum": 10,
+          "threshold": 8,
+          "passed": false,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "给出升级或保留资源的可执行下一步",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "优先攒够3点下回合买牌",
+                  "先攒够3点下回合买牌"
+                ]
+              ]
+            },
+            {
+              "id": "context_reason",
+              "description": "将能量和生命条件都与行动权衡联系，而非只复述数字",
+              "passed": false,
+              "points": 0,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "只有2点能量",
+                  "如果升级费用≤2且你更想长期提升牌池，可以升；如果升级费用>2，这回合根本升不了，只能留着能量；如果你觉得当下战力吃紧，优先攒够3点下回合买牌补强。你看一眼升级"
+                ],
+                []
+              ]
+            },
+            {
+              "id": "tradeoff",
+              "description": "明确比较升级收益与资源机会成本",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "上阵名额",
+                  "上阵名额",
+                  "高阶",
+                  "天赋",
+                  "天赋"
+                ],
+                [
+                  "留着能量",
+                  "买牌",
+                  "补强"
+                ]
+              ]
+            },
+            {
+              "id": "conditional",
+              "description": "给出可改变结论的条件",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "如果升级按钮的消耗不超过2点，升完就",
+                  "如果升级费用≤2且你更想长期提升牌池，可以升；如果升级费用>2，这回合根本升不了，只能留着能量；如果你觉得当下战力吃紧，优先"
+                ]
+              ]
+            },
+            {
+              "id": "boundary",
+              "description": "不编造缺失费用，明确查证方式或信息限制",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "按钮",
+                  "按钮",
+                  "按钮"
+                ]
+              ]
+            }
+          ],
+          "violations": [],
+          "human_review_required": true
+        },
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 2.045,
+      "elapsed_ms": 15045.522
+    },
+    {
+      "case_id": "A06",
+      "turn": 1,
+      "split": "development",
+      "message": "第5回合，30点能量，棋手3级，生命50，阵容：吕布、赵云，我要不要升级？",
+      "input_history": [],
+      "expectation": {
+        "message": "第5回合，30点能量，棋手3级，生命50，阵容：吕布、赵云，我要不要升级？",
+        "history": [],
+        "expected_intent": "advice",
+        "expected_status": "answered",
+        "expected_behavior": "依据资料回答并展示实际使用的引用",
+        "expected_knowledge_ids": [
+          "C04",
+          "E04"
+        ],
+        "required_groups": [
+          [
+            "30",
+            "5回合",
+            "3级"
+          ],
+          [
+            "升级"
+          ],
+          [
+            "按钮",
+            "消耗",
+            "费用",
+            "花费"
+          ]
+        ],
+        "forbidden_patterns": [
+          "保证获胜",
+          "一定吃鸡",
+          "3级升到4级(?:就|会|能|可以)?(?:增加|多|获得).{0,5}(?:上阵|人口|名额)"
+        ],
+        "advice_rubric": {
+          "threshold": 8,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "给出升级或保留资源的可执行下一步",
+              "all_of": [
+                [
+                  "先不(?:急着)?(?:点|升)|暂(?:缓|时不)升级|优先.{0,8}(?:升级|补强|买牌)|先.{0,8}(?:升级|补强|留着|攒着)|再升级|保留.{0,8}能量",
+                  "可以考虑升|倾向升|稳一手|先.{0,8}(?:买牌|补阵容)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "context_reason",
+              "description": "将能量和生命条件都与行动权衡联系，而非只复述数字",
+              "all_of": [
+                [
+                  "30(?:点)?能量.{0,60}(?:不足|足够|剩|留|所以|因此|意味着|花完|补强|买牌)|(?:只有|考虑到|因为).{0,20}30.{0,6}能量",
+                  "(?:如果|若|因为|要是|花费).{0,45}(?:能量|费用|按钮|花费).{0,35}30(?:点)?.{0,60}(?:补强|升级|可以|留|买牌|见底)|(?:如果|若|花费).{0,20}(?:低于|等于|超过|接近)30.{0,60}(?:留|买牌|能量|升级)"
+                ],
+                [
+                  "(?:50.{0,5}(?:生命|血)|(?:生命|血量).{0,5}50).{0,70}(?:风险|压力|稳|余地|补强|生存|缓冲|发育)|(?:风险|压力|稳|补强|生存).{0,70}50.{0,5}(?:生命|血)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "tradeoff",
+              "description": "明确比较升级收益与资源机会成本",
+              "all_of": [
+                [
+                  "天赋|上阵名额|高阶"
+                ],
+                [
+                  "买牌|刷新|补强|剩余能量|保留能量|留.{0,8}能量"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            },
+            {
+              "id": "conditional",
+              "description": "给出可改变结论的条件",
+              "all_of": [
+                [
+                  "(?:如果|若|当|要是).{0,100}(?:消耗|费用|按钮|能量|花费).{0,100}(?:则|再|优先|可以|就|否则|先)"
+                ]
+              ],
+              "points": 2,
+              "critical": true
+            },
+            {
+              "id": "boundary",
+              "description": "不编造缺失费用，明确查证方式或信息限制",
+              "all_of": [
+                [
+                  "按钮|未提供.{0,12}费用|不知道.{0,12}消耗|先确认.{0,12}费用"
+                ]
+              ],
+              "points": 2,
+              "critical": false
+            }
+          ],
+          "forbidden_recommendations": [
+            "(?:立刻|无条件|必定|直接)升级.{0,8}(?:就能|保证|必胜)",
+            "升级固定(?:消耗|需要)\\d+",
+            "无视血量",
+            "不管费用"
+          ]
+        },
+        "answer_points": [
+          "结合30能量及50生命比较升级与补强，不把资源富余等同必须升级"
+        ],
+        "expected_knowledge_groups": [
+          [
+            "C04",
+            "WIKI-79c68b769e0390cb63a4"
+          ],
+          [
+            "E04",
+            "WIKI-568e467dc3529f9654fe"
+          ]
+        ]
+      },
+      "expected_knowledge_ids": [
+        "C04",
+        "E04"
+      ],
+      "advice_applicable": true,
+      "response_received": true,
+      "success": false,
+      "result": {
+        "answer": "咱们这回合的关键，是升级按钮上显示要花多少能量。你3级，已经在“3级给+1上阵名额”这个节点上了，所以再升到4级不会重复拿到这个名额；但升级本身仍有每次免费获得1个天赋、并提高高阶英雄牌出现概率的收益。\n\n30能量、生命50的状态下，如果升级费用明显低于30，升级是可行的：你能同时保留大约3点买一张英雄牌，阵容也有成长收益。50点生命在满血60的体系里还不算紧绷，但具体风险还取决于对手强度，没法直接说“安全”。\n\n如果升级要吃掉接近全部30能量，那我更倾向先不升：留出至少3点买英雄牌、把吕布赵云继续补强，可能更稳。所以麻烦你看一眼升级按钮的数值，告诉我它要多少能量，我就能给出更明确的取舍。",
+        "intent": "advice",
+        "status": "partial_answer",
+        "sources": [
+          {
+            "id": "WIKI-79c68b769e0390cb63a4",
+            "title": "升级棋手有什么作用？",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/guide",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "棋手可花费能量提升等级，每次升级后可免费解锁1个天赋。部分等级会带有人数标志，升至该等级时可获得+1上阵人数。棋手等级提升，获得高阶英雄牌的概率也将随之提升。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-8d1c3420e3a98a6b2db6",
+            "title": "上阵人数",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/mechanics/population",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "site_interpretation",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "定义：棋手在3级和5级时各增加1个上阵名额。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "E04",
+            "title": "升级消耗的查看位置",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "棋手升级需要能量；当前所需数值显示在升级按钮上，不应为所有等级编造一个统一价格。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "E03",
+            "title": "购买卡牌消耗",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "基础规则中，购买英雄牌消耗3点能量；效果牌的消耗看卡牌右上角。特殊效果可能改变实际消耗。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "R01",
+            "title": "万象大赛人数与初始生命",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "万象大赛有6名棋手，每人开始时有60点生命。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WIKI-fb6349db41c97103af3c-3",
+          "WIKI-79c68b769e0390cb63a4",
+          "WIKI-089260827f7f61696a6e-4",
+          "WIKI-8d1c3420e3a98a6b2db6",
+          "C04",
+          "WIKI-a4303516b397bb385e14-4",
+          "E04",
+          "E03",
+          "R01",
+          "R02",
+          "WIKI-fb6349db41c97103af3c",
+          "WIKI-fb6349db41c97103af3c-2",
+          "WIKI-fb6349db41c97103af3c-4",
+          "WIKI-fb6349db41c97103af3c-5",
+          "WIKI-fb6349db41c97103af3c-6",
+          "WIKI-fb6349db41c97103af3c-7",
+          "WIKI-fb6349db41c97103af3c-8",
+          "WIKI-fb6349db41c97103af3c-9",
+          "WIKI-fb6349db41c97103af3c-10",
+          "WIKI-fb6349db41c97103af3c-11",
+          "WIKI-089260827f7f61696a6e",
+          "WIKI-089260827f7f61696a6e-2"
+        ],
+        "latency_ms": 30562.51,
+        "timings_ms": {
+          "context_route": 0.05,
+          "intent_planning": 2779.14,
+          "retrieval": 3067.97,
+          "generation": 24713.97,
+          "client_setup": 1.09
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "3348e6f34a30",
+        "retrieval_plan": {
+          "queries": [
+            "升级棋手有什么作用 第5回合 能量消耗 上阵人数",
+            "棋手升级 等级 能量 对局决策",
+            "吕布 赵云 阵容 前期 升级节奏"
+          ],
+          "keywords": [
+            "升级棋手",
+            "能量",
+            "上阵人数"
+          ],
+          "entities": [
+            "吕布",
+            "赵云"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "advice",
+          "resolved_query": "第5回合，30点能量，棋手3级，生命50，阵容吕布、赵云，要不要升级棋手？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2775.2,
+            "success": true,
+            "input_chars": 5767,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2848,
+            "completion_tokens": 149,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 4689.34,
+            "success": true,
+            "input_chars": 32433,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 14628,
+            "completion_tokens": 476,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "advice_review",
+            "elapsed_ms": 20022.37,
+            "success": false,
+            "input_chars": 33476,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled"
+          }
+        ],
+        "notice": "这次先保留已经整理好的建议，费用和可行性还需要结合游戏内情况核对。",
+        "generation_error": "advice_review_failure"
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": false,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": {
+          "score": 10,
+          "maximum": 10,
+          "threshold": 8,
+          "passed": true,
+          "dimensions": [
+            {
+              "id": "action",
+              "description": "给出升级或保留资源的可执行下一步",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "先不升"
+                ]
+              ]
+            },
+            {
+              "id": "context_reason",
+              "description": "将能量和生命条件都与行动权衡联系，而非只复述数字",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "30能量、生命50的状态下，如果升级费用明显低于30，升级是可行的：你能同时保留",
+                  "30能量，那我更倾向先不升：留出至少3点买英雄牌、把吕布赵云继续补强，可能更稳。所以",
+                  "如果升级费用明显低于30，升级是可行的：你能同时保留"
+                ],
+                [
+                  "50点生命在满血60的体系里还不算紧绷，但具体风险"
+                ]
+              ]
+            },
+            {
+              "id": "tradeoff",
+              "description": "明确比较升级收益与资源机会成本",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "上阵名额",
+                  "天赋",
+                  "高阶"
+                ],
+                [
+                  "补强"
+                ]
+              ]
+            },
+            {
+              "id": "conditional",
+              "description": "给出可改变结论的条件",
+              "passed": true,
+              "points": 2,
+              "critical": true,
+              "matched_evidence": [
+                [
+                  "如果升级要吃掉接近全部30能量，那我更倾向先不升：留出至少3点买英雄牌、把吕布赵云继续补强，可能更稳。所以麻烦你看一眼升级按钮的数值，告诉我它要多少能量，我就"
+                ]
+              ]
+            },
+            {
+              "id": "boundary",
+              "description": "不编造缺失费用，明确查证方式或信息限制",
+              "passed": true,
+              "points": 2,
+              "critical": false,
+              "matched_evidence": [
+                [
+                  "按钮",
+                  "按钮"
+                ]
+              ]
+            }
+          ],
+          "violations": [],
+          "human_review_required": true
+        },
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": false
+      },
+      "judge_ms": 1.901,
+      "elapsed_ms": 30568.848
+    }
+  ]
+}

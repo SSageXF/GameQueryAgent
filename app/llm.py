@@ -24,13 +24,26 @@ SYSTEM = ASSISTANT_VOICE + '''
 “初始天赋”等字段只是类别，不是效果；优先用卡面原文说明每项效果。“与某阵营相关”不等于全都强化该阵营，要区分直接效果、名称相关、通过关联卡牌间接相关，以及对非该阵营生效的特殊情况。清单按相关方式分组；selection_total大于selection_returned时说明本轮展示部分，不宣称全部。
 关联卡牌可用于解释联系；某段原文没写某效果，不等于该英雄没有此效果。不要作这种排除性断言，也不要给相关方式不同的一组天赋强加统一收益或选取建议。名称相关项直接说明已知效果即可，不必逐条提醒玩家资料没写什么。
 建议要核对预算、购买/上阵的区别、技能触发条件和机会成本，保留用户数字及限制，不承诺必胜。缺少支持具体决策的资料时给条件式建议，不能假定买得起或把卡牌有某效果当成已触发。
+作建议时先区分“用户现在已有的状态”和“执行下一步才新增的收益”。例如规则说升到某等级获得奖励，而用户已在该等级，就不能让他再次升级去领取该等级奖励；应判断下一等级的收益。把已给的能量、生命、当前等级和阵容用于实际权衡，生命紧张时说明即时补强与长期收益的取舍，生命较充足也不等于必须升级。先给当前条件下的行动倾向及改变结论的条件，最后只追问真正缺失的费用等信息；不只罗列机制后把决策全部丢给玩家。费用未知时用条件比较，不虚构费用或资源余量，不把推测的建议写成官方结论。
+“获得觉醒的概率”和“觉醒后效果的触发条件”是不同问题；效果按次数触发，不能据此断言觉醒本身不随机。回答概率、费用、版本时，必须找到对应问题的依据；只能查到相邻概念时可简短补充，但明确它不能回答原问题。
+长文的document_total/document_returned是同一文档的片段总数/已提供数；只看到片段不能断言整份文档没有后续阶段或某项信息。即使全部片段已提供，也应检查完整正文再作排除判断。新手阵容优先使用明确说明入门适用性、操作门槛的依据，不把玩家高阶阵容直接称为适合新手。
 用户列出商店候选时，结合各卡原文比较可行选择，给一项有依据的优先动作及适用条件；不要只复述候选名字就结束。若无法唯一选优，也应先说明当前资料能确定的可行方案，再追问真正影响选择的条件。
 尤其不要将“购买英雄牌”等同“触发登场拿到收益”；先核对附带的触发时点定义，说清还需要使用/登场、准备阶段或其他前提。原文写基础费用时不要改成无例外的固定费用。
 来源分层：official_original=官网逐字段核对原文；wiki_original=Wiki收录原文；wiki_reference=站点结构化资料；rule=官网规则整理；site_interpretation=站方解释，回答明确归因；site_model=工具条件下数据，不能当实战结果；pending=待确认。不同模式和版本不能拼接成一套规则。
+original是普通卡面效果，awakening是觉醒后的效果，growth可能再次记载觉醒或等级强化；不同状态的数值差异不代表资料冲突。没有同状态、同条件的矛盾，不要自行宣称原文互相冲突。问获得觉醒的概率而资料仅有觉醒效果时，简短说明概率未知即可，不必堆叠无关效果或混淆触发概率。
 wiki_original和wiki_reference都不能称为已核验的官方原文。来源、采集日期由来源区展示，正文不追加固定版本免责声明，也不为用户没有询问的结算顺序等内容附加资料不足提示。
 只输出JSON：{"answer":"亲切简洁的回答","source_ids":["实际使用的ID"],"quotes":[{"source_id":"同一个ID","quote":"从该证据body连续逐字复制的一段"}],"insufficient_evidence":false}。
 按实际用到的证据提供来源，清单可逐项引用，最多48条。每个使用的ID对应一个原文片段，source_ids与quotes的source_id对应且不重复；quote为1至360字连续原文，短正文可完整引用，不得改写、加省略号或拼接不相邻句子。优先完整回答问题，引用放quotes，answer无需重复全部原文。正文不含URL、Markdown链接或自行编造引用号；后端负责展示来源。
 证据完全不能回答时，insufficient_evidence=true，source_ids和quotes均为空，说明还缺什么，不给无依据结论。部分可回答时引用能支持的部分，明确剩余未知。闲聊无需引用。
+'''
+
+ADVICE_GUIDANCE = '''
+本轮需要给玩家拿主意。回答前对照用户条件与证据检查可行性，检查过程不用另行输出：
+- 升级、买牌、刷新分别花多少？未知道的费用只作条件比较；余额少于已知基础购买费用时，不能建议马上购买普通英雄牌，除非用户或证据确认了减费/免费条件。
+- 只有“某等级加一个名额”的资料，不能凭空算出该等级的总名额；也不能把已经获得的收益算作下次升级的新收益。
+- 生命多少必须参与风险权衡。没有对手伤害等信息，不能认定“安全/不危险/还能撑几轮”；资源多也不等于必须升级。
+用自然的三小段完成建议：先给当前可执行的倾向；再把已给资源、生命等关键条件与收益/机会成本联系；最后说明哪种费用或来牌条件下改变方案，必要时问一项真正缺失的信息。费用未知仍可给条件式倾向，不能只有机制复述和反问。
+推荐入门阵容时说明为什么适合、如何开始熟悉它，以及核心来牌不顺时如何调整；不虚构具体成员或胜率。不要机械照抄这些指令或固定套话。
 '''
 
 
@@ -122,8 +135,8 @@ class LLM:
 
     @staticmethod
     def _parse(choice, schema):
-        if choice.get('finish_reason') == 'length':
-            raise ValueError('Truncated JSON')
+        # A length flag may follow an already complete JSON object and padding.
+        # Schema validation still rejects incomplete or malformed documents.
         content = choice['message']['content']
         if not isinstance(content, str):
             raise ValueError('Non-text completion')
@@ -157,12 +170,13 @@ class LLM:
             return Generation(answer=body[:12000], source_ids=[r['id'] for r in cited],
                               quotes=[Quote(source_id=r['id'], quote=r['body'][:360]) for r in cited])
         # Send provenance needed for interpretation, omit duplicated metadata and URLs.
-        fields = ('id', 'title', 'body', 'entity', 'section', 'field', 'relation_kind', 'selection_total', 'selection_returned', 'claim_type', 'verification', 'mode', 'version_scope', 'collected_at')
+        fields = ('id', 'title', 'body', 'entity', 'section', 'field', 'relation_kind', 'selection_total', 'selection_returned', 'document_id', 'document_total', 'document_returned', 'claim_type', 'verification', 'mode', 'version_scope', 'collected_at')
         data = {'query': query, 'history': history, 'intent': intent,
                 'evidence': [{k: r[k] for k in fields if k in r} for r in evidence]}
         budget = self.settings.max_tokens
         for attempt in range(2):
-            system = SYSTEM if not attempt else SYSTEM + '\n请重新完整输出answer及可用来源；上一次未取得可读正文。'
+            system = SYSTEM + (ADVICE_GUIDANCE if intent=='advice' else '')
+            if attempt:system += '\n请重新完整输出answer及可用来源；上一次未取得可读正文。'
             choice = await self._complete(system, data, 'generation' if not attempt else 'generation_repair', budget, self.settings.timeout)
             truncated = choice.get('finish_reason') == 'length'
             message = choice.get('message')

@@ -15,12 +15,14 @@ from pathlib import Path
 from app.agent import Agent
 from app.config import ROOT, load_settings
 from app.llm import AgentError
-from app.llm import SYSTEM
+from app.llm import SYSTEM, ADVICE_GUIDANCE
 from app.intent import ROUTER_SYSTEM
 from app.schemas import ChatRequest
 from eval.advice import score_advice
 from eval.text import affirmative_match
 from eval.dataset import evidence_groups, read_cases, validate_cases
+
+RUBRIC_VERSION='4.2-audited-negation-and-paraphrases'
 
 
 def judge(turn: dict, result: dict, knowledge=None) -> dict:
@@ -31,7 +33,9 @@ def judge(turn: dict, result: dict, knowledge=None) -> dict:
     expected = set().union(*expected_groups) if expected_groups else set()
     retrieved = set(result["retrieved_ids"])
     cited = {s["id"] for s in result["sources"]}
-    citation_ok = bool(expected & cited) if expected else not cited
+    optional=set(turn.get('optional_source_ids',[]))
+    citation_ok = bool(expected & cited) if expected else (cited <= optional)
+    status_ok=result['status'] in turn.get('accepted_statuses',[turn['expected_status']])
     source_integrity = (all(s['id'] in knowledge and bool(s.get('excerpt'))
                            and s['excerpt'] in knowledge[s['id']]['body']
                            and s.get('url') == knowledge[s['id']]['source_url'] for s in result['sources'])
@@ -45,11 +49,11 @@ def judge(turn: dict, result: dict, knowledge=None) -> dict:
         "intent_correct": result["intent"] == turn["expected_intent"],
         "retrieval_hit": bool(expected & retrieved) if expected else None,
         "retrieval_recall": sum(bool(group & retrieved) for group in expected_groups)/len(expected_groups) if expected_groups else None,
-        "answer_pass": all(groups) and not forbidden and result["status"] == turn["expected_status"] and citation_ok and source_integrity is not False and behavior_ok and not result.get('generation_error') and (advice is None or advice["passed"]),
+        "answer_pass": all(groups) and not forbidden and status_ok and citation_ok and source_integrity is not False and behavior_ok and not result.get('generation_error') and (advice is None or advice["passed"]),
         "source_integrity": source_integrity, "behavior_check": behavior_ok,
         "advice_rubric": advice,
         "required_group_results": groups, "forbidden_matches": forbidden, "citation_check": citation_ok,
-        "status_correct": result["status"] == turn["expected_status"],
+        "status_correct": status_ok,
     }
 
 
@@ -147,9 +151,13 @@ async def run(args):
         "notice": "Mock 仅验证链路，不代表模型质量。" if args.mode == "mock" else "规则评分为代理指标，需人工检查事实依据和未覆盖的幻觉。",
         "dataset_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         "prompt_sha256": {"router": hashlib.sha256(ROUTER_SYSTEM.encode()).hexdigest(),
-                          "generation": hashlib.sha256(SYSTEM.encode()).hexdigest()},
+                          "generation": hashlib.sha256(SYSTEM.encode()).hexdigest(),
+                          "advice": hashlib.sha256(ADVICE_GUIDANCE.encode()).hexdigest()},
         "knowledge_sha256": {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in ("data/knowledge.json", "data/wiki/records.json")},
-        "rubric_version": "3.0-context-boundaries-evidence-groups",
+        "rubric_version": RUBRIC_VERSION,
+        "retrieval_links_sha256":hashlib.sha256((ROOT/'data/retrieval_links.json').read_bytes()).hexdigest(),
+        "implementation_sha256":{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()
+                                 for p in sorted((ROOT/'app').glob('*.py'))},
         "scorer_sha256":{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in ('eval/run.py','eval/advice.py','eval/text.py','eval/dataset.py')},
         "metric_denominators":{'intent_accuracy':'所有执行轮次，调用失败仍计入', 'retrieval_hit_rate':'预期证据组非空的轮次；至少一个组命中',
                                'mean_evidence_recall':'各有证据轮次的事实组覆盖率均值；组内是人工登记的等价来源',

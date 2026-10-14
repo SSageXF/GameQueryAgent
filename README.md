@@ -2,7 +2,7 @@
 
 一个有来源、能追问的新手训练向导。FastAPI + 原生 HTML/JS + Qdrant 本地向量数据库，使用 BGE 中文嵌入模型，无需 Docker 或额外嵌入 API。
 
-**当前状态：大模型在一次调用中完成意图分类和检索规划，使用本地向量库按需检索；引用问题不再阻断回答。来源区展示核验过的引文或标明供参考的入库原文，不展示虚构来源。已做真实对话与耗时回归；小样本通过不代表完整语义质量验收，详见[改造与实测](docs/agent-upgrade.md)。**
+**当前状态：大模型在一次调用中完成意图分类和检索规划，使用本地向量库按需检索；引用问题不再阻断回答。来源区展示核验过的引文或标明供参考的入库原文，不展示虚构来源。要求审查后已补充模式/对象约束、关联规则与长文片段，并修正评测误判。最新真实全集、失败记录及同口径对照见[离线评测说明](eval/README.md)，历史改造见[改造记录](docs/agent-upgrade.md)。**
 
 ## 快速运行（PowerShell / Python 3.11+）
 
@@ -61,8 +61,8 @@ $env:AGENT_MODE="mock"
 .\.venv\Scripts\python.exe -m eval.wiki_eval --live --output eval/reports/query-live.json
 # 默认真实评测；没有模型配置会明确退出，不生成虚假的真实结果
 .\.venv\Scripts\python.exe -m eval.run --mode live
-# 本轮9个真实场景回归（含模型分类、引用原文、阶段耗时，会调用API）
-.\.venv\Scripts\python.exe -m eval.upgrade_eval
+# 9个真实场景回归；显式选择live，拒绝覆盖已有JSON报告
+.\.venv\Scripts\python.exe -m eval.upgrade_eval --mode live --output eval/reports/my-upgrade/results.json
 # 多轮上下文、天赋完整效果、显式换话题（实际Qdrant和模型API）
 .\.venv\Scripts\python.exe -m eval.conversation_eval --live --output artifacts/conversation-quality.json
 # 可重复的词法基线对照（向量后端下不是纯词法基线实验）
@@ -79,7 +79,9 @@ Remove-Item Env:RETRIEVAL_BACKEND
 
 使用向量后端独立评测前先停止网页后端，避免两个进程占用同一个本地数据库。
 
-基础检索最多6条，情境建议可额外补充最多2条触发时点定义。清单检索最多24个对象、48条效果与关联证据，保留对象总数和本轮覆盖数。响应记录 `client_setup/intent_planning/retrieval/generation`；生成失败保留已完成的意图和检索结果，模型调用日志计入分类、生成、失败和重试。历史报告沿用旧口径。规则评分与引用逐字校验不能完整判断幻觉或策略推论，仍需人工核对。
+基础检索通常6条，明确的多对象技能/觉醒查询优先覆盖各对象字段；情境建议可额外补充最多6条关联规则与2条触发定义。同一长文最多补12个后续片段，补充过程受24000字总正文预算限制，原已选资料不截断；返回文档片段总数与已提供数，不能把局部片段称为全部资料。清单检索最多24个对象、48条效果与关联证据，保留对象总数和本轮覆盖数。响应记录 `client_setup/intent_planning/retrieval/generation`；生成失败保留已完成的意图和检索结果，模型调用日志计入分类、生成、失败和重试。历史报告沿用旧口径。规则评分与引用逐字校验不能完整判断幻觉或策略推论，仍需人工核对。
+
+玩家玩法统一按本轮显式名称、最近用户玩法上下文和模型计划确定；未指定默认万象大赛，`通用`只作为共享资料标签。带类型的棋手别名在路由目录中提供并约束检索，普通英雄李白不会被替换为白歌。装备工具与待确认资料沿用同一模式，不能混用万象大赛与钻石狂潮。
 
 ## 接口示例
 
@@ -104,6 +106,7 @@ POST /api/chat
 - `data/wiki/records.json`：7701条Wiki片段，运行时与30条官网基础知识合计7731条；普通检索排除待确认项，模式和历史版本分开处理。
 - `data/wiki/snapshot.json.gz`、`coverage.json`：完整结构化来源快照、栏目与对象覆盖审计，站内搜索索引924项无缺项。
 - `data/wiki/tool-snapshots/`：85个英雄的全等级装备价值模型数据，条件化读取，不作为实战保证。
+- `data/retrieval_links.json`：经核对的证据依赖，补齐升级收益、费用和人口节点；不提供固定答案，也不改变模型意图。
 - `data/wzwxq.json`：早期58条导入结果，仅保留作历史审计，已由全量库替代。
 - [当前知识库构建、更新与查询流程](docs/full-wiki.md)。
 - [本轮导入审计](docs/wzwxq-import.md)与[情境评分v2](eval/advice-rubric.md)。

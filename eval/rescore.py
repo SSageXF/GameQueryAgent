@@ -10,7 +10,7 @@ from pathlib import Path
 
 from app.config import ROOT
 from eval.dataset import read_cases, validate_cases
-from eval.run import judge, rate, latency
+from eval.run import judge, rate, latency, RUBRIC_VERSION
 
 
 def rescore(source, dataset, output):
@@ -48,6 +48,7 @@ def rescore(source, dataset, output):
         case_answer_pass_rate=rate(sum(all(r['judgement']['answer_pass'] for r in rows if r['case_id']==key) for key in case_ids),len(case_ids)),
         advice_rule_pass_rate=rate(sum(bool((r['judgement'].get('advice_rubric') or {}).get('passed')) for r in advice),len(advice)))
     report.update(evaluation_kind='saved_responses_rescored',new_model_calls=0,
+                  original_rubric_version=report['rubric_version'],rubric_version=RUBRIC_VERSION,
                   rescored_at=datetime.now(timezone.utc).isoformat(),source_report=str(source),
                   source_report_sha256=hashlib.sha256(raw).hexdigest(),
                   original_dataset_sha256=report['dataset_sha256'],dataset_sha256=hashlib.sha256(dataset.read_bytes()).hexdigest(),

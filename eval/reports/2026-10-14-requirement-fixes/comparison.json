@@ -1,0 +1,158 @@
+{
+  "rubric_version": "4.2-audited-negation-and-paraphrases",
+  "before": {
+    "case_count": 37,
+    "turn_count": 49,
+    "intent_accuracy": {
+      "numerator": 49,
+      "denominator": 49,
+      "rate": 1.0
+    },
+    "retrieval_hit_rate": {
+      "numerator": 31,
+      "denominator": 34,
+      "rate": 0.9118
+    },
+    "mean_evidence_recall": 0.8823529411764706,
+    "answer_pass_rate": {
+      "numerator": 41,
+      "denominator": 49,
+      "rate": 0.8367
+    },
+    "case_answer_pass_rate": {
+      "numerator": 29,
+      "denominator": 37,
+      "rate": 0.7838
+    },
+    "success_rate": {
+      "numerator": 46,
+      "denominator": 49,
+      "rate": 0.9388
+    },
+    "response_rate": {
+      "numerator": 49,
+      "denominator": 49,
+      "rate": 1.0
+    },
+    "degraded_responses": 3,
+    "advice_rule_pass_rate": {
+      "numerator": 0,
+      "denominator": 4,
+      "rate": 0.0
+    },
+    "real_model_calls": 86,
+    "successful_latency": {
+      "n": 46,
+      "median_ms": 6704.23,
+      "p95_ms": 10603.85
+    },
+    "failed_latency": {
+      "n": 3,
+      "median_ms": 18371.9,
+      "p95_ms": 19887.14
+    },
+    "all_latency": {
+      "n": 49,
+      "median_ms": 6743.16,
+      "p95_ms": 14323.17
+    },
+    "judge_latency": {
+      "n": 49,
+      "median_ms": 0.36,
+      "p95_ms": 2.45
+    },
+    "query_planner_successes": 35,
+    "phase_median_ms": {
+      "client_setup": 1.045,
+      "context_route": 0.05,
+      "intent_planning": 2095.5299999999997,
+      "retrieval": 1908.745,
+      "generation": 2478.985
+    },
+    "rescore_judge_latency": {
+      "n": 49,
+      "median_ms": 0.22,
+      "p95_ms": 2.48
+    }
+  },
+  "after": {
+    "case_count": 37,
+    "turn_count": 49,
+    "intent_accuracy": {
+      "numerator": 49,
+      "denominator": 49,
+      "rate": 1.0
+    },
+    "retrieval_hit_rate": {
+      "numerator": 34,
+      "denominator": 34,
+      "rate": 1.0
+    },
+    "mean_evidence_recall": 1.0,
+    "answer_pass_rate": {
+      "numerator": 46,
+      "denominator": 49,
+      "rate": 0.9388
+    },
+    "case_answer_pass_rate": {
+      "numerator": 34,
+      "denominator": 37,
+      "rate": 0.9189
+    },
+    "success_rate": {
+      "numerator": 48,
+      "denominator": 49,
+      "rate": 0.9796
+    },
+    "response_rate": {
+      "numerator": 49,
+      "denominator": 49,
+      "rate": 1.0
+    },
+    "degraded_responses": 1,
+    "advice_rule_pass_rate": {
+      "numerator": 3,
+      "denominator": 4,
+      "rate": 0.75
+    },
+    "real_model_calls": 86,
+    "successful_latency": {
+      "n": 48,
+      "median_ms": 7082.01,
+      "p95_ms": 10753.58
+    },
+    "failed_latency": {
+      "n": 1,
+      "median_ms": 4342.85,
+      "p95_ms": 4342.85
+    },
+    "all_latency": {
+      "n": 49,
+      "median_ms": 7040.07,
+      "p95_ms": 10753.58
+    },
+    "judge_latency": {
+      "n": 49,
+      "median_ms": 0.34,
+      "p95_ms": 2.77
+    },
+    "query_planner_successes": 36,
+    "phase_median_ms": {
+      "client_setup": 1.045,
+      "context_route": 0.05,
+      "intent_planning": 2177.4449999999997,
+      "retrieval": 2008.3400000000001,
+      "generation": 2468.19
+    },
+    "rescore_judge_latency": {
+      "n": 49,
+      "median_ms": 0.04,
+      "p95_ms": 0.29
+    }
+  },
+  "before_source": "before-original.json",
+  "after_source": "final/live-enhanced-all.json",
+  "new_model_calls_for_rescore": 0,
+  "runtime_matches_report": true,
+  "quality_evaluation_complete": false
+}

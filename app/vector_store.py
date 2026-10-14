@@ -131,8 +131,8 @@ class VectorRetriever(Retriever):
         self.names=sorted({r['entity'] for r in self.records if r.get('entity')},key=lambda x:(-len(x),x))
         self.context_entities=sorted({r['entity'] for r in self.records if r.get('entity') and r.get('section') in {'hero','equipment','effect','talent','players','summons'}})
 
-    def pending(self, query):
-        return Retriever(self.pending_records).pending(query)
+    def pending(self, query, mode=None):
+        return Retriever(self.pending_records).pending(query,mode)
 
     def fetch_many(self, ids):
         if not ids:return []
@@ -141,13 +141,14 @@ class VectorRetriever(Retriever):
         return [p.payload for p in points]
 
     def search_plan(self, original, plan, k=6):
-        mode='钻石狂潮' if '钻石狂潮' in original else '万象大赛' if '万象大赛' in original else plan.mode
-        catalog=self.catalog_fast_path(plan,mode)
+        original,plan=self.ground_plan(original,original,plan)
+        mode=plan.mode
+        catalog=self.catalog_fast_path(plan,mode,original)
         if catalog:return catalog
         hero_names={r.get('entity') for r in self.records if r.get('section')=='hero' and r.get('entity')}
         named=sorted((n for n in hero_names if n in original),key=original.index)
         purchase=len(named)>=2 and bool(re.search('怎么买|买谁|买哪个|购买|商店',original))
-        coverage=[]
+        coverage=self.field_coverage(original,plan,mode)
         if purchase:
             # All exact IDs and original fields are in the manifest: avoid repeated
             # full-collection scrolls for each named hero and for the base cost.
@@ -156,7 +157,7 @@ class VectorRetriever(Retriever):
             with self.lock:
                 points=self.client.retrieve(self.collection,ids=[point_id(r['id']) for r in metadata],with_payload=True)
             exact=[p.payload for p in points]
-            coverage=[r for r in exact if r['id']=='E03']
+            coverage=[r for r in exact if r['id']=='E03']+coverage
             for name in named:
                 matches=sorted((r for r in exact if r.get('entity')==name),key=lambda r:r['id'])
                 if matches:coverage.append(matches[0])
@@ -167,7 +168,9 @@ class VectorRetriever(Retriever):
         queries=list(dict.fromkeys([original, *plan.queries]))[:3]
         batches=[[hit for hit in self.rank(q,mode,plan.include_history)
                   if self.matches_selection_names(hit[1],plan.selection)] for q in queries if q.strip()]
-        selected=[];seen=set()
+        selected=list(coverage);seen={r['id'] for r in selected}
+        k=max(k,len(selected))
+        if len(selected)>=k:return selected
         for depth in range(k):
             for batch in batches:
                 if depth<len(batch):

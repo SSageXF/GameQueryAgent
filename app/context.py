@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from .schemas import Message
 
 # Deliberately conservative aliases: 香香 is not silently equated with a hero card.
-ALIASES = {"棋手李白": "白歌", "棋手嫦娥": "常小娥", "拍卖": "竞拍", "卖牌": "出售英雄牌", "升人口": "升级", "升本": "升级"}
+ENTITY_ALIASES = {"棋手李白": "白歌", "棋手嫦娥": "常小娥"}
+ALIASES = {**ENTITY_ALIASES, "拍卖": "竞拍", "卖牌": "出售英雄牌", "升人口": "升级", "升本": "升级"}
 PEOPLE = ("白歌", "瑶妹", "常小娥", "小妲己", "香香", "庄小鱼", "苏烈", "曜", "孙膑", "孙尚香", "弈星", "盾山", "赵云", "白起", "李白")
 ENTITIES = PEOPLE + ("竞拍", "天赋", "能量", "英雄")
 

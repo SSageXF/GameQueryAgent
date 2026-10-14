@@ -42,6 +42,21 @@ def test_semantic_recall_without_keyword_overlap_and_filters(store):
     assert [r['id'] for _,r in store.rank('获胜途径',mode='钻石狂潮')] == ['diamond']
     assert all('body' not in r for r in store.records)
     assert store.by_id.get('current')['body']
+    assert [r['id'] for r in store.search_plan('获胜途径',QueryPlan(queries=['获胜途径'],mode='通用'))]==['current']
+
+
+def test_vector_partial_catalog_reserves_each_requested_skill(store):
+    rows=[]
+    for key,name,section,field in [('s-card','苏烈','hero','original'),('s-skill','苏烈','hero','officialSkill'),
+                                    ('b-skill','白歌','players','skillSections')]:
+        rows.append(dict(id=key,entity=name,section=section,field=field,title=name+'技能',body=name+'技能正文',
+                         mode='万象大赛',verification='wiki_snapshot',aliases=[name],claim_type='wiki_original'))
+    store.client.upsert('test',points=[models.PointStruct(id=vs.point_id(r['id']),vector=[1.0,0.0],payload=r) for r in rows])
+    store.records.extend({k:v for k,v in r.items() if k!='body'} for r in rows)
+    store.names=['苏烈','白歌']
+    plan=QueryPlan(queries=['苏烈和白歌技能'],selection=CatalogSelection(section='hero',names=store.names))
+    result=store.search_plan('苏烈和白歌的技能分别是什么？',plan,k=2)
+    assert {r['id'] for r in result}=={'s-skill','b-skill'}
 
 
 def test_missing_index_has_actionable_error(tmp_path):

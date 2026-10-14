@@ -5,13 +5,19 @@ from collections import Counter
 from functools import lru_cache
 
 from .config import ROOT
-from .query import QueryPlan, fallback_plan
+from .query import QueryPlan, fallback_plan, resolve_mode
+from .context import ENTITY_ALIASES
 
 
 def tokens(text: str) -> list[str]:
     chunks=re.findall(r'[\u4e00-\u9fff]+|[a-z0-9]+',text.lower())
     stop={'什么','是什','怎么','如何','多少','的是','有什','为什','么是','哪些','一下'}
     return [t for c in chunks for t in ([c] if len(c)<2 or c.isascii() else [c[i:i+2] for i in range(len(c)-1)]) if t not in stop]
+
+
+@lru_cache(maxsize=1)
+def evidence_links():
+    return json.loads((ROOT/'data/retrieval_links.json').read_text(encoding='utf-8'))['links']
 
 
 class Retriever:
@@ -88,11 +94,11 @@ class Retriever:
                 evidence.append({**row,'relation_kind':kind,'selection_total':total,'selection_returned':len(selected)})
         return evidence
 
-    def pending(self,query):
+    def pending(self,query,mode=None):
         return [r for r in self.records if r.get('claim_type')=='pending' and r.get('entity') and r['entity'] in query
                 and len(set(tokens(query))&set(tokens(r['body'])))>=2
                 and re.search(r'是否|能否|能不能|顺序|时点|重复|独立|冲突',query)
-                and r.get('mode')==fallback_plan(query).mode][:3]
+                and r.get('mode')==(mode or fallback_plan(query).mode)][:3]
 
     def rank(self,query,mode='万象大赛',include_history=False,semantic_scores=None):
         q=set(tokens(query));found=[n for n in self.names if n in query]
@@ -131,6 +137,9 @@ class Retriever:
             if re.search('搭配|配合|怎么用',query) and row.get('field') in {'formal','receivers','failures'}:score+=20
             if date_terms and any(t in row['title'] for t in date_terms):score+=80
             if row.get('field')=='original':score+=3
+            # Prefer an explicitly documented beginner recommendation over a
+            # long player lineup whose metadata happens to repeat "阵容".
+            if re.search('新手|入门',query) and row.get('claim_type')=='official_recommendation':score+=35
             if len(row['body'])<12 and row.get('field') not in {'original','awakening'}:score-=12
             score+=semantic*20
             if score>=6:ranked.append((score,row))
@@ -158,7 +167,9 @@ class Retriever:
 
     def routing_hint(self, query):
         # Metadata only: no preliminary embedding/search and no full entity catalog.
-        names=[name for name in self.names if name in query][:32]
+        aliases=[{'alias':alias,'name':name,'section':'players'}
+                 for alias,name in ENTITY_ALIASES.items() if alias in query]
+        names=list(dict.fromkeys([*[a['name'] for a in aliases],*[name for name in self.names if name in query]]))[:32]
         objects={}
         for row in self.records:
             if row.get('entity') not in names or not self.eligible(row,row.get('mode'),False):continue
@@ -167,17 +178,83 @@ class Retriever:
             if row.get('field'):fields.setdefault(row['field'],row['title'])
         return {'sections': ['英雄', '棋手', '装备', '天赋', '机制', '成就', '攻略', '公告', '钻石狂潮'],
                 'mentioned_entities': names,
+                'entity_aliases': aliases,
                 'matching_rule_titles': [r['title'] for r in self.records if not r.get('entity')
                                          and any(alias and alias in query for alias in r.get('aliases',[]))][:12],
                 'objects': [{'name':name,'section':section,'mode':mode,
                              'fields':[{'field':field,'title':title} for field,title in fields.items()]}
                             for (name,section,mode),fields in objects.items()]}
 
-    def catalog_fast_path(self, plan, mode):
+    def catalog_fast_path(self, plan, mode, query=''):
         """Only enumerate lists here; a named object needs its full searchable fields."""
         if plan.selection is None or len(plan.selection.names)==1:
             return []
-        return self.select_catalog(plan.selection,mode,plan.include_history)
+        if re.search('觉醒|技能|秘技|专属',query):return []
+        rows=self.select_catalog(plan.selection,mode,plan.include_history)
+        if plan.selection.names and set(plan.selection.names)-{r.get('entity') for r in rows}:return []
+        return rows
+
+    def ground_plan(self, message, query, plan, history=()):
+        """Ground metadata constraints without changing the model's intent."""
+        mode=resolve_mode(message,plan.mode,history)
+        updates={'mode':mode}
+        if mode in {'万象大赛','钻石狂潮'}:
+            query=re.sub('万象大赛|钻石狂潮',mode,query)
+        aliases={a:n for a,n in ENTITY_ALIASES.items() if a in message}
+        if aliases:
+            # Preserve the user's explicitly typed object when a model rewrites
+            # it as the similarly named hero. Generation still sees raw history.
+            query=message
+            for alias,name in aliases.items():query=query.replace(alias,'棋手'+name)
+            updates.update(queries=[query[:200]],entities=list(aliases.values()),selection=None)
+        return query,plan.model_copy(update=updates)
+
+    def field_coverage(self, query, plan, mode):
+        """Reserve requested object/field pairs before ranking extra context."""
+        fields=[]
+        if '觉醒' in query and not re.search('概率|几率',query):fields.append({'awakening'})
+        if re.search('技能|秘技|专属',query):fields.append({'officialSkill','skill','skillSections'})
+        if not fields:return []
+        names=list(plan.selection.names) if plan.selection and plan.selection.names else [n for n in self.names if n in query]
+        names=[n for n in names if not any(n!=other and n in other for other in names)]
+        selected=[]
+        for name in names[:24]:
+            for options in fields:
+                matches=[r for r in self.records if r.get('entity')==name and r.get('field') in options
+                         and self.eligible(r,mode,plan.include_history)]
+                # Retain all chunks of this field later via expand_documents.
+                matches.sort(key=lambda r:(r.get('field')!='officialSkill',len(r['id']),r['id']))
+                if matches:selected.append(matches[0]['id'])
+        return self.fetch_many(list(dict.fromkeys(selected)))
+
+    def supporting_rules(self, evidence, mode, include_history=False, limit=6):
+        seen={r['id'] for r in evidence}
+        wanted=list(dict.fromkeys(key for link in evidence_links() if seen.intersection(link['from_ids'])
+                                  for key in link['to_ids'] if key not in seen))
+        return [r for r in self.fetch_many(wanted) if self.eligible(r,mode,include_history)][:limit]
+
+    def expand_documents(self, evidence, mode, include_history=False, max_extra=12, max_chars=24000):
+        """Keep chunk boundaries explicit; fetch siblings within a bounded budget."""
+        metadata={r['id']:r for r in self.records}
+        def family(row):
+            base=re.sub(r'-\d+$','',row['id'])
+            root=metadata.get(base)
+            if root and all(row.get(k)==root.get(k) for k in ('object_id','field','mode','source_url','version_scope','title')):
+                return base
+            return row['id']
+        groups={}
+        for row in self.records:
+            if self.eligible(row,mode,include_history):groups.setdefault(family(row),[]).append(row['id'])
+        selected=list(evidence);seen={r['id'] for r in selected}
+        families=list(dict.fromkeys(family(r) for r in selected))
+        candidates=[key for base in families for key in sorted(groups.get(base,[]),key=lambda x:(len(x),x)) if key not in seen]
+        size=sum(len(r['body']) for r in selected)
+        for row in self.fetch_many(candidates[:max_extra]):
+            if size+len(row['body'])>max_chars:continue
+            selected.append(row);seen.add(row['id']);size+=len(row['body'])
+        counts=Counter(family(r) for r in selected)
+        return [{**r,'document_id':family(r),'document_total':len(groups.get(family(r),[r['id']])),
+                 'document_returned':counts[family(r)]} for r in selected]
 
     @staticmethod
     def matches_selection_names(row, selection):
@@ -210,15 +287,16 @@ class Retriever:
         return rows
 
     def search_plan(self,original,plan:QueryPlan,k=6):
+        original,plan=self.ground_plan(original,original,plan)
         mode=plan.mode
-        if '钻石狂潮' in original:mode='钻石狂潮'
-        elif '万象大赛' in original:mode='万象大赛'
-        catalog=self.catalog_fast_path(plan,mode)
+        catalog=self.catalog_fast_path(plan,mode,original)
         if catalog:return catalog
         queries=list(dict.fromkeys([original,*plan.queries,' '.join(plan.entities+plan.keywords)]))
         batches=[[hit for hit in self.rank(q,mode,plan.include_history)
                   if self.matches_selection_names(hit[1],plan.selection)] for q in queries if q.strip()]
-        selected=[];seen=set()
+        selected=self.field_coverage(original,plan,mode);seen={r['id'] for r in selected}
+        k=max(k,len(selected))
+        if len(selected)>=k:return selected
         for depth in range(k):
             for batch in batches:
                 if depth<len(batch):

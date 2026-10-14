@@ -1,0 +1,284 @@
+{
+  "review_date": "2026-10-14",
+  "reviewer": "Codex开发代理",
+  "not_submitter_human_review": true,
+  "quality_evaluation_complete": false,
+  "scope": "重点复核本次失败、规则误判和修复回归；未声称49轮每句均经提交者人工核验。",
+  "human_verification": "用户明确待补充",
+  "actual_hours": "待补充",
+  "production_report": "final/live-enhanced-all.json",
+  "rescored_report": "final-rescored-v4.2.json",
+  "runtime_matches_report": true,
+  "findings": [
+    {
+      "id": "F01",
+      "status": "resolved_for_reproduced_case",
+      "note": "统一玩法优先级，通用标签不再过滤掉万象大赛规则；H02现命中分红。"
+    },
+    {
+      "id": "F02",
+      "status": "resolved_for_reproduced_case",
+      "note": "目录提示和检索保护带类型的棋手别名；H01现回答白歌而非英雄李白，但仍有无来源的性别代词。"
+    },
+    {
+      "id": "F03",
+      "status": "partial",
+      "note": "补齐费用、生命、购买及人口资料和文档后续片段，改进情境提示；A02/A05明显改善，A03/A06仍有语义问题。"
+    },
+    {
+      "id": "F04",
+      "status": "resolved_for_reproduced_case",
+      "note": "技能/觉醒请求绕过普通卡面清单；命名对象不完整时退回字段补齐检索，有词法及真实Qdrant回归。"
+    },
+    {
+      "id": "F05",
+      "status": "resolved_for_reproduced_case",
+      "note": "装备工具和待确认查询采用统一解析玩法，不再靠改写文本单独猜模式。"
+    },
+    {
+      "id": "F06",
+      "status": "resolved",
+      "note": "辅助upgrade_eval强制显式运行模式、缺配置拒绝live、Mock准确标识、新输出路径拒绝覆盖。"
+    },
+    {
+      "id": "F07",
+      "status": "improved_not_exhaustive",
+      "note": "评分4.2支持核对后的来源、自然表达、部分回答和局部否定；保持对真实缺项、伪造来源和无依据费用断言的拒绝。"
+    },
+    {
+      "id": "F08",
+      "status": "updated",
+      "note": "设计、检索、运行和评测文档更新到37例49轮，区分历史实验、重评分和当前实际运行。"
+    }
+  ],
+  "rows": [
+    {
+      "case_id": "A02",
+      "turn": 1,
+      "verdict": "improved",
+      "notes": "区分已获3级人口收益和下一等级；10能量下比较升级费用与3点买牌成本，未虚构升级费用；策略并非经实战证明最优。",
+      "answer_quote": "你现在是3级、10点能量，已经拿到3级的上阵+1了，所以这次升级不会再多一个上阵位；下一档要等到5级才有名额收益。升级本身会免费解锁1个天赋，并提高之后刷到高阶英雄牌的概率，算长期投资。\n\n你手上有10点能量，吕布、赵云两张牌在场，如果升级费用不超过7点，升完还能留3点左右买一张英雄，可以升；如果升级按钮上显示要10点或更多，这回合建议先别升，把能量留着看商店、找能和吕布赵云搭的牌更实在。\n\n另外你没提生命值，如果血线已经比较紧，优先级更该放在买牌补场面而不是升等级。方便的话告诉我按钮上的升级费用和当前生命，我能帮你把“升级还是买牌”定得更具体。",
+      "source_ids": [
+        "WIKI-79c68b769e0390cb63a4",
+        "E04",
+        "E03",
+        "R01",
+        "R02",
+        "WIKI-8d1c3420e3a98a6b2db6"
+      ],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "A03",
+      "turn": 1,
+      "verdict": "failed",
+      "notes": "引用新手入门依据并给起步建议；但把低阶/高阶英雄换算成低价/高费卡无依据。没有必胜保证应视为否认承诺；此误判已修正，费用错误继续失败。",
+      "answer_quote": "新手入门我建议先看「三分登场流」——白歌的首发专题专门把它列为新手参考，理由很实在：这套里面低阶英雄多，养成相对容易，不用一上来就追高费卡，熟悉棋子、站位和升级节奏都更顺。开始玩可以从这三步上手：先把低阶英雄凑齐，别急着刷商店；每局留意自己拿到的登场效果，记住哪些触发得顺手；等对节奏熟了，再去试别的阵容。\n\n要提醒一句，官方也说这是入门示例，不是当前版本的强度排名，也没有必胜保证。所以如果开局来牌不顺，不用硬凑这套，可以把手上低阶英雄先上齐站稳，再慢慢往成型方向转。\n\n另外证据里还有几套成型阵容（常小娥马瑶、小妲己蒙恬、姜导廉颇等），但它们都是高手或高分局参考，不是标明给新手入门的，我不建议作为第一套来练。你要是已经在玩某一套，告诉我你手上现有的英雄，咱们可以按那套的具体来牌帮你看看怎么摆。",
+      "source_ids": [
+        "L01"
+      ],
+      "automatic_answer_pass": false
+    },
+    {
+      "case_id": "S03",
+      "turn": 1,
+      "verdict": "scorer_false_negative_fixed",
+      "notes": "难受、歇会儿、我在自然回应情绪，无游戏事实断言；旧规则漏认。",
+      "answer_quote": "输一把确实挺难受的，先歇会儿也行。要是想聊聊刚才那局哪儿卡住了，我在。",
+      "source_ids": [],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "U01",
+      "turn": 1,
+      "verdict": "partial",
+      "notes": "明确无觉醒精确概率，未再把觉醒效果误称概率或冲突；末句触发概率仍不够精确。路由回退，因此不是正常完成。",
+      "answer_quote": "目前能查到的资料里没有写镜觉醒的精确概率。已有的条目只记了觉醒后的效果：闪现，每使用2张效果牌，等级+2。触发概率这块暂时没有明确说明。",
+      "source_ids": [
+        "WX-hero-5311-awakening"
+      ],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "V01",
+      "turn": 1,
+      "verdict": "qualified_partial_answer",
+      "notes": "引用登记过的白歌技能及效果牌，末尾限定Wiki采集日期和体验服后续变化；旧规则漏认来源及限制措辞。版本限定放在开头会更直接。",
+      "answer_quote": "白歌的技能分几块，我把目前有的信息给你列一下：\n\n棋手技能「神来之笔」：每进行4次英雄合成，白歌获得1张「即兴创作」。\n\n「即兴创作」本身的效果是：随机获得场上1名英雄的复制。\n\n秘技「天生我才」：使用6张「即兴创作」，获得1张秘技牌「灵感爆发」。\n\n「灵感爆发」的效果：释放3道剑气，斩击手牌中随机3张非觉醒英雄牌，将每张牌斩为2张转瞬版复制。\n\n专属「惊才绝艳」：获得1张「奇才」——指定1名英雄，获得4张该英雄牌。\n\n需要说明的是，以上来自万象大赛（Wiki采集于2026-10-13），不是实时游戏保证。体验服若在采集之后又做了调整，具体数值和效果请以游戏内技能按钮里的说明为准。",
+      "source_ids": [
+        "WIKI-a707692151fe8ded9573",
+        "C01",
+        "WIKI-21d2e1a3f53e6605a8a5",
+        "WIKI-21d2e1a3f53e6605a8a5-2"
+      ],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "H01",
+      "turn": 1,
+      "verdict": "partial",
+      "notes": "正确识别棋手白歌且技能有依据；“她”未获所引资料支持，规则未检查代词。",
+      "answer_quote": "你说的应该是棋手白歌吧？她一共有三项技能：\n\n神来之笔：每进行4次英雄合成，白歌获得1张即兴创作。即兴创作的效果是随机获得场上1名英雄的复制。\n\n天生我才：使用6张即兴创作，获得1张秘技牌灵感爆发。灵感爆发是释放3道剑气，斩击手牌中随机3张非觉醒英雄牌，将每张牌斩为2张转瞬版复制。\n\n惊才绝艳：获得1张奇才，奇才的效果是指定1名英雄，获得4张该英雄牌。",
+      "source_ids": [
+        "WIKI-a707692151fe8ded9573",
+        "WIKI-21d2e1a3f53e6605a8a5",
+        "WIKI-21d2e1a3f53e6605a8a5-2"
+      ],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "H02",
+      "turn": 1,
+      "verdict": "improved",
+      "notes": "分红不再因通用模式误过滤而空检索，回答与规则中的生命关系一致。",
+      "answer_quote": "关系是：生命值越低，竞拍结束时分到的比例越大。\n\n竞拍时每位玩家的有效出价会进入分红池，竞拍结束后，池里的能量分配给所有玩家，血量越少拿到的分红比例越高。不过具体的分配比例公式，官网这边没有给出精确算法。",
+      "source_ids": [
+        "WIKI-f838edc2fe32f76db8cc",
+        "A03"
+      ],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "H03",
+      "turn": 1,
+      "verdict": "failed",
+      "notes": "先前同时提及白歌和瑶妹、且助手尚在询问对象，用户仅说那这个呢，仍未消歧便继续比较。末句附加资料未补全也无必要。",
+      "answer_quote": "你之前问的是白歌和瑶妹的区别，这次这几位棋手我都放在一起看：白歌走的是“合成拿牌、再用牌换牌”的路线，瑶妹则是围绕小鹿成长来打。\n\n白歌：\n- 技能“神来之笔”：每进行4次英雄合成，白歌获得1张即兴创作。官网新手区说明，即兴创作可以用来复制场上随机一名英雄。\n- 秘技“天生我才”：使用6张即兴创作，获得1张秘技牌灵感爆发。\n- 专属“惊才绝艳”：获得1张奇才，指定1名英雄，获得4张该英雄牌。\n\n瑶妹：\n- 技能“可爱小鹿”：游戏开始时召唤小鹿助阵，小鹿每回合等级+2；如果上回合战斗胜利，等级额外+4。\n- 秘技“超绝可爱小鹿”：每3个回合，获得1张秘技牌神奇小鹿。\n- 专属“巨型玩偶”：小鹿等级+30，并获得1件小鹿的庇护。\n\n简单说，白歌偏向用合成和即兴创作来做牌，瑶妹则是让小鹿不断成长。瑶妹的资源链和阵容结论目前资料里还没有补全。",
+      "source_ids": [
+        "WIKI-a707692151fe8ded9573",
+        "WIKI-a5c87f92d6e96c8372a4",
+        "B01"
+      ],
+      "automatic_answer_pass": false
+    },
+    {
+      "case_id": "A05",
+      "turn": 1,
+      "verdict": "improved_with_limits",
+      "notes": "将8生命压力、2能量及3点基础买牌费用纳入权衡；除非费用和收益条件成立才改为升级。保守倾向不代表当前战局最优，未知对手强度仍限制判断。",
+      "answer_quote": "这轮我倾向先把这2点能量攥住，不升级。\n\n现在8点生命不算宽裕，你场上只有吕布、赵云两张牌，正是需要补充英雄、把阵容撑起来的时候；而升级要花多少能量还没确定，如果花光这2点又买不了人，反而会让场面更单薄。购买一般英雄牌的基础消耗是3点，你现在也够不上。\n\n所以除非升级按钮上的消耗正好是2点、而且你更想赌升级给的天赋或高阶牌概率，否则先留着能量，等凑够3点去补一张牌更稳。你升级按钮上显示的消耗是多少？",
+      "source_ids": [
+        "C04",
+        "E04",
+        "E03"
+      ],
+      "automatic_answer_pass": true
+    },
+    {
+      "case_id": "A06",
+      "turn": 1,
+      "verdict": "failed",
+      "notes": "费用不超过30直接升与升完不够3点就先买牌的条件重叠；50生命仅复述、没有参与风险权衡。",
+      "answer_quote": "先倾向升级。你手里30能量，当前3级；3级升4级会免费给一个天赋，后续再冲5级还能多1个上阵名额，这些是实打实的收益。你生命50、场上只有吕布和赵云，两个英雄撑场面偏薄，早点升级提升高阶牌概率，比把能量攥在手里更容易把阵容补起来。\n\n不过我不知道你升4级的具体花费，也不知道商店有没有你特别想要的牌。如果升4级的费用不超过30，直接升；如果费用很高、升完买不了3费的英雄牌补强，那可以先买一张能上场的英雄把阵容填厚，再等下一轮升级。",
+      "source_ids": [
+        "WIKI-79c68b769e0390cb63a4",
+        "WIKI-8d1c3420e3a98a6b2db6",
+        "C04",
+        "E04",
+        "E03",
+        "R01",
+        "R02"
+      ],
+      "automatic_answer_pass": false
+    },
+    {
+      "case_id": "MT04",
+      "turn": 3,
+      "verdict": "scorer_false_negative_fixed",
+      "notes": "第3轮正确识别其他游戏限制；我这没有、这边资料是与具体游戏名共同表达边界，旧规则漏认。",
+      "answer_quote": "《王者荣耀》里小乔的技能我这没有，这边资料是《王者万象棋》的。要是想聊万象棋里的小乔，我可以帮你看她的卡面和技能。",
+      "source_ids": [],
+      "automatic_answer_pass": true
+    }
+  ],
+  "rejected_experiment": {
+    "report": "advice-reviewed/live-enhanced-all-selected.json",
+    "retained_in_production": false,
+    "summary": {
+      "case_count": 4,
+      "turn_count": 4,
+      "intent_accuracy": {
+        "numerator": 4,
+        "denominator": 4,
+        "rate": 1.0
+      },
+      "retrieval_hit_rate": {
+        "numerator": 4,
+        "denominator": 4,
+        "rate": 1.0
+      },
+      "mean_evidence_recall": 1.0,
+      "answer_pass_rate": {
+        "numerator": 0,
+        "denominator": 4,
+        "rate": 0.0
+      },
+      "case_answer_pass_rate": {
+        "numerator": 0,
+        "denominator": 4,
+        "rate": 0.0
+      },
+      "success_rate": {
+        "numerator": 3,
+        "denominator": 4,
+        "rate": 0.75
+      },
+      "response_rate": {
+        "numerator": 4,
+        "denominator": 4,
+        "rate": 1.0
+      },
+      "degraded_responses": 1,
+      "advice_rule_pass_rate": {
+        "numerator": 1,
+        "denominator": 4,
+        "rate": 0.25
+      },
+      "real_model_calls": 12,
+      "successful_latency": {
+        "n": 3,
+        "median_ms": 15045.52,
+        "p95_ms": 18083.92
+      },
+      "failed_latency": {
+        "n": 1,
+        "median_ms": 30568.85,
+        "p95_ms": 30568.85
+      },
+      "all_latency": {
+        "n": 4,
+        "median_ms": 16564.72,
+        "p95_ms": 30568.85
+      },
+      "judge_latency": {
+        "n": 4,
+        "median_ms": 3.03,
+        "p95_ms": 10.66
+      },
+      "query_planner_successes": 3,
+      "phase_median_ms": {
+        "client_setup": 1.98,
+        "context_route": 0.05,
+        "intent_planning": 2312.46,
+        "retrieval": 3253.84,
+        "generation": 9163.3
+      }
+    },
+    "reason": "额外复核增加串行等待且一次超时，输出仍有资源推断不严谨；小样本未证明稳定语义收益，撤回而保留原始实验。"
+  },
+  "limits": [
+    "单次固定集运行不能保证稳定正确率",
+    "规则对未定义的幻觉仍会漏检",
+    "玩法多重提及与任意版本裁决未获全面验证",
+    "不以修改评分等同改善模型输出"
+  ],
+  "engineering_tests": {
+    "command": "python -m pytest -q",
+    "passed": 192,
+    "seconds": 106.25,
+    "warnings": [
+      "Starlette/httpx testclient deprecation"
+    ],
+    "real_model_quality_test": false
+  }
+}
