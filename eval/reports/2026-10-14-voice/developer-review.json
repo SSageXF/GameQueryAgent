@@ -1,0 +1,22 @@
+{
+  "reviewer": "development_agent",
+  "user_acceptance": "not_reviewed",
+  "scope": "检查实际可见回答与入库原文，不读取模型隐藏思考；未将语气检查合并为自动正确率。",
+  "method": "真实模型、Agent.chat、本地Qdrant一致性备份；各阶段的prompt_sha256不同，中间结果不覆盖。当前本机thinking为disabled，未修改用户配置。",
+  "checks": [
+    {"report":"before/live-enhanced-all-selected.json","case_id":"VOICE01","turn":1,"voice":"fail","evidence":"同时询问升级类型、回合、等级和能量，仍有问卷感；还引入了未经检索确认的英雄升星用语。"},
+    {"report":"before/live-enhanced-all-selected.json","case_id":"VOICE01","turn":2,"voice":"partial","evidence":"已经有口语解释，说明旧提示并非始终只会摘抄；但不是靠小乔自己登场触发是超出该条卡面原文的排除性断言。"},
+    {"report":"before/live-enhanced-all-selected.json","case_id":"VOICE01","turn":3,"voice":"fail","evidence":"用户已明确纠正游戏，却仍以我这边只服务开头，结尾又邀请继续讲万象棋小乔，没有接住纠正。"},
+    {"report":"after/live-enhanced-all.json","case_id":"VOICE01","turn":1,"voice":"fail","evidence":"等级、能量、连胜连败、阵容至少四个信息点却说有这两个信息，证明仅写一两项仍不能保证执行。"},
+    {"report":"final/live-enhanced-all.json","case_id":"VOICE03","turn":1,"voice":"partial","evidence":"减少了追问数量，但误用英雄几星；之后补充本游戏英雄等级用语要求。"},
+    {"report":"final-v2/live-enhanced-all.json","case_id":"VOICE01","turn":1,"voice":"partial","evidence":"只问等级和阵容，开头得看具体情况仍偏生硬；自动失分还包含未重复升级一词的正则误判，不能等同错误决策。"},
+    {"report":"final-v2/live-enhanced-all.json","case_id":"VOICE01","turn":2,"voice":"partial","evidence":"有介绍，但她本身不看站位或属性不是该条效果原文支持的排除性结论；最终加入只解释证据内作用的正面写作示例。"},
+    {"report":"checked/live-enhanced-all-selected.json","case_id":"VOICE01","turn":1,"voice":"partial","evidence":"可以，咱们一起看看该不该升比旧版更愿意共同判断；但仍追问等级、能量、阵容三项，未完全做到最多两项，不宣称稳定解决。"},
+    {"report":"checked/live-enhanced-all-selected.json","case_id":"VOICE01","turn":2,"voice":"partial","evidence":"使用完整介绍而不是只贴卡面。卡面、觉醒、技能数值和天赋可在检索原文核对；法师属性来自检索到的属性表，但未列该来源。正文较长、偏资料讲解，亲和表现仍有改进空间。路由出现一次router_failure后回退，正文由真实模型生成且可读，不计正常模型路由成功。"},
+    {"report":"checked/live-enhanced-all-selected.json","case_id":"VOICE01","turn":3,"voice":"pass","evidence":"先说我刚才理解成王者万象棋，承接纠正；解释相关资料边界并引导看目标游戏的英雄介绍，不再拉回被否定的话题。"},
+    {"report":"checked/live-enhanced-all-selected.json","case_id":"VOICE02","turn":1,"voice":"pass","evidence":"尊重只要一句话，完整保留每当触发登场、随机3名、等级+1，无额外寒暄或结尾提问。"},
+    {"report":"checked/live-enhanced-all-selected.json","case_id":"VOICE04","turn":1,"voice":"pass","evidence":"简短说明不能读取战绩，再邀请提供对局信息一起复盘；未罗列其他能力限制。"}
+  ],
+  "latest_observation": "当前提示词专项5轮均返回内容，4轮正常模型路由、1轮分类回退。事实规则5/5，不能解释为亲和5/5或完整事实正确5/5。没有新增润色模型调用。53项相关离线回归通过。",
+  "limitations": ["随机生成仍可能多问条件或写成资料式讲解，当前改动解决提示词覆盖缺口，不保证每次同样亲和。", "已给局面的VOICE03存在澄清与条件式回答两种合理路径，严格状态断言需结合内容检查。", "未重跑主评测全量；未修改模型、思考开关或token预算；运行中的网页后端需要重启加载新提示词。"]
+}

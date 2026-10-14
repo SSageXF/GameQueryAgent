@@ -15,6 +15,8 @@ from pathlib import Path
 from app.agent import Agent
 from app.config import ROOT, load_settings
 from app.llm import AgentError
+from app.llm import SYSTEM
+from app.intent import ROUTER_SYSTEM
 from app.schemas import ChatRequest
 from eval.advice import score_advice
 from eval.text import affirmative_match
@@ -144,6 +146,8 @@ async def run(args):
         "quality_evaluation_complete": False,
         "notice": "Mock 仅验证链路，不代表模型质量。" if args.mode == "mock" else "规则评分为代理指标，需人工检查事实依据和未覆盖的幻觉。",
         "dataset_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "prompt_sha256": {"router": hashlib.sha256(ROUTER_SYSTEM.encode()).hexdigest(),
+                          "generation": hashlib.sha256(SYSTEM.encode()).hexdigest()},
         "knowledge_sha256": {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in ("data/knowledge.json", "data/wiki/records.json")},
         "rubric_version": "3.0-context-boundaries-evidence-groups",
         "scorer_sha256":{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in ('eval/run.py','eval/advice.py','eval/text.py','eval/dataset.py')},
@@ -162,7 +166,7 @@ async def run(args):
     manual = [{"case_id": r["case_id"], "turn": r["turn"], "question": r["message"], "answer": r.get("result", {}).get("answer"),
                "answer_points":r['expectation']['answer_points'], "rubric":r['expectation'].get('advice_rubric'),
                "reviewer": None, "verdict": "not_reviewed", "evidence_notes": None,
-               "checklist": ["是否理解上下文与请求对象", "数值和机制是否被引用原文支持", "站方解释是否归因且未升级为官方结论", "建议是否利用条件、给出动作与代价", "是否虚构事实、能力或待确认机制"]} for r in rows]
+               "checklist": ["是否理解上下文与请求对象", "数值和机制是否被引用原文支持", "站方解释是否归因且未升级为官方结论", "建议是否利用条件、给出动作与代价", "是否虚构事实、能力或待确认机制", *r['expectation'].get('style_checks', [])]} for r in rows]
     (out / f"{stem}-manual-review.json").write_text(json.dumps(manual, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     lines = [f"# {args.mode.upper()} / {args.variant} / {args.split}", "", report["notice"], "", "自动规则评分不等于语义正确率；模型质量评测与人工抽查状态见 JSON。", "", "| 指标 | 分子 / 分母 | 比例 |", "| --- | --- | --- |"]
     for name in ("intent_accuracy", "retrieval_hit_rate", "answer_pass_rate", "case_answer_pass_rate", "advice_rule_pass_rate", "success_rate", "response_rate"):

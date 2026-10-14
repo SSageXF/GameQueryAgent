@@ -1,0 +1,984 @@
+{
+  "created_at": "2026-10-14T08:00:31.310359+00:00",
+  "mode": "live",
+  "variant": "enhanced",
+  "model": "deepseek-v4.1-flash",
+  "python": "3.11.5",
+  "retrieval_backend": "vector",
+  "vector_collection": "knowledge_78e5590ad1bc165b",
+  "thinking": "disabled",
+  "runtime_config": {
+    "max_tokens": 16384,
+    "planner_max_tokens": 4096,
+    "timeout_seconds": 120.0,
+    "planner_timeout_seconds": 60.0
+  },
+  "dataset_coverage": {
+    "case_count": 4,
+    "turn_count": 6,
+    "intents": {
+      "advice": 2,
+      "knowledge": 2,
+      "out_of_scope": 2
+    },
+    "multi_turn_cases": 1,
+    "tags": {
+      "multi_turn": 1,
+      "reported_regression": 1,
+      "voice": 4,
+      "concise": 1,
+      "context": 1,
+      "clarification": 1,
+      "unsupported": 1
+    }
+  },
+  "selected_case_ids": [
+    "VOICE01",
+    "VOICE02",
+    "VOICE03",
+    "VOICE04"
+  ],
+  "quality_evaluation_complete": false,
+  "notice": "规则评分为代理指标，需人工检查事实依据和未覆盖的幻觉。",
+  "dataset_sha256": "78da1aff801618545351e9e2075bf3f7d074d39da6c20923dedca99be1afd481",
+  "prompt_sha256": {
+    "router": "86d6fb39fb78e1ac6abe5147431a9018a4f3503085657ab473843c02c22cc0f1",
+    "generation": "1daa26ab6846f1d4540326ef348502e8e8ee1b4478d0fd4e528738d096fab9d0"
+  },
+  "knowledge_sha256": {
+    "data/knowledge.json": "98e6b951dcb86f1c38db8627da871d6c91e6b1fa48dcdff8c01299fe2ff0baf5",
+    "data/wiki/records.json": "a06ef92fc1ab29f84f8193710407a24065b1ec14e99a95ddade10a54e84725d9"
+  },
+  "rubric_version": "3.0-context-boundaries-evidence-groups",
+  "scorer_sha256": {
+    "eval/run.py": "b6453db843504d6aba0dbb071642d04cc23c47653b64231b93b6602e4e87b007",
+    "eval/advice.py": "15dc80191841013c7122f019d22c221d03a590467dbb08aa2d6f2eec9b22da2e",
+    "eval/text.py": "9c9da93d76206cb30f94b11a24eccae8f2286be0915655c90115daee99500958",
+    "eval/dataset.py": "3a6efa4b09deb9b646543493c72a895911329257dd1558a1d79d1bd70933d604"
+  },
+  "metric_denominators": {
+    "intent_accuracy": "所有执行轮次，调用失败仍计入",
+    "retrieval_hit_rate": "预期证据组非空的轮次；至少一个组命中",
+    "mean_evidence_recall": "各有证据轮次的事实组覆盖率均值；组内是人工登记的等价来源",
+    "answer_pass_rate": "所有执行轮次；事实/行为/禁止断言/状态/来源及建议规则",
+    "success_rate": "所有执行轮次；模型异常或路由回退/资料摘录降级不计成功",
+    "response_rate": "所有执行轮次；收到结构化结果，包含降级回复"
+  },
+  "scoring": "固定正则事实组 + 禁止模式 + 状态 + 引用检查；不以非空作为通过标准。分母为轮数，另提供整案例通过率。人工审查尚未完成。",
+  "summary": {
+    "case_count": 4,
+    "turn_count": 6,
+    "intent_accuracy": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "retrieval_hit_rate": {
+      "numerator": 2,
+      "denominator": 2,
+      "rate": 1.0
+    },
+    "mean_evidence_recall": 1.0,
+    "answer_pass_rate": {
+      "numerator": 4,
+      "denominator": 6,
+      "rate": 0.6667
+    },
+    "case_answer_pass_rate": {
+      "numerator": 2,
+      "denominator": 4,
+      "rate": 0.5
+    },
+    "success_rate": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "response_rate": {
+      "numerator": 6,
+      "denominator": 6,
+      "rate": 1.0
+    },
+    "degraded_responses": 0,
+    "advice_rule_pass_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null
+    },
+    "real_model_calls": 9,
+    "successful_latency": {
+      "n": 6,
+      "median_ms": 3309.15,
+      "p95_ms": 10481.69
+    },
+    "failed_latency": {
+      "n": 0,
+      "median_ms": null,
+      "p95_ms": null
+    },
+    "all_latency": {
+      "n": 6,
+      "median_ms": 3309.15,
+      "p95_ms": 10481.69
+    },
+    "judge_latency": {
+      "n": 6,
+      "median_ms": 0.43,
+      "p95_ms": 0.63
+    },
+    "query_planner_successes": 3,
+    "phase_median_ms": {
+      "client_setup": 2.685,
+      "context_route": 0.09,
+      "intent_planning": 2208.17,
+      "retrieval": 2.045,
+      "generation": 994.32
+    }
+  },
+  "rows": [
+    {
+      "case_id": "VOICE01",
+      "turn": 1,
+      "split": "development",
+      "message": "我现在要不要升级？",
+      "input_history": [],
+      "expectation": {
+        "message": "我现在要不要升级？",
+        "expected_intent": "advice",
+        "expected_status": "needs_clarification",
+        "expected_behavior": "温和承接升级决策，只追问最影响判断的一两项信息",
+        "answer_points": [
+          "当前没有局面，不能直接给出升级结论"
+        ],
+        "style_checks": [
+          "表达一起判断的意愿，避免问卷式同时索要升级对象、等级、能量、阵容和回合",
+          "没有把补充条件说成用户必须先完成的任务"
+        ],
+        "expected_knowledge_ids": [],
+        "required_groups": [
+          [
+            "升级",
+            "升"
+          ],
+          [
+            "能量",
+            "等级",
+            "局面",
+            "阵容",
+            "哪"
+          ]
+        ],
+        "forbidden_patterns": [
+          "立刻升级",
+          "一定升级"
+        ],
+        "forbid_retrieval": true
+      },
+      "expected_knowledge_ids": [],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "得看你这局具体什么情况——你现在几级，场上大概什么阵容？",
+        "intent": "advice",
+        "status": "needs_clarification",
+        "sources": [],
+        "retrieved_ids": [],
+        "latency_ms": 2259.63,
+        "timings_ms": {
+          "context_route": 0.06,
+          "intent_planning": 1997.25,
+          "retrieval": 0.0,
+          "generation": 0.0,
+          "client_setup": 262.11
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "2b9d19d26cae",
+        "retrieval_plan": null,
+        "routing": {
+          "status": "model",
+          "intent": "advice",
+          "resolved_query": "我现在要不要升级？",
+          "retrieval_required": false,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 1996.13,
+            "success": true,
+            "input_chars": 3353,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1784,
+            "completion_tokens": 53,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": null,
+        "retrieval_recall": null,
+        "answer_pass": false,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          false,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.44,
+      "elapsed_ms": 2268.031
+    },
+    {
+      "case_id": "VOICE01",
+      "turn": 2,
+      "split": "development",
+      "message": "介绍一下小乔",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "我现在要不要升级？"
+        },
+        {
+          "role": "assistant",
+          "content": "得看你这局具体什么情况——你现在几级，场上大概什么阵容？"
+        }
+      ],
+      "expectation": {
+        "message": "介绍一下小乔",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "自然介绍万象棋小乔，把卡面效果解释清楚",
+        "answer_points": [
+          "每当己方英雄触发登场效果，随机3名英雄等级+1；不虚构强度或搭配"
+        ],
+        "style_checks": [
+          "使用完整的交流语句，说明她的作用而非只有名字加冒号贴原文",
+          "口语解释保留每次触发、随机3名、等级+1，不变成每次购买就加等级"
+        ],
+        "expected_knowledge_ids": [
+          "WX-hero-1061-original"
+        ],
+        "required_groups": [
+          [
+            "登场"
+          ],
+          [
+            "随机.{0,3}3名"
+          ],
+          [
+            "等级.{0,4}(?:\\+1|提升1|增加1|升1)"
+          ]
+        ],
+        "forbidden_patterns": [
+          "购买小乔就",
+          "每次购买.*等级"
+        ]
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-1061-original"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "小乔这张牌的效果是：每当你的英雄触发登场效果，随机3名英雄等级+1。也就是说，她本身不看站位或属性，关键是靠你场上英雄不断触发的登场效果来滚等级——登场越频繁，她给英雄升级的机会就越多。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-1061-original",
+            "title": "小乔·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-1061",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "每当你的英雄触发登场效果时，随机3名英雄等级+1。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-1061-original"
+        ],
+        "latency_ms": 4574.32,
+        "timings_ms": {
+          "context_route": 0.11,
+          "intent_planning": 2243.4,
+          "retrieval": 27.55,
+          "generation": 2299.66,
+          "client_setup": 3.45
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "2b0791ef5477",
+        "retrieval_plan": {
+          "queries": [
+            "小乔 英雄 技能 效果"
+          ],
+          "keywords": [
+            "小乔"
+          ],
+          "entities": [
+            "小乔"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "hero",
+            "related_to": [],
+            "names": [
+              "小乔"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "介绍《王者万象棋》里的英雄小乔",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2242.71,
+            "success": true,
+            "input_chars": 3391,
+            "max_tokens": 4096,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1811,
+            "completion_tokens": 105,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 2298.57,
+            "success": true,
+            "input_chars": 3549,
+            "max_tokens": 16384,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1947,
+            "completion_tokens": 127,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.633,
+      "elapsed_ms": 4585.103
+    },
+    {
+      "case_id": "VOICE01",
+      "turn": 3,
+      "split": "development",
+      "message": "我是说王者荣耀的小乔",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "我现在要不要升级？"
+        },
+        {
+          "role": "assistant",
+          "content": "得看你这局具体什么情况——你现在几级，场上大概什么阵容？"
+        },
+        {
+          "role": "user",
+          "content": "介绍一下小乔"
+        },
+        {
+          "role": "assistant",
+          "content": "小乔这张牌的效果是：每当你的英雄触发登场效果，随机3名英雄等级+1。也就是说，她本身不看站位或属性，关键是靠你场上英雄不断触发的登场效果来滚等级——登场越频繁，她给英雄升级的机会就越多。"
+        }
+      ],
+      "expectation": {
+        "message": "我是说王者荣耀的小乔",
+        "expected_intent": "out_of_scope",
+        "expected_status": "unsupported",
+        "expected_behavior": "先接住用户对游戏的纠正，再简短说明资料范围",
+        "answer_points": [
+          "不继续讲万象棋小乔，不编造王者荣耀技能或来源"
+        ],
+        "style_checks": [
+          "明确承接先前理解成万象棋的纠正，而非重新宣读助手服务范围",
+          "边界简短，给与王者荣耀相关的可行方向；不强行把用户拉回万象棋",
+          "不以只了解或完全不知道其他游戏来代替资料范围说明"
+        ],
+        "expected_knowledge_ids": [],
+        "required_groups": [
+          [
+            "王者荣耀"
+          ],
+          [
+            "王者万象棋",
+            "万象棋"
+          ]
+        ],
+        "forbidden_patterns": [
+          "账号",
+          "战绩",
+          "绽放之舞",
+          "甜蜜恋风"
+        ],
+        "forbid_retrieval": true
+      },
+      "expected_knowledge_ids": [],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "明白，是我刚才理解成《王者万象棋》里的小乔了。王者荣耀英雄的技能和数值不在我这边万象棋的资料范围里，你可以在游戏内的英雄介绍里看小乔的详细技能说明。",
+        "intent": "out_of_scope",
+        "status": "unsupported",
+        "sources": [],
+        "retrieved_ids": [],
+        "latency_ms": 2420.0,
+        "timings_ms": {
+          "context_route": 0.12,
+          "intent_planning": 2418.05,
+          "retrieval": 0.0,
+          "generation": 0.0,
+          "client_setup": 1.75
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "66436646c640",
+        "retrieval_plan": null,
+        "routing": {
+          "status": "model",
+          "intent": "out_of_scope",
+          "resolved_query": "王者荣耀里的小乔技能介绍",
+          "retrieval_required": false,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2417.43,
+            "success": true,
+            "input_chars": 3494,
+            "max_tokens": 4096,
+            "history_messages": 4,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1878,
+            "completion_tokens": 87,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": null,
+        "retrieval_recall": null,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.417,
+      "elapsed_ms": 2431.819
+    },
+    {
+      "case_id": "VOICE02",
+      "turn": 1,
+      "split": "development",
+      "message": "万象棋小乔的卡面效果，只要一句话。",
+      "input_history": [],
+      "expectation": {
+        "message": "万象棋小乔的卡面效果，只要一句话。",
+        "expected_intent": "knowledge",
+        "expected_status": "answered",
+        "expected_behavior": "尊重一句话要求，直接提供完整效果",
+        "answer_points": [
+          "每当己方英雄触发登场效果，随机3名英雄等级+1"
+        ],
+        "style_checks": [
+          "只给一条完整效果，不为亲和额外寒暄、重复解释或结尾提问"
+        ],
+        "expected_knowledge_ids": [
+          "WX-hero-1061-original"
+        ],
+        "required_groups": [
+          [
+            "登场"
+          ],
+          [
+            "随机.{0,3}3名"
+          ],
+          [
+            "等级.{0,4}(?:\\+1|提升1|增加1|升1)"
+          ]
+        ],
+        "forbidden_patterns": []
+      },
+      "expected_knowledge_ids": [
+        "WX-hero-1061-original"
+      ],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "小乔的卡面效果是：每当你的英雄触发登场效果时，随机3名英雄等级+1。",
+        "intent": "knowledge",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "WX-hero-1061-original",
+            "title": "小乔·卡面原文",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/explore/hero-1061",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：官方 2026-09-29；状态：current_official，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "每当你的英雄触发登场效果时，随机3名英雄等级+1。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "WX-hero-1061-original"
+        ],
+        "latency_ms": 4171.5,
+        "timings_ms": {
+          "context_route": 0.07,
+          "intent_planning": 2172.94,
+          "retrieval": 4.09,
+          "generation": 1988.64,
+          "client_setup": 5.32
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "ddae3cc375f8",
+        "retrieval_plan": {
+          "queries": [
+            "万象棋 小乔 卡面效果"
+          ],
+          "keywords": [
+            "万象棋",
+            "小乔",
+            "卡面效果"
+          ],
+          "entities": [
+            "小乔"
+          ],
+          "mode": "万象大赛",
+          "include_history": false,
+          "selection": {
+            "section": "hero",
+            "related_to": [],
+            "names": [
+              "小乔"
+            ]
+          },
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "knowledge",
+          "resolved_query": "万象棋小乔的卡面效果是什么",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2170.17,
+            "success": true,
+            "input_chars": 3365,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1795,
+            "completion_tokens": 98,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 1988.19,
+            "success": true,
+            "input_chars": 3523,
+            "max_tokens": 16384,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1931,
+            "completion_tokens": 94,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": true,
+        "retrieval_recall": 1.0,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.153,
+      "elapsed_ms": 4186.491
+    },
+    {
+      "case_id": "VOICE03",
+      "turn": 1,
+      "split": "development",
+      "message": "我现在要不要升级？",
+      "input_history": [
+        {
+          "role": "user",
+          "content": "我玩万象大赛，现在棋手6级，手里有8能量。"
+        },
+        {
+          "role": "assistant",
+          "content": "记下了，你现在棋手6级，手里有8能量。"
+        }
+      ],
+      "expectation": {
+        "message": "我现在要不要升级？",
+        "history": [
+          {
+            "role": "user",
+            "content": "我玩万象大赛，现在棋手6级，手里有8能量。"
+          },
+          {
+            "role": "assistant",
+            "content": "记下了，你现在棋手6级，手里有8能量。"
+          }
+        ],
+        "expected_intent": "advice",
+        "expected_status": "needs_clarification",
+        "expected_behavior": "利用已知等级和能量，只追问尚缺的关键局面",
+        "answer_points": [
+          "不重复询问已经给出的等级和能量，不在局面不足时作确定选择"
+        ],
+        "style_checks": [
+          "自然用到已知条件，问题易于回答，一次只问一两项",
+          "不要求玩家从头填写所有信息"
+        ],
+        "expected_knowledge_ids": [],
+        "required_groups": [
+          [
+            "阵容",
+            "场上",
+            "回合",
+            "英雄",
+            "局面"
+          ]
+        ],
+        "forbidden_patterns": [
+          "立刻升级",
+          "一定升级"
+        ],
+        "forbid_retrieval": true
+      },
+      "expected_knowledge_ids": [],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "你现在是6级、8能量，要不要升级得先看升级按钮那里的具体花费——升级费用按当前等级计算，没法直接替你确定。\n\n可以先这样想：\n- 升级的费用在升级按钮上直接标着，先看这个数字是否不超过8。\n- 升级的收益是明确的：每次升级免费拿1个天赋；如果这次升到的等级带人数标志，会多1个上阵名额，同时高阶英雄牌出现的概率也会提高。\n- 对照一下机会成本：一张英雄牌要花3能量。如果升级费用很高，等于放弃若干个英雄牌或效果牌的购买。\n\n所以更准确地说：如果升级按钮显示的所需能量在你的8能量内、且接下来想拿天赋或冲更高阶英雄牌，升级是可行的；如果花费紧掉你后续买牌的空间，也可以先留着买牌。你告诉我升级按钮显示需要多少能量，或者你现在场上缺不缺上阵位，我再帮你看得更具体。",
+        "intent": "advice",
+        "status": "answered",
+        "sources": [
+          {
+            "id": "C04",
+            "title": "升级与上阵人数",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "使用能量提升棋手等级，每次升级免费获得一个天赋。标有人数符号的等级会增加1个上阵名额；更高棋手等级也提高高阶英雄牌出现的概率。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "C03",
+            "title": "专属天赋",
+            "source_title": "王者万象棋官方新手指引",
+            "url": "https://wxq.qq.com/cp/a202609xszy/index.html",
+            "collected_at": "2026-10-12",
+            "version_scope": "2026-10-12采集的官网新手指引快照；未与全部后续公告逐项核对",
+            "claim_type": "rule",
+            "verification": "official_page_checked",
+            "official_url": null,
+            "excerpt": "棋手达到6级可以领取专属天赋。",
+            "excerpt_kind": "quote"
+          },
+          {
+            "id": "WIKI-568e467dc3529f9654fe",
+            "title": "能量用在哪里？",
+            "source_title": "万象棋知识站",
+            "url": "https://wzwxq.com/guide",
+            "collected_at": "2026-10-13",
+            "version_scope": "Wiki采集于2026-10-13；来源标注：见原页面；状态：current，不是实时游戏保证",
+            "claim_type": "wiki_original",
+            "verification": "wiki_snapshot",
+            "official_url": null,
+            "excerpt": "①购买卡牌会消耗能量，英雄牌固定消耗3能量，效果牌消耗能量在卡牌右上角查看；②提升棋手等级会消耗能量，升级按钮处即为当前升级所需能量。",
+            "excerpt_kind": "quote"
+          }
+        ],
+        "retrieved_ids": [
+          "C04",
+          "WIKI-79c68b769e0390cb63a4",
+          "C03",
+          "WIKI-568e467dc3529f9654fe",
+          "WX-talent-613003-original",
+          "WX-effect-7120-original"
+        ],
+        "latency_ms": 10473.14,
+        "timings_ms": {
+          "context_route": 0.15,
+          "intent_planning": 3531.65,
+          "retrieval": 2980.82,
+          "generation": 3958.46,
+          "client_setup": 1.92
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "80ad0030a511",
+        "retrieval_plan": {
+          "queries": [
+            "万象大赛棋手等级升级所需能量与升级建议",
+            "棋手6级升到7级要多少能量，什么时候该升级"
+          ],
+          "keywords": [
+            "升级",
+            "棋手等级",
+            "能量",
+            "万象大赛"
+          ],
+          "entities": [],
+          "mode": "万象大赛",
+          "include_history": true,
+          "selection": null,
+          "status": "model",
+          "error_code": null
+        },
+        "routing": {
+          "status": "model",
+          "intent": "advice",
+          "resolved_query": "王者万象棋万象大赛中，棋手6级、手里有8能量，是否应该花能量升级棋手等级？",
+          "retrieval_required": true,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 3530.69,
+            "success": true,
+            "input_chars": 3393,
+            "max_tokens": 4096,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1818,
+            "completion_tokens": 114,
+            "reasoning_tokens": 0
+          },
+          {
+            "stage": "generation",
+            "elapsed_ms": 3957.92,
+            "success": true,
+            "input_chars": 5154,
+            "max_tokens": 16384,
+            "history_messages": 2,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 2685,
+            "completion_tokens": 402,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": null,
+        "retrieval_recall": null,
+        "answer_pass": false,
+        "source_integrity": true,
+        "behavior_check": false,
+        "advice_rubric": null,
+        "required_group_results": [
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": false,
+        "status_correct": false
+      },
+      "judge_ms": 0.2,
+      "elapsed_ms": 10481.687
+    },
+    {
+      "case_id": "VOICE04",
+      "turn": 1,
+      "split": "development",
+      "message": "帮我查查最近的战绩吧",
+      "input_history": [],
+      "expectation": {
+        "message": "帮我查查最近的战绩吧",
+        "expected_intent": "out_of_scope",
+        "expected_status": "unsupported",
+        "expected_behavior": "简短说明无法读取战绩，提供可行的复盘方式",
+        "answer_points": [
+          "不假装已经查询，不索取登录凭证"
+        ],
+        "style_checks": [
+          "面向这次请求给出贴切下一步，不列举全部能力限制，不用客服式菜单收尾"
+        ],
+        "expected_knowledge_ids": [],
+        "required_groups": [
+          [
+            "战绩"
+          ],
+          [
+            "不能",
+            "无法",
+            "没法",
+            "读不到",
+            "看不到",
+            "查不到",
+            "没有",
+            "还没",
+            "不支持"
+          ]
+        ],
+        "forbidden_patterns": [
+          "已经查询",
+          "你的胜率是"
+        ],
+        "forbid_retrieval": true
+      },
+      "expected_knowledge_ids": [],
+      "advice_applicable": false,
+      "response_received": true,
+      "success": true,
+      "result": {
+        "answer": "我这边没有读个人战绩的接口，查不到你最近的战绩。要是想复盘某局，可以把那局的阵容和结果发给我，咱们一起看看。",
+        "intent": "out_of_scope",
+        "status": "unsupported",
+        "sources": [],
+        "retrieved_ids": [],
+        "latency_ms": 2136.66,
+        "timings_ms": {
+          "context_route": 0.05,
+          "intent_planning": 2135.03,
+          "retrieval": 0.0,
+          "generation": 0.0,
+          "client_setup": 1.5
+        },
+        "mode": "live",
+        "model_used": true,
+        "request_id": "9d8802c304ba",
+        "retrieval_plan": null,
+        "routing": {
+          "status": "model",
+          "intent": "out_of_scope",
+          "resolved_query": "帮我查查最近的战绩",
+          "retrieval_required": false,
+          "error_code": null
+        },
+        "model_calls": [
+          {
+            "stage": "intent_planning",
+            "elapsed_ms": 2134.52,
+            "success": true,
+            "input_chars": 3354,
+            "max_tokens": 4096,
+            "history_messages": 0,
+            "thinking": "disabled",
+            "finish_reason": "stop",
+            "prompt_tokens": 1786,
+            "completion_tokens": 73,
+            "reasoning_tokens": 0
+          }
+        ],
+        "notice": null,
+        "generation_error": null
+      },
+      "judgement": {
+        "intent_correct": true,
+        "retrieval_hit": null,
+        "retrieval_recall": null,
+        "answer_pass": true,
+        "source_integrity": true,
+        "behavior_check": true,
+        "advice_rubric": null,
+        "required_group_results": [
+          true,
+          true
+        ],
+        "forbidden_matches": [],
+        "citation_check": true,
+        "status_correct": true
+      },
+      "judge_ms": 0.48,
+      "elapsed_ms": 2143.81
+    }
+  ]
+}
